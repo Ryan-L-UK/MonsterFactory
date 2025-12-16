@@ -1,0 +1,264 @@
+/*-----------------------------------------------------------
+MasterMenu & Master Footer Containers
+These are the main containers which powers the entire sites
+menus and footers
+-----------------------------------------------------------*/
+/*-----------------------------------------------------------*/
+/*Font Packages*/
+/*-----------------------------------------------------------*/
+@font-face {
+  font-family: Roboto-medium;
+  src: local("Roboto Medium"), url("../Fonts/Roboto-Medium.ttf");
+}
+@font-face {
+  font-family: Tiamat-Text;
+  src: local("tiamat-text-bold"), url("../Fonts/tiamat-text-bold.otf"),
+    local("tiamat-text-medium"), url("../Fonts/tiamat-text-medium.otf"),
+    local("tiamat-text-semibold"), url("../Fonts/tiamat-text-semibold.otf");
+  font-weight: normal;
+  font-style: normal;
+}
+/*-----------------------------------------------------------*/
+/*Menu Bar*/
+/*-----------------------------------------------------------*/
+.blackbar {
+  background-color: #090809;
+  height: fit-content;
+  color: #fff;
+}
+
+.menulogo {
+  width: auto;
+  height: 70px;
+  margin: 0 auto;
+  padding-top: 5px;
+  padding-bottom: 3px;
+  justify-items: center;
+}
+.menulogo:hover {
+  background-image: radial-gradient(
+    circle,
+    rgb(21, 119, 95) 40%,
+    rgba(9, 8, 9, 0) 70%
+  );
+}
+
+.menucontainer {
+  width: 1400px;
+  align-items: center;
+  justify-content: left;
+  margin: auto;
+  display: flex;
+  position: relative;
+  z-index: 99 !important;
+  padding-left: 32px;
+}
+.menubar {
+  align-items: center;
+  overflow: hidden;
+  font-family: Tiamat-Text;
+  margin-top: 0;
+  padding: 0;
+  width: 100%;
+}
+.menubar a {
+  float: left;
+  text-align: center;
+  text-decoration: none;
+}
+.menudiv {
+  border-top: 1px solid hsla(0, 0%, 100%, 0.1);
+  align-self: center;
+  max-width: 90%;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+.dropbtn {
+  border: 0;
+  outline: 0;
+  margin: 0;
+  padding: 25px 8px;
+  font-family: Roboto;
+}
+.dropbtn::after {
+  align-items: center;
+  justify-items: center;
+  content: "\25Ec";
+  transform: rotate(180deg);
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 19px;
+  margin-left: 4px;
+  margin-right: 7px;
+  margin-top: -2px;
+  color: #64da8b;
+}
+.dropdown .dropbtn {
+  font-size: 1rem;
+  border: 0;
+  outline: 0;
+  margin: 0;
+  color: #fff;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  font-weight: 700;
+  background-color: inherit;
+  font-family: inherit;
+  text-shadow: none;
+  transition: text-shadow 0.15s ease-in-out;
+}
+.dropdown-content {
+  align-items: center;
+  justify-items: center;
+  justify-self: center;
+  display: none;
+  position: absolute;
+  background-color: rgba(9, 8, 9, 0.95);
+  min-width: 300px;
+  overflow: visible;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  align-self: center;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  z-index: 1 !important;
+  font-family: Roboto-Medium;
+  font-size: 1rem;
+}
+.dropdown-content a {
+  float: none;
+  color: #64da8b;
+  padding: 5px 12px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown .dropbtn:hover,
+.dropdown-content a:hover,
+.stdbtn:hover {
+  text-shadow: 0 0 20px #64da8b;
+}
+.show {
+  display: block;
+}
+
+.stdbtn {
+  font-size: 1rem;
+  border: 0;
+  outline: 0;
+  margin: 0;
+  color: #fff;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  font-weight: 700;
+  background-color: inherit;
+  font-family: inherit;
+  text-shadow: none;
+  transition: text-shadow 0.15s ease-in-out;
+  border: 0;
+  outline: 0;
+  margin: 0;
+  padding: 25px 8px;
+}
+
+/*-----------------------------------------------------------*/
+/*Footer*/
+/*-----------------------------------------------------------*/
+.footerbox {
+  width: 100%;
+  height: auto;
+  background-image: radial-gradient(circle at top center, #082c25, #050a09);
+  background-size: cover;
+  color: #fff;
+  padding: 0;
+  margin: 0;
+}
+.footerbase {
+  background-color: #051c0d;
+  background-size: cover;
+  color: #9b9aa7;
+}
+.iconlogo {
+  height: 200px;
+  margin: 0 auto;
+  padding: 0;
+  justify-items: center;
+  justify-content: center;
+  align-items: center;
+  z-index: -1;
+}
+.pinkline {
+  display: flex;
+  height: auto;
+  align-items: center;
+  justify-items: center;
+  border-bottom: 1.5px solid #08bd78;
+  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.5);
+}
+.footer-container {
+  display: grid;
+  width: 100%;
+  justify-content: space-evenly;
+  align-content: space-evenly;
+  column-gap: 1%;
+  grid-auto-flow: row;
+  grid-template-columns: 60% 30%;
+  grid-template-areas: "footerlinks footerlogo";
+}
+.footer-links-container {
+  display: grid;
+  width: 100%;
+  justify-content: space-evenly;
+  align-content: space-evenly;
+  column-gap: 1%;
+  grid-auto-flow: row;
+  grid-template-columns: 32% 32% 32%;
+  grid-template-areas: "linksleft linkscentre linksright";
+}
+.footerlinks,
+.footerlogo,
+.linkscentre,
+.linksleft,
+.linksright {
+  text-align: center;
+  align-items: center;
+}
+li.footer,
+ul.footer {
+  text-align: left;
+  align-items: left;
+  font-size: 1rem;
+  font-family: Tiamat-Text;
+  margin: 0 auto 8px;
+}
+ul.footer {
+  list-style: none;
+  list-style-image: none;
+}
+li.heading {
+  font-size: 1rem;
+  padding-bottom: 8px;
+  font-family: Tiamat-Text;
+}
+.ftrlink {
+  color: #fff;
+  text-decoration: none;
+}
+.ftrlink:hover,
+li.heading,
+p.footer {
+  color: #9b9aa7;
+}
+p.footer {
+  width: 90%;
+  text-align: center;
+  align-items: center;
+  font-size: 1rem;
+  font-family: Tiamat-Text;
+  margin: 0 auto;
+}
