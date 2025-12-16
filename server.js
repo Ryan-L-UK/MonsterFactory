@@ -10,7 +10,7 @@ app.use('/Sources', express.static(path.join(__dirname, 'Sources')));
 
 // Default route → index.html at root
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'index.html'));
+  res.sendFile(path.join(__dirname, 'Index.html'));
 });
 
 app.listen(port, () => {
