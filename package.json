@@ -1,0 +1,24 @@
+{
+  "name": "heartofwinter",
+  "version": "1.0.0",
+  "description": "Heart Of Winter",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ryan-L-UK/HeartOfWinter"
+  },
+  "author": "Ryan Lewery",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ryan-L-UK/HeartOfWinter/issues"
+  },
+  "homepage": "https://github.com/Ryan-L-UK/HeartOfWinter#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "html-to-image": "^1.11.11"
+  }
+}
