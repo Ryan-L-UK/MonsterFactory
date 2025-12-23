@@ -1,0 +1,74 @@
+/*-----------------------------------------------------------
+Font Loaders
+The list below is all the known font packaged loaded into the site
+-----------------------------------------------------------*/
+@font-face {
+  font-family: Cinzel1;
+  src: local("Cinzel1"), url("../Fonts/Cinzel-VariableFont_wght.ttf");
+}
+@font-face {
+  font-family: CinzelDecorative;
+  src: local("CinzelDecorative"), url("../Fonts/CinzelDecorative-Bold.ttf");
+}
+@font-face {
+  font-family: MrEaves;
+  src: local("Mr Eaves"), url("../Fonts/Mr\ Eaves\ Small\ Caps.otf");
+}
+@font-face {
+  font-family: Roboto;
+  src: local("Roboto Regular"), url("../Fonts/Roboto-Regular.ttf");
+}
+@font-face {
+  font-family: Roboto-medium;
+  src: local("Roboto Medium"), url("../Fonts/Roboto-Medium.ttf");
+}
+@font-face {
+  font-family: Roboto-bold;
+  src: local("Roboto Bold"), url("../Fonts/RobotoCondensed-Bold.ttf");
+}
+@font-face {
+  font-family: Merriweather;
+  src: local("Merriweather Regular"), url("../Fonts/Merriweather-Regular.ttf");
+}
+@font-face {
+  font-family: Merriweather-light;
+  src: local("Merriweather Light"), url("../Fonts/Merriweather-Light.ttf");
+}
+@font-face {
+  font-family: Merriweather-bold;
+  src: local("Merriweather Bold"), url("../Fonts/Merriweather-Bold.ttf");
+}
+@font-face {
+  font-family: Merriweather-black;
+  src: local("Merriweather black"), url("../Fonts/Merriweather-Black.ttf");
+}
+@font-face {
+  font-family: Merriweather-Italic;
+  src: local("Merriweather Italic"), url("../Fonts/Merriweather-Italic.ttf");
+}
+@font-face {
+  font-family: Merriweather-BlackItalic;
+  src: local("Merriweather Black Italic"),
+    url("../Fonts/Merriweather-BlackItalic.ttf");
+}
+@font-face {
+  font-family: Merriweather-BoldItalic;
+  src: local("Merriweather BoldItalic"),
+    url("../Fonts/Merriweather-BoldItalic.ttf");
+}
+@font-face {
+  font-family: RuneD;
+  src: local("RuneD"), url("../Fonts/RUNE_D.TTF");
+}
+@font-face {
+  font-family: Roboto-medium;
+  src: local("Roboto Medium"), url("../Fonts/Roboto-Medium.ttf");
+}
+@font-face {
+  font-family: Tiamat-Text;
+  src: local("tiamat-text-bold"), url("../Fonts/tiamat-text-bold.otf"),
+    local("tiamat-text-medium"), url("../Fonts/tiamat-text-medium.otf"),
+    local("tiamat-text-semibold"), url("../Fonts/tiamat-text-semibold.otf");
+  font-weight: normal;
+  font-style: normal;
+}

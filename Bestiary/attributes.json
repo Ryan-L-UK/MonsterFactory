@@ -1,0 +1,77 @@
+[
+  {
+    "name": "Fire",
+    "prefix": "Flameborn",
+    "origin": "forged in searing elemental fire"
+  },
+  {
+    "name": "Ice",
+    "prefix": "Frostbound",
+    "origin": "shaped by ancient, bitter frost"
+  },
+  {
+    "name": "Lightning",
+    "prefix": "Stormcharged",
+    "origin": "born from violent thunderous storms"
+  },
+  {
+    "name": "Radiant",
+    "prefix": "Radiant",
+    "origin": "touched by brilliant celestial light"
+  },
+  {
+    "name": "Poison",
+    "prefix": "Toxic",
+    "origin": "steeped in venomous swamps and toxic mists"
+  },
+  {
+    "name": "Earth",
+    "prefix": "Earthbound",
+    "origin": "carved from stone and soil deep underground"
+  },
+  {
+    "name": "Water",
+    "prefix": "Waterbound",
+    "origin": "raised from the depths of the oceans"
+  },
+  {
+    "name": "Metal",
+    "prefix": "Metal-forged",
+    "origin": "hammered into being by metallic forces"
+  },
+  {
+    "name": "Blood",
+    "prefix": "Bloodbound",
+    "origin": "formed from ancient, powerful bloodlines"
+  },
+  {
+    "name": "Arcane",
+    "prefix": "Arcane",
+    "origin": "woven together by raw magical energies"
+  },
+  {
+    "name": "Necrotic",
+    "prefix": "Necrotic",
+    "origin": "animated by deathly, decaying forces"
+  },
+  {
+    "name": "Celestial",
+    "prefix": "Celestial",
+    "origin": "born from the distant heavens"
+  },
+  {
+    "name": "Infernal",
+    "prefix": "Infernal",
+    "origin": "spawned from the fires of the lower realms"
+  },
+  {
+    "name": "Psychic",
+    "prefix": "Mindbending",
+    "origin": "shaped by overwhelming psychic pressure"
+  },
+  {
+    "name": "Void",
+    "prefix": "Voidborn",
+    "origin": "drawn from the emptiness between worlds"
+  }
+]

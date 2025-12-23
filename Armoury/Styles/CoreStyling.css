@@ -1,0 +1,166 @@
+/*-----------------------------------------------------------
+  Core
+  Components
+  These
+  are
+  the
+  main
+  components
+  which
+  power
+  the
+  entire
+  site
+  -----------------------------------------------------------*/
+html {
+  background: #14171b;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  background-image: url("http://localhost:6969/Codex/background_texture.png");
+  background-position: top;
+  background-repeat: repeat;
+  padding: 0;
+}
+body {
+  margin: 0;
+  padding: 0;
+}
+.CreatureIconGrid {
+  margin: 0 auto;
+  justify-self: center;
+  display: grid;
+  width: 70%;
+  justify-content: center;
+  align-content: center;
+  grid-template-columns: auto 100px;
+  column-gap: 2%;
+  row-gap: 6px;
+  grid-template-areas:
+    "CreatureImage AttributeIcons"
+    "CreatureImage TypeIcons"
+    "CreatureImage PerkIcons";
+}
+.CreatureImage {
+  max-width: 675px;
+  max-height: 300px;
+  height: 100%;
+  object-fit: contain;
+  align-self: center;
+  margin: auto;
+  grid-area: CreatureImage;
+}
+.CreatureTypeIcon {
+  width: 75px;
+  justify-self: center;
+  margin: auto;
+  display: flex;
+}
+.CreatureType {
+  padding: 1px 4px 1px;
+  color: #000000;
+  font-family: MrEaves;
+  font-size: 1rem;
+  margin: 0 1px 0px;
+  justify-self: center;
+  text-align: center;
+}
+.CreatureName {
+  font-family: CinzelDecorative;
+  justify-content: center;
+  text-align: center;
+  margin: 0px auto;
+  font-size: 1.5rem;
+  display: flex;
+  color: #000000;
+  padding-top: 0;
+}
+.CreatureDescription {
+  justify-content: center;
+  font-size: 0.7rem;
+  font-family: Merriweather;
+  width: 60%;
+  align-self: center;
+  margin: auto;
+  text-align: center;
+}
+
+.CreatureSub {
+  margin: 5px auto 5px;
+  display: flex;
+  justify-content: center;
+}
+
+h1.indexheading {
+  margin: 0 0 10px 0;
+  font-size: 1.3rem;
+  color: #7606d1;
+  font-family: CinzelDecorative;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 4px;
+}
+
+.CreatureContainer {
+  width: 100%;
+  margin: 20px auto;
+  padding: 16px 20px;
+  display: grid;
+  grid-template-columns: 48% 48%;
+  column-gap: 2%;
+  background: #f8f8f8; /* soft neutral */
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  grid-template-areas: "Left Right";
+}
+.Left,
+.Right {
+  background-color: none;
+}
+
+.Left p {
+  margin: 6px 0;
+  line-height: 1.3;
+}
+
+.creatureBold {
+  font-weight: 700;
+  color: #333;
+}
+.stat-container {
+  background: #ffffff;
+  padding: 10px 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  display: grid;
+  row-gap: 8px;
+  column-gap: 10px;
+  grid-template-columns: 30% 30% 30%;
+  grid-template-areas:
+    "STR DEX CON"
+    "STRn DEXn CONn"
+    "INT WIS CHA"
+    "INTn WISn CHAn";
+}
+
+.CHA,
+.CON,
+.DEX,
+.INT,
+.STR,
+.WIS {
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.CHAn,
+.CONn,
+.DEXn,
+.INTn,
+.STRn,
+.WISn {
+  font-weight: 700;
+  font-size: 1rem;
+  color: #7606d1;
+  text-align: center;
+}

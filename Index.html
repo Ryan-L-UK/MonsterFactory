@@ -1,204 +1,366 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel="stylesheet" href="Foundry/CSS/CoreStyling.css" />
-    <title>Heart Of Winter</title>
+    <link rel="stylesheet" href="Armoury/Styles/CoreStyling.css" />
+    <link rel="stylesheet" href="Armoury/Styles/Sources.css" />
+    <title>The Monster Factory</title>
     <link
       rel="shortcut icon"
-      type="image/jpg"
-      href="Foundry/Components/favicon.ico"
+      type="image/png"
+      href="Codex/MonsterFactoryLogo.png"
     />
   </head>
   <body>
     <!---------------------------------------->
     <!--Nav Bar-->
-    <!---------------------------------------->
     <object id="Nav_output"></object>
-    <video
-      autoplay
-      muted
-      loop
-      src="Foundry/Components/HeroMasthead.mp4"
-      class="masthead"
-    ></video>
     <!---------------------------------------->
-    <!--Content-->
+    <!--Creature Icons & Picture-->
+    <br />
+    <div class="CreatureIconGrid">
+      <img src="" class="CreatureImage" id="CreatureImage" />
+
+      <div class="AttributeIcons">
+        <img src="" class="CreatureTypeIcon" id="attribute-icon-out" />
+        <div class="CreatureType"><div id="attribute-out"></div></div>
+      </div>
+      <div class="TypeIcons">
+        <img src="" class="CreatureTypeIcon" id="type-icon-out" />
+        <div class="CreatureType">
+          <div id="type-out"></div>
+          <div id="tags-out"></div>
+        </div>
+      </div>
+      <div class="PerkIcons">
+        <img src="" class="CreatureTypeIcon" id="perk-icon-out" />
+        <div class="CreatureType"><div id="perk-out"></div></div>
+      </div>
+    </div>
     <!---------------------------------------->
+    <!--Creature Name & Description-->
+    <div id="name-out" class="CreatureName"></div>
+    <div class="CreatureDescription" id="desc-out"></div>
+    <div class="CreatureSub">
+      <span id="alignment-out" class="alignment"></span>
+      <span id="size-out" class="CreatureSize"></span>
+    </div>
     <br />
-    <br />
-    <div class="content-container">
-      <div class="menuitem-shadow">
-        <div class="menuitem-container">
-          <!---------------------------------------->
-          <div class="menuitem">
-            <a
-              href="http://localhost:8080/Pages/MapPage.html?Type=MoonshaeIsles"
+    <!---------------------------------------->
+    <!--Creature Stat Blocks-->
+    <div class="CreatureContainer">
+      <div class="Left">
+        <h1 class="indexheading">Core Stats</h1>
+        size type languages AC HP
+
+        <p>
+          <span class="creatureBold">Speed:</span>
+          <span class="creatureBody" id="speed-out"></span>
+        </p>
+
+        <p>
+          <span class="creatureBold" id="skillsH-out"></span>
+          <span class="creatureBody capitalize" id="skills-out"></span>
+        </p>
+        <p>
+          <span class="creatureBold" id="savesH-out"></span>
+          <span class="creatureBody capitalize" id="saves-out"></span>
+        </p>
+
+        <p>
+          <span class="creatureBold" id="sensesH-out"></span>
+          <span class="creatureBody capitalize" id="senses-out"></span>
+        </p>
+        <p>
+          <span class="creatureBold" id="languagesH-out"></span>
+          <span class="creatureBody" id="languages-out"></span>
+        </p>
+      </div>
+      <div class="Right">
+        <h1 class="indexheading">Skills</h1>
+        <div class="stat-container">
+          <div class="STR">STRENGTH:</div>
+          <div class="DEX">DEXTERITY:</div>
+          <div class="CON">CONSTITUTION:</div>
+          <div class="STRn" id="STR-out"></div>
+          <div class="DEXn" id="DEX-out"></div>
+          <div class="CONn" id="CON-out"></div>
+          <div class="INT">INTELLIGENCE:</div>
+          <div class="WIS">WISDOM:</div>
+          <div class="CHA">CHARISMA:</div>
+          <div class="INTn" id="INT-out"></div>
+          <div class="WISn" id="WIS-out"></div>
+          <div class="CHAn" id="CHA-out"></div>
+        </div>
+      </div>
+
+      <br />
+      <br />
+    </div>
+
+    <div class="CreatureContainer">
+      <div class="Left">
+        <h1 class="indexheading">Defence</h1>
+        <div>
+          <p>
+            <span>HP:</span>
+            <span class="hp-out" id="hp-out"></span>
+          </p>
+          <p>
+            <span>AC:</span>
+            <span class="ac-out" id="ac-out"></span>
+          </p>
+          <p>
+            <span class="creatureBold" id="resistH-out">Resists:</span>
+            <span class="creatureBody capitalize" id="resist-out"></span>
+          </p>
+          <p>
+            <span class="creatureBold" id="immuneH-out">Immune:</span>
+            <span class="creatureBody capitalize" id="immune-out"></span>
+          </p>
+          <p>
+            <span class="creatureBold" id="vulnerableH-out">Vulnerable:</span>
+            <span class="creatureBody capitalize" id="vulnerable-out"></span>
+          </p>
+          <p>
+            <span class="creatureBold" id="conditionImmuneH-out"
+              >Condition Immune:</span
             >
-              <img
-                src="/Foundry/ImageAssets/IndexImageIcons/MoonshaeIsles.jpg"
-                class="menuitemimage"
-              />
-              <br />
-              <h1 class="menu">Map Of Moonshae Isles</h1>
-              <p class="menu">
-                The known history of Faer&#251;n spans thousands of years,
-                extending back to the creator races and the ages of the first
-                elves and dwarves...
+            <span
+              class="creatureBody capitalize"
+              id="conditionImmune-out"
+            ></span>
+          </p>
+        </div>
+      </div>
+      <div class="Right">
+        <h1 class="indexheading">Skills</h1>
+        <div>Actions here</div>
+      </div>
+
+      <br />
+      <br />
+    </div>
+
+    <div id="photo">
+      <div class="RainBorder">
+        <div class="CreatureContainer" id="CreatureContainer">
+          <div class="bodyContainer">
+            <img src="" class="CreatureToken" id="CreatureToken" />
+            <!-------------------------->
+            <!--SKILLS-->
+            <!-------------------------->
+
+            <!-------------------------->
+            <!--TRAITS-->
+            <!-------------------------->
+            <div class="hidden" id="TRAITS">
+              <div class="lineBreak"></div>
+              <h1 class="indexheading">Traits</h1>
+
+              <p class="index">
+                <span class="creatureBoldItalic" id="T0H-out"></span>
+                <span class="creatureBody" id="T0D-out"></span>
               </p>
-              <p class="readme">read more...</p></a
-            >
-            <br />
-          </div>
-          <!---------------------------------------->
-          <div class="menuitem">
-            <a href="/Pages/MapPage.html?Type=Location"
-              ><img
-                src="/Foundry/ImageAssets/IndexImageIcons/GulletCove.png"
-                class="menuitemimage"
-              />
-              <br />
-              <h1 class="menu">Gullet Cove</h1>
-              <p class="menu">
-                Found on the east side of the Moonshae Isles is Gullet Cove, a
-                city on the coast of the Sea of Swords...
+              <p class="index">
+                <span class="creatureBoldItalic" id="T1H-out"></span>
+                <span class="creatureBody" id="T1D-out"></span>
               </p>
-              <p class="readme">read more...</p></a
-            >
-            <br />
-          </div>
-          <!---------------------------------------->
-          <div class="menuitem">
-            <a href="/Pages/CreaturePage.html"
-              ><img
-                src="/Foundry/ImageAssets/IndexImageIcons/Creatures.jpeg"
-                class="menuitemimage"
-              />
-              <br />
-              <h1 class="menu">Creatures, Monsters & Demons</h1>
-              <p class="menu">
-                Most of the monsters that haunt the D&D world are threats that
-                are meant to be stopped: rampaging demons, conniving devils,
-                soul-sucking undead, the list goes on...
+              <p class="index">
+                <span class="creatureBoldItalic" id="T2H-out"></span>
+                <span class="creatureBody" id="T2D-out"></span>
               </p>
-              <p class="readme">read more...</p></a
-            >
-            <br />
-          </div>
-          <!---------------------------------------->
-          <div class="menuitem">
-            <a href="/Pages/SpellPage.html"
-              ><img
-                src="/Foundry/ImageAssets/IndexImageIcons/Spells.png"
-                class="menuitemimage"
-              />
-              <br />
-              <h1 class="menu">Spells, Arcana & Magic</h1>
-              <p class="menu">
-                Spells can be versatile tools, weapons, or protective wards.
-                They can deal damage or undo it, impose or remove conditions,
-                drain life energy, and restore the dead...
+              <p class="index">
+                <span class="creatureBoldItalic" id="T3H-out"></span>
+                <span class="creatureBody" id="T3D-out"></span>
               </p>
-              <p class="readme">read more...</p></a
-            >
-            <br />
-          </div>
-          <!---------------------------------------->
-          <div class="menuitem">
-            <a href="/Pages/ItemsPage.html"
-              ><img
-                src="/Foundry/ImageAssets/IndexImageIcons/MagicItems.jpg"
-                class="menuitemimage"
-              />
-              <br />
-              <h1 class="menu">Magical & Wonderous Items</h1>
-              <p class="menu">
-                Adventurers strive for many things, including glory, knowledge,
-                and justice. Many adventurers also seek something more tangible:
-                fortune...
+              <p class="index">
+                <span class="creatureBoldItalic" id="T4H-out"></span>
+                <span class="creatureBody" id="T4D-out"></span>
               </p>
-              <p class="readme">read more...</p></a
-            >
-            <br />
-          </div>
-          <!---------------------------------------->
-          <div class="menuitem">
-            <a href="/Pages/CritAndFailPage.html"
-              ><img
-                src="/Foundry/ImageAssets/IndexImageIcons/CritsFails.png"
-                class="menuitemimage"
-              />
-              <br />
-              <h1 class="menu">Crit Hits & Crit Fails</h1>
-              <p class="menu">
-                Sometimes fate blesses or curses a combatant, causing the novice
-                to hit and the veteran to miss. There are a wealth of
-                possibilities...
+              <p id="innatebreak" class="index">
+                <span class="creatureBold" id="innateHeaderEntryH-out"></span>
+                <span class="creatureBody" id="innateHeaderEntry-out"></span>
               </p>
-              <p class="readme">read more...</p></a
-            >
-            <br />
-          </div>
-          <!---------------------------------------->
-          <div class="menuitem">
-            <a
-              href="http://localhost:8080/Pages/ContentViewerPage.html?Type=Ruleset&FileName=AbilityChecks"
-              ><img
-                src="/Foundry/ImageAssets/IndexImageIcons/AbilityChecks.jpg"
-                class="menuitemimage"
-              />
-              <br />
-              <h1 class="menu">Ability Checks</h1>
-              <p class="menu">
-                Every task that a character or monster might attempt in the game
-                is covered by one of the six abilities...
+              <p class="index">
+                <span class="creatureBodyItalic" id="atWillH-out"></span>
+                <span class="creatureBody capitalize" id="atWill-out"></span>
               </p>
-              <p class="readme">read more...</p></a
-            >
-            <br />
-          </div>
-          <!---------------------------------------->
-          <div class="menuitem">
-            <a
-              href="/Pages/ContentViewerPage.html?Type=Faerun&FileName=RevelsEnd"
-              ><img
-                src="/Foundry/ImageAssets/IndexImageIcons/RevelsEnd.png"
-                class="menuitemimage"
-              />
-              <br />
-              <h1 class="menu">Revel's End</h1>
-              <p class="menu">
-                Situated in the middle of the Trackless Sea, the prison is a
-                single-story structure topped with battlements. Rising from the
-                core...
+              <p class="index">
+                <span class="creatureBodyItalic" id="daily1eH-out"></span>
+                <span class="creatureBody capitalize" id="daily1e-out"></span>
               </p>
-              <p class="readme">read more...</p></a
-            >
-            <br />
-          </div>
-          <!---------------------------------------->
-          <div class="menuitem">
-            <a href="/Pages/LunarCalendarPage.html"
-              ><img
-                src="/Foundry/ImageAssets/IndexImageIcons/LunarCalendar.png"
-                class="menuitemimage"
-              />
-              <br />
-              <h1 class="menu">The Lunar Calendar</h1>
-              <p class="menu">
-                Across the land of Faer&#251;n the lunar calendar is a keen
-                focal point for many, not only for marking the passage of months
-                but...
+              <p class="index">
+                <span class="creatureBodyItalic" id="daily2eH-out"></span>
+                <span class="creatureBody capitalize" id="daily2e-out"></span>
               </p>
-              <p class="readme">read more...</p></a
-            >
+              <p class="index">
+                <span class="creatureBodyItalic" id="daily3eH-out"></span>
+                <span class="creatureBody capitalize" id="daily3e-out"></span>
+              </p>
+              <p class="index">
+                <span class="creatureBody" id="innateFooterEntry-out"></span>
+              </p>
+              <p id="spellbreak" class="index">
+                <span class="creatureBold" id="spellHeaderEntryH-out"></span>
+                <span class="creatureBody" id="spellHeaderEntry-out"></span>
+              </p>
+              <p class="index">
+                <span class="creatureBodyItalic" id="cantripH-out"></span>
+                <span class="creatureBody capitalize" id="cantrip-out"></span>
+              </p>
+              <p class="index">
+                <span class="creatureBodyItalic" id="lvl1slotsH-out"></span>
+                <span
+                  class="creatureBody capitalize"
+                  id="lvl1spells-out"
+                ></span>
+              </p>
+              <p class="index">
+                <span class="creatureBodyItalic" id="lvl2slotsH-out"></span>
+                <span
+                  class="creatureBody capitalize"
+                  id="lvl2spells-out"
+                ></span>
+              </p>
+              <p class="index">
+                <span class="creatureBodyItalic" id="lvl3slotsH-out"></span>
+                <span
+                  class="creatureBody capitalize"
+                  id="lvl3spells-out"
+                ></span>
+              </p>
+              <p class="index">
+                <span class="creatureBodyItalic" id="lvl4slotsH-out"></span>
+                <span
+                  class="creatureBody capitalize"
+                  id="lvl4spells-out"
+                ></span>
+              </p>
+              <p class="index">
+                <span class="creatureBodyItalic" id="lvl5slotsH-out"></span>
+                <span
+                  class="creatureBody capitalize"
+                  id="lvl5spells-out"
+                ></span>
+              </p>
+              <p class="index">
+                <span class="creatureBody" id="spellFooterEntry-out"></span>
+              </p>
+            </div>
+            <!-------------------------->
+            <!--ACTIONS-->
+            <!-------------------------->
+            <div class="hidden" id="ACTIONS">
+              <div class="lineBreak"></div>
+              <h1 class="indexheading">Actions</h1>
+
+              <p class="index">
+                <span class="creatureBoldItalic" id="A0H-out"></span>
+                <span class="creatureBody" id="A0D-out"></span>
+              </p>
+              <p class="index">
+                <span class="creatureBoldItalic" id="A1H-out"></span>
+                <span class="creatureBody" id="A1D-out"></span>
+              </p>
+              <p class="index">
+                <span class="creatureBoldItalic" id="A2H-out"></span>
+                <span class="creatureBody" id="A2D-out"></span>
+              </p>
+              <p class="index">
+                <span class="creatureBoldItalic" id="A3H-out"></span>
+                <span class="creatureBody" id="A3D-out"></span>
+              </p>
+              <p class="index">
+                <span class="creatureBoldItalic" id="A4H-out"></span>
+                <span class="creatureBody" id="A4D-out"></span>
+              </p>
+              <p class="index">
+                <span class="creatureBoldItalic" id="A5H-out"></span>
+                <span class="creatureBody" id="A5D-out"></span>
+              </p>
+              <p class="index">
+                <span class="creatureBoldItalic" id="A6H-out"></span>
+                <span class="creatureBody" id="A6D-out"></span>
+              </p>
+              <p class="index">
+                <span class="creatureBoldItalic" id="A7H-out"></span>
+                <span class="creatureBody" id="A7D-out"></span>
+              </p>
+              <p class="index">
+                <span class="creatureBoldItalic" id="A8H-out"></span>
+                <span class="creatureBody" id="A8D-out"></span>
+              </p>
+            </div>
+            <!-------------------------->
+            <!--LEGENDARY-->
+            <!-------------------------->
+            <div class="hidden" id="LEGENDARY">
+              <div class="lineBreak"></div>
+              <h1 class="indexheading">Legendary Actions</h1>
+              <p class="index">
+                <span class="creatureBoldItalic" id="LA0H-out"></span>
+                <span class="creatureBody" id="LA0D-out"></span>
+              </p>
+              <p class="index">
+                <span class="creatureBoldItalic" id="LA1H-out"></span>
+                <span class="creatureBody" id="LA1D-out"></span>
+              </p>
+              <p class="index">
+                <span class="creatureBoldItalic" id="LA2H-out"></span>
+                <span class="creatureBody" id="LA2D-out"></span>
+              </p>
+              <p class="index">
+                <span class="creatureBoldItalic" id="LA3H-out"></span>
+                <span class="creatureBody" id="LA3D-out"></span>
+              </p>
+            </div>
+            <!-------------------------->
+            <!--REACTIONS-->
+            <!-------------------------->
+            <div class="hidden" id="REACTIONS">
+              <div class="lineBreak"></div>
+              <h1 class="indexheading">Reactions</h1>
+
+              <p class="index">
+                <span class="creatureBoldItalic" id="RA0H-out"></span>
+                <span class="creatureBody" id="RA0D-out"></span>
+              </p>
+              <p class="index">
+                <span class="creatureBoldItalic" id="RA1H-out"></span>
+                <span class="creatureBody" id="RA1D-out"></span>
+              </p>
+            </div>
+            <!--CREATURE SOURCE-->
             <br />
+            <br />
+            <div class="sourcegraphic">
+              <span
+                ><div class="source" id="source-out"></div>
+                <div class="pageno" id="page-out"></div
+              ></span>
+            </div>
           </div>
         </div>
       </div>
+
+      <br />
     </div>
+    <div id="output" class="hidden"></div>
+    <div class="options">
+      <span>
+        <button class="submitcreature" onclick="showInput();">View</button
+        ><button class="submitcreature" onclick="takeshot()">Save</button
+        ><button class="submitcreature" onclick="exportSource()">
+          Code
+        </button></span
+      >
+    </div>
+    <br />
+
     <!--Footer-->
     <object id="Ftr_output"></object>
     <!--END-->
   </body>
 </html>
-<script src="Foundry/JavaScript/CoreScripts.js"></script>
+<script src="Spellbook/CoreScripts.js"></script>
+<script src="Spellbook/MonsterFactory.js"></script>

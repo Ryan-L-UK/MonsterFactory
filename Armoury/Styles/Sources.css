@@ -1,0 +1,374 @@
+/*****************************
+/*           BOOKS
+/*****************************/
+.HMBW,
+.Hmbrw,
+.Homebrew,
+.homebrew {
+  color: gray !important;
+  text-decoration-color: gray !important;
+}
+.PHB {
+  color: #4a6898 !important;
+  text-decoration-color: #4a6898 !important;
+}
+.DMG {
+  color: purple !important;
+  text-decoration-color: purple !important;
+}
+.MM {
+  color: green !important;
+  text-decoration-color: green !important;
+}
+.SCAG {
+  color: #76af76 !important;
+  text-decoration-color: #76af76 !important;
+}
+.VGM {
+  color: gray !important;
+  text-decoration-color: gray !important;
+}
+.OGA {
+  color: #933d0f !important;
+  text-decoration-color: #933d0f !important;
+}
+.XGE,
+.TTP {
+  color: #ba7c00 !important;
+  text-decoration-color: #ba7c00 !important;
+}
+.XMtS {
+  color: #830051 !important;
+  text-decoration-color: #830051 !important;
+}
+.HotDQ {
+  color: #ad8eba !important;
+  text-decoration-color: #ad8eba !important;
+}
+.RoT {
+  color: #ff2900 !important;
+  text-decoration-color: #ff2900 !important;
+}
+.CoS {
+  color: purple !important;
+  text-decoration-color: purple !important;
+}
+.OotA {
+  color: gray !important;
+  text-decoration-color: gray !important;
+}
+.SKT {
+  color: #008b8b !important;
+  text-decoration-color: #008b8b !important;
+}
+.PotA,
+.EEPC {
+  color: #57b6c6 !important;
+  text-decoration-color: #57b6c6 !important;
+}
+.LMoP {
+  color: #8da851 !important;
+  text-decoration-color: #8da851 !important;
+}
+.TftYP {
+  color: #c94029 !important;
+  text-decoration-color: #c94029 !important;
+}
+.ToA {
+  color: #666f30 !important;
+  text-decoration-color: #666f30 !important;
+}
+.MTF {
+  color: #1f6e7b !important;
+  text-decoration-color: #1f6e7b !important;
+}
+.WDH {
+  color: #d4af37 !important;
+  text-decoration-color: #d4af37 !important;
+}
+.GGR,
+.KKW {
+  color: #bfa76c !important;
+  text-decoration-color: #bfa76c !important;
+}
+.WDMM {
+  color: #a2201f !important;
+  text-decoration-color: #a2201f !important;
+}
+.LLK {
+  color: #6e7a71 !important;
+  text-decoration-color: #6e7a71 !important;
+}
+.AZfyT {
+  color: #4667a7 !important;
+  text-decoration-color: #4667a7 !important;
+}
+.GoS {
+  color: #3d695a !important;
+  text-decoration-color: #3d695a !important;
+}
+.AI,
+.OoW {
+  color: #5baf04 !important;
+  text-decoration-color: #5baf04 !important;
+}
+.ESK,
+.DIP,
+.DC,
+.SDW,
+.SLW {
+  color: #6b909a !important;
+  text-decoration-color: #6b909a !important;
+}
+.BGDIA {
+  color: #752418 !important;
+  text-decoration-color: #752418 !important;
+}
+.ERLW,
+.EFR {
+  color: #983426 !important;
+  text-decoration-color: #983426 !important;
+}
+.RMR,
+.RMBRE {
+  color: #5c7c27 !important;
+  text-decoration-color: #5c7c27 !important;
+}
+.MFF {
+  color: #92817f !important;
+  text-decoration-color: #92817f !important;
+}
+.LR {
+  color: #78613c !important;
+  text-decoration-color: #78613c !important;
+}
+.IMR {
+  color: #a19364 !important;
+  text-decoration-color: #a19364 !important;
+}
+.SADS {
+  color: #333bab !important;
+  text-decoration-color: #333bab !important;
+}
+.EGW,
+.FS,
+.DD,
+.US,
+.ToR {
+  color: #855a6e !important;
+  text-decoration-color: #855a6e !important;
+}
+.MOT {
+  color: #556b2e !important;
+  text-decoration-color: #556b2e !important;
+}
+.IDRotF {
+  color: #8fb8c0 !important;
+  text-decoration-color: #8fb8c0 !important;
+}
+.TCE {
+  color: #a24d08 !important;
+  text-decoration-color: #a24d08 !important;
+}
+.AL {
+  color: #e50711 !important;
+  text-decoration-color: #e50711 !important;
+}
+.HF {
+  color: #ac9544 !important;
+  text-decoration-color: #ac9544 !important;
+}
+.CM {
+  color: #e6585e !important;
+  text-decoration-color: #e6585e !important;
+}
+.VRGR,
+.HoL {
+  color: #bd000f !important;
+  text-decoration-color: #bd000f !important;
+}
+.RtG {
+  color: #8a536a !important;
+  text-decoration-color: #8a536a !important;
+}
+.AitFR {
+  color: #6e5ab9 !important;
+  text-decoration-color: #6e5ab9 !important;
+}
+.AitFR-ISF,
+.AitFR-THP,
+.AitFR-AVT,
+.AitFR-DN,
+.AitFR-FCD {
+  color: #6e5ab9 !important;
+  text-decoration-color: #6e5ab9 !important;
+}
+.WBtW {
+  color: #7151b6 !important;
+  text-decoration-color: #7151b6 !important;
+}
+.DoD {
+  color: #fe4935 !important;
+  text-decoration-color: #fe4935 !important;
+}
+.MaBJoV {
+  color: #7a2854 !important;
+  text-decoration-color: #7a2854 !important;
+}
+.FTD {
+  color: #b82a15 !important;
+  text-decoration-color: #b82a15 !important;
+}
+.NRH {
+  color: #bd335b !important;
+  text-decoration-color: #bd335b !important;
+}
+.NRH-TCMC,
+.NRH-AVitW,
+.NRH-ASS,
+.NRH-CoI,
+.NRH-TLT,
+.NRH-AWoL,
+.NRH-AT {
+  color: #bd335b !important;
+  text-decoration-color: #bd335b !important;
+}
+.SCC {
+  color: #be9c56 !important;
+  text-decoration-color: #be9c56 !important;
+}
+.SCC-CK,
+.SCC-HfMT,
+.SCC-TMM,
+.SCC-ARiR {
+  color: #be9c56 !important;
+  text-decoration-color: #be9c56 !important;
+}
+.MPMM {
+  color: #5c758d !important;
+  text-decoration-color: #5c758d !important;
+}
+.CRCotN {
+  color: #ac4a70 !important;
+  text-decoration-color: #ac4a70 !important;
+}
+.JttRC {
+  color: #cf48e2 !important;
+  text-decoration-color: #cf48e2 !important;
+}
+.SjA,
+.SAiS,
+.AAG,
+.BAM,
+.LoX {
+  color: #056b97 !important;
+  text-decoration-color: #056b97 !important;
+}
+.DoSI {
+  color: #478bb8 !important;
+  text-decoration-color: #478bb8 !important;
+}
+.DSotDQ {
+  color: #851e20 !important;
+  text-decoration-color: #851e20 !important;
+}
+.PSA {
+  color: #d76404 !important;
+  text-decoration-color: #d76404 !important;
+}
+.PSD {
+  color: #5db7da !important;
+  text-decoration-color: #5db7da !important;
+}
+.PSI {
+  color: #5d4696 !important;
+  text-decoration-color: #5d4696 !important;
+}
+.PSK {
+  color: #a27135 !important;
+  text-decoration-color: #a27135 !important;
+}
+.PSX {
+  color: #bb2722 !important;
+  text-decoration-color: #bb2722 !important;
+}
+.PSZ {
+  color: #6f8a2d !important;
+  text-decoration-color: #6f8a2d !important;
+}
+.KftGV {
+  color: #876e38 !important;
+  text-decoration-color: #876e38 !important;
+}
+
+/*****************************
+/*           TYPE & SIZE
+/*****************************/
+
+.CreatureSize {
+  padding: 1px 4px 1px;
+  background-color: #22805e;
+  font-family: MrEaves;
+  color: white;
+  border: 2px solid #be9c56;
+  text-transform: capitalize;
+  font-size: 1.1rem;
+  margin: 0 1px 0px;
+}
+
+/*****************************
+/*           ALIGNMENTS
+/*****************************/
+
+.alignment {
+  padding: 1px 4px 1px;
+  font-family: MrEaves;
+  color: white;
+  border: 2px solid #be9c56;
+  text-transform: capitalize;
+  font-size: 1.1rem;
+  margin: 0 1px 0px;
+}
+
+.LawfulGood {
+  background-color: #3496a0;
+}
+
+.NeutralGood {
+  background-color: #2ca355;
+}
+
+.ChaoticGood {
+  background-color: #f9d200;
+}
+
+.LawfulNeutral {
+  background-color: #7083d6;
+}
+
+.Neutral {
+  background-color: #ececec;
+  color: #000000;
+}
+
+.ChaoticNeutral {
+  background-color: #6535d9;
+}
+
+.LawfulEvil {
+  background-color: #ef6b00;
+}
+
+.NeutralEvil {
+  background-color: #9d134b;
+}
+
+.ChaoticEvil {
+  background-color: #ff0001;
+}
+
+.AnyAlignment,
+.AnyNon-LawfulAlignment,
+.Unaligned {
+  background-color: #565656;
+}

@@ -1,0 +1,73 @@
+[
+  {
+    "name": "Fly",
+    "descriptor": "of Flight",
+    "effect": "granted the power of effortless flight"
+  },
+  {
+    "name": "Invisibility",
+    "descriptor": "of Invisibility",
+    "effect": "able to vanish from sight at will"
+  },
+  {
+    "name": "Regeneration",
+    "descriptor": "of Regeneration",
+    "effect": "capable of rapidly healing its wounds"
+  },
+
+  {
+    "name": "Charm Aura",
+    "descriptor": "of Enchantment",
+    "effect": "surrounded by an aura that bends emotions"
+  },
+  {
+    "name": "Fear Aura",
+    "descriptor": "of Terror",
+    "effect": "radiating a chilling aura of fear"
+  },
+  {
+    "name": "Explosive Death",
+    "descriptor": "of Detonation",
+    "effect": "known to violently erupt upon death"
+  },
+  {
+    "name": "Shapechanger",
+    "descriptor": "of Many Forms",
+    "effect": "gifted with the ability to take many forms"
+  },
+  {
+    "name": "Magic Resistance",
+    "descriptor": "of Spellwarding",
+    "effect": "naturally resistant to magical forces"
+  },
+  {
+    "name": "Poisonous Bite",
+    "descriptor": "of Poison",
+    "effect": "armed with a dangerously venomous bite"
+  },
+  {
+    "name": "Stone Skin",
+    "descriptor": "of Stone",
+    "effect": "protected by skin as hard as stone"
+  },
+  {
+    "name": "Mind Control",
+    "descriptor": "of Domination",
+    "effect": "capable of bending weaker minds to its will"
+  },
+  {
+    "name": "Explosive Speed",
+    "descriptor": "of Blinding Speed",
+    "effect": "able to move with sudden, explosive bursts"
+  },
+  {
+    "name": "Summons Minions",
+    "descriptor": "of Summoning",
+    "effect": "able to call lesser creatures to its aid"
+  },
+  {
+    "name": "Cursed Touch",
+    "descriptor": "of Curses",
+    "effect": "carrying a touch that inflicts lingering curses"
+  }
+]
