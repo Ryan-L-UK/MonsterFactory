@@ -1,7 +1,7 @@
 //-----------------------------------------
 //Menu Load
 console.log("Wizard: Summoning menu...");
-fetch("http://localhost:6969/Codex/Menu.html")
+fetch("/Codex/Menu.html")
   .then(function (Mresponse) {
     // When the page is loaded convert it to text
     return Mresponse.text();
@@ -24,7 +24,7 @@ fetch("http://localhost:6969/Codex/Menu.html")
 
 //-----------------------------------------
 //Footer Load
-fetch("http://localhost:6969/Codex/Footer.html")
+fetch("/Codex/Footer.html")
   .then(function (Fresponse) {
     console.log("Wizard: Summoning footer...");
     // When the page is loaded convert it to text
