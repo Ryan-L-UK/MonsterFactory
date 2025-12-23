@@ -90,35 +90,23 @@ function generateMonster() {
   //Fill In Statblock
   document
     .getElementById("CreatureImage")
-    .setAttribute(
-      "src",
-      "http://localhost:6969/Vault/Creatures/" + creature.name + ".webp"
-    );
+    .setAttribute("src", "Vault/Creatures/" + creature.name + ".webp");
 
   document
     .getElementById("attribute-icon-out")
-    .setAttribute(
-      "src",
-      "http://localhost:6969/Vault/Icons/Attribute/" + attribute.name + ".png"
-    );
+    .setAttribute("src", "/Vault/Icons/Attribute/" + attribute.name + ".png");
   document.getElementById("attribute-out").innerHTML = attribute.name;
 
   if (creature.type.type != undefined) {
     document.getElementById("type-out").innerHTML = creature.type.type;
     document
       .getElementById("type-icon-out")
-      .setAttribute(
-        "src",
-        "http://localhost:6969/Vault/Icons/Type/" + creature.type.type + ".png"
-      );
+      .setAttribute("src", "/Vault/Icons/Type/" + creature.type.type + ".png");
   } else {
     document.getElementById("type-out").innerHTML = creature.type;
     document
       .getElementById("type-icon-out")
-      .setAttribute(
-        "src",
-        "http://localhost:6969/Vault/Icons/Type/" + creature.type + ".png"
-      );
+      .setAttribute("src", "Vault/Icons/Type/" + creature.type + ".png");
   }
   if (creature.type.tags != undefined) {
     document.getElementById("tags-out").innerHTML =
@@ -129,10 +117,7 @@ function generateMonster() {
 
   document
     .getElementById("perk-icon-out")
-    .setAttribute(
-      "src",
-      "http://localhost:6969/Vault/Icons/Perk/" + perk.name + ".png"
-    );
+    .setAttribute("src", "/Vault/Icons/Perk/" + perk.name + ".png");
   document.getElementById("perk-out").innerHTML = perk.name;
 
   document.getElementById("name-out").innerHTML =

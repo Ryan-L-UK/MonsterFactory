@@ -17,7 +17,7 @@ html {
   height: 100%;
   width: 100%;
   margin: 0;
-  background-image: url("http://localhost:6969/Codex/background_texture.png");
+  background-image: url("/Codex/background_texture.png");
   background-position: top;
   background-repeat: repeat;
   padding: 0;
