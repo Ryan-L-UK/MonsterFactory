@@ -2,76 +2,538 @@
   {
     "name": "Fire",
     "prefix": "Flameborn",
-    "origin": "forged in searing elemental fire"
+    "descriptor": "",
+    "origin": "forged in searing elemental fire",
+    "acMod": -1,
+    "hpMult": 1.1,
+    "statMods": {
+      "str": 0,
+      "dex": 1,
+      "con": 0,
+      "int": 0,
+      "wis": 0,
+      "cha": 0
+    },
+    "speedMods": {
+      "walk": 0,
+      "fly": 0,
+      "climb": 0,
+      "swim": 0,
+      "burrow": 0
+    },
+    "skillMods": {
+      "perception": 0,
+      "stealth": -1,
+      "insight": 0,
+      "intimidation": 1
+    },
+    "immune": ["fire"],
+    "resist": [],
+    "vulnerable": ["cold"],
+    "conditionImmune": [],
+    "senses": ["darkvision 60 ft."],
+    "traits": []
   },
   {
     "name": "Ice",
     "prefix": "Frostbound",
-    "origin": "shaped by ancient, bitter frost"
+    "descriptor": "",
+    "origin": "shaped by ancient, bitter frost",
+    "acMod": 1,
+    "hpMult": 1.15,
+    "statMods": {
+      "str": 0,
+      "dex": -2,
+      "con": 1,
+      "int": 0,
+      "wis": 0,
+      "cha": 0
+    },
+    "speedMods": {
+      "walk": -5,
+      "fly": 0,
+      "climb": 0,
+      "swim": 5,
+      "burrow": 0
+    },
+    "skillMods": {
+      "perception": 1,
+      "stealth": -1,
+      "insight": 0,
+      "intimidation": 0
+    },
+    "immune": ["cold"],
+    "resist": [],
+    "vulnerable": ["fire"],
+    "conditionImmune": [],
+    "senses": ["darkvision 60 ft."],
+    "traits": []
   },
   {
     "name": "Lightning",
     "prefix": "Stormcharged",
-    "origin": "born from violent thunderous storms"
+    "descriptor": "",
+    "origin": "born from violent thunderous storms",
+    "acMod": 0,
+    "hpMult": 0.9,
+    "statMods": {
+      "str": 0,
+      "dex": 1,
+      "con": 0,
+      "int": 0,
+      "wis": 0,
+      "cha": 0
+    },
+    "speedMods": {
+      "walk": 10,
+      "fly": 0,
+      "climb": 0,
+      "swim": 0,
+      "burrow": 0
+    },
+    "skillMods": {
+      "perception": 0,
+      "stealth": 1,
+      "insight": 0,
+      "intimidation": 0
+    },
+    "immune": ["lightning"],
+    "resist": ["thunder"],
+    "vulnerable": [],
+    "conditionImmune": [],
+    "senses": ["darkvision 60 ft."],
+    "traits": [
+      {
+        "name": "Static Reflexes",
+        "entries": [
+          "The creature has advantage on Dexterity saving throws made to avoid lightning or thunder effects."
+        ]
+      }
+    ]
   },
   {
     "name": "Radiant",
     "prefix": "Radiant",
-    "origin": "touched by brilliant celestial light"
+    "descriptor": "",
+    "origin": "touched by brilliant celestial light",
+    "acMod": 1,
+    "hpMult": 1.05,
+    "statMods": {
+      "str": 0,
+      "dex": 0,
+      "con": -1,
+      "int": 0,
+      "wis": 1,
+      "cha": 1
+    },
+    "speedMods": {
+      "walk": 0,
+      "fly": 0,
+      "climb": 0,
+      "swim": 0,
+      "burrow": 0
+    },
+    "skillMods": {
+      "perception": 1,
+      "stealth": 0,
+      "insight": 1,
+      "intimidation": 0
+    },
+    "immune": ["radiant"],
+    "resist": [],
+    "vulnerable": [],
+    "conditionImmune": [],
+    "senses": ["darkvision 60 ft."],
+    "traits": []
   },
   {
     "name": "Poison",
     "prefix": "Toxic",
-    "origin": "steeped in venomous swamps and toxic mists"
+    "descriptor": "",
+    "origin": "steeped in venomous swamps and toxic mists",
+    "acMod": 0,
+    "hpMult": 1.1,
+    "statMods": {
+      "str": 0,
+      "dex": 0,
+      "con": 1,
+      "int": 0,
+      "wis": 0,
+      "cha": 0
+    },
+    "speedMods": {
+      "walk": 0,
+      "fly": 0,
+      "climb": 5,
+      "swim": 0,
+      "burrow": 0
+    },
+    "skillMods": {
+      "perception": 0,
+      "stealth": 1,
+      "insight": 0,
+      "intimidation": 0
+    },
+    "immune": ["poison"],
+    "resist": [],
+    "vulnerable": [],
+    "conditionImmune": ["poisoned"],
+    "senses": ["darkvision 60 ft."],
+    "traits": []
   },
   {
     "name": "Earth",
     "prefix": "Earthbound",
-    "origin": "carved from stone and soil deep underground"
+    "descriptor": "",
+    "origin": "carved from stone and soil deep underground",
+    "acMod": 2,
+    "hpMult": 1.2,
+    "statMods": {
+      "str": 1,
+      "dex": -2,
+      "con": 1,
+      "int": 0,
+      "wis": 0,
+      "cha": 0
+    },
+    "speedMods": {
+      "walk": -5,
+      "fly": 0,
+      "climb": 0,
+      "swim": 0,
+      "burrow": 10
+    },
+    "skillMods": {
+      "perception": 0,
+      "stealth": -2,
+      "insight": 0,
+      "intimidation": 1
+    },
+    "immune": [],
+    "resist": [],
+    "vulnerable": ["thunder"],
+    "conditionImmune": [],
+    "senses": ["tremorsense 30 ft."],
+    "traits": []
   },
   {
     "name": "Water",
     "prefix": "Waterbound",
-    "origin": "raised from the depths of the oceans"
+    "descriptor": "",
+    "origin": "raised from the depths of the oceans",
+    "acMod": 0,
+    "hpMult": 1.05,
+    "statMods": {
+      "str": 0,
+      "dex": 0,
+      "con": 0,
+      "int": 0,
+      "wis": 0,
+      "cha": 0
+    },
+    "speedMods": {
+      "walk": 0,
+      "fly": 0,
+      "climb": 0,
+      "swim": 20,
+      "burrow": 0
+    },
+    "skillMods": {
+      "perception": 1,
+      "stealth": 0,
+      "insight": 1,
+      "intimidation": 0
+    },
+    "immune": [],
+    "resist": ["cold"],
+    "vulnerable": [],
+    "conditionImmune": [],
+    "senses": ["darkvision 60 ft."],
+    "traits": [
+      {
+        "name": "Amphibious",
+        "entries": ["The creature can breathe both air and water."]
+      }
+    ]
   },
   {
     "name": "Metal",
-    "prefix": "Metal-forged",
-    "origin": "hammered into being by metallic forces"
+    "prefix": "Metal-Forged",
+    "descriptor": "",
+    "origin": "hammered into being by metallic forces",
+    "acMod": 2,
+    "hpMult": 1.1,
+    "statMods": {
+      "str": 1,
+      "dex": -2,
+      "con": 1,
+      "int": 0,
+      "wis": 0,
+      "cha": 0
+    },
+    "speedMods": {
+      "walk": -5,
+      "fly": 0,
+      "climb": 0,
+      "swim": 0,
+      "burrow": 0
+    },
+    "skillMods": {
+      "perception": 0,
+      "stealth": -2,
+      "insight": 0,
+      "intimidation": 1
+    },
+    "immune": [],
+    "resist": ["slashing", "piercing"],
+    "vulnerable": [],
+    "conditionImmune": [],
+    "senses": ["darkvision 60 ft."],
+    "traits": []
   },
   {
     "name": "Blood",
     "prefix": "Bloodbound",
-    "origin": "formed from ancient, powerful bloodlines"
+    "descriptor": "",
+    "origin": "formed from ancient, powerful bloodlines",
+    "acMod": -1,
+    "hpMult": 1.15,
+    "statMods": {
+      "str": -1,
+      "dex": 0,
+      "con": 2,
+      "int": 0,
+      "wis": 0,
+      "cha": 1
+    },
+    "speedMods": {
+      "walk": 0,
+      "fly": 0,
+      "climb": 0,
+      "swim": 0,
+      "burrow": 0
+    },
+    "skillMods": {
+      "perception": 0,
+      "stealth": 0,
+      "insight": 0,
+      "intimidation": 2
+    },
+    "immune": [],
+    "resist": ["necrotic"],
+    "vulnerable": [],
+    "conditionImmune": [],
+    "senses": ["darkvision 60 ft."],
+    "traits": []
   },
   {
     "name": "Arcane",
     "prefix": "Arcane",
-    "origin": "woven together by raw magical energies"
+    "descriptor": "",
+    "origin": "woven together by raw magical energies",
+    "acMod": 0,
+    "hpMult": 0.95,
+    "statMods": {
+      "str": 0,
+      "dex": 0,
+      "con": 0,
+      "int": 1,
+      "wis": 1,
+      "cha": 0
+    },
+    "speedMods": {
+      "walk": 0,
+      "fly": 0,
+      "climb": 0,
+      "swim": 0,
+      "burrow": 0
+    },
+    "skillMods": {
+      "perception": 0,
+      "stealth": 0,
+      "insight": 1,
+      "intimidation": 0
+    },
+    "immune": ["force"],
+    "resist": [],
+    "vulnerable": [],
+    "conditionImmune": [],
+    "senses": ["darkvision 60 ft."],
+    "traits": []
   },
   {
     "name": "Necrotic",
     "prefix": "Necrotic",
-    "origin": "animated by deathly, decaying forces"
+    "descriptor": "",
+    "origin": "animated by deathly, decaying forces",
+    "acMod": 0,
+    "hpMult": 1.1,
+    "statMods": {
+      "str": 0,
+      "dex": 0,
+      "con": 1,
+      "int": 0,
+      "wis": 0,
+      "cha": -2
+    },
+    "speedMods": {
+      "walk": -5,
+      "fly": 0,
+      "climb": 0,
+      "swim": 0,
+      "burrow": 0
+    },
+    "skillMods": {
+      "perception": 1,
+      "stealth": 0,
+      "insight": 0,
+      "intimidation": 1
+    },
+    "immune": ["necrotic", "poison"],
+    "resist": [],
+    "vulnerable": ["radiant"],
+    "conditionImmune": ["poisoned", "exhaustion"],
+    "senses": ["darkvision 60 ft."],
+    "traits": []
   },
   {
     "name": "Celestial",
     "prefix": "Celestial",
-    "origin": "born from the distant heavens"
+    "descriptor": "",
+    "origin": "born from the distant heavens",
+    "acMod": 1,
+    "hpMult": 1.05,
+    "statMods": {
+      "str": 0,
+      "dex": 0,
+      "con": 0,
+      "int": 0,
+      "wis": 1,
+      "cha": 1
+    },
+    "speedMods": {
+      "walk": 0,
+      "fly": 10,
+      "climb": 0,
+      "swim": 0,
+      "burrow": 0
+    },
+    "skillMods": {
+      "perception": 1,
+      "stealth": 0,
+      "insight": 1,
+      "intimidation": 0
+    },
+    "immune": ["radiant"],
+    "resist": [],
+    "vulnerable": ["necrotic"],
+    "conditionImmune": ["frightened"],
+    "senses": ["darkvision 60 ft."],
+    "traits": []
   },
   {
     "name": "Infernal",
     "prefix": "Infernal",
-    "origin": "spawned from the fires of the lower realms"
+    "descriptor": "",
+    "origin": "spawned from the fires of the lower realms",
+    "acMod": 0,
+    "hpMult": 1.1,
+    "statMods": {
+      "str": 1,
+      "dex": 0,
+      "con": 0,
+      "int": 0,
+      "wis": 0,
+      "cha": 1
+    },
+    "speedMods": {
+      "walk": 0,
+      "fly": 0,
+      "climb": 0,
+      "swim": 0,
+      "burrow": 0
+    },
+    "skillMods": {
+      "perception": 0,
+      "stealth": 0,
+      "insight": 0,
+      "intimidation": 2
+    },
+    "immune": ["fire"],
+    "resist": ["poison"],
+    "vulnerable": [],
+    "conditionImmune": [],
+    "senses": ["darkvision 120 ft."],
+    "traits": []
   },
   {
     "name": "Psychic",
     "prefix": "Mindbending",
-    "origin": "shaped by overwhelming psychic pressure"
+    "descriptor": "",
+    "origin": "shaped by overwhelming psychic pressure",
+    "acMod": -1,
+    "hpMult": 0.95,
+    "statMods": {
+      "str": 0,
+      "dex": 0,
+      "con": 0,
+      "int": 2,
+      "wis": 2,
+      "cha": 0
+    },
+    "speedMods": {
+      "walk": 0,
+      "fly": 0,
+      "climb": 0,
+      "swim": 0,
+      "burrow": 0
+    },
+    "skillMods": {
+      "perception": 1,
+      "stealth": 0,
+      "insight": 2,
+      "intimidation": 0
+    },
+    "immune": ["psychic"],
+    "resist": [],
+    "vulnerable": [],
+    "conditionImmune": ["charmed"],
+    "senses": ["telepathy 60 ft."],
+    "traits": []
   },
   {
     "name": "Void",
     "prefix": "Voidborn",
-    "origin": "drawn from the emptiness between worlds"
+    "descriptor": "",
+    "origin": "drawn from the emptiness between worlds",
+    "acMod": 1,
+    "hpMult": 0.9,
+    "statMods": {
+      "str": 0,
+      "dex": 1,
+      "con": 0,
+      "int": 0,
+      "wis": 1,
+      "cha": 0
+    },
+    "speedMods": {
+      "walk": 5,
+      "fly": 0,
+      "climb": 0,
+      "swim": 0,
+      "burrow": 0
+    },
+    "skillMods": {
+      "perception": 2,
+      "stealth": 1,
+      "insight": 1,
+      "intimidation": 0
+    },
+    "immune": ["force", "necrotic"],
+    "resist": [],
+    "vulnerable": [],
+    "conditionImmune": ["charmed", "frightened"],
+    "senses": ["blindsight 30 ft.", "darkvision 120 ft."],
+    "traits": []
   }
 ]

@@ -1,16 +1,5 @@
 /*-----------------------------------------------------------
-  Core
-  Components
-  These
-  are
-  the
-  main
-  components
-  which
-  power
-  the
-  entire
-  site
+  Core Components  These are  the main components which power the entire site
   -----------------------------------------------------------*/
 html {
   background: #14171b;
@@ -77,7 +66,7 @@ body {
 }
 .CreatureDescription {
   justify-content: center;
-  font-size: 0.7rem;
+  font-size: 0.9rem;
   font-family: Merriweather;
   width: 60%;
   align-self: center;
@@ -91,76 +80,185 @@ body {
   justify-content: center;
 }
 
-h1.indexheading {
-  margin: 0 0 10px 0;
-  font-size: 1.3rem;
-  color: #7606d1;
-  font-family: CinzelDecorative;
-  border-bottom: 1px solid #ccc;
-  padding-bottom: 4px;
-}
-
-.CreatureContainer {
-  width: 100%;
-  margin: 20px auto;
-  padding: 16px 20px;
+.AbilitiesGrid {
   display: grid;
-  grid-template-columns: 48% 48%;
-  column-gap: 2%;
-  background: #f8f8f8; /* soft neutral */
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  grid-template-areas: "Left Right";
-}
-.Left,
-.Right {
-  background-color: none;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 1rem;
+  margin: auto;
+  flex-wrap: wrap;
+  padding: 0.5rem 2rem 0.5rem;
+  max-width: 1200px;
 }
 
-.Left p {
-  margin: 6px 0;
-  line-height: 1.3;
+.StatContainer {
+  text-align: center;
+  background-color: #faf9f6;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+  border: 2px solid #c9c3b8;
+  padding: 0.75rem 0.5rem;
+  transition: transform 0.1s ease;
+}
+/*
+.StatContainer:hover {
+  transform: translateY(-0.2rem);
+  background: #ece8df;
+  box-shadow: 0 4px 8px rgba(95, 95, 95, 0.35);
+}*/
+
+.StatLabel {
+  font-size: 1.1rem;
+  font-family: CinzelDecorative;
+}
+.StatValue {
+  font-size: 1.25rem;
+}
+
+.InfoGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin: auto;
+  flex-wrap: wrap;
+  padding: 0.5rem 2rem 0.5rem;
+  max-width: 1200px;
+}
+
+.InfoContainer {
+  background-color: #f8f8f8;
+  border-radius: 0.5rem;
+  padding: 1.25rem;
+  border: 1px solid #ddd;
+}
+
+.ContainerName {
+  font-family: CinzelDecorative;
+  margin: 0px auto;
+  font-size: 1.5rem;
+  color: #000000;
+  padding-top: 0;
+  text-align: start;
+}
+
+.RowItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0.5rem;
+}
+.BlockItem {
+  text-align: left;
+  margin-top: 0.5rem;
 }
 
 .creatureBold {
-  font-weight: 700;
-  color: #333;
-}
-.stat-container {
-  background: #ffffff;
-  padding: 10px 12px;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  display: grid;
-  row-gap: 8px;
-  column-gap: 10px;
-  grid-template-columns: 30% 30% 30%;
-  grid-template-areas:
-    "STR DEX CON"
-    "STRn DEXn CONn"
-    "INT WIS CHA"
-    "INTn WISn CHAn";
-}
-
-.CHA,
-.CON,
-.DEX,
-.INT,
-.STR,
-.WIS {
-  font-weight: 700;
+  font-family: Merriweather-black;
   font-size: 0.9rem;
-  text-align: center;
+  text-transform: capitalize;
+  color: #8c1061;
+  text-align: left;
+  margin-right: 0.4rem;
+  font-style: italic;
 }
 
-.CHAn,
-.CONn,
-.DEXn,
-.INTn,
-.STRn,
-.WISn {
-  font-weight: 700;
-  font-size: 1rem;
-  color: #7606d1;
+.creatureBody {
+  font-size: 0.9rem;
+  font-family: Merriweather;
+  text-align: right;
+  text-transform: capitalize;
+  max-width: 65%;
+}
+.creatureBlock {
+  font-size: 0.9rem;
+  font-family: Merriweather;
+  text-align: left;
+}
+
+.WideContainer {
+  padding: 1.25rem;
+  max-width: 1200px;
+  background-color: #f8f8f8;
+  border-radius: 0.5rem;
   text-align: center;
+  border: 1px solid #ddd;
+  align-self: center;
+  grid-column: 1 / -1;
+}
+
+/*-----------------------------------------------------------
+These entries are what highlight the stats +/- respectively
+  -----------------------------------------------------------*/
+
+.AbtlyIncrease::after {
+  content: "\23F6";
+  margin-left: 0.2rem;
+  color: green;
+}
+.AbtlyPointIncrease {
+  color: green;
+}
+
+.AbtlyChange::after {
+  content: "\25C6";
+  margin-left: 0.2rem;
+  color: orange;
+}
+.AbtlyPointChange {
+  color: orange;
+}
+.AbtlyDecrease::after {
+  content: "\23F7";
+  margin-left: 0.2rem;
+  color: red;
+}
+
+.AbtlyPointDecrease {
+  color: red;
+}
+
+.data-tooltip {
+  position: relative;
+}
+
+/* Optional: subtle lift on hover 
+.data-tooltip:hover {
+  background: #ece8df;
+  box-shadow: 0 0.25rem 0.5rem rgba(95, 95, 95, 0.35);
+}*/
+
+/* Tooltip bubble */
+.data-tooltip:hover::after {
+  content: attr(data-tooltip);
+  white-space: pre;
+  position: absolute;
+  left: 50%;
+  top: -0.6rem;
+  transform: translate(-50%, -100%);
+  background: #ece8df;
+  color: #000000;
+  text-align: center;
+  border-radius: 0.5rem;
+  border: 0.125rem solid #c9c3b8;
+  font-family: Merriweather-black;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.8rem;
+  line-height: 1.3;
+  z-index: 999;
+  pointer-events: none;
+  max-width: 14rem; /* ~224px */
+  width: max-content;
+  box-shadow: 0 0.25rem 0.5rem rgba(95, 95, 95, 0.35);
+}
+
+/* Tooltip arrow */
+.data-tooltip:hover::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: -0.6rem;
+  transform: translateX(-50%);
+  border-width: 0.5rem;
+  border-style: solid;
+  border-color: tan transparent transparent transparent;
+  z-index: 998;
 }

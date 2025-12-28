@@ -36,3 +36,31 @@
     </p>
   </div>
 </div>
+
+//------------------------ // RENDER SPELLCASTING function
+renderSpellcasting(creature) { const spellcontainer =
+$("spellcasting-container"); spellcontainer.innerHTML = ""; const blocks =
+creature.spellcasting || []; if (!blocks.length) { spellcontainer.innerHTML = "
+<p>No spellcasting.</p>
+"; spellcontainer.classList.add("creatureBlock"); return; }
+blocks.forEach((block) => { const wrapper = el("div", "BlockItem"); // Title
+const title = el("div", "SpellcastingTitle", block.name + ".");
+wrapper.appendChild(title); // Header entries if (block.headerEntries) { const
+header = el( "div", "SpellcastingHeader", block.headerEntries.map((e) => `
+<p>${datacleanse(e)}</p>
+`).join("") ); wrapper.appendChild(header); } // At-will spells if (block.will)
+{ const atWill = el( "div", "SpellcastingLine",
+`<strong>${checkheader("atWill")}</strong>` + block.will.map((s) =>
+datacleanse(s)).join(", ") ); wrapper.appendChild(atWill); } // Daily spells if
+(block.daily) { Object.entries(block.daily).forEach(([key, spells]) => { const
+headerKey = `daily${key}`; const dailyDiv = el( "div", "SpellcastingLine",
+`<strong>${checkheader(headerKey)}</strong>` + spells.map((s) =>
+datacleanse(s)).join(", ") ); wrapper.appendChild(dailyDiv); }); } // Leveled
+spells if (block.spells) { Object.entries(block.spells).forEach(([level, data])
+=> { let html; if (level === "0") { html =
+`<strong>${checkheader("cantrip")}</strong>` + data.spells.map((s) =>
+datacleanse(s)).join(", "); } else { const headerKey = `lvl${level}slots`; html
+= `<strong>${checkheader(headerKey)}${data.slots} slots):</strong> ` +
+data.spells.map((s) => datacleanse(s)).join(", "); } const levelDiv = el("div",
+"SpellcastingLine", html); wrapper.appendChild(levelDiv); }); }
+spellcontainer.appendChild(wrapper); }); }

@@ -37,6 +37,7 @@
         <div class="CreatureType"><div id="perk-out"></div></div>
       </div>
     </div>
+    <br />
     <!---------------------------------------->
     <!--Creature Name & Description-->
     <div id="name-out" class="CreatureName"></div>
@@ -46,306 +47,148 @@
       <span id="size-out" class="CreatureSize"></span>
     </div>
     <br />
+
     <!---------------------------------------->
     <!--Creature Stat Blocks-->
-    <div class="CreatureContainer">
-      <div class="Left">
-        <h1 class="indexheading">Core Stats</h1>
-        size type languages AC HP
+    <div class="AbilitiesGrid">
+      <div class="StatContainer" id="STR-Container">
+        <div class="StatLabel" id="STR-label">Str</div>
+        <div class="StatValue" id="STR-out"></div>
+      </div>
+      <div class="StatContainer" id="DEX-Container">
+        <div class="StatLabel" id="DEX-label">Dex</div>
+        <div class="StatValue" id="DEX-out"></div>
+      </div>
+      <div class="StatContainer" id="CON-Container">
+        <div class="StatLabel" id="CON-label">Con</div>
+        <div class="StatValue" id="CON-out"></div>
+      </div>
+      <div class="StatContainer" id="INT-Container">
+        <div class="StatLabel" id="INT-label">Int</div>
+        <div class="StatValue" id="INT-out"></div>
+      </div>
+      <div class="StatContainer" id="WIS-Container">
+        <div class="StatLabel" id="WIS-label">Wis</div>
+        <div class="StatValue" id="WIS-out"></div>
+      </div>
+      <div class="StatContainer" id="CHA-Container">
+        <div class="StatLabel" id="CHA-label">Cha</div>
+        <div class="StatValue" id="CHA-out"></div>
+      </div>
+    </div>
 
-        <p>
+    <!---------------------------------------->
+    <!--Info Cards-->
+
+    <div class="InfoGrid">
+      <div class="InfoContainer">
+        <div class="ContainerName">Defence</div>
+        <div class="RowItem">
+          <span class="creatureBold">Armour Class:</span>
+          <div id="ac-row">
+            <span class="creatureBody" id="ac-out"></span>
+          </div>
+        </div>
+        <div class="RowItem">
+          <span class="creatureBold">Hit Points:</span>
+          <div id="hp-row">
+            <span class="creatureBody" id="hp-out"></span>
+          </div>
+        </div>
+        <div class="RowItem">
           <span class="creatureBold">Speed:</span>
-          <span class="creatureBody" id="speed-out"></span>
-        </p>
-
-        <p>
-          <span class="creatureBold" id="skillsH-out"></span>
-          <span class="creatureBody capitalize" id="skills-out"></span>
-        </p>
-        <p>
-          <span class="creatureBold" id="savesH-out"></span>
-          <span class="creatureBody capitalize" id="saves-out"></span>
-        </p>
-
-        <p>
-          <span class="creatureBold" id="sensesH-out"></span>
-          <span class="creatureBody capitalize" id="senses-out"></span>
-        </p>
-        <p>
-          <span class="creatureBold" id="languagesH-out"></span>
-          <span class="creatureBody" id="languages-out"></span>
-        </p>
-      </div>
-      <div class="Right">
-        <h1 class="indexheading">Skills</h1>
-        <div class="stat-container">
-          <div class="STR">STRENGTH:</div>
-          <div class="DEX">DEXTERITY:</div>
-          <div class="CON">CONSTITUTION:</div>
-          <div class="STRn" id="STR-out"></div>
-          <div class="DEXn" id="DEX-out"></div>
-          <div class="CONn" id="CON-out"></div>
-          <div class="INT">INTELLIGENCE:</div>
-          <div class="WIS">WISDOM:</div>
-          <div class="CHA">CHARISMA:</div>
-          <div class="INTn" id="INT-out"></div>
-          <div class="WISn" id="WIS-out"></div>
-          <div class="CHAn" id="CHA-out"></div>
-        </div>
-      </div>
-
-      <br />
-      <br />
-    </div>
-
-    <div class="CreatureContainer">
-      <div class="Left">
-        <h1 class="indexheading">Defence</h1>
-        <div>
-          <p>
-            <span>HP:</span>
-            <span class="hp-out" id="hp-out"></span>
-          </p>
-          <p>
-            <span>AC:</span>
-            <span class="ac-out" id="ac-out"></span>
-          </p>
-          <p>
-            <span class="creatureBold" id="resistH-out">Resists:</span>
-            <span class="creatureBody capitalize" id="resist-out"></span>
-          </p>
-          <p>
-            <span class="creatureBold" id="immuneH-out">Immune:</span>
-            <span class="creatureBody capitalize" id="immune-out"></span>
-          </p>
-          <p>
-            <span class="creatureBold" id="vulnerableH-out">Vulnerable:</span>
-            <span class="creatureBody capitalize" id="vulnerable-out"></span>
-          </p>
-          <p>
-            <span class="creatureBold" id="conditionImmuneH-out"
-              >Condition Immune:</span
-            >
-            <span
-              class="creatureBody capitalize"
-              id="conditionImmune-out"
-            ></span>
-          </p>
-        </div>
-      </div>
-      <div class="Right">
-        <h1 class="indexheading">Skills</h1>
-        <div>Actions here</div>
-      </div>
-
-      <br />
-      <br />
-    </div>
-
-    <div id="photo">
-      <div class="RainBorder">
-        <div class="CreatureContainer" id="CreatureContainer">
-          <div class="bodyContainer">
-            <img src="" class="CreatureToken" id="CreatureToken" />
-            <!-------------------------->
-            <!--SKILLS-->
-            <!-------------------------->
-
-            <!-------------------------->
-            <!--TRAITS-->
-            <!-------------------------->
-            <div class="hidden" id="TRAITS">
-              <div class="lineBreak"></div>
-              <h1 class="indexheading">Traits</h1>
-
-              <p class="index">
-                <span class="creatureBoldItalic" id="T0H-out"></span>
-                <span class="creatureBody" id="T0D-out"></span>
-              </p>
-              <p class="index">
-                <span class="creatureBoldItalic" id="T1H-out"></span>
-                <span class="creatureBody" id="T1D-out"></span>
-              </p>
-              <p class="index">
-                <span class="creatureBoldItalic" id="T2H-out"></span>
-                <span class="creatureBody" id="T2D-out"></span>
-              </p>
-              <p class="index">
-                <span class="creatureBoldItalic" id="T3H-out"></span>
-                <span class="creatureBody" id="T3D-out"></span>
-              </p>
-              <p class="index">
-                <span class="creatureBoldItalic" id="T4H-out"></span>
-                <span class="creatureBody" id="T4D-out"></span>
-              </p>
-              <p id="innatebreak" class="index">
-                <span class="creatureBold" id="innateHeaderEntryH-out"></span>
-                <span class="creatureBody" id="innateHeaderEntry-out"></span>
-              </p>
-              <p class="index">
-                <span class="creatureBodyItalic" id="atWillH-out"></span>
-                <span class="creatureBody capitalize" id="atWill-out"></span>
-              </p>
-              <p class="index">
-                <span class="creatureBodyItalic" id="daily1eH-out"></span>
-                <span class="creatureBody capitalize" id="daily1e-out"></span>
-              </p>
-              <p class="index">
-                <span class="creatureBodyItalic" id="daily2eH-out"></span>
-                <span class="creatureBody capitalize" id="daily2e-out"></span>
-              </p>
-              <p class="index">
-                <span class="creatureBodyItalic" id="daily3eH-out"></span>
-                <span class="creatureBody capitalize" id="daily3e-out"></span>
-              </p>
-              <p class="index">
-                <span class="creatureBody" id="innateFooterEntry-out"></span>
-              </p>
-              <p id="spellbreak" class="index">
-                <span class="creatureBold" id="spellHeaderEntryH-out"></span>
-                <span class="creatureBody" id="spellHeaderEntry-out"></span>
-              </p>
-              <p class="index">
-                <span class="creatureBodyItalic" id="cantripH-out"></span>
-                <span class="creatureBody capitalize" id="cantrip-out"></span>
-              </p>
-              <p class="index">
-                <span class="creatureBodyItalic" id="lvl1slotsH-out"></span>
-                <span
-                  class="creatureBody capitalize"
-                  id="lvl1spells-out"
-                ></span>
-              </p>
-              <p class="index">
-                <span class="creatureBodyItalic" id="lvl2slotsH-out"></span>
-                <span
-                  class="creatureBody capitalize"
-                  id="lvl2spells-out"
-                ></span>
-              </p>
-              <p class="index">
-                <span class="creatureBodyItalic" id="lvl3slotsH-out"></span>
-                <span
-                  class="creatureBody capitalize"
-                  id="lvl3spells-out"
-                ></span>
-              </p>
-              <p class="index">
-                <span class="creatureBodyItalic" id="lvl4slotsH-out"></span>
-                <span
-                  class="creatureBody capitalize"
-                  id="lvl4spells-out"
-                ></span>
-              </p>
-              <p class="index">
-                <span class="creatureBodyItalic" id="lvl5slotsH-out"></span>
-                <span
-                  class="creatureBody capitalize"
-                  id="lvl5spells-out"
-                ></span>
-              </p>
-              <p class="index">
-                <span class="creatureBody" id="spellFooterEntry-out"></span>
-              </p>
-            </div>
-            <!-------------------------->
-            <!--ACTIONS-->
-            <!-------------------------->
-            <div class="hidden" id="ACTIONS">
-              <div class="lineBreak"></div>
-              <h1 class="indexheading">Actions</h1>
-
-              <p class="index">
-                <span class="creatureBoldItalic" id="A0H-out"></span>
-                <span class="creatureBody" id="A0D-out"></span>
-              </p>
-              <p class="index">
-                <span class="creatureBoldItalic" id="A1H-out"></span>
-                <span class="creatureBody" id="A1D-out"></span>
-              </p>
-              <p class="index">
-                <span class="creatureBoldItalic" id="A2H-out"></span>
-                <span class="creatureBody" id="A2D-out"></span>
-              </p>
-              <p class="index">
-                <span class="creatureBoldItalic" id="A3H-out"></span>
-                <span class="creatureBody" id="A3D-out"></span>
-              </p>
-              <p class="index">
-                <span class="creatureBoldItalic" id="A4H-out"></span>
-                <span class="creatureBody" id="A4D-out"></span>
-              </p>
-              <p class="index">
-                <span class="creatureBoldItalic" id="A5H-out"></span>
-                <span class="creatureBody" id="A5D-out"></span>
-              </p>
-              <p class="index">
-                <span class="creatureBoldItalic" id="A6H-out"></span>
-                <span class="creatureBody" id="A6D-out"></span>
-              </p>
-              <p class="index">
-                <span class="creatureBoldItalic" id="A7H-out"></span>
-                <span class="creatureBody" id="A7D-out"></span>
-              </p>
-              <p class="index">
-                <span class="creatureBoldItalic" id="A8H-out"></span>
-                <span class="creatureBody" id="A8D-out"></span>
-              </p>
-            </div>
-            <!-------------------------->
-            <!--LEGENDARY-->
-            <!-------------------------->
-            <div class="hidden" id="LEGENDARY">
-              <div class="lineBreak"></div>
-              <h1 class="indexheading">Legendary Actions</h1>
-              <p class="index">
-                <span class="creatureBoldItalic" id="LA0H-out"></span>
-                <span class="creatureBody" id="LA0D-out"></span>
-              </p>
-              <p class="index">
-                <span class="creatureBoldItalic" id="LA1H-out"></span>
-                <span class="creatureBody" id="LA1D-out"></span>
-              </p>
-              <p class="index">
-                <span class="creatureBoldItalic" id="LA2H-out"></span>
-                <span class="creatureBody" id="LA2D-out"></span>
-              </p>
-              <p class="index">
-                <span class="creatureBoldItalic" id="LA3H-out"></span>
-                <span class="creatureBody" id="LA3D-out"></span>
-              </p>
-            </div>
-            <!-------------------------->
-            <!--REACTIONS-->
-            <!-------------------------->
-            <div class="hidden" id="REACTIONS">
-              <div class="lineBreak"></div>
-              <h1 class="indexheading">Reactions</h1>
-
-              <p class="index">
-                <span class="creatureBoldItalic" id="RA0H-out"></span>
-                <span class="creatureBody" id="RA0D-out"></span>
-              </p>
-              <p class="index">
-                <span class="creatureBoldItalic" id="RA1H-out"></span>
-                <span class="creatureBody" id="RA1D-out"></span>
-              </p>
-            </div>
-            <!--CREATURE SOURCE-->
-            <br />
-            <br />
-            <div class="sourcegraphic">
-              <span
-                ><div class="source" id="source-out"></div>
-                <div class="pageno" id="page-out"></div
-              ></span>
-            </div>
+          <div id="speed-row">
+            <span class="creatureBody" id="speed-out"></span>
           </div>
         </div>
       </div>
-
-      <br />
+      <!---------------------------------------->
+      <div class="InfoContainer">
+        <div class="ContainerName">Proficiencies & Senses</div>
+        <div class="RowItem">
+          <span class="creatureBold">Saving Throws:</span>
+          <span class="creatureBody" id="saves-out"></span>
+        </div>
+        <div class="RowItem">
+          <span class="creatureBold">Skills:</span>
+          <span class="creatureBody" id="skills-out"></span>
+        </div>
+        <div class="RowItem">
+          <span class="creatureBold">Senses:</span>
+          <span class="creatureBody" id="senses-out"></span>
+        </div>
+      </div>
     </div>
+
+    <div class="InfoGrid">
+      <div class="WideContainer">
+        <div class="ContainerName">Characteristics</div>
+        <div class="RowItem">
+          <span class="creatureBold">Vulnerable:</span>
+          <div id="vulnerable-row">
+            <span class="creatureBody" id="vulnerable-out"></span>
+          </div>
+        </div>
+        <div class="RowItem">
+          <span class="creatureBold">Damage Resistances:</span>
+          <div id="resist-row">
+            <span class="creatureBody" id="resist-out"></span>
+          </div>
+        </div>
+        <div class="RowItem">
+          <span class="creatureBold">Damage Immunities:</span>
+          <div id="immune-row">
+            <span class="creatureBody" id="immune-out"></span>
+          </div>
+        </div>
+        <div class="RowItem">
+          <span class="creatureBold">Condition Immunities:</span>
+          <div id="conditionImmune-row">
+            <span class="creatureBody" id="conditionImmune-out"></span>
+          </div>
+        </div>
+        <div class="RowItem">
+          <span class="creatureBold">Languages: </span>
+          <span class="creatureBody" id="languages-out"></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="InfoGrid">
+      <div class="WideContainer">
+        <div class="ContainerName">Traits</div>
+        <div id="traits-container"></div>
+      </div>
+    </div>
+
+    <div class="InfoGrid">
+      <div class="InfoContainer">
+        <div class="ContainerName">Actions</div>
+        <div id="actions-container"></div>
+      </div>
+      <!---------------------------------------->
+      <div class="InfoContainer">
+        <div class="ContainerName">Spellcasting</div>
+        <div id="spellcasting-container"></div>
+      </div>
+    </div>
+
+    <div class="InfoGrid">
+      <div class="WideContainer">
+        <h1>Reactions (Full Width)</h1>
+        <p>Reactions</p>
+      </div>
+    </div>
+    <div class="InfoContainer">
+      <h1>Description (Left)</h1>
+      <p>general Bio</p>
+    </div>
+    <div class="InfoContainer">
+      <h1>Source (Right)</h1>
+      <p>Source Info (Existing Styles)</p>
+    </div>
+    <!-------------------------------------------->
+
     <div id="output" class="hidden"></div>
     <div class="options">
       <span>

@@ -5,7 +5,7 @@ const path = require("path");
 const INDEX_PATH = path.join(__dirname, "Bestiary/bestiary-index.json");
 const HANDBOOKS_DIR = path.join(__dirname, "Bestiary/handbooks");
 const IMAGES_DIR = path.join(__dirname, "Vault/Creatures");
-const EXCLUSION_PATH = path.join(__dirname, "Bestiary/ExclusionList.json");
+const EXCLUSION_PATH = path.join(__dirname, "Bestiary/AdminExclusionList.json");
 
 // Allowed CR values
 const allowedCR = new Set(["0", "1/8", "1/4", "1/2", "1", "2", "3", "4", "5"]);
@@ -81,9 +81,17 @@ function cleanImages() {
       missing.push(creature.name);
     }
   }
+  // Remove duplicates and sort alphabetically
+  const uniqueSorted = [...new Set(missing)].sort((a, b) =>
+    a.localeCompare(b, "en", { sensitivity: "base" })
+  );
 
   // Write missing names to ExclusionList.json
-  fs.writeFileSync(EXCLUSION_PATH, JSON.stringify(missing, null, 2), "utf8");
+  fs.writeFileSync(
+    EXCLUSION_PATH,
+    JSON.stringify(uniqueSorted, null, 2),
+    "utf8"
+  );
 
   console.log(`Total missing: ${missing.length}`);
   console.log(`Missing creature names written to ${EXCLUSION_PATH}`);

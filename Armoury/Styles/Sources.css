@@ -369,6 +369,7 @@
 
 .AnyAlignment,
 .AnyNon-LawfulAlignment,
+.AnyNon-GoodAlignment,
 .Unaligned {
   background-color: #565656;
 }
