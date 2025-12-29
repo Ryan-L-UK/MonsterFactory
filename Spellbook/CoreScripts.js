@@ -2,26 +2,30 @@
 //Menu Load
 console.log("Wizard: Summoning menu...");
 fetch("/Codex/Menu.html")
-  .then(function (Mresponse) {
-    // When the page is loaded convert it to text
-    return Mresponse.text();
-  })
-  .then(function (MenuHTML) {
-    // Initialize the DOM parser
+  .then((Mresponse) => Mresponse.text())
+  .then((MenuHTML) => {
     var parser = new DOMParser();
-    // Parse the text
     var MenuDoc = parser.parseFromString(MenuHTML, "text/html");
-    // You can now even select part of that html as you would in the regular DOM
-    // Example:
     var MenuArticle = MenuDoc.querySelector("html").innerHTML;
     document.getElementById("Nav_output").innerHTML = MenuArticle;
     console.log("Wizard: Menu Appeared.");
     //-----------------------------------------
+    // Now the menu exists — attach listeners here
+    const hamburger = document.getElementById("menuHamburger");
+    const menu = document.getElementById("menuItemContainer");
+    if (hamburger && menu) {
+      hamburger.addEventListener("click", () => {
+        menu.classList.toggle("open");
+        console.log("Button Click");
+      });
+    } else {
+      console.log("Wizard: Menu elements not found.");
+    }
+    //-----------------------------------------
   })
-  .catch(function (err) {
+  .catch((err) => {
     console.log("Wizard: Casting Failure... ", err);
   });
-
 //-----------------------------------------
 //Footer Load
 fetch("/Codex/Footer.html")
@@ -45,7 +49,6 @@ fetch("/Codex/Footer.html")
     console.log("Wizard: Casting Failure... ", err);
   });
 //-----------------------------------------
-
 //HTML2Canvas Columns
 function takeshot() {
   console.log("Artificier: Taking Notes...");
@@ -65,7 +68,6 @@ function takeshot() {
 }
 //-----------------------------------------
 //COLLAPSABLE CONTAINERS
-
 var coll = document.getElementsByClassName("collapsible");
 var i;
 for (i = 0; i < coll.length; i++) {
@@ -87,10 +89,8 @@ function tableFilter() {
   filter = input.value.toUpperCase();
   table = document.getElementById("myTable");
   tr = table.getElementsByTagName("tr");
-
   // Specify the column indices to search (in this case, columns 1 and 2)
   var columnsToSearch = [1, 2];
-
   // Loop through all data rows (skip index 0 for header row), and hide those that don't match the search query
   for (i = 1; i < tr.length; i++) {
     var shouldDisplay = false;

@@ -49,27 +49,47 @@ function getRandomCreature(creatures) {
 //Orchastrator
 function generateMonster() {
   const attribute = getRandomPerk(Sources.attributes);
-  const creature = Sources.creatures.find((c) => c.name === "Vampiric Mist");
-  //const creature = getRandomCreature(Sources.creatures);
+  //const creature = Sources.creatures.find((c) => c.name === "Gwen The Bard");
+  const creature = getRandomCreature(Sources.creatures);
   const perk = getRandomPerk(Sources.perks);
   console.log("Picked:", {
     attribute: attribute,
     creature: creature,
     perk: perk,
   });
+  //------
   renderImageNameBlock(creature, attribute, perk);
+  //------
   renderAlignment(creature);
   $("size-out").innerHTML = checksize(creature.size);
+  //------
   const finalStats = calculateFinalStats(creature, attribute, perk);
   renderStatBlock(finalStats, creature, attribute, perk);
+  //------
   renderHP(creature, attribute, perk);
+  //------
   renderAC(creature, attribute, perk);
+  //------
   renderSpeed(creature, attribute, perk);
+  //------
   $("saves-out").innerHTML = creature.save
     ? Object.entries(creature.save)
         .map(([key, value]) => `${key}: ${value}`)
         .join(", ")
     : "-";
+  //------
+  renderSkills(creature, attribute, perk);
+  //------
+  const senses = creature.senses ? datacleanse(creature.senses) : "";
+  const passive = creature.passive
+    ? `passive perception: ${creature.passive}`
+    : "";
+  const sensesOut =
+    senses && passive ? `${senses}, ${passive}` : senses || passive || "-";
+  $("senses-out").innerHTML = sensesOut;
+  //------
+  $("languages-out").innerHTML = safe(creature.languages);
+  //------
   renderList({
     base: normalizeList(creature.vulnerable),
     attr: normalizeList(attribute.vulnerable),
@@ -79,6 +99,7 @@ function generateMonster() {
     attrLabel: attribute.prefix,
     perkLabel: perk.name,
   });
+  //------
   renderList({
     base: normalizeList(creature.resist),
     attr: normalizeList(attribute.resist),
@@ -88,6 +109,7 @@ function generateMonster() {
     attrLabel: attribute.prefix,
     perkLabel: perk.name,
   });
+  //------
   renderList({
     base: normalizeList(creature.immune),
     attr: normalizeList(attribute.immune),
@@ -97,6 +119,7 @@ function generateMonster() {
     attrLabel: attribute.prefix,
     perkLabel: perk.name,
   });
+  //------
   renderList({
     base: normalizeList(creature.conditionImmune),
     attr: normalizeList(attribute.conditionImmune),
@@ -106,14 +129,37 @@ function generateMonster() {
     attrLabel: attribute.prefix,
     perkLabel: perk.name,
   });
-  renderStats(creature);
-  renderTraits(creature);
-  renderActions(creature);
-  //renderSpellcasting(creature);
+  //------
+  renderTraits(creature, attribute, perk);
+  //------
+  renderActions(creature, attribute, perk);
+  //------
+  renderSpellcasting(creature);
+  //------
+  renderReactions(creature);
+  //------
+
+  document.getElementById("source-out").innerHTML =
+    creature.source.toUpperCase();
+
+  document.getElementById("page-out").innerHTML = "Page: " + creature.page;
+  //document.getElementById("source-out").classList.add(creature.source.toUpperCase());
+
+  //------
   if (!attribute || !creature || !perk) {
     alert("Sources not loaded yet!");
     return;
   }
+  //-----------------------------------------
+  tippy(".data-tooltip", {
+    content(reference) {
+      return reference.dataset.tooltip;
+    },
+    allowHTML: false,
+    placement: "top",
+    animation: "shift-away",
+    theme: "light-border",
+  });
 }
 //------------------------
 //Render Images, Perks, Name & Description
@@ -139,7 +185,7 @@ function renderImageNameBlock(creature, attribute, perk) {
   //------------------------
   setText(
     "desc-out",
-    `This ${creature.name} was ${attribute.origin}. It is ${perk.effect}.`
+    `This ${creature.name} was ${attribute.origin}. It is ${perk.origin}.`
   );
 }
 //------------------------
@@ -249,8 +295,8 @@ function renderStatBlock(finalStats, creature, attribute, perk) {
       const attrMod = attribute.statMods?.[stat] ?? 0;
       const perkMod = perk.statMods?.[stat] ?? 0;
       containerEl.dataset.tooltip =
-        `Base (${creature.name}): ${data.base}\n` +
-        `${attribute.name}: ${attrMod >= 0 ? "+" + attrMod : attrMod}\n` +
+        `${creature.name} (Base): ${data.base}\n` +
+        `${attribute.prefix}: ${attrMod >= 0 ? "+" + attrMod : attrMod}\n` +
         `${perk.name}: ${perkMod >= 0 ? "+" + perkMod : perkMod}`;
       containerEl.classList.add("data-tooltip"); // Add tooltip class
     }
@@ -281,7 +327,7 @@ function renderHP(creature, attribute, perk) {
   // TOOLTIP — ONLY IF THERE IS A CHANGE
   if (delta !== 0) {
     rowEl.dataset.tooltip =
-      `Base (${creature.name}): ${baseHP}\n` +
+      `${creature.name} (Base): ${baseHP}\n` +
       `${attribute.name}: x${attrMult}\n` +
       `${perk.name}: x${perkMult}`;
     rowEl.classList.add("data-tooltip");
@@ -313,7 +359,7 @@ function renderAC(creature, attribute, perk) {
   // TOOLTIP — ONLY IF THERE IS A CHANGE
   if (delta !== 0) {
     rowEl.dataset.tooltip =
-      `Base (${creature.name}): ${baseAC}\n` +
+      `${creature.name} (Base): ${baseAC}\n` +
       `${attribute.name}: ${attrMod >= 0 ? "+" + attrMod : attrMod}\n` +
       `${perk.name}: ${perkMod >= 0 ? "+" + perkMod : perkMod}`;
     rowEl.classList.add("data-tooltip");
@@ -375,7 +421,7 @@ function renderSpeed(creature, attribute, perk) {
   // tooltip
   if (changed) {
     outEl.classList.add("AbtlyChange", "AbtlyPointChange");
-    let tooltip = "Movement:\n";
+    let tooltip = `Movement:\nBase + ${attribute.prefix} + ${perk.name}\n\n`;
     types.forEach((type) => {
       const b = norm(base[type]);
       const a = attr[type] ?? 0;
@@ -391,15 +437,57 @@ function renderSpeed(creature, attribute, perk) {
     rowEl.classList.add("data-tooltip");
   }
 }
-/*
--
--Saving Throws:
--
--Skills:
--
--Senses:
--
-*/
+//------------------------
+// Skills Calculator
+function calculateFinalSkills(creature, attribute, perk) {
+  const baseSkills = creature.skill || {};
+  const attrMods = attribute.skillMods || {};
+  const perkMods = perk.skillMods || {};
+  const allSkills = new Set([
+    ...Object.keys(baseSkills),
+    ...Object.keys(attrMods),
+    ...Object.keys(perkMods),
+  ]);
+  const final = {};
+  const breakdown = {};
+  allSkills.forEach((skill) => {
+    const baseVal = baseSkills[skill] ? parseInt(baseSkills[skill], 10) : 0;
+    const a = attrMods[skill] ?? 0;
+    const p = perkMods[skill] ?? 0;
+    const total = baseVal + a + p;
+    // Only include non-zero totals
+    if (total !== 0) {
+      final[skill] = (total >= 0 ? "+" : "") + total;
+      breakdown[skill] = { base: baseVal, attr: a, perk: p, total };
+    }
+  });
+  return { final, breakdown };
+}
+//------------------------
+// Render Skills
+function renderSkills(creature, attribute, perk) {
+  const outEl = document.getElementById("skills-out");
+  const rowEl = document.getElementById("skills-row");
+  const { final, breakdown } = calculateFinalSkills(creature, attribute, perk);
+  // Render visible skills
+  const entries = Object.entries(final)
+    .map(([skill, value]) => `${skill}: ${value}`)
+    .join(", ");
+  outEl.innerHTML = entries || "-";
+  // Tooltip logic
+  const changed = Object.values(breakdown).some(
+    (b) => b.attr !== 0 || b.perk !== 0
+  );
+  if (changed) {
+    outEl.classList.add("AbtlyChange", "AbtlyPointChange");
+    let tooltip = `Skills:\nBase + ${attribute.prefix} + ${perk.name}\n\n`;
+    Object.entries(breakdown).forEach(([skill, b]) => {
+      tooltip += `${skill}: ${b.total} (${b.base} + ${b.attr} + ${b.perk})\n`;
+    });
+    rowEl.dataset.tooltip = tooltip.trim();
+    rowEl.classList.add("data-tooltip");
+  }
+}
 //------------------------
 // MERGE LISTS
 function mergeListString(base = [], attr = [], perk = []) {
@@ -409,41 +497,28 @@ function mergeListString(base = [], attr = [], perk = []) {
 //------------------------
 // NORMALIZE LIST TO FLAT STRING ARRAY
 function normalizeList(list) {
-  // Ensure we always work with an array
-  if (list == null) list = [];
-  if (!Array.isArray(list)) list = [list];
+  if (!Array.isArray(list)) return [];
   const out = [];
   list.forEach((item) => {
-    // Case 1: simple string
     if (typeof item === "string") {
       out.push(item);
       return;
     }
-    // Case 2: damage-type object (resist, immune, vulnerable)
     if (item && typeof item === "object") {
-      if (Array.isArray(item.resist)) {
+      const keys = ["resist", "immune", "vulnerable"];
+      const key = keys.find((k) => Array.isArray(item[k]));
+      if (key) {
         const note = item.note ? ` (${item.note})` : "";
-        item.resist.forEach((type) => out.push(type + note));
-        return;
-      }
-      if (Array.isArray(item.immune)) {
-        const note = item.note ? ` (${item.note})` : "";
-        item.immune.forEach((type) => out.push(type + note));
-        return;
-      }
-      if (Array.isArray(item.vulnerable)) {
-        const note = item.note ? ` (${item.note})` : "";
-        item.vulnerable.forEach((type) => out.push(type + note));
+        item[key].forEach((type) => out.push(type + note));
         return;
       }
     }
-    // Fallback — stringify safely
     out.push(String(item));
   });
   return out;
 }
 //------------------------
-// RENDER LIST (generic)
+// RENDER LIST (GENERIC)
 function renderList({
   base = [],
   attr = [],
@@ -455,109 +530,38 @@ function renderList({
 }) {
   const outEl = document.getElementById(outId);
   const rowEl = document.getElementById(rowId);
-  // If the DOM element is missing, abort safely
-  if (!outEl || !rowEl) {
-    console.warn("renderList: missing element(s) for", outId, rowId);
-    return;
-  }
-  // Normalize everything to flat string arrays
-  const baseNorm = normalizeList(base);
-  const attrNorm = normalizeList(attr);
-  const perkNorm = normalizeList(perk);
-  // Merge
-  const finalList = mergeListString(baseNorm, attrNorm, perkNorm);
-  // Render
-  const formatted = formatDamageListFor5e(finalList);
-  outEl.innerHTML = formatted || "-";
-  // Detect changes (compare to normalized base)
+  const finalList = mergeListString(base, attr, perk);
+  outEl.innerHTML = finalList.length > 0 ? finalList.join(", ") : "-";
   const changed =
-    finalList.length !== baseNorm.length ||
-    !finalList.every((v) => baseNorm.includes(v));
+    finalList.length !== base.length ||
+    !finalList.every((v) => base.includes(v));
   if (changed) {
     outEl.classList.add("AbtlyPointIncrease", "AbtlyIncrease");
     let tooltip = "Changes:\n";
-    if (attrNorm.length > 0)
-      tooltip += `${attrLabel}: +${attrNorm.join(", ")}\n`;
-    if (perkNorm.length > 0)
-      tooltip += `${perkLabel}: +${perkNorm.join(", ")}\n`;
+    if (attr.length > 0) tooltip += `${attrLabel}: +${attr.join(", ")}\n`;
+    if (perk.length > 0) tooltip += `${perkLabel}: +${perk.join(", ")}\n`;
     rowEl.dataset.tooltip = tooltip.trim();
     rowEl.classList.add("data-tooltip");
   }
 }
-function formatDamageListFor5e(flatList) {
-  const simple = [];
-  const groups = {};
-  flatList.forEach((item) => {
-    const match = item.match(/^(.*)\s+\((.*)\)$/);
-    if (!match) {
-      simple.push(item);
-      return;
-    }
-    const type = match[1];
-    const note = match[2];
-    if (!groups[note]) groups[note] = [];
-    groups[note].push(type);
-  });
-  const parts = [];
-  if (simple.length > 0) {
-    parts.push(simple.join(", "));
-  }
-  Object.entries(groups).forEach(([note, types]) => {
-    if (types.length === 1) {
-      parts.push(`${types[0]} (${note})`);
-    } else if (types.length === 2) {
-      parts.push(`${types[0]} and ${types[1]} (${note})`);
-    } else {
-      const last = types.pop();
-      parts.push(`${types.join(", ")}, and ${last} (${note})`);
-    }
-  });
-  return parts.join("; ");
-}
-/*
--
--
--
--
--
--
--
--
--
--
--
--
--
--
--
--
-*/
 //------------------------
-// RENDER STATS
-function renderStats(creature, attribute, perk) {
-  // Size
-  // Saves
-  // Skills
-  // Senses
-  const senses = creature.senses ? datacleanse(creature.senses) : "";
-  const passive = creature.passive
-    ? `passive perception: ${creature.passive}`
-    : "";
-  const sensesOut =
-    senses && passive ? `${senses}, ${passive}` : senses || passive || "-";
-  $("senses-out").innerHTML = sensesOut;
-  // Damage / Condition / Languages
-  //$("vulnerable-out").innerHTML = safe(creature.vulnerable);
-  $("immune-out").innerHTML = safe(creature.immune);
-  $("conditionImmune-out").innerHTML = safe(creature.conditionImmune);
-  $("languages-out").innerHTML = safe(creature.languages);
+// Collect Traits
+function collectAllTraits(creature, attribute, perk) {
+  const creatureTraits = creature.trait || [];
+  const attributeTraits = attribute.traits || [];
+  const perkTraits = perk.traits || [];
+  return [
+    ...attributeTraits.map((t) => ({ ...t, source: attribute.prefix })),
+    ...perkTraits.map((t) => ({ ...t, source: perk.name })),
+    ...creatureTraits.map((t) => ({ ...t, source: "Creature" })),
+  ];
 }
 //------------------------
 // Render Traits
-function renderTraits(creature) {
+function renderTraits(creature, attribute, perk) {
   const traitcontainer = $("traits-container");
   traitcontainer.innerHTML = "";
-  const traits = creature.trait || [];
+  const traits = collectAllTraits(creature, attribute, perk);
   if (!traits.length) {
     traitcontainer.innerHTML = "<p>No traits.</p>";
     traitcontainer.classList.add("creatureBlock");
@@ -565,11 +569,19 @@ function renderTraits(creature) {
   }
   traits.forEach((trait) => {
     const wrapper = el("div", "BlockItem");
+    // Title element
     const title = el("span", "creatureBold", trait.name);
+    // If this trait comes from attribute or perk, mark it
+    if (trait.source !== "Creature") {
+      title.classList.add("AbtlyPointIncrease", "AbtlyIncrease");
+      title.dataset.tooltip = `Source: ${trait.source}`;
+      title.classList.add("data-tooltip");
+    }
+    // Description
     const desc = el(
       "span",
       "creatureBlock",
-      trait.entries.map((entry) => `${datacleanse(entry)}`).join("")
+      trait.entries.map((entry) => datacleanse(entry)).join("")
     );
     wrapper.appendChild(title);
     wrapper.appendChild(desc);
@@ -577,11 +589,23 @@ function renderTraits(creature) {
   });
 }
 //------------------------
+// Collect All Actions
+function collectAllActions(creature, attribute, perk) {
+  const creatureActions = creature.action || [];
+  const attributeActions = attribute.actions || [];
+  const perkActions = perk.actions || [];
+  return [
+    ...attributeActions.map((a) => ({ ...a, source: attribute.prefix })),
+    ...perkActions.map((a) => ({ ...a, source: perk.name })),
+    ...creatureActions.map((a) => ({ ...a, source: "Creature" })),
+  ];
+}
+//------------------------
 // RENDER ACTIONS
-function renderActions(creature) {
+function renderActions(creature, attribute, perk) {
   const actioncontainer = $("actions-container");
   actioncontainer.innerHTML = "";
-  const actions = creature.action || [];
+  const actions = collectAllActions(creature, attribute, perk);
   if (!actions.length) {
     actioncontainer.innerHTML = "<p>No actions.</p>";
     actioncontainer.classList.add("creatureBlock");
@@ -589,35 +613,163 @@ function renderActions(creature) {
   }
   actions.forEach((action) => {
     const wrapper = el("div", "BlockItem");
+    // Title
     const title = el("span", "creatureBold", datacleanse(action.name));
+    // Highlight + tooltip for attribute/perk actions
+    if (action.source !== "Creature") {
+      title.classList.add("AbtlyPointIncrease", "AbtlyIncrease");
+      title.dataset.tooltip = `Source: ${action.source}`;
+      title.classList.add("data-tooltip");
+    }
+    // Description
     const desc = el(
       "span",
       "creatureBlock",
-      action.entries.map((entry) => `${datacleanse(entry)}`).join("")
+      action.entries.map((entry) => datacleanse(entry)).join("")
     );
     wrapper.appendChild(title);
     wrapper.appendChild(desc);
     actioncontainer.appendChild(wrapper);
   });
 }
-/*
--
--
--
--
--
--
--
--
--
--
--
--
--
--
--
--
-*/
+//------------------------
+// Collect Spells
+function collectSpellcasting(creature) {
+  return creature.spellcasting || [];
+}
+//------------------------
+// RENDER Spells
+function renderSpellcasting(creature) {
+  const container = $("spellcasting-container");
+  container.innerHTML = "";
+
+  const blocks = creature.spellcasting || [];
+  if (!blocks.length) {
+    container.innerHTML = "<p>No spellcasting.</p>";
+    return;
+  }
+
+  blocks.forEach((block) => {
+    // -----------------------------
+    // 1. HEADER BLOCK
+    // -----------------------------
+    const headerBlock = el("div", "BlockItem");
+
+    const title = el("span", "creatureBold", block.name + ".");
+    headerBlock.appendChild(title);
+
+    if (block.headerEntries) {
+      const headerText = el(
+        "span",
+        "creatureBlock",
+        block.headerEntries.map((e) => datacleanse(e)).join(" ")
+      );
+      headerBlock.appendChild(headerText);
+    }
+
+    container.appendChild(headerBlock);
+
+    // -----------------------------
+    // 2. INNATE: AT WILL
+    // -----------------------------
+    if (block.will) {
+      const willBlock = el("div", "BlockItem");
+
+      const label = el("span", "creatureBold", checkheader("atWill"));
+      const list = el(
+        "span",
+        "creatureBlock",
+        block.will.map((s) => datacleanse(s)).join(", ")
+      );
+
+      willBlock.appendChild(label);
+      willBlock.appendChild(list);
+      container.appendChild(willBlock);
+    }
+
+    // -----------------------------
+    // 3. INNATE: DAILY USES
+    // -----------------------------
+    if (block.daily) {
+      Object.entries(block.daily).forEach(([key, spells]) => {
+        const dailyBlock = el("div", "BlockItem");
+
+        const label = el("span", "creatureBold", checkheader(`daily${key}`));
+        const list = el(
+          "span",
+          "creatureBlock",
+          spells.map((s) => datacleanse(s)).join(", ")
+        );
+
+        dailyBlock.appendChild(label);
+        dailyBlock.appendChild(list);
+        container.appendChild(dailyBlock);
+      });
+    }
+
+    // -----------------------------
+    // 4. PREPARED SPELLCASTING
+    // -----------------------------
+    if (block.spells) {
+      Object.entries(block.spells).forEach(([level, data]) => {
+        const spellBlock = el("div", "BlockItem");
+
+        const headerKey = level === "0" ? "lvl0slots" : `lvl${level}slots`;
+
+        let labelText = checkheader(headerKey);
+
+        if (data.slots != null) {
+          labelText = `${labelText}${data.slots} slots):`;
+        }
+
+        const label = el("span", "creatureBold", labelText);
+        const list = el(
+          "span",
+          "creatureBlock",
+          data.spells.map((s) => datacleanse(s)).join(", ")
+        );
+
+        spellBlock.appendChild(label);
+        spellBlock.appendChild(list);
+        container.appendChild(spellBlock);
+      });
+    }
+  });
+}
+//------------------------
+// RENDER Reactions
+
+function renderReactions(creature) {
+  const container = $("reactions-container");
+  container.innerHTML = "";
+
+  const reactions = creature.reaction || [];
+
+  if (!reactions.length) {
+    container.innerHTML = "<p>No reactions.</p>";
+    container.classList.add("creatureBlock");
+    return;
+  }
+
+  reactions.forEach((reaction) => {
+    const wrapper = el("div", "BlockItem");
+
+    // Title
+    const title = el("span", "creatureBold", datacleanse(reaction.name));
+
+    // Description
+    const desc = el(
+      "span",
+      "creatureBlock",
+      reaction.entries.map((e) => datacleanse(e)).join("")
+    );
+
+    wrapper.appendChild(title);
+    wrapper.appendChild(desc);
+
+    container.appendChild(wrapper);
+  });
+}
 //------------------------
 //Data Clenser
 function datacleanse(rawdata) {
@@ -643,6 +795,8 @@ function datacleanse(rawdata) {
     .replace(/\{@hazard/g, "")
     .replace(/\{@damage /g, "")
     .replace(/\{@skill /g, "")
+    .replace(/\{@actTrigger/g, "Trigger")
+    .replace(/\{@actResponse/g, "Response")
     //--------------
     .replace(/\{@spell/g, "") //Remove Spell Tag
     .replace(/\\?\{@recharge\s*([0-9]+|X)\}/gi, "(Recharge $1)") //Recharge Tags

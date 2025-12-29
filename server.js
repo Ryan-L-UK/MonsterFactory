@@ -45,17 +45,7 @@ function loadBestiary() {
     );
   }
 
-  const allowedCR = new Set([
-    "0",
-    "1/8",
-    "1/4",
-    "1/2",
-    "1",
-    "2",
-    "3",
-    "4",
-    "5",
-  ]);
+  const allowedCR = new Set(["0", "1/8", "1/4", "1/2", "1", "2", "3", "4"]);
 
   mergedCreatures = index.files.flatMap((file) => {
     const filePath = path.join(__dirname, "Bestiary/handbooks", file);

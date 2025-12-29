@@ -4,12 +4,14 @@
     <link rel="stylesheet" href="Armoury/Styles/CoreStyling.css" />
     <link rel="stylesheet" href="Armoury/Styles/Sources.css" />
     <link rel="stylesheet" href="/Armoury/Styles/FontPackages.css" />
+    <link rel="stylesheet" href="/Spellbook/lib/tippy/tippy.css" />
     <title>The Monster Factory</title>
     <link
       rel="shortcut icon"
       type="image/png"
-      href="Codex/MonsterFactoryLogo.png"
+      href="Codex/Logos/MonsterFactoryLogo.png"
     />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   </head>
   <body>
     <!---------------------------------------->
@@ -109,7 +111,7 @@
           <span class="creatureBold">Saving Throws:</span>
           <span class="creatureBody" id="saves-out"></span>
         </div>
-        <div class="RowItem">
+        <div class="RowItem" id="skills-row">
           <span class="creatureBold">Skills:</span>
           <span class="creatureBody" id="skills-out"></span>
         </div>
@@ -121,10 +123,10 @@
     </div>
 
     <div class="InfoGrid">
-      <div class="WideContainer">
+      <div class="FullContainer">
         <div class="ContainerName">Characteristics</div>
         <div class="RowItem">
-          <span class="creatureBold">Vulnerable:</span>
+          <span class="creatureBold">vulnerable:</span>
           <div id="vulnerable-row">
             <span class="creatureBody" id="vulnerable-out"></span>
           </div>
@@ -155,7 +157,7 @@
     </div>
 
     <div class="InfoGrid">
-      <div class="WideContainer">
+      <div class="FullContainer">
         <div class="ContainerName">Traits</div>
         <div id="traits-container"></div>
       </div>
@@ -173,21 +175,21 @@
       </div>
     </div>
 
-    <div class="InfoGrid">
+    <div class="InfoGrid sidebar">
       <div class="WideContainer">
-        <h1>Reactions (Full Width)</h1>
-        <p>Reactions</p>
+        <div class="ContainerName">Reactions</div>
+        <div id="reactions-container"></div>
+      </div>
+      <div class="SmallContainer">
+        <div class="ContainerName">Source</div>
+        <div id="source-container">
+          <div class="SourceBook" id="source-out"></div>
+          <div class="PageNumber" id="page-out"></div>
+        </div>
       </div>
     </div>
-    <div class="InfoContainer">
-      <h1>Description (Left)</h1>
-      <p>general Bio</p>
-    </div>
-    <div class="InfoContainer">
-      <h1>Source (Right)</h1>
-      <p>Source Info (Existing Styles)</p>
-    </div>
-    <!-------------------------------------------->
+
+    <!----------------------------
 
     <div id="output" class="hidden"></div>
     <div class="options">
@@ -200,11 +202,14 @@
       >
     </div>
     <br />
-
+---------------->
+    <br />
     <!--Footer-->
     <object id="Ftr_output"></object>
     <!--END-->
   </body>
 </html>
+<script src="Spellbook/lib/tippy/popper.min.js"></script>
+<script src="Spellbook/lib/tippy/tippy.umd.min.js"></script>
 <script src="Spellbook/CoreScripts.js"></script>
 <script src="Spellbook/MonsterFactory.js"></script>
