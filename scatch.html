@@ -1,66 +1,277 @@
-<div class="ImgDesc">
-  <img src="" class="CreatureImage" id="CreatureImage" />
-  <div class="CreatureDescription">
-    <h1 class="indexheading">Description</h1>
+<!---------------------------------------->
+<!--Creature Name & Description-->
+<section class="creature-header">
+  <h1 class="creature-name" id="name-out">
+    Frostbound Peryton of Regeneration
+  </h1>
+  <p class="creature-description" id="desc-out">
+    This Peryton was shaped by ancient, bitter frost. It is capable of rapidly
+    healing its wounds.
+  </p>
+  <p class="creature-subtitle">
+    <span id="alignment-out" class="creature-alignment ChaoticEvil"
+      >Chaotic Evil</span
+    >
+    <span id="size-out" class="creature-size">Medium</span>
+  </p>
+</section>
+<!---------------------------------------->
+<!--Creature Stat Blocks-->
+<section class="abilities-grid">
+  <div class="card stat-container" id="STR-Container">
+    <div class="corner tl"></div>
+    <div class="corner tr"></div>
+    <div class="stat-label" id="STR-label">Str</div>
+    <div class="stat-value" id="STR-out">16 (+3)</div>
+    <div class="corner bl"></div>
+    <div class="corner br"></div>
+  </div>
+  <div
+    class="card stat-container data-tooltip"
+    id="DEX-Container"
+    data-tooltip="Peryton (Base): 12
+Frostbound: -2
+Regeneration: +0"
+  >
+    <div class="corner tl"></div>
+    <div class="corner tr"></div>
+    <div class="stat-label ability-decrease" id="DEX-label">Dex</div>
+    <div class="stat-value ability-point-decrease" id="DEX-out">10 (+0)</div>
+    <div class="corner bl"></div>
+    <div class="corner br"></div>
+  </div>
+  <div
+    class="card stat-container data-tooltip"
+    id="CON-Container"
+    data-tooltip="Peryton (Base): 13
+Frostbound: +1
+Regeneration: +1"
+  >
+    <div class="corner tl"></div>
+    <div class="corner tr"></div>
+    <div class="stat-label ability-increase" id="CON-label">Con</div>
+    <div class="stat-value ability-point-increase" id="CON-out">15 (+2)</div>
+    <div class="corner bl"></div>
+    <div class="corner br"></div>
+  </div>
+  <div class="card stat-container" id="INT-Container">
+    <div class="corner tl"></div>
+    <div class="corner tr"></div>
+    <div class="stat-label" id="INT-label">Int</div>
+    <div class="stat-value" id="INT-out">9 (-1)</div>
+    <div class="corner bl"></div>
+    <div class="corner br"></div>
+  </div>
+  <div class="card stat-container" id="WIS-Container">
+    <div class="corner tl"></div>
+    <div class="corner tr"></div>
+    <div class="stat-label" id="WIS-label">Wis</div>
+    <div class="stat-value" id="WIS-out">12 (+1)</div>
+    <div class="corner bl"></div>
+    <div class="corner br"></div>
+  </div>
+  <div class="card stat-container" id="CHA-Container">
+    <div class="corner tl"></div>
+    <div class="corner tr"></div>
+    <div class="stat-label" id="CHA-label">Cha</div>
+    <div class="stat-value" id="CHA-out">10 (+0)</div>
+    <div class="corner bl"></div>
+    <div class="corner br"></div>
+  </div>
+</section>
+<!---------------------------------------->
+<!--Info Cards: Defence & Proficiences-->
+<div class="info-grid defence">
+  <div class="card info-container">
+    <div class="corner tl"></div>
+    <div class="corner tr"></div>
+    <div class="creature-name">Defence</div>
+    <div class="category-header">Armour Class:</div>
+    <div
+      class="category-body ability-point-increase ability-increase data-tooltip"
+      id="ac-out"
+      data-tooltip="Peryton (Base): 13
+Ice: +1
+Regeneration: +0"
+    >
+      14
+    </div>
+    <div class="category-header">Hit Points:</div>
+    <div
+      class="category-body ability-point-increase ability-increase data-tooltip"
+      id="hp-out"
+      data-tooltip="Peryton (Base): 33
+Ice: x1.15
+Regeneration: x1.1"
+    >
+      42
+    </div>
+    <div class="category-header">Speed:</div>
+    <div
+      class="category-body ability-change ability-point-change data-tooltip"
+      id="speed-out"
+      data-tooltip="Movement:
+Base + Frostbound + Regeneration
 
-    <h1 class="indexheading">Skills</h1>
-    <p>
-      <span class="STR">Str: </span>
-      <span class="STRn" id="STR-out"></span>,
-      <span class="DEX">Dex: </span>
-      <span class="DEXn" id="DEX-out"></span>,
-      <span class="CON">Con: </span>
-      <span class="CONn" id="CON-out"></span>,
-      <span class="INT">Int: </span>
-      <span class="INTn" id="INT-out"></span>,
-      <span class="WIS">Wis: </span>
-      <span class="WISn" id="WIS-out"></span>,
-      <span class="CHA">Cha: </span>
-      <span class="CHAn" id="CHA-out"></span>
-    </p>
-    <p>
-      <span class="creatureBold" id="skillsH-out" name="clearme"></span>
-      <span class="creatureBody capitalize" id="skills-out"></span>
-    </p>
-    <p>
-      <span class="creatureBold" id="savesH-out" name="clearme"></span>
-      <span class="creatureBody capitalize" id="saves-out"></span>
-    </p>
-    <p>
-      <span class="creatureBold" id="sensesH-out" name="clearme"></span>
-      <span class="creatureBody capitalize" id="senses-out"></span>
-    </p>
-    <p>
-      <span class="creatureBold" id="languagesH-out" name="clearme"></span>
-      <span class="creatureBody" id="languages-out"></span>
-    </p>
+walk: 15 (20 + -5 + 0)
+fly: 60 (60 + 0 + 0)
+swim: 5 (0 + 5 + 0)"
+    >
+      15 ft., fly 60 ft., swim 5 ft.
+    </div>
+    <div class="corner bl"></div>
+    <div class="corner br"></div>
+  </div>
+  <!---------------------------------------->
+  <div class="card info-container">
+    <div class="corner tl"></div>
+    <div class="corner tr"></div>
+    <div class="creature-name">Proficiencies &amp; Senses</div>
+    <div class="category-header">Saving Throws:</div>
+    <div class="category-body" id="saves-out">-</div>
+    <div class="category-header">Skills:</div>
+    <div
+      class="category-body ability-change ability-point-change data-tooltip"
+      id="skills-out"
+      data-tooltip="Skills:
+Base + Frostbound + Regeneration
+
+perception: 6 (5 + 1 + 0)
+stealth: 2 (3 + -1 + 0)
+insight: 1 (0 + 0 + 1)"
+    >
+      perception: +6, stealth: +2, insight: +1
+    </div>
+    <div class="category-header">Senses:</div>
+    <div class="category-body" id="senses-out">passive perception: 15</div>
+    <div class="corner bl"></div>
+    <div class="corner br"></div>
   </div>
 </div>
-
-//------------------------ // RENDER SPELLCASTING function
-renderSpellcasting(creature) { const spellcontainer =
-$("spellcasting-container"); spellcontainer.innerHTML = ""; const blocks =
-creature.spellcasting || []; if (!blocks.length) { spellcontainer.innerHTML = "
-<p>No spellcasting.</p>
-"; spellcontainer.classList.add("creatureBlock"); return; }
-blocks.forEach((block) => { const wrapper = el("div", "BlockItem"); // Title
-const title = el("div", "SpellcastingTitle", block.name + ".");
-wrapper.appendChild(title); // Header entries if (block.headerEntries) { const
-header = el( "div", "SpellcastingHeader", block.headerEntries.map((e) => `
-<p>${datacleanse(e)}</p>
-`).join("") ); wrapper.appendChild(header); } // At-will spells if (block.will)
-{ const atWill = el( "div", "SpellcastingLine",
-`<strong>${checkheader("atWill")}</strong>` + block.will.map((s) =>
-datacleanse(s)).join(", ") ); wrapper.appendChild(atWill); } // Daily spells if
-(block.daily) { Object.entries(block.daily).forEach(([key, spells]) => { const
-headerKey = `daily${key}`; const dailyDiv = el( "div", "SpellcastingLine",
-`<strong>${checkheader(headerKey)}</strong>` + spells.map((s) =>
-datacleanse(s)).join(", ") ); wrapper.appendChild(dailyDiv); }); } // Leveled
-spells if (block.spells) { Object.entries(block.spells).forEach(([level, data])
-=> { let html; if (level === "0") { html =
-`<strong>${checkheader("cantrip")}</strong>` + data.spells.map((s) =>
-datacleanse(s)).join(", "); } else { const headerKey = `lvl${level}slots`; html
-= `<strong>${checkheader(headerKey)}${data.slots} slots):</strong> ` +
-data.spells.map((s) => datacleanse(s)).join(", "); } const levelDiv = el("div",
-"SpellcastingLine", html); wrapper.appendChild(levelDiv); }); }
-spellcontainer.appendChild(wrapper); }); }
+<!---------------------------------------->
+<!--Info Cards: Charactistics-->
+<div class="info-grid">
+  <div class="card info-container full">
+    <div class="corner tl"></div>
+    <div class="corner tr"></div>
+    <div class="creature-name">Characteristics</div>
+    <div class="category-header">vulnerable:</div>
+    <div
+      class="category-body ability-change ability-point-change data-tooltip"
+      id="vulnerable-out"
+      data-tooltip="Changes:
+Frostbound: +fire"
+    >
+      fire
+    </div>
+    <div class="category-header">Damage Resistances:</div>
+    <div class="category-body" id="resist-out">-</div>
+    <div class="category-header">Damage Immunities:</div>
+    <div
+      class="category-body ability-change ability-point-change data-tooltip"
+      id="immune-out"
+      data-tooltip="Changes:
+Frostbound: +cold"
+    >
+      cold
+    </div>
+    <div class="category-header">Condition Immunities:</div>
+    <div class="category-body" id="conditionImmune-out">-</div>
+    <div class="category-header">Languages:</div>
+    <div class="category-body" id="languages-out">
+      understands Common and Elvish but can't speak
+    </div>
+    <div class="corner bl"></div>
+    <div class="corner br"></div>
+  </div>
+</div>
+<!---------------------------------------->
+<!--Info Cards: Traits-->
+<div class="info-grid">
+  <div class="card info-container full">
+    <div class="corner tl"></div>
+    <div class="corner tr"></div>
+    <div class="creature-name">Traits</div>
+    <div id="traits-container">
+      <div
+        class="category-header ability-change ability-point-change data-tooltip"
+        data-tooltip="Source: Regeneration"
+      >
+        Regeneration
+      </div>
+      <div class="category-body">
+        The creature regains 3 hit points at the start of its turn. If the
+        creature takes acid or fire damage, this trait doesn't function at the
+        start of its next turn.
+      </div>
+      <div class="category-header">Flyby</div>
+      <div class="category-body">
+        The peryton doesn't provoke an Opportunity Attack when it flies out of
+        an enemy's reach.
+      </div>
+    </div>
+    <div class="corner bl"></div>
+    <div class="corner br"></div>
+  </div>
+</div>
+<!---------------------------------------->
+<!--Info Cards: Actions & Spells-->
+<div class="info-grid">
+  <div class="card info-container">
+    <div class="corner tl"></div>
+    <div class="corner tr"></div>
+    <div class="creature-name">Actions</div>
+    <div id="actions-container">
+      <div class="category-header">Multiattack</div>
+      <div class="category-body">
+        The peryton makes one Gore attack and one Talons attack.
+      </div>
+      <div class="category-header">Gore</div>
+      <div class="category-body">
+        Melee Attack Roll: + 5, reach 5 ft. Hit: 7 (1d8 + 3) Piercing damage. If
+        the peryton moved 30+ feet straight toward the target immediately before
+        the hit, the target takes an extra 9 (2d8) Piercing damage.
+      </div>
+      <div class="category-header">Talons</div>
+      <div class="category-body">
+        Melee Attack Roll: + 5, reach 5 ft. Hit: 8 (2d4 + 3) Piercing damage. If
+        the attack reduces a Humanoid target to 0 Hit Points, the peryton kills
+        the target by removing its heart.
+      </div>
+    </div>
+    <div class="corner bl"></div>
+    <div class="corner br"></div>
+  </div>
+  <!---------------------------------------->
+  <div class="card info-container">
+    <div class="corner tl"></div>
+    <div class="corner tr"></div>
+    <div class="creature-name">Spellcasting</div>
+    <div id="spellcasting-container"><p>No spellcasting.</p></div>
+    <div class="corner bl"></div>
+    <div class="corner br"></div>
+  </div>
+</div>
+<!---------------------------------------->
+<!--Info Cards: Reactions & Source-->
+<div class="info-grid source">
+  <div class="card info-container">
+    <div class="corner tl"></div>
+    <div class="corner tr"></div>
+    <div class="creature-name">Reactions</div>
+    <div id="reactions-container" class="creatureBlock">
+      <p>No reactions.</p>
+    </div>
+    <div class="corner bl"></div>
+    <div class="corner br"></div>
+  </div>
+  <div class="card info-container">
+    <div class="corner tl"></div>
+    <div class="corner tr"></div>
+    <div class="creature-name">Source</div>
+    <div class="source-book" id="source-out">XMM</div>
+    <div class="page-number" id="page-out">Page: 238</div>
+    <div class="corner bl"></div>
+    <div class="corner br"></div>
+  </div>
+</div>

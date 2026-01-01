@@ -1,266 +1,293 @@
-/*-----------------------------------------------------------
-Core Components These are the main components which power the entire site
------------------------------------------------------------*/
+/* ------------------------------
+Design Tokens
+-------------------------------- */
+:root {
+  --color-bg-main: #080a0e;
+  --color-panel-bg: #272e37;
+  --color-gold: #d6ae4a;
+  --color-blue: #4a6898;
+  --color-text-main: #baa57c;
+  --color-accent: #478bb8;
+  --font-display: CinzelDecorative, serif;
+  --font-body: Merriweather, serif;
+  --font-ui: MrEaves, sans-serif;
+  --max-width-content: 1200px;
+  --panel-padding: 1.25rem;
+  --corner-size: 46px;
+  --corner-offset-y: -11px;
+  --corner-offset-x: -13px;
+}
+/* ------------------------------
+Core Components
+-------------------------------- */
 html {
-  background: #14171b;
+  /*background: var(--color-bg-main) url("/Codex/dark_background_texture.png") top
+    repeat;*/
+  background: var(--color-bg-main);
   height: 100%;
   width: 100%;
   margin: 0;
-  background-image: url("/Codex/background_texture.png");
-  background-position: top;
-  background-repeat: repeat;
   padding: 0;
+  color: white;
 }
 body {
   margin: 0;
   padding: 0;
 }
-/*-----------------------------------------------------------
-Desktop Layout
------------------------------------------------------------*/
-.CreatureIconGrid {
+/* ------------------------------
+Creature Media (mobile first)
+-------------------------------- */
+.creature-media {
   margin: 0 auto;
-  justify-self: center;
   display: grid;
-  width: 70%;
+  width: 96%;
+  max-width: 900px;
   justify-content: center;
-  align-content: center;
   grid-template-columns: auto 100px;
   column-gap: 2%;
   row-gap: 6px;
   grid-template-areas:
-    "CreatureImage AttributeIcons"
-    "CreatureImage TypeIcons"
-    "CreatureImage PerkIcons";
+    "creature-media-image creature-attribute"
+    "creature-media-image creature-type"
+    "creature-media-image creature-perk";
 }
-.CreatureImage {
-  max-width: 675px;
+.creature-media-image {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
   max-height: 300px;
-  height: 100%;
   object-fit: contain;
   align-self: center;
   margin: auto;
-  grid-area: CreatureImage;
+  grid-area: creature-media-image;
 }
-.CreatureTypeIcon {
-  width: 75px;
-  justify-self: center;
-  margin: auto;
-  display: flex;
-}
-.CreatureType {
-  padding: 1px 4px 1px;
-  color: #000000;
-  font-family: MrEaves;
-  font-size: 1rem;
-  margin: 0 1px 0px;
-  justify-self: center;
-  text-align: center;
-}
-.CreatureName {
-  font-family: CinzelDecorative;
-  justify-content: center;
-  text-align: center;
-  margin: 0px auto;
-  font-size: 1.5rem;
-  display: flex;
-  color: #000000;
-  padding-top: 0;
-}
-.CreatureDescription {
-  justify-content: center;
-  font-size: 0.9rem;
-  font-family: Merriweather;
-  width: 60%;
-  align-self: center;
-  margin: auto;
-  text-align: center;
-}
-.CreatureSub {
-  margin: 5px auto 5px;
-  display: flex;
-  justify-content: center;
-}
-/*--Creature Stat Block--*/
-.AbilitiesGrid {
+.creature-attribute,
+.creature-type,
+.creature-perk {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 1rem;
-  margin: auto;
-  flex-wrap: wrap;
-  padding: 0.5rem 2rem 0.5rem;
-  max-width: 1200px;
-}
-.StatContainer {
+  justify-items: center;
   text-align: center;
-  background-color: #faf9f6;
+}
+.creature-media-icon {
+  width: auto;
+  max-width: 50px;
+  height: auto;
+  max-height: 75px;
+  margin: auto;
+  display: block;
+}
+.creature-media-header {
+  padding: 1px 4px;
+  color: var(--color-text-main);
+  font-family: var(--font-ui);
+  font-size: 1rem;
+  margin: 0 1px;
+  text-align: center;
+}
+/* ------------------------------
+Creature Header
+-------------------------------- */
+.creature-header {
+  text-align: center;
+  margin: 1.5rem auto;
+}
+.creature-name {
+  font-family: var(--font-display);
+
+  margin: 0;
+
+  font-size: 2rem;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.25rem; /* gives breathing room */
+}
+.creature-description {
+  max-width: 60ch;
+  margin: 0.5rem auto;
+  font-size: 0.95rem;
+  font-family: var(--font-body);
+}
+.creature-subtitle {
+  font-size: 0.9rem;
+  opacity: 0.85;
+}
+/* ------------------------------
+Card Component (shared)
+-------------------------------- */
+.card {
+  position: relative;
+  background: var(--color-panel-bg) url("/Codex/MenuBackingBlue.png");
+  border: 2px solid var(--color-gold);
+  padding: var(--panel-padding);
+  color: white;
   border-radius: 0.5rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
-  border: 2px solid #c9c3b8;
-  padding: 0.75rem 0.5rem;
-  transition: transform 0.1s ease;
 }
-.StatLabel {
+/* ------------------------------
+Corners (shared)
+-------------------------------- */
+.corner {
+  position: absolute;
+  width: var(--corner-size);
+  height: var(--corner-size);
+  background-image: url("/Codex/Frames/container-corner.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  pointer-events: none;
+}
+.corner.tl {
+  top: var(--corner-offset-y);
+  left: var(--corner-offset-x);
+  transform: scaleX(-1);
+}
+.corner.tr {
+  top: var(--corner-offset-y);
+  right: var(--corner-offset-x);
+}
+.corner.bl {
+  bottom: var(--corner-offset-y);
+  left: var(--corner-offset-x);
+  transform: scale(-1, -1);
+}
+.corner.br {
+  bottom: var(--corner-offset-y);
+  right: var(--corner-offset-x);
+  transform: scaleY(-1);
+}
+/* ------------------------------
+Statblock
+-------------------------------- */
+.abilities-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin: auto;
+  padding: 0.5rem 1rem;
+  max-width: 100%;
+}
+.stat-container {
+  text-align: center;
+  min-width: 40px;
+}
+.stat-label {
   font-size: 1.1rem;
-  font-family: CinzelDecorative;
+  font-family: var(--font-display);
 }
-.StatValue {
+.stat-value {
   font-size: 1.25rem;
 }
-/*--Creature Info Containers--*/
-.InfoGrid {
+/* ------------------------------
+Info Grids
+-------------------------------- */
+.info-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1rem;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
   margin: auto;
-  flex-wrap: wrap;
-  padding: 0.5rem 2rem 0.5rem;
-  max-width: 1200px;
+  padding: 0.5rem 1rem;
+  max-width: 100%;
+  color: white;
 }
-.InfoContainer {
-  background-color: #f8f8f8;
-  border-radius: 0.5rem;
-  padding: 1.25rem;
-  border: 1px solid #ddd;
+.info-grid.defence {
+  grid-template-columns: 1fr;
 }
-.ContainerName {
-  font-family: CinzelDecorative;
-  margin: 0px auto;
-  font-size: 1.5rem;
-  color: #000000;
-  padding-top: 0;
-  text-align: start;
+.info-grid.source {
+  grid-template-columns: 1fr;
 }
-.RowItem {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 0.5rem;
-}
-.BlockItem {
-  text-align: left;
-  margin-top: 0.5rem;
-}
-.FullContainer {
-  padding: 1.25rem;
-  max-width: 1200px;
-  background-color: #f8f8f8;
-  border-radius: 0.5rem;
-  text-align: center;
-  border: 1px solid #ddd;
-  align-self: center;
+.info-container.full {
   grid-column: 1 / -1;
 }
-.WideContainer {
-  padding: 1.25rem;
-  max-width: 1200px;
-  background-color: #f8f8f8;
-  border-radius: 0.5rem;
-  text-align: center;
-  border: 1px solid #ddd;
-  align-self: center;
-}
-.SmallContainer {
-  padding: 1.25rem;
-  max-width: 150px;
-  background-color: #f8f8f8;
-  border-radius: 0.5rem;
-  text-align: center;
-  border: 1px solid #ddd;
-  align-self: center;
-}
-.InfoGrid.sidebar {
-  grid-template-columns: 1fr 150px; /* left grows, right fixed */
-}
-/*--Creature Text Styling--*/
-.creatureBold {
-  font-family: Merriweather-black;
-  font-size: 0.9rem;
-  text-transform: capitalize;
-  color: #8c1061;
-  text-align: left;
-  margin-right: 0.4rem;
-  font-style: italic;
-}
-.creatureBody {
-  font-size: 0.9rem;
-  font-family: Merriweather;
-  text-align: right;
-  text-transform: capitalize;
-  max-width: 60%;
-}
-.creatureBlock {
-  font-size: 0.9rem;
-  font-family: Merriweather;
+/* ------------------------------
+Info Text
+-------------------------------- */
+.section-title {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  margin: 0 0 0.5rem;
+  color: var(--color-text-main);
   text-align: left;
 }
-.SourceBook {
+
+.category-header {
+  font-family: Tiamat-Text;
+  margin: 1rem 0 0.25rem;
+  font-size: 1.05rem;
+  letter-spacing: 0.3px;
+  width: fit-content;
+}
+
+.category-body {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.45;
+  margin-bottom: 0.75rem;
+  width: fit-content;
+}
+
+.source-book {
+  text-align: center;
   font-size: 2rem;
-  color: #7a2854;
+  color: var(--color-accent);
 }
-.PageNumber {
+.page-number {
+  text-align: center;
   font-size: 0.75rem;
 }
-/*-----------------------------------------------------------
-These entries are what highlight the stats +/- respectively
------------------------------------------------------------*/
-.AbtlyIncrease::after {
-  content: "\23F6";
-  margin-left: 0.2rem;
-  color: green;
+.centre {
+  text-align: center;
 }
-.AbtlyPointIncrease {
-  color: green;
+/* ------------------------------
+Ability Change Indicators
+-------------------------------- */
+.ability-increase::before {
+  content: "\23f6";
+  margin-right: 0.4rem;
+  color: lime;
 }
-.AbtlyChange::after {
-  content: "\25C6";
-  margin-left: 0.2rem;
-  color: orange;
+.ability-point-increase {
+  color: lime;
 }
-.AbtlyPointChange {
-  color: orange;
+.ability-change::before {
+  content: "\2726";
+  margin-right: 0.4rem;
+  color: #3fc7d4;
 }
-.AbtlyDecrease::after {
-  content: "\23F7";
-  margin-left: 0.2rem;
+.ability-point-change {
+  color: #3fc7d4;
+}
+.ability-decrease::before {
+  content: "\23f7";
+  margin-right: 0.4rem;
   color: red;
 }
-.AbtlyPointDecrease {
+.ability-point-decrease {
   color: red;
 }
-/*-----------------------------------------------------------
-Mobile Layout (max-width: 768px)
------------------------------------------------------------*/
-@media (max-width: 768px) {
-  .CreatureIconGrid {
-    width: 96%;
-  }
-  .CreatureImage {
+/* ------------------------------
+Desktop Enhancements
+-------------------------------- */
+@media (min-width: 768px) {
+  .creature-media {
     width: 100%;
-    height: auto;
   }
-  .CreatureTypeIcon {
-    width: 50px;
+  .creature-media-image {
+    width: auto;
   }
-  .CreatureName {
-    width: 96%;
+  .creature-media-icon {
+    max-width: 75px;
   }
-  .CreatureDescription {
-    width: 96%;
+  .info-grid {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: var(--max-width-content);
+    padding: 0.75rem 2rem;
   }
-  .InfoGrid {
-    grid-template-columns: repeat(1, 1fr);
-    max-width: 100%;
-    padding: 0.5rem 1rem 0.5rem;
+  .abilities-grid {
+    grid-template-columns: repeat(6, 1fr);
+    max-width: var(--max-width-content);
+    padding: 1rem 2rem 0.75rem;
   }
-  .AbilitiesGrid {
-    grid-template-columns: repeat(3, 1fr);
-    max-width: 100%;
-    padding: 0.5rem 1rem 0.5rem;
+  .info-grid.defence {
+    grid-template-columns: 300px 1fr;
   }
-  .InfoGrid.sidebar {
-    grid-template-columns: repeat(1, 1fr);
-  }
-  .SmallContainer {
-    justify-self: center;
+  .info-grid.source {
+    grid-template-columns: 1fr 160px;
   }
 }

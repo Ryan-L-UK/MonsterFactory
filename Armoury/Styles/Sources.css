@@ -298,8 +298,8 @@
 /*           TYPE & SIZE
 /*****************************/
 
-.CreatureSize {
-  padding: 1px 4px 1px;
+.creature-size {
+  padding: 0.2rem 0.4rem 0.2rem;
   background-color: #22805e;
   font-family: MrEaves;
   color: white;
@@ -313,8 +313,8 @@
 /*           ALIGNMENTS
 /*****************************/
 
-.alignment {
-  padding: 1px 4px 1px;
+.creature-alignment {
+  padding: 0.2rem 0.4rem 0.2rem;
   font-family: MrEaves;
   color: white;
   border: 2px solid #be9c56;

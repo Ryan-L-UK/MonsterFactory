@@ -1,0 +1,234 @@
+[
+  {
+    "name": "Player's Handbook (2014)",
+    "id": "PHB"
+  },
+  {
+    "name": "Monster Manual (2014)",
+    "id": "MM"
+  },
+  {
+    "name": "Dungeon Master's Guide (2014)",
+    "id": "DMG"
+  },
+  {
+    "name": "Dungeon Master's Screen",
+    "id": "Screen"
+  },
+  {
+    "name": "Sword Coast Adventurer's Guide",
+    "id": "SCAG"
+  },
+  {
+    "name": "Plane Shift: Zendikar",
+    "id": "PS-Z"
+  },
+  {
+    "name": "Plane Shift: Innistrad",
+    "id": "PS-I"
+  },
+  {
+    "name": "Adventurers League",
+    "id": "AL"
+  },
+  {
+    "name": "Volo's Guide to Monsters",
+    "id": "VGM"
+  },
+  {
+    "name": "Plane Shift: Kaladesh",
+    "id": "PS-K"
+  },
+  {
+    "name": "Plane Shift: Amonkhet",
+    "id": "PS-A"
+  },
+  {
+    "name": "One Grung Above",
+    "id": "OGA"
+  },
+  {
+    "name": "Xanathar's Guide to Everything",
+    "id": "XGE"
+  },
+  {
+    "name": "Plane Shift: Ixalan",
+    "id": "PS-X"
+  },
+  {
+    "name": "Mordenkainen's Tome of Foes",
+    "id": "MTF"
+  },
+  {
+    "name": "Plane Shift: Dominaria",
+    "id": "PS-D"
+  },
+  {
+    "name": "Guildmasters' Guide to Ravnica",
+    "id": "GGR"
+  },
+  {
+    "name": "Sage Advice Compendium",
+    "id": "SAC"
+  },
+  {
+    "name": "Acquisitions Incorporated",
+    "id": "AI"
+  },
+  {
+    "name": "Adventure with Muk",
+    "id": "AWM"
+  },
+  {
+    "name": "Dungeons & Dragons vs. Rick and Morty: Basic Rules",
+    "id": "RMR"
+  },
+  {
+    "name": "Eberron: Rising from the Last War",
+    "id": "ERLW"
+  },
+  {
+    "name": "Explorer's Guide to Wildemount",
+    "id": "EGW"
+  },
+  {
+    "name": "Mythic Odysseys of Theros",
+    "id": "MOT"
+  },
+  {
+    "name": "Dungeon Master's Screen: Dungeon Kit",
+    "id": "ScreenDungeonKit"
+  },
+  {
+    "name": "Heroes' Feast",
+    "id": "HF"
+  },
+  {
+    "name": "Dungeon Master's Screen: Wilderness Kit",
+    "id": "ScreenWildernessKit"
+  },
+  {
+    "name": "Tasha's Cauldron of Everything",
+    "id": "TCE"
+  },
+  {
+    "name": "Muk's Guide to Everything He Learned From Tasha",
+    "id": "MGELFT"
+  },
+  {
+    "name": "Van Richten's Guide to Ravenloft",
+    "id": "VRGR"
+  },
+  {
+    "name": "Domains of Delight",
+    "id": "DoD"
+  },
+  {
+    "name": "Minsc and Boo's Journal of Villainy",
+    "id": "MaBJoV"
+  },
+  {
+    "name": "Fizban's Treasury of Dragons",
+    "id": "FTD"
+  },
+  {
+    "name": "Strixhaven: A Curriculum of Chaos",
+    "id": "SCC"
+  },
+  {
+    "name": "Mordenkainen Presents: Monsters of the Multiverse",
+    "id": "MPMM"
+  },
+  {
+    "name": "Tarot Deck",
+    "id": "TD"
+  },
+  {
+    "name": "Dungeon Master's Screen: Spelljammer",
+    "id": "ScreenSpelljammer"
+  },
+  {
+    "name": "Astral Adventurer's Guide",
+    "id": "AAG"
+  },
+  {
+    "name": "Boo's Astral Menagerie",
+    "id": "BAM"
+  },
+  {
+    "name": "Thieves' Gallery",
+    "id": "HAT-TG"
+  },
+  {
+    "name": "Bigby Presents: Glory of the Giants",
+    "id": "BGG"
+  },
+  {
+    "name": "Monstrous Compendium Volume 4: Eldraine Creatures",
+    "id": "MCV4EC"
+  },
+  {
+    "name": "Morte's Planar Parade",
+    "id": "MPP"
+  },
+  {
+    "name": "Sigil and the Outlands",
+    "id": "SatO"
+  },
+  {
+    "name": "Adventure Atlas: The Mortuary",
+    "id": "AATM"
+  },
+  {
+    "name": "Heroes' Feast Flavors of the Multiverse",
+    "id": "HFFotM"
+  },
+  {
+    "name": "The Book of Many Things",
+    "id": "BMT"
+  },
+  {
+    "name": "The Deck of Many Things: Card Reference Guide",
+    "id": "DMTCRG"
+  },
+  {
+    "name": "Puncheons and Flagons",
+    "id": "PaF"
+  },
+  {
+    "name": "Player's Handbook (2024)",
+    "id": "XPHB"
+  },
+  {
+    "name": "Dungeon Master's Guide (2024)",
+    "id": "XDMG"
+  },
+  {
+    "name": "Dungeon Master's Screen (2024)",
+    "id": "XScreen"
+  },
+  {
+    "name": "Astarion's Book of Hungers",
+    "id": "ABH"
+  },
+  {
+    "name": "Forgotten Realms: Adventures in Faerûn",
+    "id": "FRAiF"
+  },
+  {
+    "name": "Forgotten Realms: Heroes of Faerûn",
+    "id": "FRHoF"
+  },
+  {
+    "name": "Netheril's Fall",
+    "id": "NF"
+  },
+  {
+    "name": "Lorwyn: First Light",
+    "id": "LFL"
+  },
+  {
+    "name": "Eberron: Forge of the Artificer",
+    "id": "EFA"
+  }
+]

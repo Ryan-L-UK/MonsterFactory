@@ -74,14 +74,83 @@ function loadBestiary() {
 }
 
 loadBestiary();
+// ---------------------------------------------------------
+// Load and merge book ID files ONCE at server startup
+// ---------------------------------------------------------
+let mergedBooks = [];
+
+function loadBooks() {
+  const autoPath = path.join(__dirname, "Bestiary/book-ids.json");
+  const manualPath = path.join(__dirname, "Bestiary/book-ids-manual.json");
+
+  const auto = JSON.parse(fs.readFileSync(autoPath, "utf8"));
+  let manual = [];
+
+  try {
+    manual = JSON.parse(fs.readFileSync(manualPath, "utf8"));
+  } catch {
+    console.warn(
+      "⚠ No book-ids-manual.json found. Continuing without overrides."
+    );
+  }
+
+  // Merge with manual taking priority
+  const map = new Map();
+
+  auto.forEach((b) => map.set(b.id, b));
+  manual.forEach((b) => map.set(b.id, b)); // overrides auto
+
+  mergedBooks = Array.from(map.values());
+
+  console.log(`Loaded ${mergedBooks.length} book entries into memory.`);
+}
+
+loadBooks();
 
 // ---------------------------------------------------------
-// API endpoint to serve merged creatures
+// Validate book coverage (admin check)
+// ---------------------------------------------------------
+
+function validateBookCoverage() {
+  if (!mergedBooks.length || !mergedCreatures.length) {
+    console.warn("⚠ Cannot validate books — data not loaded.");
+    return;
+  }
+
+  const creatureSources = new Set(
+    mergedCreatures.map((c) => c.source).filter(Boolean)
+  );
+
+  const bookIds = new Set(mergedBooks.map((b) => b.id));
+
+  // Creature sources that do NOT exist in the book list
+  const unknownSources = [...creatureSources].filter(
+    (src) => !bookIds.has(src)
+  );
+
+  console.log("--------------------------------------------------");
+  console.log("Missing Book IDs (creature sources not found in book list)");
+  console.log("--------------------------------------------------");
+
+  if (unknownSources.length === 0) {
+    console.log("✔ All creature sources exist in the book list.");
+  } else {
+    unknownSources.forEach((src) => console.log(` - ${src}`));
+  }
+
+  console.log("--------------------------------------------------");
+}
+
+validateBookCoverage();
+// ---------------------------------------------------------
+// API endpoints to serve merged creatures & books
 // ---------------------------------------------------------
 app.get("/api/creatures", (req, res) => {
   res.json(mergedCreatures);
 });
-
+app.get("/api/books", (req, res) => {
+  res.json(mergedBooks);
+});
 // Default route → index.html at root
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "Index.html"));

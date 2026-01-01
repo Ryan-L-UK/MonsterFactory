@@ -1,57 +1,143 @@
-//------------------------
-//Main Page Load
-//------------------------
+/*------------------------
+0. Contents
+------------------------
+1. Bootstrapping & Global State
+2. Core Helpers
+3. Randomizers
+4. Orchestrator
+5. High‑level Rendering Blocks
+6. Stats & Core Mechanics
+7. Defence Block
+8. List Utilities
+9. Traits, Actions & Reactions
+10. Spellcasting
+11. Data Cleansing & Header Helpers
+------------------------
+****************************************************
+------------------------
+1. Bootstrapping & Global State
+------------------------*/
 window.addEventListener("DOMContentLoaded", loadSources);
 async function loadSources() {
-  // 1. Load merged creatures from the server
-  const creatures = await fetch("/api/creatures").then((res) => res.json());
-  // 2. Load your other sources in parallel
-  const [attributes, perks] = await Promise.all([
-    fetch("/Bestiary/attributes.json").then((res) => res.json()),
-    fetch("/Bestiary/perks.json").then((res) => res.json()),
-  ]);
-  // 3. Store everything
-  Sources.attributes = attributes;
-  Sources.creatures = creatures;
-  Sources.perks = perks;
-  console.log("All sources loaded:", Sources);
-  // 4. Generate your first monster
-  generateMonster();
+  console.log("Artificer: Summoning sources...");
+  try {
+    const [creaturesRes, attributesRes, perksRes, booksRes] = await Promise.all(
+      [
+        fetch("/api/creatures"),
+        fetch("/Bestiary/attributes.json"),
+        fetch("/Bestiary/perks.json"),
+        fetch("/api/books"),
+      ]
+    );
+    if (!creaturesRes.ok || !attributesRes.ok || !perksRes.ok || !booksRes.ok) {
+      throw new Error("One or more source files failed to load.");
+    }
+    const [creatures, attributes, perks, books] = await Promise.all([
+      creaturesRes.json(),
+      attributesRes.json(),
+      perksRes.json(),
+      booksRes.json(),
+    ]);
+    if (
+      !Array.isArray(creatures) ||
+      !Array.isArray(attributes) ||
+      !Array.isArray(perks) ||
+      !Array.isArray(books)
+    ) {
+      throw new Error("Source data is malformed.");
+    }
+    Sources.creatures = creatures;
+    Sources.attributes = attributes;
+    Sources.perks = perks;
+    Sources.books = books;
+    console.log("Artificer: All sources loaded.");
+    generateMonster();
+  } catch (err) {
+    console.error("Artificer: Source loading failed!", err);
+    const nameOut = document.getElementById("name-out");
+    if (nameOut) {
+      nameOut.textContent = "Failed to load sources.";
+    }
+  }
 }
-//------------------------
-//Constants, Vairables & Lets
-const safe = (value) => (value != null ? datacleanse(value) : "-");
-const setSrc = (id, path) => $(id).setAttribute("src", path);
-const setText = (id, text) => ($(id).innerHTML = text);
+/*------------------------
+2. Core Helpers
+------------------------*/
 let Sources = {
   attributes: [],
   creatures: [],
   perks: [],
 };
-//------------------------
-//Element ID Helper
-const $ = (id) => document.getElementById(id);
-const el = (tag, className, html) => {
+//------
+const $ = (id) => {
+  const el = document.getElementById(id);
+  if (!el) console.warn(`Wizard: Element #${id} not found.`);
+  return el;
+};
+//------
+const el = (tag, classNames = [], text = "") => {
   const node = document.createElement(tag);
-  if (className) node.classList.add(className);
-  if (html) node.innerHTML = html;
+  if (typeof classNames === "string") {
+    node.classList.add(classNames);
+  } else if (Array.isArray(classNames)) {
+    node.classList.add(...classNames);
+  }
+  if (text) node.textContent = text;
   return node;
 };
-//------------------------
-//Randomizers
-function getRandomPerk(arr) {
+//------
+const setText = (id, text) => {
+  const el = $(id);
+  if (el) el.textContent = text;
+};
+//------
+const setSrc = (id, path) => {
+  const el = $(id);
+  if (el) el.src = path;
+};
+//------
+const safe = (value) => (value != null ? String(value) : "-");
+//------
+function applyTooltip(el, text) {
+  if (!el) return;
+  el.dataset.tooltip = text;
+  el.classList.add("data-tooltip");
+}
+//------
+function getBookBySourceCode(code) {
+  if (!Sources.books || !Array.isArray(Sources.books)) return null;
+  return Sources.books.find((b) => b.id === code) || null;
+}
+//------
+function applyValueHighlight(el, delta) {
+  if (!el) return;
+  if (delta > 0) el.classList.add("ability-point-increase");
+  else if (delta < 0) el.classList.add("ability-point-decrease");
+}
+function applyLabelHighlight(el, delta) {
+  if (!el) return;
+  if (delta > 0) el.classList.add("ability-increase");
+  else if (delta < 0) el.classList.add("ability-decrease");
+}
+function applyChangeHighlight(el) {
+  if (!el) return;
+  el.classList.add("ability-change", "ability-point-change");
+}
+/*------------------------
+3. Randomizers
+------------------------*/
+function getRandomItem(arr) {
+  if (!Array.isArray(arr) || arr.length === 0) return null;
   return arr[Math.floor(Math.random() * arr.length)];
 }
-function getRandomCreature(creatures) {
-  return creatures[Math.floor(Math.random() * creatures.length)];
-}
-//------------------------
-//Orchastrator
+/*------------------------
+4. Orchestrator
+------------------------*/
 function generateMonster() {
-  const attribute = getRandomPerk(Sources.attributes);
   //const creature = Sources.creatures.find((c) => c.name === "Gwen The Bard");
-  const creature = getRandomCreature(Sources.creatures);
-  const perk = getRandomPerk(Sources.perks);
+  const creature = getRandomItem(Sources.creatures);
+  const attribute = getRandomItem(Sources.attributes);
+  const perk = getRandomItem(Sources.perks);
   console.log("Picked:", {
     attribute: attribute,
     creature: creature,
@@ -95,7 +181,6 @@ function generateMonster() {
     attr: normalizeList(attribute.vulnerable),
     perk: normalizeList(perk.vulnerable),
     outId: "vulnerable-out",
-    rowId: "vulnerable-row",
     attrLabel: attribute.prefix,
     perkLabel: perk.name,
   });
@@ -105,7 +190,6 @@ function generateMonster() {
     attr: normalizeList(attribute.resist),
     perk: normalizeList(perk.resist),
     outId: "resist-out",
-    rowId: "resist-row",
     attrLabel: attribute.prefix,
     perkLabel: perk.name,
   });
@@ -115,7 +199,6 @@ function generateMonster() {
     attr: normalizeList(attribute.immune),
     perk: normalizeList(perk.immune),
     outId: "immune-out",
-    rowId: "immune-row",
     attrLabel: attribute.prefix,
     perkLabel: perk.name,
   });
@@ -125,7 +208,6 @@ function generateMonster() {
     attr: normalizeList(attribute.conditionImmune),
     perk: normalizeList(perk.conditionImmune),
     outId: "conditionImmune-out",
-    rowId: "conditionImmune-row",
     attrLabel: attribute.prefix,
     perkLabel: perk.name,
   });
@@ -138,13 +220,12 @@ function generateMonster() {
   //------
   renderReactions(creature);
   //------
-
-  document.getElementById("source-out").innerHTML =
-    creature.source.toUpperCase();
-
-  document.getElementById("page-out").innerHTML = "Page: " + creature.page;
-  //document.getElementById("source-out").classList.add(creature.source.toUpperCase());
-
+  $("source-out").innerHTML = creature.source.toUpperCase();
+  $("page-out").innerHTML = "Page: " + creature.page;
+  const book = getBookBySourceCode(creature.source);
+  if (book) {
+    applyTooltip($("source-container"), `${book.name}`);
+  }
   //------
   if (!attribute || !creature || !perk) {
     alert("Sources not loaded yet!");
@@ -161,10 +242,11 @@ function generateMonster() {
     theme: "light-border",
   });
 }
-//------------------------
-//Render Images, Perks, Name & Description
+/*------------------------
+5. High‑level Rendering Blocks
+------------------------*/
 function renderImageNameBlock(creature, attribute, perk) {
-  setSrc("CreatureImage", `Vault/Creatures/${creature.name}.webp`);
+  setSrc("creature-media-image", `Vault/Creatures/${creature.name}.webp`);
   setSrc("attribute-icon-out", `/Vault/Icons/Attribute/${attribute.name}.png`);
   setText("attribute-out", attribute.name);
   //------------------------
@@ -189,7 +271,6 @@ function renderImageNameBlock(creature, attribute, perk) {
   );
 }
 //------------------------
-//Check Alignment
 function checkalignment(alignment) {
   var checkalignment = "";
   var lookup = {
@@ -206,7 +287,6 @@ function checkalignment(alignment) {
   return checkalignment;
 }
 //------------------------
-//Alignment formatter
 function formatAlignment(a = []) {
   if (!a.length) return "Unaligned";
   if (a.includes("NY")) return "Any Non-Good Alignment";
@@ -217,14 +297,12 @@ function formatAlignment(a = []) {
   return `${type} ${cls}`.trim();
 }
 //------------------------
-//Render Alignment
 function renderAlignment(creature) {
   const alignment = formatAlignment(creature.alignment || []);
   $("alignment-out").innerHTML = alignment;
   $("alignment-out").classList.add(alignment.replace(/\s/g, ""));
 }
 //------------------------
-//Function Check Size
 function checksize(size) {
   var checksize = "";
   var lookup = {
@@ -238,8 +316,9 @@ function checksize(size) {
   checksize = lookup[size];
   return checksize;
 }
-//------------------------
-//Calculate stats with mods
+/*------------------------
+6. Stats & Core Mechanics
+------------------------*/
 function calculateFinalStats(creature, attribute, perk) {
   const stats = ["str", "dex", "con", "int", "wis", "cha"];
   const result = {};
@@ -257,7 +336,6 @@ function calculateFinalStats(creature, attribute, perk) {
   return result;
 }
 //------------------------
-//Stat Roll Checker
 function checkstatrole(modifier) {
   var output = Math.floor((modifier - 10) / 2);
   var symbol = "";
@@ -267,7 +345,6 @@ function checkstatrole(modifier) {
   return modifier + " (" + symbol + output + ")";
 }
 //------------------------
-//Add classes to stats
 function renderStatBlock(finalStats, creature, attribute, perk) {
   Object.entries(finalStats).forEach(([stat, data]) => {
     const valueEl = document.getElementById(`${stat.toUpperCase()}-out`);
@@ -275,98 +352,69 @@ function renderStatBlock(finalStats, creature, attribute, perk) {
     const containerEl = document.getElementById(
       `${stat.toUpperCase()}-Container`
     );
-    //------------------------
-    if (data.delta > 0) {
-      valueEl.classList.add("AbtlyPointIncrease");
-    } else if (data.delta < 0) {
-      valueEl.classList.add("AbtlyPointDecrease");
-    }
-    valueEl.innerHTML = checkstatrole(data.final);
-    //------------------------
-    if (labelEl) {
-      if (data.delta > 0) {
-        labelEl.classList.add("AbtlyIncrease");
-      } else if (data.delta < 0) {
-        labelEl.classList.add("AbtlyDecrease");
-      }
-    }
-    //------------------------
+    applyValueHighlight(valueEl, data.delta);
+    applyLabelHighlight(labelEl, data.delta);
+    valueEl.textContent = checkstatrole(data.final);
     if (data.delta !== 0) {
       const attrMod = attribute.statMods?.[stat] ?? 0;
       const perkMod = perk.statMods?.[stat] ?? 0;
-      containerEl.dataset.tooltip =
+      const tooltip =
         `${creature.name} (Base): ${data.base}\n` +
         `${attribute.prefix}: ${attrMod >= 0 ? "+" + attrMod : attrMod}\n` +
         `${perk.name}: ${perkMod >= 0 ? "+" + perkMod : perkMod}`;
-      containerEl.classList.add("data-tooltip"); // Add tooltip class
+      applyTooltip(containerEl, tooltip);
     }
   });
 }
-//------------------------
-//Hitpoints
-function renderHP(creature, attribute, perk) {
-  const hpEl = document.getElementById("hp-out"); // StatValue only
-  const rowEl = document.getElementById("hp-row");
-  const baseHP = creature.hp?.average ?? null;
-  if (!baseHP) {
-    hpEl.innerHTML = "N/A";
-    return;
-  }
-  const attrMult = attribute.hpMult ?? 1;
-  const perkMult = perk.hpMult ?? 1;
-  const finalHP = Math.round(baseHP * attrMult * perkMult);
-  hpEl.innerHTML = finalHP;
-  // Determine delta
-  const delta = finalHP - baseHP;
-  // VALUE COLOURING
-  if (delta > 0) {
-    hpEl.classList.add("AbtlyPointIncrease", "AbtlyIncrease");
-  } else if (delta < 0) {
-    hpEl.classList.add("AbtlyPointDecrease", "AbtlyDecrease");
-  }
-  // TOOLTIP — ONLY IF THERE IS A CHANGE
-  if (delta !== 0) {
-    rowEl.dataset.tooltip =
-      `${creature.name} (Base): ${baseHP}\n` +
-      `${attribute.name}: x${attrMult}\n` +
-      `${perk.name}: x${perkMult}`;
-    rowEl.classList.add("data-tooltip");
-  }
-}
-//------------------------
-//Armour Class
+/*------------------------
+7. Defence Block
+------------------------*/
 function renderAC(creature, attribute, perk) {
   const acEl = document.getElementById("ac-out");
-  const rowEl = document.getElementById("ac-row"); // Tooltip host
-  // Extract base AC safely
   const baseAC = creature.ac?.[0]?.ac ?? creature.ac?.[0] ?? null;
   if (!baseAC) {
-    acEl.innerHTML = "-";
+    acEl.textContent = "-";
     return;
   }
   const attrMod = attribute.acMod ?? 0;
   const perkMod = perk.acMod ?? 0;
   const finalAC = baseAC + attrMod + perkMod;
-  acEl.innerHTML = finalAC;
-  // Determine delta
   const delta = finalAC - baseAC;
-  // VALUE COLOURING
-  if (delta > 0) {
-    acEl.classList.add("AbtlyPointIncrease", "AbtlyIncrease");
-  } else if (delta < 0) {
-    acEl.classList.add("AbtlyPointDecrease", "AbtlyDecrease");
-  }
-  // TOOLTIP — ONLY IF THERE IS A CHANGE
+  acEl.textContent = finalAC;
+  applyValueHighlight(acEl, delta);
+  applyLabelHighlight(acEl, delta);
   if (delta !== 0) {
-    rowEl.dataset.tooltip =
+    const tooltip =
       `${creature.name} (Base): ${baseAC}\n` +
       `${attribute.name}: ${attrMod >= 0 ? "+" + attrMod : attrMod}\n` +
       `${perk.name}: ${perkMod >= 0 ? "+" + perkMod : perkMod}`;
-    rowEl.classList.add("data-tooltip");
+    applyTooltip(acEl, tooltip);
   }
 }
 //------------------------
-// Speed Normaliser
+function renderHP(creature, attribute, perk) {
+  const hpEl = document.getElementById("hp-out");
+  const baseHP = creature.hp?.average ?? null;
+  if (!baseHP) {
+    hpEl.textContent = "N/A";
+    return;
+  }
+  const attrMult = attribute.hpMult ?? 1;
+  const perkMult = perk.hpMult ?? 1;
+  const finalHP = Math.round(baseHP * attrMult * perkMult);
+  const delta = finalHP - baseHP;
+  hpEl.textContent = finalHP;
+  applyValueHighlight(hpEl, delta);
+  applyLabelHighlight(hpEl, delta);
+  if (delta !== 0) {
+    const tooltip =
+      `${creature.name} (Base): ${baseHP}\n` +
+      `${attribute.name}: x${attrMult}\n` +
+      `${perk.name}: x${perkMult}`;
+    applyTooltip(hpEl, tooltip);
+  }
+}
+//------------------------
 function norm(val) {
   if (typeof val === "number") return { number: val, condition: null };
   if (val && typeof val === "object") {
@@ -375,7 +423,6 @@ function norm(val) {
   return { number: 0, condition: null };
 }
 //------------------------
-// Speed formatter
 function formatSpeed(speed) {
   if (!speed) return "-";
   const parts = [];
@@ -392,10 +439,8 @@ function formatSpeed(speed) {
   return parts.join(", ");
 }
 //------------------------
-// Speed Calculator
 function renderSpeed(creature, attribute, perk) {
   const outEl = document.getElementById("speed-out");
-  const rowEl = document.getElementById("speed-row");
   const base = creature.speed ?? {};
   const attr = attribute.speedMods ?? {};
   const perkMods = perk.speedMods ?? {};
@@ -414,13 +459,10 @@ function renderSpeed(creature, attribute, perk) {
     }
     if (a !== 0 || p !== 0) changed = true;
   });
-  // preserve hover flag
   if (base.canHover) final.canHover = true;
-  // render
-  outEl.innerHTML = formatSpeed(final);
-  // tooltip
+  outEl.textContent = formatSpeed(final);
   if (changed) {
-    outEl.classList.add("AbtlyChange", "AbtlyPointChange");
+    applyChangeHighlight(outEl);
     let tooltip = `Movement:\nBase + ${attribute.prefix} + ${perk.name}\n\n`;
     types.forEach((type) => {
       const b = norm(base[type]);
@@ -433,12 +475,10 @@ function renderSpeed(creature, attribute, perk) {
         tooltip += line + "\n";
       }
     });
-    rowEl.dataset.tooltip = tooltip.trim();
-    rowEl.classList.add("data-tooltip");
+    applyTooltip(outEl, tooltip.trim());
   }
 }
 //------------------------
-// Skills Calculator
 function calculateFinalSkills(creature, attribute, perk) {
   const baseSkills = creature.skill || {};
   const attrMods = attribute.skillMods || {};
@@ -455,7 +495,6 @@ function calculateFinalSkills(creature, attribute, perk) {
     const a = attrMods[skill] ?? 0;
     const p = perkMods[skill] ?? 0;
     const total = baseVal + a + p;
-    // Only include non-zero totals
     if (total !== 0) {
       final[skill] = (total >= 0 ? "+" : "") + total;
       breakdown[skill] = { base: baseVal, attr: a, perk: p, total };
@@ -464,38 +503,33 @@ function calculateFinalSkills(creature, attribute, perk) {
   return { final, breakdown };
 }
 //------------------------
-// Render Skills
 function renderSkills(creature, attribute, perk) {
   const outEl = document.getElementById("skills-out");
-  const rowEl = document.getElementById("skills-row");
   const { final, breakdown } = calculateFinalSkills(creature, attribute, perk);
-  // Render visible skills
   const entries = Object.entries(final)
     .map(([skill, value]) => `${skill}: ${value}`)
     .join(", ");
-  outEl.innerHTML = entries || "-";
-  // Tooltip logic
+  outEl.textContent = entries || "-";
   const changed = Object.values(breakdown).some(
     (b) => b.attr !== 0 || b.perk !== 0
   );
   if (changed) {
-    outEl.classList.add("AbtlyChange", "AbtlyPointChange");
+    applyChangeHighlight(outEl);
     let tooltip = `Skills:\nBase + ${attribute.prefix} + ${perk.name}\n\n`;
     Object.entries(breakdown).forEach(([skill, b]) => {
       tooltip += `${skill}: ${b.total} (${b.base} + ${b.attr} + ${b.perk})\n`;
     });
-    rowEl.dataset.tooltip = tooltip.trim();
-    rowEl.classList.add("data-tooltip");
+    applyTooltip(outEl, tooltip.trim());
   }
 }
-//------------------------
-// MERGE LISTS
+/*------------------------
+8. List Utilities
+------------------------*/
 function mergeListString(base = [], attr = [], perk = []) {
   const merged = new Set([...base, ...attr, ...perk]);
   return Array.from(merged).sort();
 }
 //------------------------
-// NORMALIZE LIST TO FLAT STRING ARRAY
 function normalizeList(list) {
   if (!Array.isArray(list)) return [];
   const out = [];
@@ -518,34 +552,31 @@ function normalizeList(list) {
   return out;
 }
 //------------------------
-// RENDER LIST (GENERIC)
 function renderList({
   base = [],
   attr = [],
   perk = [],
   outId,
-  rowId,
   attrLabel,
   perkLabel,
 }) {
   const outEl = document.getElementById(outId);
-  const rowEl = document.getElementById(rowId);
   const finalList = mergeListString(base, attr, perk);
-  outEl.innerHTML = finalList.length > 0 ? finalList.join(", ") : "-";
+  outEl.textContent = finalList.length > 0 ? finalList.join(", ") : "-";
   const changed =
     finalList.length !== base.length ||
     !finalList.every((v) => base.includes(v));
   if (changed) {
-    outEl.classList.add("AbtlyPointIncrease", "AbtlyIncrease");
+    applyChangeHighlight(outEl);
     let tooltip = "Changes:\n";
     if (attr.length > 0) tooltip += `${attrLabel}: +${attr.join(", ")}\n`;
     if (perk.length > 0) tooltip += `${perkLabel}: +${perk.join(", ")}\n`;
-    rowEl.dataset.tooltip = tooltip.trim();
-    rowEl.classList.add("data-tooltip");
+    applyTooltip(outEl, tooltip.trim());
   }
 }
-//------------------------
-// Collect Traits
+/*------------------------
+9. Traits, Actions & Reactions
+------------------------*/
 function collectAllTraits(creature, attribute, perk) {
   const creatureTraits = creature.trait || [];
   const attributeTraits = attribute.traits || [];
@@ -557,39 +588,6 @@ function collectAllTraits(creature, attribute, perk) {
   ];
 }
 //------------------------
-// Render Traits
-function renderTraits(creature, attribute, perk) {
-  const traitcontainer = $("traits-container");
-  traitcontainer.innerHTML = "";
-  const traits = collectAllTraits(creature, attribute, perk);
-  if (!traits.length) {
-    traitcontainer.innerHTML = "<p>No traits.</p>";
-    traitcontainer.classList.add("creatureBlock");
-    return;
-  }
-  traits.forEach((trait) => {
-    const wrapper = el("div", "BlockItem");
-    // Title element
-    const title = el("span", "creatureBold", trait.name);
-    // If this trait comes from attribute or perk, mark it
-    if (trait.source !== "Creature") {
-      title.classList.add("AbtlyPointIncrease", "AbtlyIncrease");
-      title.dataset.tooltip = `Source: ${trait.source}`;
-      title.classList.add("data-tooltip");
-    }
-    // Description
-    const desc = el(
-      "span",
-      "creatureBlock",
-      trait.entries.map((entry) => datacleanse(entry)).join("")
-    );
-    wrapper.appendChild(title);
-    wrapper.appendChild(desc);
-    traitcontainer.appendChild(wrapper);
-  });
-}
-//------------------------
-// Collect All Actions
 function collectAllActions(creature, attribute, perk) {
   const creatureActions = creature.action || [];
   const attributeActions = attribute.actions || [];
@@ -601,179 +599,128 @@ function collectAllActions(creature, attribute, perk) {
   ];
 }
 //------------------------
-// RENDER ACTIONS
-function renderActions(creature, attribute, perk) {
-  const actioncontainer = $("actions-container");
-  actioncontainer.innerHTML = "";
-  const actions = collectAllActions(creature, attribute, perk);
-  if (!actions.length) {
-    actioncontainer.innerHTML = "<p>No actions.</p>";
-    actioncontainer.classList.add("creatureBlock");
+function renderEntryList(containerId, entries, emptyText) {
+  const container = $(containerId);
+  container.innerHTML = "";
+  if (!entries.length) {
+    container.appendChild(el("div", "category-body", emptyText));
     return;
   }
-  actions.forEach((action) => {
-    const wrapper = el("div", "BlockItem");
-    // Title
-    const title = el("span", "creatureBold", datacleanse(action.name));
-    // Highlight + tooltip for attribute/perk actions
-    if (action.source !== "Creature") {
-      title.classList.add("AbtlyPointIncrease", "AbtlyIncrease");
-      title.dataset.tooltip = `Source: ${action.source}`;
-      title.classList.add("data-tooltip");
+  entries.forEach((entry) => {
+    const title = el("div", "category-header", datacleanse(entry.name));
+    if (entry.source && entry.source !== "Creature") {
+      applyChangeHighlight(title);
+      applyTooltip(title, `Source: ${entry.source}`);
     }
-    // Description
     const desc = el(
-      "span",
-      "creatureBlock",
-      action.entries.map((entry) => datacleanse(entry)).join("")
+      "div",
+      "category-body",
+      entry.entries.map((e) => datacleanse(e)).join("")
     );
-    wrapper.appendChild(title);
-    wrapper.appendChild(desc);
-    actioncontainer.appendChild(wrapper);
+    container.appendChild(title);
+    container.appendChild(desc);
   });
 }
 //------------------------
-// Collect Spells
+function renderTraits(creature, attribute, perk) {
+  const traits = collectAllTraits(creature, attribute, perk);
+  renderEntryList("traits-container", traits, "No traits.");
+}
+//------------------------
+function renderActions(creature, attribute, perk) {
+  const actions = collectAllActions(creature, attribute, perk);
+  renderEntryList("actions-container", actions, "No actions.");
+}
+//------------------------
+function renderReactions(creature) {
+  const reactions = creature.reaction || [];
+  renderEntryList("reactions-container", reactions, "No reactions.");
+}
+/*------------------------
+10. Spellcasting
+------------------------*/
 function collectSpellcasting(creature) {
   return creature.spellcasting || [];
 }
 //------------------------
-// RENDER Spells
 function renderSpellcasting(creature) {
   const container = $("spellcasting-container");
   container.innerHTML = "";
-
   const blocks = creature.spellcasting || [];
   if (!blocks.length) {
-    container.innerHTML = "<p>No spellcasting.</p>";
+    container.appendChild(el("div", "category-body", "No spellcasting."));
     return;
   }
-
   blocks.forEach((block) => {
-    // -----------------------------
-    // 1. HEADER BLOCK
-    // -----------------------------
-    const headerBlock = el("div", "BlockItem");
-
-    const title = el("span", "creatureBold", block.name + ".");
-    headerBlock.appendChild(title);
-
+    // -----------------------------------
+    // 1. SPELLCASTING HEADER
+    // -----------------------------------
+    const title = el("div", "category-header", datacleanse(block.name) + ".");
+    container.appendChild(title);
     if (block.headerEntries) {
       const headerText = el(
-        "span",
-        "creatureBlock",
+        "div",
+        "category-body",
         block.headerEntries.map((e) => datacleanse(e)).join(" ")
       );
-      headerBlock.appendChild(headerText);
+      container.appendChild(headerText);
     }
-
-    container.appendChild(headerBlock);
-
-    // -----------------------------
+    // -----------------------------------
     // 2. INNATE: AT WILL
-    // -----------------------------
+    // -----------------------------------
     if (block.will) {
-      const willBlock = el("div", "BlockItem");
-
-      const label = el("span", "creatureBold", checkheader("atWill"));
+      const label = el("div", "category-header", checkheader("atWill"));
       const list = el(
-        "span",
-        "creatureBlock",
+        "div",
+        "category-body",
         block.will.map((s) => datacleanse(s)).join(", ")
       );
-
-      willBlock.appendChild(label);
-      willBlock.appendChild(list);
-      container.appendChild(willBlock);
+      container.appendChild(label);
+      container.appendChild(list);
     }
-
-    // -----------------------------
+    // -----------------------------------
     // 3. INNATE: DAILY USES
-    // -----------------------------
+    // -----------------------------------
     if (block.daily) {
       Object.entries(block.daily).forEach(([key, spells]) => {
-        const dailyBlock = el("div", "BlockItem");
-
-        const label = el("span", "creatureBold", checkheader(`daily${key}`));
+        const label = el("div", "category-header", checkheader(`daily${key}`));
         const list = el(
-          "span",
-          "creatureBlock",
+          "div",
+          "category-body",
           spells.map((s) => datacleanse(s)).join(", ")
         );
-
-        dailyBlock.appendChild(label);
-        dailyBlock.appendChild(list);
-        container.appendChild(dailyBlock);
+        container.appendChild(label);
+        container.appendChild(list);
       });
     }
-
-    // -----------------------------
+    // -----------------------------------
     // 4. PREPARED SPELLCASTING
-    // -----------------------------
+    // -----------------------------------
     if (block.spells) {
       Object.entries(block.spells).forEach(([level, data]) => {
-        const spellBlock = el("div", "BlockItem");
-
         const headerKey = level === "0" ? "lvl0slots" : `lvl${level}slots`;
-
         let labelText = checkheader(headerKey);
-
         if (data.slots != null) {
-          labelText = `${labelText}${data.slots} slots):`;
+          labelText = `${labelText}${data.slots} slots:`;
         }
-
-        const label = el("span", "creatureBold", labelText);
+        const label = el("div", "category-header", labelText);
         const list = el(
-          "span",
-          "creatureBlock",
+          "div",
+          "category-body",
           data.spells.map((s) => datacleanse(s)).join(", ")
         );
-
-        spellBlock.appendChild(label);
-        spellBlock.appendChild(list);
-        container.appendChild(spellBlock);
+        container.appendChild(label);
+        container.appendChild(list);
       });
     }
   });
 }
-//------------------------
-// RENDER Reactions
-
-function renderReactions(creature) {
-  const container = $("reactions-container");
-  container.innerHTML = "";
-
-  const reactions = creature.reaction || [];
-
-  if (!reactions.length) {
-    container.innerHTML = "<p>No reactions.</p>";
-    container.classList.add("creatureBlock");
-    return;
-  }
-
-  reactions.forEach((reaction) => {
-    const wrapper = el("div", "BlockItem");
-
-    // Title
-    const title = el("span", "creatureBold", datacleanse(reaction.name));
-
-    // Description
-    const desc = el(
-      "span",
-      "creatureBlock",
-      reaction.entries.map((e) => datacleanse(e)).join("")
-    );
-
-    wrapper.appendChild(title);
-    wrapper.appendChild(desc);
-
-    container.appendChild(wrapper);
-  });
-}
-//------------------------
-//Data Clenser
+/*------------------------
+11. Data Cleansing & Header Helpers
+------------------------*/
 function datacleanse(rawdata) {
-  var datacleanse = JSON.stringify(rawdata)
+  let text = typeof rawdata === "string" ? rawdata : JSON.stringify(rawdata);
+  text = text
     //.replace(/\\/g, "")
     //.replace(/\{@scaledamage.*\|.*\|/g, "")
     .replace(/\{@quickref /g, "") //Related to quick ref
@@ -833,10 +780,9 @@ function datacleanse(rawdata) {
     .replace(/\}/g, "") //Trailing Curled Brace Removal
     .replace(/,/g, ", ") //Add space after comma
     .replace(/"/g, ""); //Remove Quotes around row
-  return datacleanse;
+  return text;
 }
 //------------------------
-//Function Check Header Row
 function checkheader(header) {
   var headerout = "";
   var lookup = {
