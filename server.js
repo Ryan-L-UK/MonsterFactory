@@ -5,12 +5,19 @@ const fs = require("fs");
 const app = express();
 const port = 6969;
 
+// Serve robot.txt
+app.get("/robots.txt", (req, res) => {
+  res.type("text/plain");
+  res.send(
+    "User-agent: *\nAllow: /\nSitemap: https://ryanfuturistics.uk/sitemap.xml"
+  );
+});
+
 // Serve static folders with fantasy names
-app.use("/Armoury", express.static(path.join(__dirname, "Armoury")));
-app.use("/Bestiary", express.static(path.join(__dirname, "Bestiary")));
-app.use("/Codex", express.static(path.join(__dirname, "Codex")));
-app.use("/Spellbook", express.static(path.join(__dirname, "Spellbook")));
-app.use("/Vault", express.static(path.join(__dirname, "Vault")));
+app.use("/UI", express.static(path.join(__dirname, "UI")));
+app.use("/Data", express.static(path.join(__dirname, "Data")));
+app.use("/Engine", express.static(path.join(__dirname, "Engine")));
+app.use("/Assets", express.static(path.join(__dirname, "Assets")));
 
 // ---------------------------------------------------------
 // Load and merge all bestiary files ONCE at server startup
@@ -28,11 +35,8 @@ function getCR(monster) {
 }
 
 function loadBestiary() {
-  const indexPath = path.join(__dirname, "Bestiary/bestiary-index.json");
-  const exclusionPath = path.join(
-    __dirname,
-    "Bestiary/AdminExclusionList.json"
-  );
+  const indexPath = path.join(__dirname, "Data/bestiary-index.json");
+  const exclusionPath = path.join(__dirname, "Data/AdminExclusionList.json");
 
   const index = JSON.parse(fs.readFileSync(indexPath, "utf8"));
 
@@ -48,7 +52,7 @@ function loadBestiary() {
   const allowedCR = new Set(["0", "1/8", "1/4", "1/2", "1", "2", "3", "4"]);
 
   mergedCreatures = index.files.flatMap((file) => {
-    const filePath = path.join(__dirname, "Bestiary/handbooks", file);
+    const filePath = path.join(__dirname, "Data/handbooks", file);
     const data = JSON.parse(fs.readFileSync(filePath, "utf8"));
     const monsters = data.monster || [];
 
@@ -80,8 +84,8 @@ loadBestiary();
 let mergedBooks = [];
 
 function loadBooks() {
-  const autoPath = path.join(__dirname, "Bestiary/book-ids.json");
-  const manualPath = path.join(__dirname, "Bestiary/book-ids-manual.json");
+  const autoPath = path.join(__dirname, "Data/book-ids.json");
+  const manualPath = path.join(__dirname, "Data/book-ids-manual.json");
 
   const auto = JSON.parse(fs.readFileSync(autoPath, "utf8"));
   let manual = [];
@@ -154,6 +158,9 @@ app.get("/api/books", (req, res) => {
 // Default route → index.html at root
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "Index.html"));
+});
+app.use((req, res) => {
+  res.status(404).sendFile(path.join(__dirname, "404.html"));
 });
 
 app.listen(port, () => {

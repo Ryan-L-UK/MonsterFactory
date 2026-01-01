@@ -1,0 +1,129 @@
+/*-----------------------------------------------------------*/
+/* Mobile-first Menu */
+/*-----------------------------------------------------------*/
+.menu-background {
+  background-image: url(/UI/Components/MenuBackingBlue.png);
+  background-color: #272e37;
+  background-position: top;
+  background-repeat: repeat;
+  width: 100%;
+}
+.menu-container {
+  height: 106px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 30px;
+  position: relative;
+  z-index: 99;
+  max-width: 1200px;
+  margin: auto;
+}
+.menu-logo-img {
+  height: 106px;
+  padding-top: 6px;
+}
+.menu-logo-img:hover {
+  background-image: radial-gradient(
+    circle,
+    rgb(8, 118, 32) 20%,
+    rgba(9, 8, 9, 0) 70%
+  );
+}
+.menu-mobile-buttons {
+  display: flex;
+  gap: 0.5rem;
+}
+.menu-hamburger-btn,
+.menu-refresh-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  font-size: 32px;
+  color: rgb(255, 252, 239);
+  background-color: #0b1412;
+  border: 1px solid rgb(80, 80, 80);
+  border-radius: 0.5rem;
+  text-decoration: none;
+  cursor: pointer;
+}
+.menu-hamburger-btn:hover,
+.menu-refresh-btn:hover {
+  text-shadow: 0 0 20px rgb(13, 172, 45);
+  color: #9fffa9;
+}
+.menu-nav {
+  display: none;
+  flex-direction: column;
+  align-items: flex-start;
+  background-color: #050a09;
+  position: absolute;
+  top: 87px;
+  right: 0;
+  width: 100%;
+  padding: 10px 0;
+  border-left: 1px solid rgb(80, 80, 80);
+  border-bottom: 1px solid rgb(80, 80, 80);
+  z-index: 999;
+  font-family: CinzelDecorative;
+}
+.menu-nav.open {
+  display: flex;
+}
+.menu-item {
+  padding: 14px 20px;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: rgb(255, 252, 239);
+  text-decoration: none;
+  border: 0;
+  outline: 0;
+  margin: 0;
+  text-shadow: none;
+  transition: text-shadow 0.15s ease-in-out;
+}
+.menu-item:hover {
+  text-shadow: 0 0 20px rgb(13, 172, 45);
+  color: #9fffa9;
+}
+.menu-item::after {
+  content: "\25c8";
+  transform: rotate(180deg);
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 19px;
+  margin-left: 4px;
+  margin-right: 7px;
+  margin-top: -2px;
+  color: rgb(255, 252, 239);
+}
+.menu-divider {
+  height: 2px;
+  background-color: rgb(80, 80, 80);
+  box-shadow: 0 -1px 0 rgb(100, 100, 100), 0 1px 0 rgb(60, 60, 60);
+}
+/*-----------------------------------------------------------*/
+/* Desktop Overrides */
+/*-----------------------------------------------------------*/
+@media (min-width: 769px) {
+  .menu-mobile-buttons {
+    display: none;
+  }
+  .menu-nav {
+    display: flex;
+    position: static;
+    flex-direction: row;
+    background: none;
+    border: none;
+    width: auto;
+    padding: 0;
+    align-items: center;
+  }
+  .menu-item {
+    padding: 20px 8px;
+    font-size: 1rem;
+  }
+}

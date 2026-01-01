@@ -10,17 +10,54 @@
       name="description"
       content="Enter the MonsterFactory: a forge for handcrafted and procedurally generated D&D creatures. Create unique monsters, explore curated designs, and fuel your campaigns with fresh, lore-rich encounters."
     />
+    <!-- OpenGraph -->
+    <meta property="og:title" content="The Monster Factory" />
+    <meta
+      property="og:description"
+      content="Generate handcrafted and procedurally built D&D monsters with unique traits, origins, and lore."
+    />
+    <meta property="og:url" content="https://ryanfuturistics.uk/" />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:image"
+      content="https://ryanfuturistics.uk/UI/Components/Logos/MonsterFactoryLogo.png"
+    />
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="The Monster Factory" />
+    <meta
+      name="twitter:description"
+      content="A forge for handcrafted and procedurally generated D&D creatures."
+    />
+    <meta
+      name="twitter:image"
+      content="https://ryanfuturistics.uk/UI/Components/Logos/MonsterFactoryLogo.png"
+    />
     <!-- Favicon -->
     <link
       rel="shortcut icon"
       type="image/png"
-      href="Codex/Logos/MonsterFactoryLogo.png"
+      href="UI/Components/Logos/MonsterFactoryLogo.png"
     />
+    <!-- Preload -->
+    <link rel="preload" href="/UI/Styles/FontPackages.css" as="style" />
     <!-- Stylesheets -->
-    <link rel="stylesheet" href="Armoury/Styles/CoreStyling.css" />
-    <link rel="stylesheet" href="Armoury/Styles/Sources.css" />
-    <link rel="stylesheet" href="/Armoury/Styles/FontPackages.css" />
-    <link rel="stylesheet" href="/Spellbook/lib/tippy/tippy.css" />
+    <link rel="stylesheet" href="/UI/Styles/CoreStyling.css" />
+    <link rel="stylesheet" href="/UI/Styles/Sources.css" />
+    <link rel="stylesheet" href="/UI/Styles/FontPackages.css" />
+    <link rel="stylesheet" href="/Engine/lib/tippy/tippy.css" />
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "The Monster Factory",
+        "url": "https://ryanfuturistics.uk/",
+        "applicationCategory": "Game",
+        "description": "A forge for handcrafted and procedurally generated D&D creatures.",
+        "operatingSystem": "All"
+      }
+    </script>
   </head>
   <body>
     <!---------------------------------------->
@@ -29,195 +66,201 @@
     <br />
     <!---------------------------------------->
     <!--Creature Icons & Picture-->
-    <section class="creature-media">
-      <img
-        src=""
-        class="creature-media-image"
-        id="creature-media-image"
-        alt="Illustration of the creature"
-      />
-      <div class="creature-attribute">
-        <img src="" class="creature-media-icon" id="attribute-icon-out" />
-        <div class="creature-media-header"><div id="attribute-out"></div></div>
-      </div>
-      <div class="creature-type">
-        <img src="" class="creature-media-icon" id="type-icon-out" />
-        <div class="creature-media-header">
-          <div id="type-out"></div>
-          <div id="tags-out"></div>
+    <div id="export-container">
+      <section class="creature-media">
+        <img
+          src=""
+          class="creature-media-image"
+          id="creature-media-image"
+          alt="Illustration of the creature"
+        />
+        <div class="creature-attribute">
+          <img src="" class="creature-media-icon" id="attribute-icon-out" />
+          <div class="creature-media-header">
+            <div id="attribute-out"></div>
+          </div>
+        </div>
+        <div class="creature-type">
+          <img src="" class="creature-media-icon" id="type-icon-out" />
+          <div class="creature-media-header">
+            <div id="type-out"></div>
+            <div id="tags-out"></div>
+          </div>
+        </div>
+        <div class="creature-perk">
+          <img src="" class="creature-media-icon" id="perk-icon-out" />
+          <div class="creature-media-header"><div id="perk-out"></div></div>
+        </div>
+      </section>
+      <!---------------------------------------->
+      <!--Creature Name & Description-->
+      <section class="creature-header">
+        <h1 class="creature-name" id="name-out"></h1>
+        <p class="creature-description" id="desc-out"></p>
+        <p class="creature-subtitle">
+          <span id="alignment-out" class="creature-alignment"></span>
+          <span id="size-out" class="creature-size"></span>
+        </p>
+      </section>
+      <!---------------------------------------->
+      <!--Creature Stat Blocks-->
+      <section class="abilities-grid">
+        <div class="card stat-container" id="STR-Container">
+          <div class="corner tl"></div>
+          <div class="corner tr"></div>
+          <div class="stat-label" id="STR-label">Str</div>
+          <div class="stat-value" id="STR-out"></div>
+          <div class="corner bl"></div>
+          <div class="corner br"></div>
+        </div>
+        <div class="card stat-container" id="DEX-Container">
+          <div class="corner tl"></div>
+          <div class="corner tr"></div>
+          <div class="stat-label" id="DEX-label">Dex</div>
+          <div class="stat-value" id="DEX-out"></div>
+          <div class="corner bl"></div>
+          <div class="corner br"></div>
+        </div>
+        <div class="card stat-container" id="CON-Container">
+          <div class="corner tl"></div>
+          <div class="corner tr"></div>
+          <div class="stat-label" id="CON-label">Con</div>
+          <div class="stat-value" id="CON-out"></div>
+          <div class="corner bl"></div>
+          <div class="corner br"></div>
+        </div>
+        <div class="card stat-container" id="INT-Container">
+          <div class="corner tl"></div>
+          <div class="corner tr"></div>
+          <div class="stat-label" id="INT-label">Int</div>
+          <div class="stat-value" id="INT-out"></div>
+          <div class="corner bl"></div>
+          <div class="corner br"></div>
+        </div>
+        <div class="card stat-container" id="WIS-Container">
+          <div class="corner tl"></div>
+          <div class="corner tr"></div>
+          <div class="stat-label" id="WIS-label">Wis</div>
+          <div class="stat-value" id="WIS-out"></div>
+          <div class="corner bl"></div>
+          <div class="corner br"></div>
+        </div>
+        <div class="card stat-container" id="CHA-Container">
+          <div class="corner tl"></div>
+          <div class="corner tr"></div>
+          <div class="stat-label" id="CHA-label">Cha</div>
+          <div class="stat-value" id="CHA-out"></div>
+          <div class="corner bl"></div>
+          <div class="corner br"></div>
+        </div>
+      </section>
+      <!---------------------------------------->
+      <!--Info Cards: Defence & Proficiences-->
+      <div class="info-grid defence">
+        <div class="card info-container">
+          <div class="corner tl"></div>
+          <div class="corner tr"></div>
+          <div class="section-title">Defence</div>
+          <div class="category-header">Armour Class:</div>
+          <div class="category-body" id="ac-out"></div>
+          <div class="category-header">Hit Points:</div>
+          <div class="category-body" id="hp-out"></div>
+          <div class="category-header">Speed:</div>
+          <div class="category-body" id="speed-out"></div>
+          <div class="category-header">Challenge Rating (Base):</div>
+          <div class="category-body" id="cr-out"></div>
+          <div class="corner bl"></div>
+          <div class="corner br"></div>
+        </div>
+        <!---------------------------------------->
+        <div class="card info-container">
+          <div class="corner tl"></div>
+          <div class="corner tr"></div>
+          <div class="section-title">Proficiencies & Senses</div>
+          <div class="category-header">Saving Throws:</div>
+          <div class="category-body" id="saves-out"></div>
+          <div class="category-header">Skills:</div>
+          <div class="category-body" id="skills-out"></div>
+          <div class="category-header">Senses:</div>
+          <div class="category-body" id="senses-out"></div>
+          <div class="corner bl"></div>
+          <div class="corner br"></div>
         </div>
       </div>
-      <div class="creature-perk">
-        <img src="" class="creature-media-icon" id="perk-icon-out" />
-        <div class="creature-media-header"><div id="perk-out"></div></div>
-      </div>
-    </section>
-    <!---------------------------------------->
-    <!--Creature Name & Description-->
-    <section class="creature-header">
-      <h1 class="creature-name" id="name-out"></h1>
-      <p class="creature-description" id="desc-out"></p>
-      <p class="creature-subtitle">
-        <span id="alignment-out" class="creature-alignment"></span>
-        <span id="size-out" class="creature-size"></span>
-      </p>
-    </section>
-    <!---------------------------------------->
-    <!--Creature Stat Blocks-->
-    <section class="abilities-grid">
-      <div class="card stat-container" id="STR-Container">
-        <div class="corner tl"></div>
-        <div class="corner tr"></div>
-        <div class="stat-label" id="STR-label">Str</div>
-        <div class="stat-value" id="STR-out"></div>
-        <div class="corner bl"></div>
-        <div class="corner br"></div>
-      </div>
-      <div class="card stat-container" id="DEX-Container">
-        <div class="corner tl"></div>
-        <div class="corner tr"></div>
-        <div class="stat-label" id="DEX-label">Dex</div>
-        <div class="stat-value" id="DEX-out"></div>
-        <div class="corner bl"></div>
-        <div class="corner br"></div>
-      </div>
-      <div class="card stat-container" id="CON-Container">
-        <div class="corner tl"></div>
-        <div class="corner tr"></div>
-        <div class="stat-label" id="CON-label">Con</div>
-        <div class="stat-value" id="CON-out"></div>
-        <div class="corner bl"></div>
-        <div class="corner br"></div>
-      </div>
-      <div class="card stat-container" id="INT-Container">
-        <div class="corner tl"></div>
-        <div class="corner tr"></div>
-        <div class="stat-label" id="INT-label">Int</div>
-        <div class="stat-value" id="INT-out"></div>
-        <div class="corner bl"></div>
-        <div class="corner br"></div>
-      </div>
-      <div class="card stat-container" id="WIS-Container">
-        <div class="corner tl"></div>
-        <div class="corner tr"></div>
-        <div class="stat-label" id="WIS-label">Wis</div>
-        <div class="stat-value" id="WIS-out"></div>
-        <div class="corner bl"></div>
-        <div class="corner br"></div>
-      </div>
-      <div class="card stat-container" id="CHA-Container">
-        <div class="corner tl"></div>
-        <div class="corner tr"></div>
-        <div class="stat-label" id="CHA-label">Cha</div>
-        <div class="stat-value" id="CHA-out"></div>
-        <div class="corner bl"></div>
-        <div class="corner br"></div>
-      </div>
-    </section>
-    <!---------------------------------------->
-    <!--Info Cards: Defence & Proficiences-->
-    <div class="info-grid defence">
-      <div class="card info-container">
-        <div class="corner tl"></div>
-        <div class="corner tr"></div>
-        <div class="section-title">Defence</div>
-        <div class="category-header">Armour Class:</div>
-        <div class="category-body" id="ac-out"></div>
-        <div class="category-header">Hit Points:</div>
-        <div class="category-body" id="hp-out"></div>
-        <div class="category-header">Speed:</div>
-        <div class="category-body" id="speed-out"></div>
-        <div class="corner bl"></div>
-        <div class="corner br"></div>
+      <!---------------------------------------->
+      <!--Info Cards: Charactistics-->
+      <div class="info-grid">
+        <div class="card info-container full">
+          <div class="corner tl"></div>
+          <div class="corner tr"></div>
+          <div class="section-title">Characteristics</div>
+          <div class="category-header">Vulnerabilities:</div>
+          <div class="category-body" id="vulnerable-out"></div>
+          <div class="category-header">Damage Resistances:</div>
+          <div class="category-body" id="resist-out"></div>
+          <div class="category-header">Damage Immunities:</div>
+          <div class="category-body" id="immune-out"></div>
+          <div class="category-header">Condition Immunities:</div>
+          <div class="category-body" id="conditionImmune-out"></div>
+          <div class="category-header">Languages:</div>
+          <div class="category-body" id="languages-out"></div>
+          <div class="corner bl"></div>
+          <div class="corner br"></div>
+        </div>
       </div>
       <!---------------------------------------->
-      <div class="card info-container">
-        <div class="corner tl"></div>
-        <div class="corner tr"></div>
-        <div class="section-title">Proficiencies & Senses</div>
-        <div class="category-header">Saving Throws:</div>
-        <div class="category-body" id="saves-out"></div>
-        <div class="category-header">Skills:</div>
-        <div class="category-body" id="skills-out"></div>
-        <div class="category-header">Senses:</div>
-        <div class="category-body" id="senses-out"></div>
-        <div class="corner bl"></div>
-        <div class="corner br"></div>
-      </div>
-    </div>
-    <!---------------------------------------->
-    <!--Info Cards: Charactistics-->
-    <div class="info-grid">
-      <div class="card info-container full">
-        <div class="corner tl"></div>
-        <div class="corner tr"></div>
-        <div class="section-title">Characteristics</div>
-        <div class="category-header">Vulnerabilities:</div>
-        <div class="category-body" id="vulnerable-out"></div>
-        <div class="category-header">Damage Resistances:</div>
-        <div class="category-body" id="resist-out"></div>
-        <div class="category-header">Damage Immunities:</div>
-        <div class="category-body" id="immune-out"></div>
-        <div class="category-header">Condition Immunities:</div>
-        <div class="category-body" id="conditionImmune-out"></div>
-        <div class="category-header">Languages:</div>
-        <div class="category-body" id="languages-out"></div>
-        <div class="corner bl"></div>
-        <div class="corner br"></div>
-      </div>
-    </div>
-    <!---------------------------------------->
-    <!--Info Cards: Traits-->
-    <div class="info-grid">
-      <div class="card info-container full">
-        <div class="corner tl"></div>
-        <div class="corner tr"></div>
-        <div class="section-title">Traits</div>
-        <div id="traits-container"></div>
-        <div class="corner bl"></div>
-        <div class="corner br"></div>
-      </div>
-    </div>
-    <!---------------------------------------->
-    <!--Info Cards: Actions & Spells-->
-    <div class="info-grid">
-      <div class="card info-container">
-        <div class="corner tl"></div>
-        <div class="corner tr"></div>
-        <div class="section-title">Actions</div>
-        <div id="actions-container"></div>
-        <div class="corner bl"></div>
-        <div class="corner br"></div>
+      <!--Info Cards: Traits-->
+      <div class="info-grid">
+        <div class="card info-container full">
+          <div class="corner tl"></div>
+          <div class="corner tr"></div>
+          <div class="section-title">Traits</div>
+          <div id="traits-container"></div>
+          <div class="corner bl"></div>
+          <div class="corner br"></div>
+        </div>
       </div>
       <!---------------------------------------->
-      <div class="card info-container">
-        <div class="corner tl"></div>
-        <div class="corner tr"></div>
-        <div class="section-title">Spellcasting</div>
-        <div id="spellcasting-container"></div>
-        <div class="corner bl"></div>
-        <div class="corner br"></div>
+      <!--Info Cards: Actions & Spells-->
+      <div class="info-grid">
+        <div class="card info-container">
+          <div class="corner tl"></div>
+          <div class="corner tr"></div>
+          <div class="section-title">Actions</div>
+          <div id="actions-container"></div>
+          <div class="corner bl"></div>
+          <div class="corner br"></div>
+        </div>
+        <!---------------------------------------->
+        <div class="card info-container">
+          <div class="corner tl"></div>
+          <div class="corner tr"></div>
+          <div class="section-title">Spellcasting</div>
+          <div id="spellcasting-container"></div>
+          <div class="corner bl"></div>
+          <div class="corner br"></div>
+        </div>
       </div>
-    </div>
-    <!---------------------------------------->
-    <!--Info Cards: Reactions & Source-->
-    <div class="info-grid source">
-      <div class="card info-container">
-        <div class="corner tl"></div>
-        <div class="corner tr"></div>
-        <div class="section-title">Reactions</div>
-        <div id="reactions-container"></div>
-        <div class="corner bl"></div>
-        <div class="corner br"></div>
-      </div>
-      <div class="card info-container" id="source-container">
-        <div class="corner tl"></div>
-        <div class="corner tr"></div>
-        <div class="section-title centre">Source</div>
-        <div class="source-book" id="source-out"></div>
-        <div class="page-number" id="page-out"></div>
-        <div class="corner bl"></div>
-        <div class="corner br"></div>
+      <!---------------------------------------->
+      <!--Info Cards: Reactions & Source-->
+      <div class="info-grid source">
+        <div class="card info-container">
+          <div class="corner tl"></div>
+          <div class="corner tr"></div>
+          <div class="section-title">Reactions</div>
+          <div id="reactions-container"></div>
+          <div class="corner bl"></div>
+          <div class="corner br"></div>
+        </div>
+        <div class="card info-container" id="source-container">
+          <div class="corner tl"></div>
+          <div class="corner tr"></div>
+          <div class="section-title centre">Source</div>
+          <div class="source-book" id="source-out"></div>
+          <div class="page-number" id="page-out"></div>
+          <div class="corner bl"></div>
+          <div class="corner br"></div>
+        </div>
       </div>
     </div>
     <!----------------------------
@@ -233,13 +276,14 @@
     </div>
     <br />
 ---------------->
+
     <br />
     <!--Footer-->
     <footer id="Ftr_output"></footer>
     <!--END-->
   </body>
 </html>
-<script src="Spellbook/lib/tippy/popper.min.js"></script>
-<script src="Spellbook/lib/tippy/tippy.umd.min.js"></script>
-<script src="Spellbook/CoreScripts.js"></script>
-<script src="Spellbook/MonsterFactory.js"></script>
+<script src="Engine/lib/tippy/popper.min.js"></script>
+<script src="Engine/lib/tippy/tippy.umd.min.js"></script>
+<script src="Engine/CoreScripts.js"></script>
+<script src="Engine/MonsterFactory.js"></script>

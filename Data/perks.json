@@ -1,0 +1,287 @@
+[
+  {
+    "name": "Fly",
+    "prefix": "",
+    "descriptor": "of Flight",
+    "origin": "It is a creature capable of effortless flight, borne aloft by unseen currents and instinctive grace.",
+    "hpMult": 1.0,
+    "statMods": { "dex": 1 },
+    "speedMods": { "fly": 30 },
+    "skillMods": {
+      "stealth": 1
+    }
+  },
+  {
+    "name": "Invisibility",
+    "prefix": "",
+    "descriptor": "of Invisibility",
+    "origin": "It is a being able to slip from sight at will, fading into the air as though it were never there.",
+    "acMod": 1,
+    "hpMult": 1.0,
+    "statMods": { "dex": 1 },
+    "skillMods": {
+      "stealth": 2
+    },
+    "traits": [
+      {
+        "name": "Invisibility",
+        "entries": [
+          "The creature can turn invisible until it attacks or casts a spell. It can use this ability once per short or long rest."
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Regeneration",
+    "prefix": "",
+    "descriptor": "of Regeneration",
+    "origin": "It is a creature blessed with flesh that mends itself swiftly, knitting wounds before blood can fall.",
+    "hpMult": 1.1,
+    "statMods": { "con": 1 },
+    "skillMods": {
+      "insight": 1
+    },
+    "traits": [
+      {
+        "name": "Regeneration",
+        "entries": [
+          "The creature regains 3 hit points at the start of its turn. If the creature takes acid or fire damage, this trait doesn't function at the start of its next turn."
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Charm Aura",
+    "prefix": "",
+    "descriptor": "of Enchantment",
+    "origin": "It is a presence wreathed in subtle enchantment, its nearness softening hearts and clouding judgment.”",
+    "hpMult": 1.0,
+    "statMods": { "cha": 2 },
+    "skillMods": {
+      "insight": 1
+    },
+    "conditionImmune": ["charmed"],
+    "traits": [
+      {
+        "name": "Charm Aura",
+        "entries": [
+          "Any creature that starts its turn within 10 feet of the creature must succeed on a DC 12 Wisdom saving throw or be charmed until the start of its next turn."
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Fear Aura",
+    "prefix": "",
+    "descriptor": "of Terror",
+    "origin": "It is a figure surrounded by a chilling dread, its mere proximity gnawing at courage.",
+    "hpMult": 1.0,
+    "statMods": { "wis": 1, "cha": 1 },
+    "skillMods": {
+      "intimidation": 2
+    },
+    "conditionImmune": ["frightened"],
+    "traits": [
+      {
+        "name": "Fear Aura",
+        "entries": [
+          "Any creature that starts its turn within 10 feet of the creature must succeed on a DC 12 Wisdom saving throw or be frightened until the start of its next turn."
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Explosive Death",
+    "prefix": "",
+    "descriptor": "of Detonation",
+    "origin": "It is a volatile entity unstable to its core, its demise unleashing a violent burst of destructive force.",
+    "hpMult": 0.9,
+    "statMods": { "con": -1 },
+    "speedMods": { "walk": -5 },
+    "skillMods": {
+      "stealth": -1,
+      "intimidation": 1
+    },
+    "immune": ["fire"],
+    "traits": [
+      {
+        "name": "Explosive Death",
+        "entries": [
+          "When the creature dies, it explodes. Each creature within 10 feet must make a DC 12 Dexterity saving throw, taking 10 (3d6) fire damage on a failed save, or half as much on a success."
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Shapechanger",
+    "prefix": "",
+    "descriptor": "of Many Forms",
+    "origin": "It is a being gifted with a mutable form, shifting its shape with uncanny ease and fluidity.",
+    "hpMult": 1.0,
+    "statMods": { "dex": 1 },
+    "speedMods": { "walk": 5, "climb": 5 },
+    "skillMods": {
+      "stealth": 1,
+      "insight": 1
+    },
+
+    "traits": [
+      {
+        "name": "Shapechanger",
+        "entries": [
+          "The creature can use its action to polymorph into a Beast of CR 1/4 or lower, or back into its true form. Its statistics remain the same in each form."
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Magic Resistance",
+    "prefix": "",
+    "descriptor": "of Spellwarding",
+    "origin": "It is a creature naturally shielded from arcane influence, its essence repelling stray magic with quiet defiance.",
+    "hpMult": 1.05,
+    "statMods": { "con": 1, "wis": 1 },
+    "skillMods": {
+      "perception": 1,
+      "insight": 1
+    },
+
+    "traits": [
+      {
+        "name": "Magic Resistance",
+        "entries": [
+          "The creature has advantage on saving throws against cantrips."
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Poisonous Bite",
+    "prefix": "",
+    "descriptor": "of Poison",
+    "origin": "It is a predator armed with venomous fangs, each bite delivering a toxin that weakens body and spirit.",
+    "hpMult": 1.0,
+    "statMods": { "str": 1 },
+    "speedMods": { "climb": 5 },
+    "skillMods": {
+      "stealth": 1,
+      "intimidation": 1
+    },
+    "immune": ["poison"],
+    "conditionImmune": ["poisoned"],
+    "actions": [
+      {
+        "name": "Poisonous Bite",
+        "entries": [
+          "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 5 (1d6+2) piercing damage plus 7 (2d6) poison damage."
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Stone Skin",
+    "prefix": "",
+    "descriptor": "of Stone",
+    "origin": "It is a creature protected by a hide hardened to stone, its body built for endurance over elegance.",
+    "acMod": 1,
+    "hpMult": 1.1,
+    "statMods": { "str": 1, "dex": -2, "con": 1 },
+    "speedMods": { "walk": -10, "swim": -5 },
+    "skillMods": {
+      "stealth": -3,
+      "intimidation": 1
+    },
+    "resist": ["slashing"],
+    "vulnerable": ["thunder"],
+    "traits": [
+      {
+        "name": "Stone Skin",
+        "entries": [
+          "The creature's rocky hide grants it resistance to slashing damage."
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Mind Control",
+    "prefix": "",
+    "descriptor": "of Domination",
+    "origin": "It is a willworker capable of bending weaker minds, its thoughts pressing into others like an unseen hand.",
+    "hpMult": 1.0,
+    "statMods": { "int": 1, "cha": 2 },
+    "skillMods": {
+      "insight": 2,
+      "intimidation": 1
+    },
+    "conditionImmune": ["charmed"],
+
+    "traits": [
+      {
+        "name": "Mind Control",
+        "entries": [
+          "The creature targets one humanoid it can see within 30 feet. The target must succeed on a DC 12 Wisdom saving throw or be charmed for 1 minute. The target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success."
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Explosive Speed",
+    "prefix": "",
+    "descriptor": "of Blinding Speed",
+    "origin": "It is a swift and unpredictable creature, able to unleash sudden bursts of blinding, explosive motion.",
+    "acMod": -1,
+    "hpMult": 0.95,
+    "statMods": { "dex": 2, "con": -1 },
+    "speedMods": { "walk": 20, "climb": 10, "swim": 10 },
+    "skillMods": {
+      "perception": 1,
+      "stealth": 2
+    },
+    "traits": [
+      {
+        "name": "Explosive Speed",
+        "entries": ["The creature can Dash as a bonus action."]
+      }
+    ]
+  },
+  {
+    "name": "Summons Minions",
+    "prefix": "",
+    "descriptor": "of Summoning",
+    "origin": "It is a commander of lesser beings, calling allies to its side with a whisper of authority.",
+    "hpMult": 1.1,
+    "statMods": { "con": 1, "wis": 1 },
+    "skillMods": {
+      "perception": 1,
+      "insight": 1
+    },
+    "traits": [
+      {
+        "name": "Summon Minions",
+        "entries": [
+          "Once per day, the creature can summon one creature of CR 1/4 or lower. The summoned creature appears in an unoccupied space within 30 feet of the creature and acts immediately after its turn. It remains for 1 minute or until it drops to 0 hit points."
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Cursed Touch",
+    "prefix": "",
+    "descriptor": "of Curses",
+    "origin": "It is a bearer of lingering curses, its touch seeding misfortune that clings to the soul.",
+    "hpMult": 1.0,
+    "statMods": { "wis": 1, "cha": 1 },
+    "skillMods": {
+      "insight": 2,
+      "intimidation": 1
+    },
+    "traits": [
+      {
+        "name": "Cursed Touch",
+        "entries": [
+          "When the creature hits a target with a melee attack, the target must succeed on a DC 12 Wisdom saving throw or be cursed for 1 minute. While cursed, the target has disadvantage on attack rolls. The target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success."
+        ]
+      }
+    ]
+  }
+]
