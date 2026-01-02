@@ -1,6 +1,9 @@
-# Mac OS
+# Mac OS & Save Files
 ._*
 .DS_Store
+*~
+\#*\#
+.\#*
 
 # Logs
 *.log

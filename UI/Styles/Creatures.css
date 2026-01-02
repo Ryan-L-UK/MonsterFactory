@@ -1,0 +1,210 @@
+/* ------------------------------
+Creature Media (mobile first)
+-------------------------------- */
+.creature-media {
+  margin: 1rem auto;
+  display: grid;
+  width: 96%;
+  max-width: 900px;
+  justify-content: center;
+  grid-template-columns: auto 100px;
+  column-gap: 2%;
+  row-gap: 6px;
+  grid-template-areas:
+    "creature-media-image creature-attribute"
+    "creature-media-image creature-type"
+    "creature-media-image creature-perk";
+}
+
+.creature-media-image {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  max-height: 300px;
+  object-fit: contain;
+  align-self: center;
+  margin: auto;
+  grid-area: creature-media-image;
+}
+
+.creature-attribute,
+.creature-type,
+.creature-perk {
+  display: grid;
+  justify-items: center;
+  text-align: center;
+}
+
+.creature-media-icon {
+  width: auto;
+  max-width: 50px;
+  height: auto;
+  max-height: 75px;
+  margin: auto;
+  display: block;
+}
+
+.creature-media-header {
+  padding: 1px 4px;
+  color: var(--color-text-main);
+  font-family: var(--font-ui);
+  font-size: 1rem;
+  margin: 0 1px;
+  text-align: center;
+}
+
+/* ------------------------------
+Creature Header
+-------------------------------- */
+.creature-header {
+  text-align: center;
+  margin: 1.5rem 1rem;
+}
+
+.creature-name {
+  font-family: var(--font-display);
+  margin: 0;
+  font-size: 1.75rem;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.25rem;
+}
+
+.creature-description {
+  max-width: 750px;
+  margin: 0.5rem auto;
+  font-size: 0.85rem;
+  font-family: var(--font-body);
+}
+
+.creature-subtitle {
+  font-size: 0.85rem;
+}
+
+/* ------------------------------
+Statblock
+-------------------------------- */
+.abilities-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin: auto;
+  padding: 0.5rem 1rem;
+  max-width: 100%;
+}
+
+.stat-container {
+  text-align: center;
+  min-width: 40px;
+}
+
+.stat-label {
+  font-size: 1rem;
+  font-family: var(--font-display);
+}
+
+.stat-value {
+  font-size: 1.25rem;
+}
+.source-book {
+  text-align: center;
+  font-size: 2rem;
+  color: var(--color-accent);
+}
+.page-number {
+  text-align: center;
+  font-size: 0.75rem;
+}
+/* ------------------------------
+Info Grids
+-------------------------------- */
+.info-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin: auto;
+  padding: 0.5rem 1rem;
+  max-width: 100%;
+  color: white;
+}
+
+.info-grid.defence {
+  grid-template-columns: 1fr;
+}
+
+.info-grid.source {
+  grid-template-columns: 1fr;
+}
+
+.info-container.full {
+  grid-column: 1 / -1;
+}
+
+/* ------------------------------
+Ability Change Indicators
+-------------------------------- */
+.ability-increase::before {
+  content: "\23f6";
+  margin-right: 0.4rem;
+  color: lime;
+}
+
+.ability-point-increase {
+  color: lime;
+}
+
+.ability-change::before {
+  content: "\2726";
+  margin-right: 0.4rem;
+  color: #3fc7d4;
+}
+
+.ability-point-change {
+  color: #3fc7d4;
+}
+
+.ability-decrease::before {
+  content: "\23f7";
+  margin-right: 0.4rem;
+  color: red;
+}
+
+.ability-point-decrease {
+  color: red;
+}
+
+/* ------------------------------
+Creature Layout — Desktop Enhancements
+-------------------------------- */
+@media (min-width: 768px) {
+  .creature-media {
+    width: 100%;
+  }
+
+  .creature-media-image {
+    width: auto;
+  }
+
+  .creature-media-icon {
+    max-width: 75px;
+  }
+
+  .info-grid {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: var(--max-width-content);
+    padding: 0.75rem 2rem;
+  }
+
+  .abilities-grid {
+    grid-template-columns: repeat(6, 1fr);
+    max-width: var(--max-width-content);
+    padding: 1rem 2rem 0.75rem;
+  }
+
+  .info-grid.defence {
+    grid-template-columns: 300px 1fr;
+  }
+
+  .info-grid.source {
+    grid-template-columns: 1fr 160px;
+  }
+}

@@ -1,0 +1,13 @@
+/* ------------------------------ Base / Core -------------------------------- */
+html {
+  background: var(--color-bg-main);
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  color: white;
+}
+body {
+  margin: 0;
+  padding: 0;
+}

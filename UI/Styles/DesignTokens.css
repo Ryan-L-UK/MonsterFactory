@@ -1,0 +1,17 @@
+/* ------------------------------ Design Tokens -------------------------------- */
+:root {
+  --color-bg-main: #080a0e;
+  --color-panel-bg: #272e37;
+  --color-gold: #d6ae4a;
+  --color-blue: #4a6898;
+  --color-text-main: #baa57c;
+  --color-accent: #478bb8;
+  --font-display: CinzelDecorative, serif;
+  --font-body: Merriweather, serif;
+  --font-ui: MrEaves, sans-serif;
+  --max-width-content: 1100px;
+  --panel-padding: 0.85rem;
+  --corner-size: 46px;
+  --corner-offset-y: -11px;
+  --corner-offset-x: -13px;
+}

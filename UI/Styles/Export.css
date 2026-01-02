@@ -1,0 +1,46 @@
+/* ------------------------------
+Printer / Export Overrides
+-------------------------------- */
+
+#export-image {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  display: block;
+  background: var(--color-bg-main);
+  width: 750px !important;
+  min-width: 750px !important;
+  max-width: 750px !important;
+}
+
+#export-image img {
+  max-width: 100% !important;
+  height: auto !important;
+  width: auto !important;
+}
+
+#export-image .creature-media-image {
+  max-height: 300px !important;
+}
+
+/* Desktop-like grid overrides for export */
+#export-image .info-grid {
+  grid-template-columns: repeat(2, 1fr) !important;
+}
+
+#export-image .abilities-grid {
+  grid-template-columns: repeat(6, 1fr) !important;
+}
+
+#export-image .creature-media {
+  grid-template-columns: auto 100px !important;
+}
+
+/* Branding footer */
+#export-image .export-footer {
+  font-size: 0.75rem;
+  color: var(--color-text-main);
+  opacity: 0.85;
+  margin-bottom: 10px;
+  text-align: center;
+}

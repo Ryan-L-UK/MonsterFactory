@@ -42,9 +42,7 @@
     <!-- Preload -->
     <link rel="preload" href="/UI/Styles/FontPackages.css" as="style" />
     <!-- Stylesheets -->
-    <link rel="stylesheet" href="/UI/Styles/CoreStyling.css" />
-    <link rel="stylesheet" href="/UI/Styles/Sources.css" />
-    <link rel="stylesheet" href="/UI/Styles/FontPackages.css" />
+    <link rel="stylesheet" href="/UI/Styles/App.css" />
     <link rel="stylesheet" href="/Engine/lib/tippy/tippy.css" />
     <!-- JSON-LD Structured Data -->
     <script type="application/ld+json">
@@ -63,10 +61,10 @@
     <!---------------------------------------->
     <!--Nav Bar-->
     <header id="Nav_output"></header>
-    <br />
+
     <!---------------------------------------->
     <!--Creature Icons & Picture-->
-    <div id="export-container">
+    <div id="main-creature">
       <section class="creature-media">
         <img
           src=""
@@ -74,6 +72,7 @@
           id="creature-media-image"
           alt="Illustration of the creature"
         />
+
         <div class="creature-attribute">
           <img src="" class="creature-media-icon" id="attribute-icon-out" />
           <div class="creature-media-header">
@@ -263,21 +262,17 @@
         </div>
       </div>
     </div>
-    <!----------------------------
-    <div id="output" class="hidden"></div>
-    <div class="options">
-      <span>
-        <button class="submitcreature" onclick="showInput();">View</button
-        ><button class="submitcreature" onclick="takeshot()">Save</button
-        ><button class="submitcreature" onclick="exportSource()">
-          Code
-        </button></span
-      >
+    <div class="button-container">
+      <a class="submit-button" onclick="exportCreature()">Export To PNG</a>
+      <a class="submit-button" href="/">Roll Creature</a>
     </div>
     <br />
----------------->
+    <div id="export-image">
+      <!-- cloned creature content goes here -->
 
-    <br />
+      <div class="export-footer">© 2026 RyanFuturistics | MonsterFactory™</div>
+    </div>
+
     <!--Footer-->
     <footer id="Ftr_output"></footer>
     <!--END-->
@@ -287,3 +282,4 @@
 <script src="Engine/lib/tippy/tippy.umd.min.js"></script>
 <script src="Engine/CoreScripts.js"></script>
 <script src="Engine/MonsterFactory.js"></script>
+<script src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
