@@ -20,56 +20,110 @@ app.use("/Assets", express.static(path.join(__dirname, "Assets")));
 // Load and merge all bestiary files ONCE at server startup
 // ---------------------------------------------------------
 let mergedCreatures = [];
+
 function getCR(monster) {
-  // CR can be a string: "1/2"
   if (typeof monster.cr === "string") return monster.cr;
-  // CR can be an object: { cr: "1/2", lair: true }
   if (monster.cr && typeof monster.cr.cr === "string") return monster.cr.cr;
   return null;
 }
+
 function loadBestiary() {
-  const indexPath = path.join(__dirname, "Data/bestiary-index.json");
-  const exclusionPath = path.join(__dirname, "Data/AdminExclusionList.json");
+  const indexPath = path.join(__dirname, "Data/bestiary.index.source.json");
+  const exclusionPathStandard = path.join(
+    __dirname,
+    "Data/bestiary.exclusions.generated.json"
+  );
+  const exclusionPathStrong = path.join(
+    __dirname,
+    "Data/bestiary.exclusions.generated.strong.json"
+  );
+  const manualExclusionPath = path.join(
+    __dirname,
+    "Data/bestiary.exclusions.manual.json"
+  );
+
   const index = JSON.parse(fs.readFileSync(indexPath, "utf8"));
-  let exclusionList = [];
+
+  // Load auto-generated exclusions
+  // Load auto-generated exclusions
+  let exclusionListStandard = [];
   try {
-    exclusionList = JSON.parse(fs.readFileSync(exclusionPath, "utf8"));
-  } catch {
-    console.warn(
-      "⚠ No ExclusionList.json found. Continuing without exclusions."
+    exclusionListStandard = JSON.parse(
+      fs.readFileSync(exclusionPathStandard, "utf8")
     );
+  } catch {
+    console.warn("⚠ No standard exclusion list found.");
   }
-  const allowedCR = new Set(["0", "1/8", "1/4", "1/2", "1", "2", "3", "4"]);
+
+  let exclusionListStrong = [];
+  try {
+    exclusionListStrong = JSON.parse(
+      fs.readFileSync(exclusionPathStrong, "utf8")
+    );
+  } catch {
+    console.warn("⚠ No strong exclusion list found.");
+  }
+
+  // Load manually curated exclusions
+  let manualExclusionList = [];
+  try {
+    manualExclusionList = JSON.parse(
+      fs.readFileSync(manualExclusionPath, "utf8")
+    );
+  } catch {
+    console.warn("⚠ No manual exclusion list found.");
+  }
+
+  // Merge all exclusions
+  const combinedExclusions = new Set([
+    ...exclusionListStandard,
+    ...exclusionListStrong,
+    ...manualExclusionList,
+  ]);
+
+  const allowedCR = new Set([
+    "0",
+    "1/8",
+    "1/4",
+    "1/2",
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+  ]);
+
   mergedCreatures = index.files.flatMap((file) => {
     const filePath = path.join(__dirname, "Data/handbooks", file);
     const data = JSON.parse(fs.readFileSync(filePath, "utf8"));
     const monsters = data.monster || [];
+
     return monsters.filter((m) => {
       const cr = getCR(m);
       return (
-        // 1. CR must be allowed
         allowedCR.has(cr) &&
-        // 2. Exclude legendary
         (!m.legendary || m.legendary.length === 0) &&
-        // 3. Exclude copy templates
         !m._copy &&
-        // 4. Exclude anything in ExclusionList.json
-        !exclusionList.includes(m.name)
+        !combinedExclusions.has(m.name)
       );
     });
   });
+
   console.log(
-    `Loaded ${mergedCreatures.length} creatures into memory (CR ≤ 5)`
+    `Loaded ${mergedCreatures.length} creatures into memory (CR ≤ 6)`
   );
 }
+
 loadBestiary();
+
 // ---------------------------------------------------------
 // Load and merge book ID files ONCE at server startup
 // ---------------------------------------------------------
 let mergedBooks = [];
 function loadBooks() {
-  const autoPath = path.join(__dirname, "Data/book-ids.json");
-  const manualPath = path.join(__dirname, "Data/book-ids-manual.json");
+  const autoPath = path.join(__dirname, "Data/books.ids.generated.json");
+  const manualPath = path.join(__dirname, "Data/books.ids.manual.json");
   const auto = JSON.parse(fs.readFileSync(autoPath, "utf8"));
   let manual = [];
   try {

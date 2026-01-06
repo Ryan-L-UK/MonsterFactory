@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Curated Creatures – MonsterFactory</title>
+
+    <meta
+      name="description"
+      content="Explore hand‑crafted curated creatures from MonsterFactory. Unique monsters, lore, and ready‑to‑use creations."
+    />
+
+    <link rel="canonical" href="https://ryanfuturistics.uk/curated.html" />
+    <link
+      rel="shortcut icon"
+      href="/UI/Components/Logos/MonsterFactoryLogo.png"
+    />
+
+    <link rel="stylesheet" href="/UI/Styles/App.css" />
+    <link rel="stylesheet" href="/UI/Styles/FontPackages.css" />
+    <link rel="stylesheet" href="/Engine/lib/tippy/tippy.css" />
+
+    <style>
+      /* Page wrapper */
+      .curated-wrapper {
+        max-width: 1100px;
+        margin: 40px auto;
+        padding: 0 20px;
+        box-sizing: border-box;
+      }
+
+      .curated-wrapper * {
+        box-sizing: inherit;
+      }
+
+      .gobby-note {
+        font-family: CinzelDecorative;
+        font-size: 0.9rem;
+        margin-bottom: 20px;
+        opacity: 0.9;
+        padding-left: 10px;
+        border-left: 3px solid rgb(13, 172, 45);
+      }
+
+      /* Gallery grid */
+      .curated-gallery {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 24px;
+        width: 100%;
+      }
+
+      /* Card */
+      .curated-card {
+        display: block;
+        background: #090f10;
+        border: 1px solid rgba(80, 80, 80, 0.7);
+        border-radius: 6px;
+        text-decoration: none;
+        color: rgb(255, 252, 239);
+        font-family: CinzelDecorative;
+        overflow: hidden;
+        position: relative;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        clip-path: polygon(100% 0, 100% 92%, 92% 100%, 0 100%, 0 0);
+      }
+
+      .curated-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 0 22px rgba(13, 172, 45, 0.6);
+        border-color: rgb(13, 172, 45);
+      }
+
+      /* Image */
+      .curated-card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        display: block;
+      }
+
+      /* Content */
+      .curated-content {
+        padding: 14px 16px 20px;
+      }
+
+      .curated-card h3 {
+        margin: 0 0 6px;
+        font-size: 1.2rem;
+        letter-spacing: 1px;
+      }
+
+      .curated-card p {
+        margin: 0;
+        font-size: 0.9rem;
+        opacity: 0.85;
+      }
+
+      /* Tablet */
+      @media (max-width: 900px) {
+        .curated-gallery {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
+      /* Mobile */
+      @media (max-width: 600px) {
+        .curated-gallery {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header id="Nav_output"></header>
+
+    <main class="curated-wrapper">
+      <h1>Curated Creatures</h1>
+
+      <p class="gobby-note">
+        “Gobby curated these. Gobby has impeccable taste.”
+      </p>
+
+      <div class="curated-gallery">
+        <a class="curated-card" href="/content.html?id=gobby-goblin">
+          <img
+            src="/Assets/Curated/gobby-goblin/image.png"
+            alt="Little Gobby"
+          />
+          <div class="curated-content">
+            <h3>Little Gobby</h3>
+            <p>Regal menace. Smells faintly of mushrooms.</p>
+          </div>
+        </a>
+
+        <a class="curated-card" href="/content.html?id=spicy-rat">
+          <img src="/Assets/Curated/spicy-rat/image.png" alt="Spicy Rat" />
+          <div class="curated-content">
+            <h3>Spicy Rat</h3>
+            <p>Too hot to handle. Literally.</p>
+          </div>
+        </a>
+
+        <!-- Add more curated creatures here -->
+      </div>
+    </main>
+
+    <footer id="Ftr_output"></footer>
+
+    <script src="/Engine/lib/tippy/popper.min.js"></script>
+    <script src="/Engine/lib/tippy/tippy.umd.min.js"></script>
+    <script src="/Engine/CoreScripts.js"></script>
+  </body>
+</html>

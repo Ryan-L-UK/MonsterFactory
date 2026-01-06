@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Monster – MonsterFactory</title>
+
+    <link rel="stylesheet" href="/UI/Styles/App.css" />
+    <link rel="stylesheet" href="/UI/Styles/FontPackages.css" />
+
+    <style>
+      .content-wrapper {
+        max-width: 900px;
+        margin: 40px auto;
+        padding: 0 20px;
+        color: rgb(255, 252, 239);
+        font-family: CinzelDecorative;
+      }
+
+      .creature-image {
+        width: 100%;
+        border-radius: 6px;
+        margin-bottom: 20px;
+        border: 1px solid rgba(80, 80, 80, 0.7);
+      }
+
+      .creature-title {
+        font-size: 2rem;
+        margin-bottom: 10px;
+      }
+
+      .creature-subtitle {
+        opacity: 0.8;
+        margin-bottom: 20px;
+      }
+
+      .markdown {
+        font-family: Roboto, sans-serif;
+        line-height: 1.6;
+        opacity: 0.9;
+        white-space: pre-wrap;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header id="Nav_output"></header>
+
+    <main class="content-wrapper">
+      <img id="creatureImage" class="creature-image" src="" alt="" />
+      <h1 id="creatureName" class="creature-title"></h1>
+      <p id="creatureSubtitle" class="creature-subtitle"></p>
+
+      <section id="markdownContainer" class="markdown"></section>
+
+      <!-- Future: statblock container -->
+      <section id="statblockContainer"></section>
+    </main>
+
+    <footer id="Ftr_output"></footer>
+
+    <script src="/Engine/CoreScripts.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+    <script>
+      async function loadCreature() {
+        const params = new URLSearchParams(window.location.search);
+        const id = params.get("id");
+
+        if (!id) {
+          document.querySelector(".content-wrapper").innerHTML =
+            "<p>Creature not found.</p>";
+          return;
+        }
+
+        const basePath = `/Assets/Curated/${id}`;
+
+        try {
+          // Load JSON
+          const json = await fetch(`${basePath}/data.json`).then((r) =>
+            r.json()
+          );
+
+          // Load Markdown
+          const md = await fetch(`${basePath}/info.md`).then((r) => r.text());
+
+          // Populate image
+          document.getElementById(
+            "creatureImage"
+          ).src = `${basePath}/image.png`;
+          document.getElementById("creatureImage").alt = json.name || id;
+
+          // Populate text
+          document.getElementById("creatureName").textContent = json.name || id;
+          document.getElementById("creatureSubtitle").textContent =
+            json.subtitle || "";
+
+          // Render markdown
+          document.getElementById("markdownContainer").innerHTML =
+            marked.parse(md);
+
+          // Future: statblock
+          // renderStatblock(json);
+        } catch (err) {
+          console.error(err);
+          document.querySelector(".content-wrapper").innerHTML =
+            "<p>Error loading creature data.</p>";
+        }
+      }
+
+      loadCreature();
+    </script>
+  </body>
+</html>

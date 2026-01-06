@@ -1,0 +1,9 @@
+{
+  "name": "Goblin King",
+  "cr": 3,
+  "type": "humanoid",
+  "image": "/images/goblin-king.png",
+  "abilities": "...",
+  "actions": "...",
+  "traits": "..."
+}

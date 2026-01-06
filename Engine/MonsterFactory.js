@@ -134,15 +134,11 @@ function getRandomItem(arr) {
 4. Orchestrator
 ------------------------*/
 function generateMonster() {
-  //const creature = Sources.creatures.find((c) => c.name === "Gwen The Bard");
+  //const creature = Sources.creatures.find((c) => c.name === "Clockwork Bronze Scout");
   const creature = getRandomItem(Sources.creatures);
   const attribute = getRandomItem(Sources.attributes);
   const perk = getRandomItem(Sources.perks);
-  console.log("Picked:", {
-    attribute: attribute,
-    creature: creature,
-    perk: perk,
-  });
+  //console.log("Picked:", {attribute: attribute,creature: creature, perk: perk,});
   //------
   renderImageNameBlock(creature, attribute, perk);
   //------
@@ -615,14 +611,60 @@ function renderEntryList(containerId, entries, emptyText) {
       applyChangeHighlight(title);
       applyTooltip(title, `Source: ${entry.source}`);
     }
-    const desc = el(
-      "div",
-      "category-body",
-      entry.entries.map((e) => datacleanse(e)).join("")
-    );
+    const desc = el("div", "category-body");
+    entry.entries.forEach((e) => {
+      const node = renderEntry(e);
+      desc.appendChild(node);
+    });
+
     container.appendChild(title);
     container.appendChild(desc);
   });
+}
+//------------------------
+function renderEntry(entry) {
+  if (entry == null) return document.createTextNode("");
+
+  // STRING → text node
+  if (typeof entry === "string") {
+    return document.createTextNode(datacleanse(entry));
+  }
+
+  // LIST → <ul><li>...</li></ul>
+  if (entry.type === "list" && Array.isArray(entry.items)) {
+    const ul = document.createElement("ul");
+    ul.classList.add("list-hang");
+
+    entry.items.forEach((item) => {
+      const li = document.createElement("li");
+
+      if (item.name) {
+        const strong = document.createElement("strong");
+        strong.textContent = datacleanse(item.name) + ". ";
+        li.appendChild(strong);
+      }
+
+      (item.entries || []).forEach((sub) => {
+        li.appendChild(renderEntry(sub));
+      });
+
+      ul.appendChild(li);
+    });
+
+    return ul;
+  }
+
+  // ENTRIES BLOCK → <div>...</div>
+  if (entry.type === "entries" && Array.isArray(entry.entries)) {
+    const div = document.createElement("div");
+    entry.entries.forEach((sub) => {
+      div.appendChild(renderEntry(sub));
+    });
+    return div;
+  }
+
+  // FALLBACK → text node
+  return document.createTextNode(datacleanse(String(entry)));
 }
 //------------------------
 function renderTraits(creature, attribute, perk) {
@@ -639,6 +681,7 @@ function renderReactions(creature) {
   const reactions = creature.reaction || [];
   renderEntryList("reactions-container", reactions, "No reactions.");
 }
+
 /*------------------------
 10. Spellcasting
 ------------------------*/
@@ -704,7 +747,7 @@ function renderSpellcasting(creature) {
         const headerKey = level === "0" ? "lvl0slots" : `lvl${level}slots`;
         let labelText = checkheader(headerKey);
         if (data.slots != null) {
-          labelText = `${labelText}${data.slots} slots:`;
+          labelText = `${labelText}${data.slots} slots):`;
         }
         const label = el("div", "category-header", labelText);
         const list = el(
@@ -721,7 +764,7 @@ function renderSpellcasting(creature) {
 /*------------------------
 11. Data Cleansing & Header Helpers
 ------------------------*/
-function datacleanse(rawdata) {
+/*function datacleanse(rawdata) {
   let text = typeof rawdata === "string" ? rawdata : JSON.stringify(rawdata);
   text = text
     //.replace(/\\/g, "")
@@ -738,6 +781,9 @@ function datacleanse(rawdata) {
     //.replace(/\|.*\|/g, "")
     //.replace(/\|/g, "")
     //.replace(/\{/g, "")
+
+    .replace(/\\?\{@chance\s*([0-9]+|X)\s*\}?/gi, "($1%)") //% Chances
+
     //--------------
     .replace(/\{@status/g, "")
     .replace(/\{@condition/g, "")
@@ -747,18 +793,29 @@ function datacleanse(rawdata) {
     .replace(/\{@skill /g, "")
     .replace(/\{@actTrigger/g, "Trigger")
     .replace(/\{@actResponse/g, "Response")
+    .replace(/\{@creature /g, "")
+
+    .replace(/\{@item /g, "") //Wears Item?
+
     //--------------
     .replace(/\{@spell/g, "") //Remove Spell Tag
     .replace(/\\?\{@recharge\s*([0-9]+|X)\}/gi, "(Recharge $1)") //Recharge Tags
+    .replace(/concentration\s*\|+\s*concentrating/i, "concentrating")
+
     //--------------
     .replace(/\{@variantrule/g, "")
     .replace(/\|XGE/g, "")
+    .replace(/\|LLK/g, "")
     .replace(/\|XPHB/g, "")
     .replace(/\|phb}/g, "")
     .replace(/\|\|3/g, "") //Related to quick ref
     //--------------
+
     .replace(/\{@atkr m\}/g, "Melee Attack Roll:")
     .replace(/\{@atkr r\}/g, "Ranged Attack Roll:")
+
+    .replace(/\{@atkr m, r\}/g, "Melee or Ranged Attack Roll:")
+
     .replace(/\{@atk mw\}/g, "Melee Weapon Attack:")
     .replace(/\{@atk rw\}/g, "Ranged Weapon Attack:")
     .replace(/\{@atk mw,rw\}/g, "Melee or Ranged Weapon Attack:")
@@ -768,8 +825,12 @@ function datacleanse(rawdata) {
     .replace(/\{@hit/g, "+") //Modifier To Hit
     .replace(/\{@h\}/g, "Hit: ") //To Hit
     .replace(/\{@dice /g, "") //Dice Related
+    .replace(/\{@action/g, "") //Action
+    .replace(/\{@hom\}/g, "Hit or Miss:")
     //--------------
     .replace(/\{@actSaveFail/g, "Failure: ") //Failed saving throw
+    .replace(/\{@actSaveSuccess/g, "Success: ") //Failed saving throw
+
     //--------------
     .replace(/\{@actSave str/g, "Str Saving Throw: ") //Str Save
     .replace(/\{@actSave dex/g, "Dex Saving Throw:") //Dex Save
@@ -784,7 +845,209 @@ function datacleanse(rawdata) {
     .replace(/,/g, ", ") //Add space after comma
     .replace(/"/g, ""); //Remove Quotes around row
   return text;
+}*/
+// ------------------------------------------------------------
+//  UTILITIES
+// ------------------------------------------------------------
+
+function firstPipePart(str) {
+  return str.split("|")[0].trim();
 }
+
+function resolveFallbackSyntax(str) {
+  if (!str.includes("||")) return str;
+  const [primary, fallback] = str.split("||").map((s) => s.trim());
+  return fallback || primary;
+}
+
+// ------------------------------------------------------------
+//  TAG PARSER — replaces datacleanse()
+// ------------------------------------------------------------
+
+function cleanText(raw) {
+  if (raw == null) return "";
+  const text = typeof raw === "string" ? raw : JSON.stringify(raw);
+
+  return text.replace(/\{@([^}]+)\}/g, (full, inner) => {
+    const [tag, ...rest] = inner.split(" ");
+    const args = rest.join(" ").trim();
+    return renderTag(tag, args);
+  });
+}
+
+// ------------------------------------------------------------
+//  TAG DISPATCHER
+// ------------------------------------------------------------
+
+function renderTag(tag, args) {
+  args = resolveFallbackSyntax(args);
+
+  switch (tag) {
+    // Core combat tags
+    case "atk":
+      return renderAtk(args);
+    case "atkr":
+      return renderAtkRoll(args);
+    case "hit":
+      return `+${args}`;
+    case "h":
+      return "Hit: ";
+    case "m":
+      return "Miss: ";
+    case "hom":
+      return "Hit or Miss:";
+    case "dc":
+      return renderDc(args);
+
+    // Saving throw tags
+    case "actSave":
+      return renderSave(args);
+    case "actSaveFail":
+      return "Failure:";
+    case "actSaveSuccess":
+      return "Success:";
+    case "actTrigger":
+      return "Trigger";
+    case "actResponse":
+      return "Response";
+
+    // Conditions, statuses, creatures
+    case "condition":
+      return firstPipePart(args);
+    case "status":
+      return firstPipePart(args);
+    case "creature":
+      return firstPipePart(args);
+
+    // Skills
+    case "skill":
+      return firstPipePart(args);
+
+    // Items & spells
+    case "spell":
+      return firstPipePart(args);
+    case "item":
+      return firstPipePart(args);
+
+    // Recharge, chance, scaling
+    case "recharge":
+      return renderRecharge(args);
+    case "chance":
+      return renderChance(args);
+    case "scaledamage":
+      return renderScaleDamage(args);
+
+    // Damage dice
+    case "damage":
+      return args;
+
+    // Quickref / variant rules
+    case "quickref":
+      return "";
+    case "variantrule":
+      return "";
+
+    // Hazards
+    case "hazard":
+      return firstPipePart(args);
+
+    // Ability scores
+    case "ability":
+      return args.toUpperCase();
+
+    // Default fallback
+    default:
+      return args;
+  }
+}
+
+// ------------------------------------------------------------
+//  TAG HANDLERS
+// ------------------------------------------------------------
+
+function renderDc(args) {
+  return `DC ${args}`;
+}
+
+function renderAtk(args) {
+  switch (args) {
+    case "mw":
+      return "Melee Weapon Attack:";
+    case "rw":
+      return "Ranged Weapon Attack:";
+    case "mw,rw":
+      return "Melee or Ranged Weapon Attack:";
+    case "ms":
+      return "Melee Spell Attack:";
+    case "rs":
+      return "Ranged Spell Attack:";
+    case "ms,rs":
+      return "Melee or Ranged Spell Attack:";
+    default:
+      return "Attack:";
+  }
+}
+
+function renderAtkRoll(args) {
+  switch (args) {
+    case "m":
+      return "Melee Attack Roll:";
+    case "r":
+      return "Ranged Attack Roll:";
+    case "m,r":
+      return "Melee or Ranged Attack Roll:";
+    default:
+      return "Attack Roll:";
+  }
+}
+
+function renderSave(args) {
+  const map = {
+    str: "Str Saving Throw:",
+    dex: "Dex Saving Throw:",
+    con: "Con Saving Throw:",
+    int: "Int Saving Throw:",
+    wis: "Wis Saving Throw:",
+    cha: "Cha Saving Throw:",
+  };
+  return map[args] || "Saving Throw:";
+}
+
+function renderSpell(args) {
+  return firstPipePart(args);
+}
+
+function renderItem(args) {
+  return firstPipePart(args);
+}
+
+function renderRecharge(args) {
+  return `(Recharge ${args})`;
+}
+
+function renderChance(args) {
+  return `(${args}% Chance)`;
+}
+
+function renderScaleDamage(args) {
+  // Example: {@scaledamage 2d6|1d6|3d6|5d6}
+  const parts = args.split("|");
+  return parts[0]; // Use base damage
+}
+
+// ------------------------------------------------------------
+//  EXPORT
+// ------------------------------------------------------------
+
+function datacleanse(str) {
+  return cleanText(str)
+    .replace(/\[/g, "")
+    .replace(/\]/g, "")
+    .replace(/\}/g, "")
+    .replace(/,/g, ", ")
+    .replace(/"/g, "");
+}
+
 //------------------------
 function checkheader(header) {
   var headerout = "";

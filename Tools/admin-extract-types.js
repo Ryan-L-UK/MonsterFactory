@@ -2,12 +2,30 @@ const fs = require("fs");
 const path = require("path");
 
 // Paths
-const INDEX_PATH = path.join(__dirname, "Bestiary/bestiary-index.json");
-const HANDBOOKS_DIR = path.join(__dirname, "Bestiary/handbooks");
-const EXCLUSION_PATH = path.join(__dirname, "Bestiary/AdminExclusionList.json");
+const INDEX_PATH = path.join(__dirname, "../Data/bestiary.index.source.json");
+const HANDBOOKS_DIR = path.join(__dirname, "../Data/handbooks");
+const EXCLUSION_PATH = path.join(
+  __dirname,
+  "../Data/bestiary.exclusions.generated.json"
+);
+const MANUAL_EXCLUSION = path.join(
+  __dirname,
+  "../Data/bestiary.exclusions.manual.json"
+);
 
 // Allowed CR values
-const allowedCR = new Set(["0", "1/8", "1/4", "1/2", "1", "2", "3", "4", "5"]);
+const allowedCR = new Set([
+  "0",
+  "1/8",
+  "1/4",
+  "1/2",
+  "1",
+  "2",
+  "3",
+  "4",
+  "5",
+  "6",
+]);
 
 // Extract CR safely from 5etools formats
 function getCR(monster) {
@@ -27,14 +45,27 @@ function getType(monster) {
 function loadCreatures() {
   const index = JSON.parse(fs.readFileSync(INDEX_PATH, "utf8"));
 
+  // Load generated exclusions
   let exclusionList = [];
   try {
     exclusionList = JSON.parse(fs.readFileSync(EXCLUSION_PATH, "utf8"));
   } catch {
-    console.warn(
-      "⚠ No ExclusionList.json found. Continuing without exclusions."
-    );
+    console.warn("⚠ No generated exclusion list found.");
   }
+
+  // Load manual exclusions
+  let manualExclusionList = [];
+  try {
+    manualExclusionList = JSON.parse(fs.readFileSync(MANUAL_EXCLUSION, "utf8"));
+  } catch {
+    console.warn("⚠ No manual exclusion list found.");
+  }
+
+  // Merge both into a single Set
+  const combinedExclusions = new Set([
+    ...exclusionList,
+    ...manualExclusionList,
+  ]);
 
   return index.files.flatMap((file) => {
     const filePath = path.join(HANDBOOKS_DIR, file);
@@ -47,7 +78,7 @@ function loadCreatures() {
         allowedCR.has(cr) &&
         (!m.legendary || m.legendary.length === 0) &&
         !m._copy &&
-        !exclusionList.includes(m.name)
+        !combinedExclusions.has(m.name)
       );
     });
   });
@@ -64,8 +95,10 @@ function extractTypes() {
 
   const typeList = Array.from(types).sort();
 
-  // Write to file
-  const outputPath = path.join(__dirname, "Bestiary/AdminCreatureTypes.json");
+  const outputPath = path.join(
+    __dirname,
+    "../Data/bestiary.creature.type.generated.json"
+  );
   fs.writeFileSync(outputPath, JSON.stringify(typeList, null, 2), "utf8");
 
   console.log(`Extracted ${typeList.length} unique creature types.`);

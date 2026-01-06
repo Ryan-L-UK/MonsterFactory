@@ -19,5 +19,8 @@
 /* 6. Export-only overrides */
 @import url("./Export.css");
 
+/* 7. Document & Page */
+@import url("./Document.css");
+
 /* 99. Sources & Global Styles */
 @import url("./Sources.css");

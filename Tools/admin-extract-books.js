@@ -1,7 +1,7 @@
 const fs = require("fs");
 
 // Load the full books.json
-const data = JSON.parse(fs.readFileSync("./Bestiary/books.json", "utf8"));
+const data = JSON.parse(fs.readFileSync("../Data/books.source.json", "utf8"));
 
 // Extract only name + id
 const smallList = data.book.map((b) => ({
@@ -11,7 +11,7 @@ const smallList = data.book.map((b) => ({
 
 // Write to a new file
 fs.writeFileSync(
-  "./Bestiary/book-ids.json",
+  "../Data/books.ids.generated.json",
   JSON.stringify(smallList, null, 2)
 );
 

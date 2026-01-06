@@ -114,6 +114,10 @@ Statblock
   text-align: center;
   font-size: 0.75rem;
 }
+ul.list-hang {
+  margin: 0;
+  padding-left: 1rem;
+}
 /* ------------------------------
 Info Grids
 -------------------------------- */

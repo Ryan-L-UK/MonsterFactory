@@ -42,6 +42,8 @@ fetch("/UI/Components/Footer.html")
   });
 
 //-----------------------------------------
+// Mobile + Desktop Menu
+//-----------------------------------------
 //Mobile Menu
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -100,11 +102,7 @@ function exportCreature() {
   }
 
   // 1. OPEN POPUP IMMEDIATELY (user-gesture safe)
-  const popup = window.open(
-    "",
-    "monsterfactory_export_preview",
-    "width=900,height=900,resizable=yes,scrollbars=yes"
-  );
+  const popup = window.open("/export.html", "monsterfactory_export_preview");
 
   if (!popup) {
     alert(
@@ -112,110 +110,6 @@ function exportCreature() {
     );
     return;
   }
-
-  // Basic loading shell in the popup
-  popup.document.write(`
-    <!DOCTYPE html>
-    <html>
-      <head>
-        <title>MonsterFactory Export</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <style>
-          html, body {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            background: #05070b;
-            color: #f5f1e5;
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-          }
-          .export-shell {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 16px;
-            box-sizing: border-box;
-          }
-          .export-header {
-            width: 100%;
-            max-width: 820px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 12px;
-            gap: 8px;
-          }
-          .export-title {
-            font-size: 1rem;
-            font-weight: 600;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            opacity: 0.9;
-          }
-          .export-actions {
-            display: flex;
-            gap: 8px;
-          }
-          .export-btn {
-            border: 1px solid #d6ae4a;
-            background: #12151d;
-            color: #f5f1e5;
-            padding: 6px 12px;
-            font-size: 0.8rem;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            cursor: pointer;
-            border-radius: 4px;
-          }
-          .export-btn:hover {
-            background: #1b2230;
-          }
-          .export-status {
-            width: 100%;
-            max-width: 820px;
-            font-size: 0.85rem;
-            margin-bottom: 8px;
-            opacity: 0.85;
-          }
-          .export-image-wrapper {
-            width: 100%;
-            max-width: 820px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border: 1px solid rgba(255,255,255,0.12);
-            background: radial-gradient(circle at top, #131824 0%, #05070b 65%);
-            padding: 12px;
-            box-sizing: border-box;
-          }
-          .export-image-wrapper img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-          }
-        </style>
-      </head>
-      <body>
-        <div class="export-shell">
-          <div class="export-header">
-            <div class="export-title">MonsterFactory Export Preview</div>
-            <div class="export-actions">
-              <button class="export-btn" id="mfExportSaveBtn">Save Image</button>
-              <button class="export-btn" id="mfExportCloseBtn">Close</button>
-            </div>
-          </div>
-          <div class="export-status" id="mfExportStatus">
-            Rendering your creature card&hellip;
-          </div>
-          <div class="export-image-wrapper">
-            <div id="mfExportImagePlaceholder">Preparing image&hellip;</div>
-          </div>
-        </div>
-      </body>
-    </html>
-  `);
-  popup.document.close();
 
   // 2. PREP EXPORT DOM IN HIDDEN CONTAINER
   const branding = target.querySelector(".export-footer");
@@ -251,43 +145,19 @@ function exportCreature() {
       // Create PNG data URL
       const dataUrl = canvas.toDataURL("image/png");
 
-      // 4. INJECT INTO POPUP
-      const doc = popup.document;
-      const placeholder = doc.getElementById("mfExportImagePlaceholder");
-      const statusEl = doc.getElementById("mfExportStatus");
-      const saveBtn = doc.getElementById("mfExportSaveBtn");
-      const closeBtn = doc.getElementById("mfExportCloseBtn");
-
-      if (!placeholder || !statusEl || !saveBtn || !closeBtn) {
-        console.warn("Artificier: Popup shell missing expected elements.");
-        return;
-      }
-
-      // Replace placeholder with image
-      const img = doc.createElement("img");
-      img.src = dataUrl;
-      img.alt = "Exported creature card";
-      placeholder.replaceWith(img);
-
-      // Status update
+      // Creature name for filename
       const name =
         document.getElementById("name-out")?.innerText?.trim() || "Creature";
-      statusEl.textContent = `Previewing: ${name}.png`;
 
-      // Hook up Save button: this triggers the iOS big download prompt
-      saveBtn.addEventListener("click", () => {
-        const a = doc.createElement("a");
-        a.href = dataUrl;
-        a.download = `${name}.png`;
-        doc.body.appendChild(a);
-        a.click();
-        doc.body.removeChild(a);
-      });
-
-      // Close button
-      closeBtn.addEventListener("click", () => {
-        popup.close();
-      });
+      // 4. SEND PNG TO EXPORT PAGE
+      popup.postMessage(
+        {
+          type: "mf-export-image",
+          dataUrl: dataUrl,
+          filename: name,
+        },
+        "*"
+      );
     })
     .catch((err) => {
       console.error("Artificier: Export failed.", err);

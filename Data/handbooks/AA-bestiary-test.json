@@ -1,64 +1,77 @@
 {
   "monster": [
     {
-      "name": "Gwen The Bard",
-      "source": "MM",
-      "page": 12,
-      "size": ["M"],
+      "name": "Little Gobby Goblin",
+      "source": "HB",
+      "page": 1,
+      "size": ["S"],
       "type": {
         "type": "humanoid",
-        "tags": ["any race"]
+        "tags": ["goblinoid"]
       },
-      "str": 11,
-      "dex": 12,
-      "con": 13,
-      "int": 14,
-      "wis": 15,
-      "cha": 16,
-      "save": {
-        "dex": "+7",
-        "con": "+10",
-        "wis": "+6",
-        "cha": "+8"
-      },
-      "skill": {
-        "perception": "+11",
-        "stealth": "+7"
-      },
-      "senses": ["blindsight 60 ft.", "darkvision 120 ft."],
-      "passive": 21,
-      "immune": ["acid"],
-      "languages": ["Common", "Draconic"],
 
-      "alignment": ["N", "G"],
-      "ac": [12],
+      "alignment": ["N"],
+      "ac": [14],
       "hp": {
-        "average": 13,
-        "formula": "3d8"
+        "average": 7,
+        "formula": "2d6"
       },
       "speed": {
-        "walk": 20,
-        "fly": 50
+        "walk": 30
       },
 
+      "str": 8,
+      "dex": 14,
+      "con": 10,
+      "int": 10,
+      "wis": 8,
+      "cha": 8,
+
+      "save": {
+        "dex": "+4"
+      },
+      "skill": {
+        "stealth": "+6",
+        "perception": "+2"
+      },
+
+      "senses": ["darkvision 60 ft."],
+      "passive": 12,
+
+      "languages": ["Common", "Goblin"],
       "cr": "1/4",
+
       "trait": [
         {
-          "name": "Dive Attack",
+          "name": "Nimble Escape",
           "entries": [
-            "If the aarakocra is flying and dives at least 30 feet straight toward a target and then hits it with a melee weapon attack, the attack deals an extra 3 ({@damage 1d6}) damage to the target."
+            "Little Gobby can take the Disengage or Hide action as a bonus action on each of his turns."
+          ]
+        },
+        {
+          "name": "Minor Magic",
+          "entries": [
+            "Little Gobby knows one cantrip: {@spell minor illusion}. His spellcasting ability is Charisma (spell save DC 8)."
           ]
         }
       ],
+
       "action": [
         {
-          "name": "Talon",
+          "name": "Scimitar",
           "entries": [
-            "{@atk mw} {@hit 4} to hit, reach 5 ft., one target. {@h}4 ({@damage 1d4 + 2}) slashing damage."
+            "{@atk mw} {@hit 4} to hit, reach 5 ft., one target. {@h}5 ({@damage 1d6 + 2}) slashing damage."
+          ]
+        },
+        {
+          "name": "Shortbow",
+          "entries": [
+            "{@atk rw} {@hit 4} to hit, range 80/320 ft., one target. {@h}5 ({@damage 1d6 + 2}) piercing damage."
           ]
         }
       ],
-      "environment": ["mountain"]
+
+      "environment": ["forest", "grassland", "underdark"]
     }
   ]
 }
