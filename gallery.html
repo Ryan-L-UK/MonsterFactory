@@ -3,124 +3,73 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Curated Creatures – MonsterFactory</title>
 
+    <title>MonsterFactory - Curated Creatures</title>
     <meta
       name="description"
-      content="Explore hand‑crafted curated creatures from MonsterFactory. Unique monsters, lore, and ready‑to‑use creations."
+      content="Learn how to use MonsterFactory, understand creature traits, and explore the philosophy behind the generator."
     />
 
-    <link rel="canonical" href="https://ryanfuturistics.uk/curated.html" />
+    <link rel="canonical" href="https://monsterfactory.app/gallery" />
+
+    <!-- OpenGraph -->
+    <meta property="og:title" content="MonsterFactory - Help & Documentation" />
+    <meta
+      property="og:description"
+      content="Learn how to use MonsterFactory, understand creature traits, and explore the philosophy behind the generator."
+    />
+    <meta property="og:url" content="https://monsterfactory.app/gallery" />
+    <meta property="og:type" content="article" />
+    <meta
+      property="og:image"
+      content="https://monsterfactory.app/UI/Components/Logos/social-card.png"
+    />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="MonsterFactory - Help & Documentation"
+    />
+    <meta
+      name="twitter:description"
+      content="Learn how to use MonsterFactory, understand creature traits, and explore the philosophy behind the generator."
+    />
+    <meta
+      name="twitter:image"
+      content="https://monsterfactory.app/UI/Components/Logos/social-card.png"
+    />
+
+    <!-- Favicon -->
     <link
       rel="shortcut icon"
       href="/UI/Components/Logos/MonsterFactoryLogo.png"
     />
 
+    <!-- Styles -->
     <link rel="stylesheet" href="/UI/Styles/App.css" />
-    <link rel="stylesheet" href="/UI/Styles/FontPackages.css" />
-    <link rel="stylesheet" href="/Engine/lib/tippy/tippy.css" />
-
-    <style>
-      /* Page wrapper */
-      .curated-wrapper {
-        max-width: 1100px;
-        margin: 40px auto;
-        padding: 0 20px;
-        box-sizing: border-box;
-      }
-
-      .curated-wrapper * {
-        box-sizing: inherit;
-      }
-
-      .gobby-note {
-        font-family: CinzelDecorative;
-        font-size: 0.9rem;
-        margin-bottom: 20px;
-        opacity: 0.9;
-        padding-left: 10px;
-        border-left: 3px solid rgb(13, 172, 45);
-      }
-
-      /* Gallery grid */
-      .curated-gallery {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 24px;
-        width: 100%;
-      }
-
-      /* Card */
-      .curated-card {
-        display: block;
-        background: #090f10;
-        border: 1px solid rgba(80, 80, 80, 0.7);
-        border-radius: 6px;
-        text-decoration: none;
-        color: rgb(255, 252, 239);
-        font-family: CinzelDecorative;
-        overflow: hidden;
-        position: relative;
-        transition: transform 0.2s ease, box-shadow 0.2s ease;
-        clip-path: polygon(100% 0, 100% 92%, 92% 100%, 0 100%, 0 0);
-      }
-
-      .curated-card:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 0 22px rgba(13, 172, 45, 0.6);
-        border-color: rgb(13, 172, 45);
-      }
-
-      /* Image */
-      .curated-card img {
-        width: 100%;
-        height: 200px;
-        object-fit: cover;
-        display: block;
-      }
-
-      /* Content */
-      .curated-content {
-        padding: 14px 16px 20px;
-      }
-
-      .curated-card h3 {
-        margin: 0 0 6px;
-        font-size: 1.2rem;
-        letter-spacing: 1px;
-      }
-
-      .curated-card p {
-        margin: 0;
-        font-size: 0.9rem;
-        opacity: 0.85;
-      }
-
-      /* Tablet */
-      @media (max-width: 900px) {
-        .curated-gallery {
-          grid-template-columns: repeat(2, minmax(0, 1fr));
-        }
-      }
-
-      /* Mobile */
-      @media (max-width: 600px) {
-        .curated-gallery {
-          grid-template-columns: 1fr;
-        }
-      }
-    </style>
   </head>
 
   <body>
     <header id="Nav_output"></header>
 
     <main class="curated-wrapper">
-      <h1>Curated Creatures</h1>
-
-      <p class="gobby-note">
-        “Gobby curated these. Gobby has impeccable taste.”
-      </p>
+      <div class="help-hero">
+        <h1>Curated Creatures</h1>
+        <p>
+          Welcome to the curated creatures section. These are hand-picked by
+          Gobby himself. Creatures with unusual quirks, fun stat spreads, or
+          just the right amount of chaos. Each one is generated using the same
+          systems as the main tool, then given a few extra twists, custom
+          artwork, flavour text, and notes on their habits and behaviour.
+          Everything you need to scare, amuse, or thoroughly torment your
+          players with fresh nightmares. They were all approved by Gobby, so if
+          you don't like any of them… blame him.
+        </p>
+        <p class="gobby-note">
+          “Gobby curated these. Gobby has impeccable taste.”
+        </p>
+      </div>
 
       <div class="curated-gallery">
         <a class="curated-card" href="/content.html?id=gobby-goblin">
@@ -130,7 +79,11 @@
           />
           <div class="curated-content">
             <h3>Little Gobby</h3>
-            <p>Regal menace. Smells faintly of mushrooms.</p>
+            <p>
+              Little Gobby as you've never seen him before: psychic, fast, and
+              far more dangerous than any goblin has the right to be. Turns out
+              the little guy has been hiding a few… surprises.
+            </p>
           </div>
         </a>
 
@@ -138,7 +91,26 @@
           <img src="/Assets/Curated/spicy-rat/image.png" alt="Spicy Rat" />
           <div class="curated-content">
             <h3>Spicy Rat</h3>
-            <p>Too hot to handle. Literally.</p>
+            <p>
+              Every adventurer starts with "kill 5 rats", but this one isn't on
+              the menu. The Spicy Rat is volatile, overcaffeinated chaos in fur
+              form, and absolutely too hot to handle. Literally.
+            </p>
+          </div>
+        </a>
+
+        <a class="curated-card" href="/content.html?id=curse-warden">
+          <img
+            src="/Assets/Curated/curse-warden/image.png"
+            alt="Bloodbound Curse-Warden"
+          />
+          <div class="curated-content">
+            <h3>Bloodbound Curse-Warden</h3>
+            <p>
+              Some tombs have traps. This one has a Bloodbound Curse-Warden, a
+              hulking construct stitched together with curses, bad decisions,
+              and enough raw force to make adventurers rethink archaeology.
+            </p>
           </div>
         </a>
 

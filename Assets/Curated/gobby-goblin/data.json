@@ -1,9 +1,48 @@
 {
-  "name": "Goblin King",
-  "cr": 3,
-  "type": "humanoid",
-  "image": "/images/goblin-king.png",
-  "abilities": "...",
-  "actions": "...",
-  "traits": "..."
+  "name": "Little Gobby Goblin",
+  "subtitle": "Small Goblinoid, Chaotic Neutral",
+  "cr": "1/4",
+  "ac": 12,
+  "hp": 24,
+  "speed": "50 ft., swim 10 ft., climb 10 ft.",
+  "str": "8 (-1)",
+  "dex": "16 (+3)",
+  "con": "9 (-1)",
+  "int": "12 (+1)",
+  "wis": "10 (+0)",
+  "cha": "8 (-1)",
+  "save": "dex: +4",
+  "skill": "stealth: +8, perception: +4, insight: +2",
+  "senses": "darkvision 60 ft., passive perception: 12",
+  "immune": "psychic",
+  "conditionImmune": "charmed",
+  "languages": "TBC",
+  "traits": [
+    {
+      "name": "Explosive Momentum.",
+      "entries": "When Gobby moves at least 20 feet, the next attack deals an extra 1d6 psychic damage."
+    },
+    {
+      "name": "Nimble Escape",
+      "entries": "Little Gobby can take the Disengage or Hide action as a bonus action on each of his turns."
+    },
+    {
+      "name": "Minor Magic",
+      "entries": "Little Gobby knows one cantrip: minor illusion. His spellcasting ability is Charisma (spell save DC 8)."
+    }
+  ],
+  "actions": [
+    {
+      "name": "Bite",
+      "entries": "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 7 (1d8 + 3) piercing damage."
+    },
+    {
+      "name": "Scimitar",
+      "entries": "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 5 (1d6 + 2) slashing damage."
+    },
+    {
+      "name": "Shortbow",
+      "entries": "Ranged Weapon Attack: +4 to hit, range 80/320 ft., one target. Hit: 5 (1d6 + 2) piercing damage."
+    }
+  ]
 }

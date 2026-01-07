@@ -6,3 +6,344 @@
   margin: 0 auto;
   display: block;
 }
+/* ------------------------------
+   HELP PAGE
+------------------------------ */
+
+.help-wrapper {
+  max-width: 900px;
+  margin: auto;
+  padding: 40px 20px;
+  color: #f5f1e5;
+}
+
+.help-hero {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.help-hero img {
+  width: 140px;
+  opacity: 0.95;
+}
+
+.help-hero h1 {
+  font-family: CinzelDecorative;
+  font-size: 2rem;
+  margin-top: 20px;
+  letter-spacing: 2px;
+}
+
+.help-section {
+  margin-bottom: 60px;
+}
+
+.help-section h2 {
+  font-family: CinzelDecorative;
+  font-size: 1.6rem;
+  margin-bottom: 16px;
+}
+
+.help-section p,
+.help-section li {
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+.help-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.help-row img {
+  width: 100%;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.help-row.reverse {
+  direction: rtl;
+}
+
+.help-row.reverse > * {
+  direction: ltr;
+}
+
+@media (max-width: 768px) {
+  .help-row,
+  .help-row.reverse {
+    grid-template-columns: 1fr;
+    direction: ltr;
+  }
+}
+
+.gobby-note {
+  font-style: italic;
+  opacity: 0.85;
+  margin-top: 8px;
+  color: orange;
+  font-size: 1.1rem;
+}
+
+.divider {
+  width: 100%;
+  height: 3px;
+  margin: 40px 0;
+  background: linear-gradient(
+    to right,
+    rgba(214, 174, 74, 0.8) 0%,
+    rgba(214, 174, 74, 0.4) 40%,
+    rgba(214, 174, 74, 0.15) 70%,
+    rgba(214, 174, 74, 0) 100%
+  );
+}
+
+/* ------------------------------
+   CONTENT PAGE
+------------------------------ */
+.content-wrapper {
+  color: rgb(255, 252, 239);
+  font-family: CinzelDecorative;
+  max-width: 1100px;
+  margin: 40px auto;
+  padding: 0 20px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+}
+
+/* Creature Image */
+.creature-image {
+  display: block;
+  margin: 0 auto 20px;
+  max-height: 300px;
+  border-radius: 6px;
+}
+
+/* Markdown Typography */
+.markdown {
+  max-width: 750px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.markdown h1 {
+  font-size: 2rem;
+  margin: 1.4rem 0 0.6rem;
+}
+
+.markdown h2 {
+  font-size: 1.5rem;
+  margin: 1.4rem 0 0.6rem;
+}
+
+.markdown h3 {
+  font-size: 1.1rem;
+  margin: 1.2rem 0 0.4rem;
+}
+
+.markdown p,
+.markdown ul,
+.markdown li {
+  font-size: 0.9rem;
+  font-family: var(--font-body);
+}
+
+.markdown p {
+  margin-bottom: 1rem;
+}
+
+.markdown ul {
+  margin: 0 0 1rem 1.2rem;
+}
+
+/* --- Desktop: two-column layout --- */
+@media (min-width: 900px) {
+  .content-wrapper {
+    grid-template-columns: 1fr 375px; /* left flexible, right fixed */
+    align-items: start;
+  }
+
+  /* Image spans both columns */
+  .creature-image {
+    grid-column: 1 / -1;
+  }
+
+  /* Markdown sits in the left column */
+  #markdownContainer {
+    grid-column: 1;
+    min-width: 0;
+    margin: 0;
+    max-width: none;
+  }
+
+  /* Statblock sits in the right column */
+  #statblockContainer {
+    grid-column: 2;
+  }
+}
+
+/* --- Statblock Container --- */
+.mf-statblock {
+  background: rgba(20, 20, 20, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  padding: 20px;
+  color: rgb(255, 252, 239);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+/* Header */
+.mf-statblock-header {
+  margin-bottom: 10px;
+}
+
+.mf-statblock-header .mf-name {
+  font-family: CinzelDecorative;
+  font-size: 1.4rem;
+  margin: 0;
+  letter-spacing: 1px;
+}
+
+.mf-statblock-header .mf-subtitle {
+  opacity: 0.8;
+  margin: 4px 0 0;
+  font-size: 0.85rem;
+}
+
+/* Divider */
+.mf-divider {
+  height: 2px;
+  background: linear-gradient(
+    to right,
+    rgba(214, 174, 74, 0.8),
+    rgba(214, 174, 74, 0.2)
+  );
+  margin: 12px 0;
+}
+
+/* Core Stats */
+.mf-core-stats div {
+  margin-bottom: 4px;
+}
+
+/* Ability Scores */
+.mf-abilities {
+  width: 100%;
+  text-align: center;
+  margin: 12px 0;
+  border-collapse: collapse;
+}
+
+.mf-abilities th {
+  font-family: CinzelDecorative;
+  font-size: 0.75rem;
+  opacity: 0.9;
+  padding-bottom: 4px;
+}
+
+.mf-abilities td {
+  padding: 6px 0;
+  font-size: 0.85rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Traits & Actions */
+.mf-section-title {
+  font-family: CinzelDecorative;
+  font-size: 1.1rem;
+  margin: 16px 0 8px;
+}
+
+.mf-trait,
+.mf-action {
+  margin-bottom: 10px;
+}
+
+.mf-trait strong,
+.mf-action strong,
+.mf-core-stats strong,
+.mf-extra strong {
+  font-family: CinzelDecorative;
+  font-size: 0.95rem;
+}
+
+/* ------------------------------
+   CURATED GALLERY
+------------------------------ */
+
+.curated-wrapper {
+  max-width: 1100px;
+  margin: 40px auto;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+.curated-wrapper * {
+  box-sizing: inherit;
+}
+
+.curated-gallery {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  width: 100%;
+}
+
+.curated-card {
+  border: 1px solid rgb(109, 109, 109);
+  border-radius: 0.5rem;
+  text-decoration: none;
+  color: rgb(255, 252, 239);
+  font-family: CinzelDecorative;
+  overflow: hidden;
+  position: relative;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.curated-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 22px rgba(13, 172, 45, 0.6);
+  border-color: rgb(13, 172, 45);
+}
+
+.curated-card img {
+  width: 100%;
+  height: 225px;
+  object-fit: contain;
+  display: block;
+}
+
+.curated-content {
+  padding: 0.5rem 1rem 1rem;
+}
+
+.curated-card h3 {
+  margin: 0 0 6px;
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+}
+
+.curated-card p {
+  margin: 0;
+  font-size: 0.8rem;
+  opacity: 0.85;
+  font-family: var(--font-body);
+}
+
+@media (max-width: 900px) {
+  .curated-gallery {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .curated-gallery {
+    grid-template-columns: 1fr;
+  }
+}

@@ -3,44 +3,51 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Monster – MonsterFactory</title>
 
+    <title>MonsterFactory - Curated Content</title>
+    <meta
+      name="description"
+      content="Learn how to use MonsterFactory, understand creature traits, and explore the philosophy behind the generator."
+    />
+
+    <link rel="canonical" href="https://monsterfactory.app/content" />
+
+    <!-- OpenGraph -->
+    <meta property="og:title" content="MonsterFactory - Help & Documentation" />
+    <meta
+      property="og:description"
+      content="Learn how to use MonsterFactory, understand creature traits, and explore the philosophy behind the generator."
+    />
+    <meta property="og:url" content="https://monsterfactory.app/content" />
+    <meta property="og:type" content="article" />
+    <meta
+      property="og:image"
+      content="https://monsterfactory.app/UI/Components/Logos/social-card.png"
+    />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="MonsterFactory - Help & Documentation"
+    />
+    <meta
+      name="twitter:description"
+      content="Learn how to use MonsterFactory, understand creature traits, and explore the philosophy behind the generator."
+    />
+    <meta
+      name="twitter:image"
+      content="https://monsterfactory.app/UI/Components/Logos/social-card.png"
+    />
+
+    <!-- Favicon -->
+    <link
+      rel="shortcut icon"
+      href="/UI/Components/Logos/MonsterFactoryLogo.png"
+    />
+
+    <!-- Styles -->
     <link rel="stylesheet" href="/UI/Styles/App.css" />
-    <link rel="stylesheet" href="/UI/Styles/FontPackages.css" />
-
-    <style>
-      .content-wrapper {
-        max-width: 900px;
-        margin: 40px auto;
-        padding: 0 20px;
-        color: rgb(255, 252, 239);
-        font-family: CinzelDecorative;
-      }
-
-      .creature-image {
-        width: 100%;
-        border-radius: 6px;
-        margin-bottom: 20px;
-        border: 1px solid rgba(80, 80, 80, 0.7);
-      }
-
-      .creature-title {
-        font-size: 2rem;
-        margin-bottom: 10px;
-      }
-
-      .creature-subtitle {
-        opacity: 0.8;
-        margin-bottom: 20px;
-      }
-
-      .markdown {
-        font-family: Roboto, sans-serif;
-        line-height: 1.6;
-        opacity: 0.9;
-        white-space: pre-wrap;
-      }
-    </style>
   </head>
 
   <body>
@@ -48,13 +55,75 @@
 
     <main class="content-wrapper">
       <img id="creatureImage" class="creature-image" src="" alt="" />
-      <h1 id="creatureName" class="creature-title"></h1>
-      <p id="creatureSubtitle" class="creature-subtitle"></p>
 
       <section id="markdownContainer" class="markdown"></section>
 
       <!-- Future: statblock container -->
-      <section id="statblockContainer"></section>
+      <section id="statblockContainer" class="mf-statblock">
+        <div class="mf-statblock-header">
+          <h2 class="mf-name" id="mf-name"></h2>
+          <p class="mf-subtitle" id="mf-subtitle"></p>
+        </div>
+
+        <div class="mf-divider"></div>
+
+        <div class="mf-core-stats">
+          <div>
+            <span><strong>Armor Class: </strong></span
+            ><span id="mf-acclass"></span>
+          </div>
+          <div>
+            <span><strong>Hit Points: </strong></span
+            ><span id="mf-hpclass"></span>
+          </div>
+          <div>
+            <span><strong>Speed: </strong></span><span id="mf-speed"></span>
+          </div>
+        </div>
+
+        <table class="mf-abilities">
+          <tr>
+            <th>STR</th>
+            <th>DEX</th>
+            <th>CON</th>
+            <th>INT</th>
+            <th>WIS</th>
+            <th>CHA</th>
+          </tr>
+          <tr>
+            <td id="mf-str"></td>
+            <td id="mf-dex"></td>
+            <td id="mf-con"></td>
+            <td id="mf-int"></td>
+            <td id="mf-wis"></td>
+            <td id="mf-cha"></td>
+          </tr>
+        </table>
+        <div class="mf-divider"></div>
+        <div class="mf-extra">
+          <div><strong>Saving Throws:</strong> <span id="mf-save"></span></div>
+          <div><strong>Skills:</strong> <span id="mf-skill"></span></div>
+          <div><strong>Senses:</strong> <span id="mf-senses"></span></div>
+          <div>
+            <strong>Damage Immunities:</strong> <span id="mf-immune"></span>
+          </div>
+          <div>
+            <strong>Condition Immunities:</strong>
+            <span id="mf-conditionImmune"></span>
+          </div>
+          <div>
+            <strong>Languages:</strong>
+            <span id="mf-languages"></span>
+          </div>
+        </div>
+
+        <div class="mf-divider"></div>
+        <h3 class="mf-section-title">Traits</h3>
+        <div class="mf-traits" id="mf-traits"></div>
+        <div class="mf-divider"></div>
+        <h3 class="mf-section-title">Actions</h3>
+        <div class="mf-actions" id="mf-actions"></div>
+      </section>
     </main>
 
     <footer id="Ftr_output"></footer>
@@ -62,53 +131,6 @@
     <script src="/Engine/CoreScripts.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 
-    <script>
-      async function loadCreature() {
-        const params = new URLSearchParams(window.location.search);
-        const id = params.get("id");
-
-        if (!id) {
-          document.querySelector(".content-wrapper").innerHTML =
-            "<p>Creature not found.</p>";
-          return;
-        }
-
-        const basePath = `/Assets/Curated/${id}`;
-
-        try {
-          // Load JSON
-          const json = await fetch(`${basePath}/data.json`).then((r) =>
-            r.json()
-          );
-
-          // Load Markdown
-          const md = await fetch(`${basePath}/info.md`).then((r) => r.text());
-
-          // Populate image
-          document.getElementById(
-            "creatureImage"
-          ).src = `${basePath}/image.png`;
-          document.getElementById("creatureImage").alt = json.name || id;
-
-          // Populate text
-          document.getElementById("creatureName").textContent = json.name || id;
-          document.getElementById("creatureSubtitle").textContent =
-            json.subtitle || "";
-
-          // Render markdown
-          document.getElementById("markdownContainer").innerHTML =
-            marked.parse(md);
-
-          // Future: statblock
-          // renderStatblock(json);
-        } catch (err) {
-          console.error(err);
-          document.querySelector(".content-wrapper").innerHTML =
-            "<p>Error loading creature data.</p>";
-        }
-      }
-
-      loadCreature();
-    </script>
+    <script src="Engine/ContentViewer.js"></script>
   </body>
 </html>

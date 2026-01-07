@@ -13,7 +13,7 @@
       "alignment": ["N"],
       "ac": [14],
       "hp": {
-        "average": 7,
+        "average": 27,
         "formula": "2d6"
       },
       "speed": {

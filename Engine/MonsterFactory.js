@@ -134,10 +134,13 @@ function getRandomItem(arr) {
 4. Orchestrator
 ------------------------*/
 function generateMonster() {
-  //const creature = Sources.creatures.find((c) => c.name === "Clockwork Bronze Scout");
+  //const creature = Sources.creatures.find(  (c) => c.name === "Little Gobby Goblin");
   const creature = getRandomItem(Sources.creatures);
+  //const attribute = Sources.attributes.find((a) => a.name === "Psychic");
   const attribute = getRandomItem(Sources.attributes);
+  //const perk = Sources.perks.find((p) => p.name === "Explosive Speed");
   const perk = getRandomItem(Sources.perks);
+
   //console.log("Picked:", {attribute: attribute,creature: creature, perk: perk,});
   //------
   renderImageNameBlock(creature, attribute, perk);

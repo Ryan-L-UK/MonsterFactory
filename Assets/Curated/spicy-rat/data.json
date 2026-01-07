@@ -1,9 +1,44 @@
 {
-  "name": "Goblin King",
-  "cr": 3,
-  "type": "humanoid",
-  "image": "/images/goblin-king.png",
-  "abilities": "...",
-  "actions": "...",
-  "traits": "..."
+  "name": "Spicy Rat",
+  "subtitle": "Small Beast, Unaligned",
+  "cr": "1/2",
+  "ac": 13,
+  "hp": 27,
+  "speed": "40 ft., climb 20 ft.",
+  "str": "10 (+0)",
+  "dex": "16 (+3)",
+  "con": "12 (+1)",
+  "int": "2 (-4)",
+  "wis": "12 (+1)",
+  "cha": "6 (-2)",
+  "save": "dex: +5",
+  "skill": "perception: +3, stealth: +5",
+  "senses": "darkvision 30 ft., passive perception 13",
+  "immune": "fire",
+  "conditionImmune": "frightened",
+  "languages": "TBC",
+  "traits": [
+    {
+      "name": "Overheated Body.",
+      "entries": "A creature that touches the Spicy Rat or hits it with a melee attack while within 5 feet takes 3 (1d6) fire damage."
+    },
+    {
+      "name": "Volatile Squeak.",
+      "entries": "As a bonus action, the Spicy Rat emits a sharp, fiery squeak. Each creature within 5 feet must succeed on a DC 11 Constitution saving throw or take 3 (1d6) fire damage."
+    },
+    {
+      "name": "Too Hot to Handle.",
+      "entries": "The Spicy Rat has advantage on checks and saving throws to escape grapples or restraints."
+    }
+  ],
+  "actions": [
+    {
+      "name": "Fiery Bite",
+      "entries": "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 6 (1d6 + 3) piercing damage plus 3 (1d6) fire damage."
+    },
+    {
+      "name": "Spice Burst (Recharge 5-6)",
+      "entries": "The Spicy Rat releases a burst of burning spice in a 10-foot radius. Each creature in the area must make a DC 11 Dexterity saving throw, taking 7 (2d6) fire damage on a failed save, or half as much on a success."
+    }
+  ]
 }
