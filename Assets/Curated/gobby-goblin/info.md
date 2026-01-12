@@ -51,5 +51,6 @@ one‑goblin storm of enthusiasm, psychic static, and questionable ideas.
 
 ---
 
-_“Gobby is fast. Gobby is loud. Gobby is inevitable.”_
--Workshop Observation Log #7
+> _“Gobby is fast. Gobby is loud. Gobby is inevitable.”_
+>
+> - Workshop Observation Log #7

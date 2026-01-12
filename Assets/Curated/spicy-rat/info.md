@@ -40,5 +40,6 @@ It darts in, heats up the battlefield, and sprints away before anyone can decide
 The Spicy Rat was originally discovered inside a ruined spice merchant’s
 basement. The merchant survived, but his stock did not.
 
-> “Do not feed the rat anything labelled ‘extra hot’. We tried. It was a mistake.”  
-> — Workshop Incident Log #22
+> _“Do not feed the rat anything labelled ‘extra hot’. We tried. It was a mistake.”_
+>
+> - Workshop Incident Log #22

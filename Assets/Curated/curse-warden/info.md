@@ -40,5 +40,6 @@ This was optimistic. The first prototype activated itself, judged the entire wor
 
 ---
 
-_“If it starts humming, step back. If it starts glowing, leave the building.”_
--Workshop Observation Log #41
+> _“If it starts humming, step back. If it starts glowing, leave the building.”_
+>
+> - Workshop Observation Log #41
