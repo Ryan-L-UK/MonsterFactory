@@ -65,10 +65,6 @@ The list below is all the known font packaged loaded into the site
   src: local("Roboto Medium"), url("/UI/Fonts/Roboto-Medium.ttf");
 }
 @font-face {
-  font-family: Tiamat-Text;
-  src: local("tiamat-text-bold"), url("/UI/Fonts/tiamat-text-bold.otf"),
-    local("tiamat-text-medium"), url("/UI/Fonts/tiamat-text-medium.otf"),
-    local("tiamat-text-semibold"), url("/UI/Fonts/tiamat-text-semibold.otf");
-  font-weight: normal;
-  font-style: normal;
+  font-family: ArcuataBold;
+  src: local("ArcuataBold"), url("/UI/Fonts/Arcuata-Bold.woff");
 }

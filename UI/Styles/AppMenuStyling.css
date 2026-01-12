@@ -2,32 +2,30 @@
 /* Mobile-first Menu */
 /*-----------------------------------------------------------*/
 .menu-background {
-  background-image: url(/UI/Components/MenuBackingBlue.png);
-  background-color: #272e37;
-  background-position: top;
-  background-repeat: repeat;
+  background: radial-gradient(circle at top center, #0a2d39, #050a09);
   width: 100%;
 }
 .menu-container {
-  height: 106px;
+  height: 70px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 30px;
   position: relative;
   z-index: 99;
-  max-width: 1100px;
+  max-width: var(--max-width-content);
   margin: auto;
 }
 .menu-logo-img {
-  height: 106px;
-  padding-top: 6px;
+  height: 60px;
+  width: auto;
 }
 .menu-logo-img:hover {
   background-image: radial-gradient(
-    circle,
-    rgb(8, 118, 32) 20%,
-    rgba(9, 8, 9, 0) 70%
+    ellipse 70% 45% at center,
+    rgba(8, 177, 189, 0.35) 0%,
+    rgba(8, 177, 189, 0.15) 40%,
+    rgba(10, 58, 66, 0) 80%
   );
 }
 .menu-mobile-buttons {
@@ -51,8 +49,8 @@
 }
 .menu-hamburger-btn:hover,
 .menu-refresh-btn:hover {
-  text-shadow: 0 0 20px rgb(13, 172, 45);
-  color: #9fffa9;
+  color: #00fbff;
+  text-shadow: 0 0 10px rgb(8, 177, 189);
 }
 .menu-nav {
   display: none;
@@ -60,23 +58,23 @@
   align-items: flex-start;
   background-color: #050a09;
   position: absolute;
-  top: 108px;
+  top: 72px;
   right: 0;
   width: 100%;
   padding: 10px 0;
   border-left: 1px solid rgb(80, 80, 80);
-  border-bottom: 1px solid rgb(80, 80, 80);
+  border-bottom: 1px solid #9f8f5a;
   z-index: 999;
-  font-family: CinzelDecorative;
+  font-family: MrEaves;
 }
 .menu-nav.open {
   display: flex;
 }
 .menu-item {
   padding: 2px 20px;
-  font-size: 0.8rem;
-  font-weight: 700;
-  letter-spacing: 1.5px;
+  font-size: 1.5rem;
+
+  letter-spacing: 1.25px;
   color: rgb(255, 252, 239);
   text-decoration: none;
   border: 0;
@@ -87,24 +85,20 @@
   max-width: 250px;
 }
 .menu-item:hover {
-  text-shadow: 0 0 20px rgb(13, 172, 45);
-  color: #9fffa9;
+  color: #00fbff;
+  text-shadow: 0 0 10px rgb(8, 177, 189);
 }
-.menu-item::before {
-  content: "\25c8";
-  transform: rotate(180deg);
-  display: inline-block;
-  vertical-align: middle;
-  font-size: 19px;
-  margin-left: 4px;
-  margin-right: 7px;
-  margin-top: -2px;
-  color: rgb(255, 252, 239);
-}
+
 .menu-divider {
   height: 2px;
-  background-color: rgb(80, 80, 80);
-  box-shadow: 0 -1px 0 rgb(100, 100, 100), 0 1px 0 rgb(60, 60, 60);
+  background: linear-gradient(
+    to right,
+    #252932,
+    #9f8f5a,
+    #e3d19a,
+    #9f8f5a,
+    #252932
+  );
 }
 /*-----------------------------------------------------------*/
 /* Desktop Overrides */
@@ -122,9 +116,10 @@
     width: auto;
     padding: 0;
     align-items: center;
+    gap: 18px;
   }
   .menu-item {
-    padding: 20px 8px;
-    font-size: 1rem;
+    padding: 0px 4px;
+    font-size: 1.25rem;
   }
 }

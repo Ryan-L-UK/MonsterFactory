@@ -3,84 +3,132 @@ const path = require("path");
 const fs = require("fs");
 const app = express();
 const port = 6969;
-// Serve robot.txt
+// ---------------------------------------------------------
+// Arcane Logging Helpers (Aligned Output)
+// ---------------------------------------------------------
+const PREFIX_WIDTH = 55;
+function formatPrefix(section) {
+  const ts = new Date().toISOString();
+  const raw = `[${ts}] [${section}]`;
+  return raw.padEnd(PREFIX_WIDTH, " ");
+}
+function log(section, message) {
+  console.log(`${formatPrefix(section)}${message}`);
+}
+function warn(section, message) {
+  console.warn(`${formatPrefix(section)}⚠ ${message}`);
+}
+// ---------------------------------------------------------
+// robots.txt
+// ---------------------------------------------------------
 app.get("/robots.txt", (req, res) => {
   res.type("text/plain");
   res.send(
     "User-agent: *\nAllow: /\nSitemap: https://ryanfuturistics.uk/sitemap.xml"
   );
 });
-// Serve static folders with fantasy names
+// ---------------------------------------------------------
+// Static File Serving
+// ---------------------------------------------------------
 app.use(express.static(__dirname));
 app.use("/UI", express.static(path.join(__dirname, "UI")));
 app.use("/Data", express.static(path.join(__dirname, "Data")));
 app.use("/Engine", express.static(path.join(__dirname, "Engine")));
 app.use("/Assets", express.static(path.join(__dirname, "Assets")));
+log("SERVER", "The MonsterFactory halls preparing for visitors.");
 // ---------------------------------------------------------
-// Load and merge all bestiary files ONCE at server startup
+// Global Data Stores
 // ---------------------------------------------------------
+let mergedBooks = [];
 let mergedCreatures = [];
-
+let loadedAttributes = [];
+let loadedPerks = [];
+// ---------------------------------------------------------
+// BOOKS — The Archivist's Ledger
+// ---------------------------------------------------------
+function loadBooks() {
+  log("BOOKS", "-------------------------------------------");
+  log("BOOKS", "The Archivist begins unfurling tomes of lore…");
+  const autoPath = path.join(__dirname, "Data/books.ids.generated.json");
+  const manualPath = path.join(__dirname, "Data/books.ids.manual.json");
+  const auto = JSON.parse(fs.readFileSync(autoPath, "utf8"));
+  log("BOOKS", `${auto.length} auto-scribed tomes found by The Archivist.`);
+  let manual = [];
+  try {
+    manual = JSON.parse(fs.readFileSync(manualPath, "utf8"));
+    log("BOOKS", `${manual.length} override tomes inscribed by the Artificer.`);
+  } catch {
+    warn("BOOKS", "No manual overrides found in the ledger.");
+  }
+  const map = new Map();
+  auto.forEach((b) => map.set(b.id, b));
+  manual.forEach((b) => map.set(b.id, b));
+  mergedBooks = Array.from(map.values());
+  log("BOOKS", `${mergedBooks.length} total volumes bound into the ledger.`);
+  log("BOOKS", "-------------------------------------------");
+}
+loadBooks();
+// ---------------------------------------------------------
+// FORGE — Attributes & Perks Infusion
+// ---------------------------------------------------------
+function loadForgeModifiers() {
+  log("FORGE", "-------------------------------------------");
+  log("FORGE", "The Artificer stokes the infusion forge…");
+  const attributesPath = path.join(__dirname, "Data/modifier.attributes.json");
+  const perksPath = path.join(__dirname, "Data/modifier.perks.json");
+  try {
+    loadedAttributes = JSON.parse(fs.readFileSync(attributesPath, "utf8"));
+    log(
+      "FORGE",
+      `${loadedAttributes.length} attributes etched into the arcane matrix.`
+    );
+  } catch {
+    warn("FORGE", "No attribute schematics found for the forge.");
+    loadedAttributes = [];
+  }
+  try {
+    loadedPerks = JSON.parse(fs.readFileSync(perksPath, "utf8"));
+    log("FORGE", `${loadedPerks.length} perks infused into the system's core.`);
+  } catch {
+    warn("FORGE", "No perk infusions found for the forge.");
+    loadedPerks = [];
+  }
+  log("FORGE", "-------------------------------------------");
+}
+loadForgeModifiers();
+// ---------------------------------------------------------
+// BESTIARY — Grand Survey of Beasts
+// ---------------------------------------------------------
 function getCR(monster) {
   if (typeof monster.cr === "string") return monster.cr;
   if (monster.cr && typeof monster.cr.cr === "string") return monster.cr.cr;
   return null;
 }
-
+function creatureNameToImageFile(name) {
+  return name.replace(/'/g, "") + ".webp";
+}
 function loadBestiary() {
+  log("BESTIARY", "-------------------------------------------");
+  log("BESTIARY", "The Menagerie gates creak open…");
   const indexPath = path.join(__dirname, "Data/bestiary.index.source.json");
-  const exclusionPathStandard = path.join(
-    __dirname,
-    "Data/bestiary.exclusions.generated.json"
-  );
-  const exclusionPathStrong = path.join(
-    __dirname,
-    "Data/bestiary.exclusions.generated.strong.json"
-  );
   const manualExclusionPath = path.join(
     __dirname,
     "Data/bestiary.exclusions.manual.json"
   );
-
   const index = JSON.parse(fs.readFileSync(indexPath, "utf8"));
-
-  // Load auto-generated exclusions
-  // Load auto-generated exclusions
-  let exclusionListStandard = [];
-  try {
-    exclusionListStandard = JSON.parse(
-      fs.readFileSync(exclusionPathStandard, "utf8")
-    );
-  } catch {
-    console.warn("⚠ No standard exclusion list found.");
-  }
-
-  let exclusionListStrong = [];
-  try {
-    exclusionListStrong = JSON.parse(
-      fs.readFileSync(exclusionPathStrong, "utf8")
-    );
-  } catch {
-    console.warn("⚠ No strong exclusion list found.");
-  }
-
-  // Load manually curated exclusions
+  log("BESTIARY", `${index.files.length} bestiary tomes discovered.`);
   let manualExclusionList = [];
   try {
     manualExclusionList = JSON.parse(
       fs.readFileSync(manualExclusionPath, "utf8")
     );
+    log(
+      "BESTIARY",
+      `${manualExclusionList.length} creatures marked by the Artificer's decree.`
+    );
   } catch {
-    console.warn("⚠ No manual exclusion list found.");
+    warn("BESTIARY", "Manual exclusion list missing.");
   }
-
-  // Merge all exclusions
-  const combinedExclusions = new Set([
-    ...exclusionListStandard,
-    ...exclusionListStrong,
-    ...manualExclusionList,
-  ]);
-
   const allowedCR = new Set([
     "0",
     "1/8",
@@ -93,83 +141,116 @@ function loadBestiary() {
     "5",
     "6",
   ]);
-
-  mergedCreatures = index.files.flatMap((file) => {
+  let totalDiscovered = 0;
+  const allCreatures = index.files.flatMap((file) => {
     const filePath = path.join(__dirname, "Data/handbooks", file);
     const data = JSON.parse(fs.readFileSync(filePath, "utf8"));
     const monsters = data.monster || [];
-
-    return monsters.filter((m) => {
-      const cr = getCR(m);
-      return (
-        allowedCR.has(cr) &&
-        (!m.legendary || m.legendary.length === 0) &&
-        !m._copy &&
-        !combinedExclusions.has(m.name)
-      );
-    });
+    totalDiscovered += monsters.length;
+    return monsters;
   });
-
-  console.log(
-    `Loaded ${mergedCreatures.length} creatures into memory (CR ≤ 6)`
+  log("BESTIARY", `${totalDiscovered} creatures discovered across all tomes.`);
+  let manualExcludedCount = 0;
+  let overCR6Count = 0;
+  let legendaryCount = 0;
+  let copyCount = 0;
+  let noImageCount = 0;
+  mergedCreatures = allCreatures.filter((m) => {
+    const name = m.name;
+    if (manualExclusionList.includes(name)) {
+      manualExcludedCount++;
+      return false;
+    }
+    const cr = getCR(m);
+    if (!allowedCR.has(cr)) {
+      overCR6Count++;
+      return false;
+    }
+    const isLegendary =
+      (m.legendary && m.legendary.length > 0) || m.legendaryGroup;
+    if (isLegendary) {
+      legendaryCount++;
+      return false;
+    }
+    if (m._copy) {
+      copyCount++;
+      return false;
+    }
+    const imageFile = creatureNameToImageFile(name);
+    const imagePath = path.join(__dirname, "Assets/Creatures", imageFile);
+    if (!fs.existsSync(imagePath)) {
+      noImageCount++;
+      return false;
+    }
+    return true;
+  });
+  log(
+    "BESTIARY",
+    `${manualExcludedCount} creatures manually excluded by the Artificer.`
   );
+  log("BESTIARY", `${overCR6Count} beasts banished for exceeding CR6 rating.`);
+  log(
+    "BESTIARY",
+    `${legendaryCount} legendary entities sealed away from the menagerie.`
+  );
+  log(
+    "BESTIARY",
+    `${copyCount} echo-creatures dismissed as reflections (_copy).`
+  );
+  log(
+    "BESTIARY",
+    `${noImageCount} creatures dismissed as invisible (no image file).`
+  );
+  log(
+    "BESTIARY",
+    `${mergedCreatures.length} creatures remain in the menagerie, ready for summoning.`
+  );
+  log("BESTIARY", "-------------------------------------------");
 }
-
 loadBestiary();
-
 // ---------------------------------------------------------
-// Load and merge book ID files ONCE at server startup
-// ---------------------------------------------------------
-let mergedBooks = [];
-function loadBooks() {
-  const autoPath = path.join(__dirname, "Data/books.ids.generated.json");
-  const manualPath = path.join(__dirname, "Data/books.ids.manual.json");
-  const auto = JSON.parse(fs.readFileSync(autoPath, "utf8"));
-  let manual = [];
-  try {
-    manual = JSON.parse(fs.readFileSync(manualPath, "utf8"));
-  } catch {
-    console.warn(
-      "⚠ No book-ids-manual.json found. Continuing without overrides."
-    );
-  }
-  // Merge with manual taking priority
-  const map = new Map();
-  auto.forEach((b) => map.set(b.id, b));
-  manual.forEach((b) => map.set(b.id, b)); // overrides auto
-  mergedBooks = Array.from(map.values());
-  console.log(`Loaded ${mergedBooks.length} book entries into memory.`);
-}
-loadBooks();
-// ---------------------------------------------------------
-// Validate book coverage (admin check)
+// VALIDATION — Ledger Cross-Check
 // ---------------------------------------------------------
 function validateBookCoverage() {
+  log("VALIDATION", "-------------------------------------------");
+  log(
+    "VALIDATION",
+    "The Archivist cross-checks creature sources against tomes…"
+  );
   if (!mergedBooks.length || !mergedCreatures.length) {
-    console.warn("⚠ Cannot validate books — data not loaded.");
+    warn(
+      "VALIDATION",
+      "Cannot validate — either the ledger or the menagerie is empty."
+    );
+    log("VALIDATION", "-------------------------------------------");
     return;
   }
   const creatureSources = new Set(
     mergedCreatures.map((c) => c.source).filter(Boolean)
   );
   const bookIds = new Set(mergedBooks.map((b) => b.id));
-  // Creature sources that do NOT exist in the book list
   const unknownSources = [...creatureSources].filter(
     (src) => !bookIds.has(src)
   );
-  console.log("--------------------------------------------------");
-  console.log("Missing Book IDs (creature sources not found in book list)");
-  console.log("--------------------------------------------------");
   if (unknownSources.length === 0) {
-    console.log("✔ All creature sources exist in the book list.");
+    log(
+      "VALIDATION",
+      "All creature sources accounted for in the Archivist's ledger."
+    );
   } else {
-    unknownSources.forEach((src) => console.log(` - ${src}`));
+    warn(
+      "VALIDATION",
+      `${unknownSources.length} sources lack matching tomes in the ledger:`
+    );
+    unknownSources.forEach((src) =>
+      warn("VALIDATION", `Uncatalogued source detected: ${src}`)
+    );
   }
-  console.log("--------------------------------------------------");
+  log("VALIDATION", "-------------------------------------------");
 }
 validateBookCoverage();
 // ---------------------------------------------------------
-// API endpoints to serve merged creatures & books
+// API Endpoints (Silent unless error)
 // ---------------------------------------------------------
 app.get("/api/creatures", (req, res) => {
   res.json(mergedCreatures);
@@ -177,15 +258,33 @@ app.get("/api/creatures", (req, res) => {
 app.get("/api/books", (req, res) => {
   res.json(mergedBooks);
 });
-// Default route → index.html at root
+app.get("/api/attributes", (req, res) => {
+  res.json(loadedAttributes);
+});
+app.get("/api/perks", (req, res) => {
+  res.json(loadedPerks);
+});
+// ---------------------------------------------------------
+// Routes (Silent unless error)
+// ---------------------------------------------------------
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "Index.html"));
 });
+// 404 handler
 app.use((req, res) => {
+  warn("ROUTE", `A traveller wanders into the void: ${req.method} ${req.url}`);
   res.status(404).sendFile(path.join(__dirname, "404.html"));
 });
+// ---------------------------------------------------------
+// SERVER — Engine Awakening
+// ---------------------------------------------------------
 app.listen(port, () => {
-  console.log(
-    `MonsterFactory started successfully @ http://localhost:${port} do not close this terminal`
+  log("SERVER", "-------------------------------------------");
+  log("SERVER", "The MonsterFactory engine awakens.");
+  log("SERVER", `Realm accessible at http://localhost:${port}.`);
+  log(
+    "SERVER",
+    `Environment attuned to: ${process.env.NODE_ENV || "development"}`
   );
+  log("SERVER", "-------------------------------------------");
 });

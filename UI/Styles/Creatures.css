@@ -1,3 +1,40 @@
+/* ----------------------------------------------------------- */
+/* Small Premium Fantasy Reset Button */
+/* ----------------------------------------------------------- */
+
+.mf-btn-reset {
+  font-family: MrEaves, sans-serif;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+
+  padding: 6px 14px;
+  border-radius: 6px;
+
+  background: #0a2d39;
+  background: linear-gradient(to bottom, #0f3a47, #08242c);
+
+  color: #e8faff;
+  border: 1px solid #1a4c58;
+
+  cursor: pointer;
+  transition: background 0.2s ease, box-shadow 0.2s ease, transform 0.15s ease,
+    color 0.2s ease;
+}
+
+/* Hover: subtle arcane glow */
+.mf-btn-reset:hover {
+  color: #00fbff;
+  box-shadow: 0 0 8px rgba(79, 214, 255, 0.5);
+  border-color: #4fd6ff;
+}
+
+/* Active: pressed-in magical effect */
+.mf-btn-reset:active {
+  transform: translateY(1px);
+  background: linear-gradient(to bottom, #08242c, #0f3a47);
+  box-shadow: 0 0 4px rgba(79, 214, 255, 0.4) inset;
+}
+
 /* ------------------------------
 Creature Media (mobile first)
 -------------------------------- */
@@ -72,8 +109,6 @@ Creature Header
 .creature-description {
   max-width: 750px;
   margin: 0.5rem auto;
-  font-size: 0.85rem;
-  font-family: var(--font-body);
 }
 
 .creature-subtitle {

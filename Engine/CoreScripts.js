@@ -101,8 +101,12 @@ function exportCreature() {
     return;
   }
 
-  // 1. OPEN POPUP IMMEDIATELY (user-gesture safe)
-  const popup = window.open("/export.html", "monsterfactory_export_preview");
+  // 1. OPEN STATIC EXPORT PAGE
+  const popup = window.open(
+    "/export.html",
+    "monsterfactory_export_preview",
+    "width=900,height=900,resizable=yes,scrollbars=yes"
+  );
 
   if (!popup) {
     alert(
@@ -113,19 +117,12 @@ function exportCreature() {
 
   // 2. PREP EXPORT DOM IN HIDDEN CONTAINER
   const branding = target.querySelector(".export-footer");
-  if (!branding) {
-    console.warn("Artificier: No export footer found inside #export-image.");
-  }
-
   target.innerHTML = "";
   if (branding) target.appendChild(branding);
 
   const clone = source.cloneNode(true);
-  if (branding) {
-    target.insertBefore(clone, branding);
-  } else {
-    target.appendChild(clone);
-  }
+  if (branding) target.insertBefore(clone, branding);
+  else target.appendChild(clone);
 
   const originalStyle = target.getAttribute("style") || "";
   target.style.width = "750px";
@@ -139,25 +136,26 @@ function exportCreature() {
     scale: 2,
   })
     .then((canvas) => {
-      // Restore original styling
       target.setAttribute("style", originalStyle);
 
-      // Create PNG data URL
       const dataUrl = canvas.toDataURL("image/png");
-
-      // Creature name for filename
       const name =
         document.getElementById("name-out")?.innerText?.trim() || "Creature";
 
-      // 4. SEND PNG TO EXPORT PAGE
-      popup.postMessage(
-        {
-          type: "mf-export-image",
-          dataUrl: dataUrl,
-          filename: name,
-        },
-        "*"
-      );
+      // 4. SEND PNG TO STATIC EXPORT PAGE
+      const sendExport = () => {
+        popup.postMessage(
+          {
+            type: "mf-export-image",
+            dataUrl: dataUrl,
+            filename: name,
+          },
+          "*"
+        );
+      };
+
+      if (popup.document.readyState === "complete") sendExport();
+      else popup.onload = sendExport;
     })
     .catch((err) => {
       console.error("Artificier: Export failed.", err);

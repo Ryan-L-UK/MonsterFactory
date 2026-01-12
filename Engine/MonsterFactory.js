@@ -24,8 +24,8 @@ async function loadSources() {
     const [creaturesRes, attributesRes, perksRes, booksRes] = await Promise.all(
       [
         fetch("/api/creatures"),
-        fetch("/Data/attributes.json"),
-        fetch("/Data/perks.json"),
+        fetch("/api/attributes"),
+        fetch("/api/perks"),
         fetch("/api/books"),
       ]
     );
@@ -140,7 +140,6 @@ function generateMonster() {
   const attribute = getRandomItem(Sources.attributes);
   //const perk = Sources.perks.find((p) => p.name === "Explosive Speed");
   const perk = getRandomItem(Sources.perks);
-
   //console.log("Picked:", {attribute: attribute,creature: creature, perk: perk,});
   //------
   renderImageNameBlock(creature, attribute, perk);
@@ -158,7 +157,6 @@ function generateMonster() {
   renderSpeed(creature, attribute, perk);
   //------
   $("cr-out").innerHTML = creature.cr;
-
   //------
   $("saves-out").innerHTML = creature.save
     ? Object.entries(creature.save)
@@ -269,7 +267,7 @@ function renderImageNameBlock(creature, attribute, perk) {
   //------------------------
   setText(
     "desc-out",
-    `This ${creature.name} was ${attribute.origin} It is ${perk.origin}.`
+    `This ${creature.name} was ${attribute.origin} ${perk.origin}.`
   );
 }
 //------------------------
@@ -619,7 +617,6 @@ function renderEntryList(containerId, entries, emptyText) {
       const node = renderEntry(e);
       desc.appendChild(node);
     });
-
     container.appendChild(title);
     container.appendChild(desc);
   });
@@ -627,36 +624,28 @@ function renderEntryList(containerId, entries, emptyText) {
 //------------------------
 function renderEntry(entry) {
   if (entry == null) return document.createTextNode("");
-
   // STRING → text node
   if (typeof entry === "string") {
     return document.createTextNode(datacleanse(entry));
   }
-
   // LIST → <ul><li>...</li></ul>
   if (entry.type === "list" && Array.isArray(entry.items)) {
     const ul = document.createElement("ul");
     ul.classList.add("list-hang");
-
     entry.items.forEach((item) => {
       const li = document.createElement("li");
-
       if (item.name) {
         const strong = document.createElement("strong");
         strong.textContent = datacleanse(item.name) + ". ";
         li.appendChild(strong);
       }
-
       (item.entries || []).forEach((sub) => {
         li.appendChild(renderEntry(sub));
       });
-
       ul.appendChild(li);
     });
-
     return ul;
   }
-
   // ENTRIES BLOCK → <div>...</div>
   if (entry.type === "entries" && Array.isArray(entry.entries)) {
     const div = document.createElement("div");
@@ -665,7 +654,6 @@ function renderEntry(entry) {
     });
     return div;
   }
-
   // FALLBACK → text node
   return document.createTextNode(datacleanse(String(entry)));
 }
@@ -684,7 +672,6 @@ function renderReactions(creature) {
   const reactions = creature.reaction || [];
   renderEntryList("reactions-container", reactions, "No reactions.");
 }
-
 /*------------------------
 10. Spellcasting
 ------------------------*/
@@ -784,9 +771,7 @@ function renderSpellcasting(creature) {
     //.replace(/\|.*\|/g, "")
     //.replace(/\|/g, "")
     //.replace(/\{/g, "")
-
     .replace(/\\?\{@chance\s*([0-9]+|X)\s*\}?/gi, "($1%)") //% Chances
-
     //--------------
     .replace(/\{@status/g, "")
     .replace(/\{@condition/g, "")
@@ -797,14 +782,11 @@ function renderSpellcasting(creature) {
     .replace(/\{@actTrigger/g, "Trigger")
     .replace(/\{@actResponse/g, "Response")
     .replace(/\{@creature /g, "")
-
     .replace(/\{@item /g, "") //Wears Item?
-
     //--------------
     .replace(/\{@spell/g, "") //Remove Spell Tag
     .replace(/\\?\{@recharge\s*([0-9]+|X)\}/gi, "(Recharge $1)") //Recharge Tags
     .replace(/concentration\s*\|+\s*concentrating/i, "concentrating")
-
     //--------------
     .replace(/\{@variantrule/g, "")
     .replace(/\|XGE/g, "")
@@ -813,12 +795,9 @@ function renderSpellcasting(creature) {
     .replace(/\|phb}/g, "")
     .replace(/\|\|3/g, "") //Related to quick ref
     //--------------
-
     .replace(/\{@atkr m\}/g, "Melee Attack Roll:")
     .replace(/\{@atkr r\}/g, "Ranged Attack Roll:")
-
     .replace(/\{@atkr m, r\}/g, "Melee or Ranged Attack Roll:")
-
     .replace(/\{@atk mw\}/g, "Melee Weapon Attack:")
     .replace(/\{@atk rw\}/g, "Ranged Weapon Attack:")
     .replace(/\{@atk mw,rw\}/g, "Melee or Ranged Weapon Attack:")
@@ -833,7 +812,6 @@ function renderSpellcasting(creature) {
     //--------------
     .replace(/\{@actSaveFail/g, "Failure: ") //Failed saving throw
     .replace(/\{@actSaveSuccess/g, "Success: ") //Failed saving throw
-
     //--------------
     .replace(/\{@actSave str/g, "Str Saving Throw: ") //Str Save
     .replace(/\{@actSave dex/g, "Dex Saving Throw:") //Dex Save
@@ -852,39 +830,31 @@ function renderSpellcasting(creature) {
 // ------------------------------------------------------------
 //  UTILITIES
 // ------------------------------------------------------------
-
 function firstPipePart(str) {
   return str.split("|")[0].trim();
 }
-
 function resolveFallbackSyntax(str) {
   if (!str.includes("||")) return str;
   const [primary, fallback] = str.split("||").map((s) => s.trim());
   return fallback || primary;
 }
-
 // ------------------------------------------------------------
 //  TAG PARSER — replaces datacleanse()
 // ------------------------------------------------------------
-
 function cleanText(raw) {
   if (raw == null) return "";
   const text = typeof raw === "string" ? raw : JSON.stringify(raw);
-
   return text.replace(/\{@([^}]+)\}/g, (full, inner) => {
     const [tag, ...rest] = inner.split(" ");
     const args = rest.join(" ").trim();
     return renderTag(tag, args);
   });
 }
-
 // ------------------------------------------------------------
 //  TAG DISPATCHER
 // ------------------------------------------------------------
-
 function renderTag(tag, args) {
   args = resolveFallbackSyntax(args);
-
   switch (tag) {
     // Core combat tags
     case "atk":
@@ -901,7 +871,6 @@ function renderTag(tag, args) {
       return "Hit or Miss:";
     case "dc":
       return renderDc(args);
-
     // Saving throw tags
     case "actSave":
       return renderSave(args);
@@ -913,7 +882,6 @@ function renderTag(tag, args) {
       return "Trigger";
     case "actResponse":
       return "Response";
-
     // Conditions, statuses, creatures
     case "condition":
       return firstPipePart(args);
@@ -921,17 +889,14 @@ function renderTag(tag, args) {
       return firstPipePart(args);
     case "creature":
       return firstPipePart(args);
-
     // Skills
     case "skill":
       return firstPipePart(args);
-
     // Items & spells
     case "spell":
       return firstPipePart(args);
     case "item":
       return firstPipePart(args);
-
     // Recharge, chance, scaling
     case "recharge":
       return renderRecharge(args);
@@ -939,39 +904,31 @@ function renderTag(tag, args) {
       return renderChance(args);
     case "scaledamage":
       return renderScaleDamage(args);
-
     // Damage dice
     case "damage":
       return args;
-
     // Quickref / variant rules
     case "quickref":
       return "";
     case "variantrule":
       return "";
-
     // Hazards
     case "hazard":
       return firstPipePart(args);
-
     // Ability scores
     case "ability":
       return args.toUpperCase();
-
     // Default fallback
     default:
       return args;
   }
 }
-
 // ------------------------------------------------------------
 //  TAG HANDLERS
 // ------------------------------------------------------------
-
 function renderDc(args) {
   return `DC ${args}`;
 }
-
 function renderAtk(args) {
   switch (args) {
     case "mw":
@@ -990,7 +947,6 @@ function renderAtk(args) {
       return "Attack:";
   }
 }
-
 function renderAtkRoll(args) {
   switch (args) {
     case "m":
@@ -1003,7 +959,6 @@ function renderAtkRoll(args) {
       return "Attack Roll:";
   }
 }
-
 function renderSave(args) {
   const map = {
     str: "Str Saving Throw:",
@@ -1015,33 +970,26 @@ function renderSave(args) {
   };
   return map[args] || "Saving Throw:";
 }
-
 function renderSpell(args) {
   return firstPipePart(args);
 }
-
 function renderItem(args) {
   return firstPipePart(args);
 }
-
 function renderRecharge(args) {
   return `(Recharge ${args})`;
 }
-
 function renderChance(args) {
   return `(${args}% Chance)`;
 }
-
 function renderScaleDamage(args) {
   // Example: {@scaledamage 2d6|1d6|3d6|5d6}
   const parts = args.split("|");
   return parts[0]; // Use base damage
 }
-
 // ------------------------------------------------------------
 //  EXPORT
 // ------------------------------------------------------------
-
 function datacleanse(str) {
   return cleanText(str)
     .replace(/\[/g, "")
@@ -1050,7 +998,6 @@ function datacleanse(str) {
     .replace(/,/g, ", ")
     .replace(/"/g, "");
 }
-
 //------------------------
 function checkheader(header) {
   var headerout = "";

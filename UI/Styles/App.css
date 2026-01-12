@@ -16,8 +16,5 @@
 /* 5. Page-level styles (404, etc.) */
 @import url("./Pages.css");
 
-/* 6. Export-only overrides */
-@import url("./Export.css");
-
 /* 99. Sources & Global Styles */
 @import url("./Sources.css");

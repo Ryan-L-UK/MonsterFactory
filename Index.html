@@ -2,23 +2,37 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- SEO -->
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="/UI/Styles/App.css" />
+    <link rel="stylesheet" href="/Engine/lib/tippy/tippy.css" />
+    <!-- Favicon -->
+    <link
+      rel="shortcut icon"
+      type="image/png"
+      href="/UI/Components/Logos/MonsterFactoryLogo.png"
+    />
+    <!-- Info & Description -->
     <title>The Monster Factory</title>
-    <link rel="canonical" href="https://monsterfactory.app/" />
     <meta
       name="description"
       content="Enter the MonsterFactory: a forge for handcrafted and procedurally generated D&D creatures. Create unique monsters, explore curated designs, and fuel your campaigns with fresh, lore-rich encounters."
     />
-    <!-- OpenGraph -->
+    <link rel="canonical" href="https://monsterfactory.app/" />
+    <!-- Display, Theming & Icons -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#05070b" />
+    <link
+      rel="apple-touch-icon"
+      href="/UI/Components/Logos/MonsterFactoryLogo.png"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://monsterfactory.app/" />
+    <meta property="og:site_name" content="MonsterFactory" />
     <meta property="og:title" content="The Monster Factory" />
     <meta
       property="og:description"
       content="Generate handcrafted and procedurally built D&D monsters with unique traits, origins, and lore."
     />
-    <meta property="og:url" content="https://monsterfactory.app/" />
-    <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="MonsterFactory" />
     <meta
       property="og:image"
       content="https://monsterfactory.app/UI/Components/Logos/social-card.png"
@@ -34,17 +48,6 @@
       name="twitter:image"
       content="https://monsterfactory.app/UI/Components/Logos/social-card.png"
     />
-    <!-- Favicon -->
-    <link
-      rel="shortcut icon"
-      type="image/png"
-      href="/UI/Components/Logos/MonsterFactoryLogo.png"
-    />
-    <!-- Preload -->
-    <link rel="preload" href="/UI/Styles/FontPackages.css" as="style" />
-    <!-- Stylesheets -->
-    <link rel="stylesheet" href="/UI/Styles/App.css" />
-    <link rel="stylesheet" href="/Engine/lib/tippy/tippy.css" />
     <!-- JSON-LD Structured Data -->
     <script type="application/ld+json">
       {
@@ -62,7 +65,6 @@
     <!---------------------------------------->
     <!--Nav Bar-->
     <header id="Nav_output"></header>
-
     <!---------------------------------------->
     <!--Creature Icons & Picture-->
     <div id="main-creature">
@@ -73,7 +75,6 @@
           id="creature-media-image"
           alt="Illustration of the creature"
         />
-
         <div class="creature-attribute">
           <img src="" class="creature-media-icon" id="attribute-icon-out" />
           <div class="creature-media-header">
@@ -268,6 +269,20 @@
       <a class="submit-button" href="/">Roll Creature</a>
     </div>
     <br />
+    <div
+      id="export-image"
+      style="
+        position: absolute;
+        left: -9999px;
+        top: -9999px;
+        pointer-events: none;
+        width: 750px;
+      "
+    >
+      <div class="export-footer">
+        © 2026 RyanFuturistics | MonsterFactory™ | All rights reserved.
+      </div>
+    </div>
 
     <!--Footer-->
     <footer id="Ftr_output"></footer>
