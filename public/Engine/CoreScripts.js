@@ -1,52 +1,43 @@
 //-----------------------------------------
-//Menu Load
-console.log("Wizard: Summoning menu...");
-fetch("/UI/Components/Menu.html")
-  .then((Mresponse) => Mresponse.text())
-  .then((MenuHTML) => {
-    var parser = new DOMParser();
-    var MenuDoc = parser.parseFromString(MenuHTML, "text/html");
-    var MenuArticle = MenuDoc.querySelector("html").innerHTML;
-    document.getElementById("Nav_output").innerHTML = MenuArticle;
+// INITIALIZE NAVIGATION (Menu + Footer)
+//-----------------------------------------
+async function initNavigation() {
+  console.log("Wizard: Summoning menu...");
+
+  try {
+    // Load Menu
+    const menuHTML = await fetch("/UI/Components/Menu.html").then((r) =>
+      r.text()
+    );
+    const menuDoc = new DOMParser().parseFromString(menuHTML, "text/html");
+    document.getElementById("Nav_output").innerHTML =
+      menuDoc.querySelector("html").innerHTML;
     console.log("Wizard: Menu Appeared.");
-    const hamburger = document.getElementById("menuHamburger");
-    const menu = document.getElementById("menuItemContainer");
-    if (hamburger && menu) {
-      hamburger.addEventListener("click", () => {
-        menu.classList.toggle("open");
-        console.log("Button Click");
-      });
-    } else {
-      console.log("Wizard: Menu elements not found.");
-    }
-  })
-  .catch((err) => {
-    console.log("Wizard: Casting Failure... ", err);
-  });
-//-----------------------------------------
-//Footer Load
-fetch("/UI/Components/Footer.html")
-  .then(function (Fresponse) {
+  } catch (err) {
+    console.log("Wizard: Menu Summoning Failed...", err);
+  }
+
+  try {
+    // Load Footer
     console.log("Wizard: Summoning footer...");
-    return Fresponse.text();
-  })
-  .then(function (FooterHTML) {
-    var parser = new DOMParser();
-    var FooterDoc = parser.parseFromString(FooterHTML, "text/html");
-    var FooterArticle = FooterDoc.querySelector("html").innerHTML;
-    document.getElementById("Ftr_output").innerHTML = FooterArticle;
+    const footerHTML = await fetch("/UI/Components/Footer.html").then((r) =>
+      r.text()
+    );
+    const footerDoc = new DOMParser().parseFromString(footerHTML, "text/html");
+    document.getElementById("Ftr_output").innerHTML =
+      footerDoc.querySelector("html").innerHTML;
     console.log("Wizard: Footer Appeared.");
-  })
-  .catch(function (err) {
-    console.log("Wizard: Casting Failure... ", err);
-  });
+  } catch (err) {
+    console.log("Wizard: Footer Summoning Failed...", err);
+  }
+}
 
 //-----------------------------------------
-// Mobile + Desktop Menu
+// INITIALIZE MENU INTERACTIONS
 //-----------------------------------------
-//Mobile Menu
+function initMenu() {
+  console.log("Wizard: Binding menu interactions...");
 
-document.addEventListener("DOMContentLoaded", () => {
   const menuHamburger = document.getElementById("menuHamburger");
   const menuNav = document.getElementById("menuItemContainer");
   const curatedToggle = document.getElementById("curatedDropdownToggle");
@@ -60,7 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Curated dropdown toggle (mobile only; desktop uses hover)
+  // Curated dropdown toggle (mobile)
   if (curatedToggle && curatedPanel) {
     curatedToggle.addEventListener("click", () => {
       const isOpen = curatedPanel.classList.toggle("open");
@@ -68,28 +59,23 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Hook up reroll buttons (desktop + mobile) to your existing logic
+  // Reroll buttons
   const rerollDesktop = document.getElementById("menuRerollDesktop");
   const rerollMobile = document.getElementById("menuRefreshMobile");
 
   const triggerReroll = () => {
-    // Call your existing reroll function here:
-    // e.g., generateCreature(), or whatever you're using.
     if (typeof generateCreature === "function") {
       generateCreature();
     }
   };
 
-  if (rerollDesktop) {
-    rerollDesktop.addEventListener("click", triggerReroll);
-  }
-  if (rerollMobile) {
-    rerollMobile.addEventListener("click", triggerReroll);
-  }
-});
+  if (rerollDesktop) rerollDesktop.addEventListener("click", triggerReroll);
+  if (rerollMobile) rerollMobile.addEventListener("click", triggerReroll);
+}
 
 //-----------------------------------------
-//HTML2Canvas
+// EXPORT FUNCTION (unchanged)
+//-----------------------------------------
 function exportCreature() {
   console.log("Artificier: Taking Notes...");
 
@@ -101,7 +87,6 @@ function exportCreature() {
     return;
   }
 
-  // 1. OPEN STATIC EXPORT PAGE
   const popup = window.open(
     "/export.html",
     "monsterfactory_export_preview",
@@ -115,7 +100,6 @@ function exportCreature() {
     return;
   }
 
-  // 2. PREP EXPORT DOM IN HIDDEN CONTAINER
   const branding = target.querySelector(".export-footer");
   target.innerHTML = "";
   if (branding) target.appendChild(branding);
@@ -128,7 +112,6 @@ function exportCreature() {
   target.style.width = "750px";
   target.style.maxWidth = "750px";
 
-  // 3. RENDER WITH HTML2CANVAS
   html2canvas(target, {
     useCORS: true,
     allowTaint: true,
@@ -142,7 +125,6 @@ function exportCreature() {
       const name =
         document.getElementById("name-out")?.innerText?.trim() || "Creature";
 
-      // 4. SEND PNG TO STATIC EXPORT PAGE
       const sendExport = () => {
         popup.postMessage(
           {

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!---------------------------------------->
+    <!-- Info & Description -->
+    <title>Curated Creature Gallery - The Monster Factory</title>
+    <meta
+      name="description"
+      content="Browse the full gallery of curated MonsterFactory creatures. Explore handcrafted designs, unique lore, and custom-built monsters ready for your campaigns."
+    />
+    <link rel="canonical" href="https://monsterfactory.app/gallery" />
+    <!---------------------------------------->
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="/UI/Styles/App.css" />
+    <link rel="stylesheet" href="/Engine/lib/tippy/tippy.css" />
+    <!---------------------------------------->
+    <!-- Icons -->
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <!---------------------------------------->
+    <!-- Open Graph (inherits homepage preview) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://monsterfactory.app/" />
+    <meta property="og:site_name" content="MonsterFactory" />
+    <meta property="og:title" content="The Monster Factory" />
+    <meta
+      property="og:description"
+      content="Generate handcrafted and procedurally built D&D monsters with unique traits, origins, and lore."
+    />
+    <meta
+      property="og:image"
+      content="https://monsterfactory.app/UI/Components/Logos/social-card.png"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <!---------------------------------------->
+    <!-- Twitter (inherits homepage preview) -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="The Monster Factory" />
+    <meta
+      name="twitter:description"
+      content="A forge for handcrafted and procedurally generated D&D creatures."
+    />
+    <meta
+      name="twitter:image"
+      content="https://monsterfactory.app/UI/Components/Logos/social-card.png"
+    />
+    <!---------------------------------------->
+    <!-- Theme -->
+    <meta name="theme-color" content="#05070b" />
+    <!---------------------------------------->
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": "Curated Creature Gallery",
+        "url": "https://monsterfactory.app/gallery",
+        "description": "A gallery of curated MonsterFactory creatures, featuring handcrafted designs and unique lore."
+      }
+    </script>
+  </head>
+
+  <body>
+    <header id="Nav_output"></header>
+
+    <main class="curated-wrapper">
+      <div class="help-hero">
+        <h1>Curated Creatures</h1>
+        <p>
+          Welcome to the curated creatures section. These are hand-picked by
+          Gobby himself. Creatures with unusual quirks, fun stat spreads, or
+          just the right amount of chaos. Each one is generated using the same
+          systems as the main tool, then given a few extra twists, custom
+          artwork, flavour text, and notes on their habits and behaviour.
+        </p>
+        <p class="gobby-note">
+          “Gobby curated these. Gobby has impeccable taste.”
+        </p>
+      </div>
+
+      <div class="curated-gallery">{{GALLERY_TILES}}</div>
+    </main>
+
+    <footer id="Ftr_output"></footer>
+
+    <script src="/Engine/lib/tippy/popper.min.js" defer></script>
+    <script src="/Engine/lib/tippy/tippy.umd.min.js" defer></script>
+
+    <script src="/Engine/CoreScripts.js" defer></script>
+
+    <script src="/Engine/Orchestrator.js" defer></script>
+  </body>
+</html>

@@ -1,6 +1,7 @@
 {
   "name": "Bloodbound Curse-Warden",
   "subtitle": "Medium Construct, Neutral",
+  "short": "this is the short descrition",
   "cr": "5",
   "ac": 17,
   "hp": 107,

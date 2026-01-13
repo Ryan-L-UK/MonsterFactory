@@ -2,15 +2,8 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <!-- Stylesheets -->
-    <link rel="stylesheet" href="/UI/Styles/App.css" />
-    <link rel="stylesheet" href="/Engine/lib/tippy/tippy.css" />
-    <!-- Favicon -->
-    <link
-      rel="shortcut icon"
-      type="image/png"
-      href="/UI/Components/Logos/MonsterFactoryLogo.png"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!---------------------------------------->
     <!-- Info & Description -->
     <title>The Monster Factory</title>
     <meta
@@ -18,13 +11,16 @@
       content="Enter the MonsterFactory: a forge for handcrafted and procedurally generated D&D creatures. Create unique monsters, explore curated designs, and fuel your campaigns with fresh, lore-rich encounters."
     />
     <link rel="canonical" href="https://monsterfactory.app/" />
-    <!-- Display, Theming & Icons -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#05070b" />
-    <link
-      rel="apple-touch-icon"
-      href="/UI/Components/Logos/MonsterFactoryLogo.png"
-    />
+    <!---------------------------------------->
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="/UI/Styles/App.css" />
+    <link rel="stylesheet" href="/Engine/lib/tippy/tippy.css" />
+    <!---------------------------------------->
+    <!-- Icons -->
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <!---------------------------------------->
+    <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://monsterfactory.app/" />
     <meta property="og:site_name" content="MonsterFactory" />
@@ -37,7 +33,10 @@
       property="og:image"
       content="https://monsterfactory.app/UI/Components/Logos/social-card.png"
     />
-    <!-- Twitter Card -->
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <!---------------------------------------->
+    <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="The Monster Factory" />
     <meta
@@ -48,7 +47,11 @@
       name="twitter:image"
       content="https://monsterfactory.app/UI/Components/Logos/social-card.png"
     />
-    <!-- JSON-LD Structured Data -->
+    <!---------------------------------------->
+    <!-- Theme -->
+    <meta name="theme-color" content="#05070b" />
+    <!---------------------------------------->
+    <!-- JSON-LD -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -61,6 +64,7 @@
       }
     </script>
   </head>
+
   <body>
     <!---------------------------------------->
     <!--Nav Bar-->
@@ -289,8 +293,15 @@
     <!--END-->
   </body>
 </html>
-<script src="Engine/lib/tippy/popper.min.js"></script>
-<script src="Engine/lib/tippy/tippy.umd.min.js"></script>
-<script src="Engine/CoreScripts.js"></script>
-<script src="Engine/MonsterFactory.js"></script>
-<script src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
+<script src="Engine/lib/tippy/popper.min.js" defer></script>
+<script src="Engine/lib/tippy/tippy.umd.min.js" defer></script>
+
+<script src="Engine/CoreScripts.js" defer></script>
+<script src="Engine/MonsterFactory.js" defer></script>
+
+<script
+  src="https://html2canvas.hertzen.com/dist/html2canvas.js"
+  defer
+></script>
+
+<script src="Engine/Orchestrator.js" defer></script>

@@ -1,4 +1,4 @@
-async function loadCreature() {
+async function initContentViewer() {
   const params = new URLSearchParams(window.location.search);
   const id = params.get("id");
 
@@ -74,5 +74,3 @@ async function loadCreature() {
       "<p>Error loading creature data.</p>";
   }
 }
-
-loadCreature();

@@ -3,46 +3,66 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MonsterFactory - Help & Documentation</title>
+    <!---------------------------------------->
+    <!-- Info & Description -->
+    <title>Help & FAQ - The Monster Factory</title>
     <meta
       name="description"
-      content="Learn how to use MonsterFactory, understand creature traits, and explore the philosophy behind the generator."
+      content="Learn how to use the MonsterFactory, explore features, and find answers to common questions about generating and customizing D&D creatures."
     />
-    <link rel="canonical" href="https://monsterfactory.app/help" />
-    <!-- OpenGraph -->
-    <meta property="og:title" content="MonsterFactory - Help & Documentation" />
+    <link rel="canonical" href="https://monsterfactory.app/help.html" />
+    <!---------------------------------------->
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="/UI/Styles/App.css" />
+    <link rel="stylesheet" href="/Engine/lib/tippy/tippy.css" />
+    <!---------------------------------------->
+    <!-- Icons -->
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <!---------------------------------------->
+    <!-- Open Graph (inherits homepage preview) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://monsterfactory.app/" />
+    <meta property="og:site_name" content="MonsterFactory" />
+    <meta property="og:title" content="The Monster Factory" />
     <meta
       property="og:description"
-      content="Learn how to use MonsterFactory, understand creature traits, and explore the philosophy behind the generator."
+      content="Generate handcrafted and procedurally built D&D monsters with unique traits, origins, and lore."
     />
-    <meta property="og:url" content="https://monsterfactory.app/help" />
-    <meta property="og:type" content="article" />
     <meta
       property="og:image"
       content="https://monsterfactory.app/UI/Components/Logos/social-card.png"
     />
-    <!-- Twitter Card -->
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <!---------------------------------------->
+    <!-- Twitter (inherits homepage preview) -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta
-      name="twitter:title"
-      content="MonsterFactory - Help & Documentation"
-    />
+    <meta name="twitter:title" content="The Monster Factory" />
     <meta
       name="twitter:description"
-      content="Learn how to use MonsterFactory, understand creature traits, and explore the philosophy behind the generator."
+      content="A forge for handcrafted and procedurally generated D&D creatures."
     />
     <meta
       name="twitter:image"
       content="https://monsterfactory.app/UI/Components/Logos/social-card.png"
     />
-    <!-- Favicon -->
-    <link
-      rel="shortcut icon"
-      href="/UI/Components/Logos/MonsterFactoryLogo.png"
-    />
-    <!-- Styles -->
-    <link rel="stylesheet" href="/UI/Styles/App.css" />
+    <!---------------------------------------->
+    <!-- Theme -->
+    <meta name="theme-color" content="#05070b" />
+    <!---------------------------------------->
+    <!-- JSON-LD (optional for help page, but harmless) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "MonsterFactory Help & FAQ",
+        "url": "https://monsterfactory.app/help.html",
+        "description": "Help, about information, and frequently asked questions for the MonsterFactory."
+      }
+    </script>
   </head>
+
   <body>
     <!--Nav Bar-->
     <header id="Nav_output"></header>
@@ -315,4 +335,5 @@
     <footer id="Ftr_output"></footer>
   </body>
 </html>
-<script src="Engine/CoreScripts.js"></script>
+<script src="Engine/CoreScripts.js" defer></script>
+<script src="Engine/Orchestrator.js" defer></script>

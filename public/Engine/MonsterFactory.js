@@ -17,9 +17,9 @@
 ------------------------
 1. Bootstrapping & Global State
 ------------------------*/
-window.addEventListener("DOMContentLoaded", loadSources);
-async function loadSources() {
+async function initMonsterFactory() {
   console.log("Artificer: Summoning sources...");
+
   try {
     const [creaturesRes, attributesRes, perksRes, booksRes] = await Promise.all(
       [
@@ -29,37 +29,35 @@ async function loadSources() {
         fetch("/api/books"),
       ]
     );
+
     if (!creaturesRes.ok || !attributesRes.ok || !perksRes.ok || !booksRes.ok) {
       throw new Error("One or more source files failed to load.");
     }
+
     const [creatures, attributes, perks, books] = await Promise.all([
       creaturesRes.json(),
       attributesRes.json(),
       perksRes.json(),
       booksRes.json(),
     ]);
-    if (
-      !Array.isArray(creatures) ||
-      !Array.isArray(attributes) ||
-      !Array.isArray(perks) ||
-      !Array.isArray(books)
-    ) {
-      throw new Error("Source data is malformed.");
-    }
+
     Sources.creatures = creatures;
     Sources.attributes = attributes;
     Sources.perks = perks;
     Sources.books = books;
+
     console.log("Artificer: All sources loaded.");
-    generateMonster();
+
+    generateMonster(); // safe to run now
+    return true;
   } catch (err) {
     console.error("Artificer: Source loading failed!", err);
     const nameOut = document.getElementById("name-out");
-    if (nameOut) {
-      nameOut.textContent = "Failed to load sources.";
-    }
+    if (nameOut) nameOut.textContent = "Failed to load sources.";
+    return false;
   }
 }
+
 /*------------------------
 2. Core Helpers
 ------------------------*/
