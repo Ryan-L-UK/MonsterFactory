@@ -1,6 +1,8 @@
 {
   "name": "Spicy Rat",
   "subtitle": "Small Beast, Unaligned",
+  "description": "Every adventurer starts with 'kill 5 rats', but this one isn't on the menu. The Spicy Rat is volatile, overcaffeinated chaos in fur  form, and absolutely too hot to handle. Literally.",
+  "type": "Small Beast, Unaligned",
   "cr": "1/2",
   "ac": 13,
   "hp": 27,

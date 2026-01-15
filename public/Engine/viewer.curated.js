@@ -21,7 +21,7 @@ async function initContentViewer() {
     document.getElementById("creatureImage").src = `${basePath}/image.png`;
     document.getElementById("creatureImage").alt = json.name || id;
     document.getElementById("mf-name").innerHTML = json.name;
-    document.getElementById("mf-subtitle").innerHTML = json.subtitle;
+    document.getElementById("mf-subtitle").innerHTML = json.type;
     document.getElementById("mf-acclass").innerHTML = json.ac;
     document.getElementById("mf-hpclass").innerHTML = json.hp;
     document.getElementById("mf-speed").innerHTML = json.speed;

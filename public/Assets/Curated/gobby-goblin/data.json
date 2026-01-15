@@ -1,6 +1,8 @@
 {
   "name": "Little Gobby Goblin",
   "subtitle": "Small Goblinoid, Chaotic Neutral",
+  "description": "Little Gobby as you've never seen him before: psychic, fast, and far more dangerous than any goblin has the right to be. Turns out the little guy has been hiding a few… surprises.",
+  "type": "Small Goblinoid, Chaotic Neutral",
   "cr": "1/4",
   "ac": 12,
   "hp": 24,

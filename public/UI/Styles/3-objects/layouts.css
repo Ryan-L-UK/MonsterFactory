@@ -1,0 +1,47 @@
+.divider {
+  width: 100%;
+  height: 3px;
+  margin: 20px 0;
+  background: linear-gradient(
+    to right,
+    rgba(214, 174, 74, 0.8) 0%,
+    rgba(214, 174, 74, 0.4) 40%,
+    rgba(214, 174, 74, 0.15) 70%,
+    rgba(214, 174, 74, 0) 100%
+  );
+}
+.text-image-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  align-items: start;
+  margin-bottom: 40px;
+}
+/* Reverse layout using order instead of RTL hack */
+.text-image-row.reverse > :first-child {
+  order: 2;
+}
+.text-image-row.reverse > :last-child {
+  order: 1;
+}
+.text-image-row img {
+  width: 100%;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+/* --------------------------------------------------
+Mobile Version
+-------------------------------------------------- */
+@media (max-width: 768px) {
+  .text-image-row,
+  .text-image-row.reverse {
+    grid-template-columns: 1fr;
+  }
+  .text-image-row.reverse > * {
+    order: 0; /* Reset ordering on mobile */
+  }
+  .text-image-row img {
+    max-width: 80%;
+    margin: 0 auto;
+  }
+}

@@ -1,15 +1,18 @@
-/* ------------------------------ Base / Core -------------------------------- */
 html {
   background: var(--color-bg-main);
   font-family: var(--font-body);
   font-size: var(--font-body-size);
-  height: 100%;
-  width: 100%;
+  color: var(--color-text-main);
   margin: 0;
   padding: 0;
-  color: white;
 }
+
 body {
   margin: 0;
   padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
 }

@@ -1,7 +1,8 @@
 {
   "name": "Bloodbound Curse-Warden",
   "subtitle": "Medium Construct, Neutral",
-  "short": "this is the short descrition",
+  "description": "Some tombs have traps. This one has a Bloodbound Curse-Warden, a hulking construct stitched together with curses, bad decisions, and enough raw force to make adventurers rethink archaeology.",
+  "type": "Medium Construct, Neutral",
   "cr": "5",
   "ac": 17,
   "hp": 107,

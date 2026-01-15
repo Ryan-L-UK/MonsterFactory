@@ -1,0 +1,108 @@
+/* ------------------------------
+Statblock
+-------------------------------- */
+
+.stat-container {
+  text-align: center;
+  min-width: 40px;
+}
+.stat-label {
+  font-size: 1rem;
+  font-family: var(--font-display);
+  font-weight: bold;
+}
+.stat-value {
+  font-size: var(--font-size-md);
+}
+.source-book {
+  text-align: center;
+  font-size: 2rem;
+  color: var(--color-accent);
+}
+.page-number {
+  text-align: center;
+  font-size: 0.75rem;
+}
+ul.list-hang {
+  margin: 0;
+  padding-left: 1rem;
+}
+
+/* ------------------------------
+Info Grids
+-------------------------------- */
+/* --- Statblock Container --- */
+.mf-statblock {
+  background: rgba(20, 20, 20, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  padding: 20px;
+  color: rgb(255, 252, 239);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+/* Header */
+.mf-statblock-header {
+  margin-bottom: 10px;
+}
+.mf-statblock-header .mf-name {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  margin: 0;
+  letter-spacing: 1px;
+}
+.mf-statblock-header .mf-subtitle {
+  opacity: 0.8;
+  margin: 4px 0 0;
+  font-size: 0.85rem;
+}
+/* Divider */
+.mf-divider {
+  height: 2px;
+  background: linear-gradient(
+    to right,
+    rgba(214, 174, 74, 0.8),
+    rgba(214, 174, 74, 0.2)
+  );
+  margin: 12px 0;
+}
+/* Core Stats */
+.mf-core-stats div {
+  margin-bottom: 4px;
+}
+/* Ability Scores */
+.mf-abilities {
+  width: 100%;
+  text-align: center;
+  margin: 12px 0;
+  border-collapse: collapse;
+}
+.mf-abilities th {
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  opacity: 0.9;
+  padding-bottom: 4px;
+}
+.mf-abilities td {
+  padding: 6px 0;
+  font-size: 0.85rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+/* Traits & Actions */
+.mf-section-title {
+  font-family: var(--font-display);
+  font-size: var(--font-size-xs);
+  margin: 16px 0 8px;
+}
+.mf-trait,
+.mf-action {
+  margin-bottom: 10px;
+}
+.mf-trait strong,
+.mf-action strong,
+.mf-core-stats strong,
+.mf-extra strong {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+}

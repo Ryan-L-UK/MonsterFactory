@@ -6,11 +6,10 @@
     <title>404 — Monster Not Found</title>
     <meta name="description" content="404 page not found, error page." />
     <link rel="canonical" href="https://monsterfactory.app/404.html" />
-    <link
-      rel="shortcut icon"
-      href="/UI/Components/Logos/apple-touch-icon.png"
-    />
-    <link rel="stylesheet" href="/UI/Styles/App.css" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="stylesheet" href="/UI/Styles/main.css" />
     <link rel="stylesheet" href="/Engine/lib/tippy/tippy.css" />
     <meta name="theme-color" content="#05070b" />
   </head>
@@ -20,26 +19,24 @@
     <header id="Nav_output"></header>
     <br />
     <!---------------------------------------->
-    <main class="not-found-wrapper">
-      <img
-        src="/UI/Components/Logos/LittleGobby404.png"
-        class="gobby-image"
-        alt="Little Gobby"
-      />
-      <p class="creature-description centre">
-        The creature you seek has wandered beyond the edges of the Codex.
-        Perhaps it never existed… or perhaps it escaped.
-      </p>
-      <br />
-      <div class="button-container">
-        <a class="submit-button" href="/">Return Home</a>
+    <div class="container">
+      <div class="mf-hero">
+        <img src="/UI/Components/Logos/LittleGobby404.png" alt="Little Gobby" />
+        <p>
+          The creature you seek has wandered beyond the edges of the Codex.
+          Perhaps it never existed… or perhaps it escaped.
+        </p>
+
+        <div class="button-container">
+          <a class="submit-button" href="/">Return Home</a>
+        </div>
       </div>
-    </main>
-    <br />
-    <br />
+    </div>
     <!--Footer-->
     <footer id="Ftr_output"></footer>
     <!--END-->
   </body>
 </html>
-<script src="Engine/CoreScripts.js"></script>
+<script src="Engine/navigation.core.js" defer></script>
+<script src="Engine/navigation.engine.js" defer></script>
+<script src="Engine/orchestrator.js" defer></script>

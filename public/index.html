@@ -13,10 +13,11 @@
     <link rel="canonical" href="https://monsterfactory.app/" />
     <!---------------------------------------->
     <!-- Stylesheets -->
-    <link rel="stylesheet" href="/UI/Styles/App.css" />
+    <link rel="stylesheet" href="/UI/Styles/main.css" />
     <link rel="stylesheet" href="/Engine/lib/tippy/tippy.css" />
     <!---------------------------------------->
     <!-- Icons -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <!---------------------------------------->
@@ -69,9 +70,9 @@
     <!---------------------------------------->
     <!--Nav Bar-->
     <header id="Nav_output"></header>
+
     <!---------------------------------------->
-    <!--Creature Icons & Picture-->
-    <div id="main-creature">
+    <div class="container" id="main-creature">
       <section class="creature-media">
         <img
           src=""
@@ -99,10 +100,10 @@
       </section>
       <!---------------------------------------->
       <!--Creature Name & Description-->
-      <section class="creature-header">
-        <h1 class="creature-name" id="name-out"></h1>
-        <p class="creature-description" id="desc-out"></p>
-        <p class="creature-subtitle">
+      <section class="centre">
+        <h1 id="name-out"></h1>
+        <p id="desc-out"></p>
+        <p>
           <span id="alignment-out" class="creature-alignment"></span>
           <span id="size-out" class="creature-size"></span>
         </p>
@@ -293,15 +294,15 @@
     <!--END-->
   </body>
 </html>
-<script src="Engine/lib/tippy/popper.min.js" defer></script>
-<script src="Engine/lib/tippy/tippy.umd.min.js" defer></script>
+<script src="/Engine/lib/tippy/popper.min.js" defer></script>
+<script src="/Engine/lib/tippy/tippy.umd.min.js" defer></script>
 
-<script src="Engine/CoreScripts.js" defer></script>
-<script src="Engine/MonsterFactory.js" defer></script>
-
+<script src="Engine/engine.exporter.js" defer></script>
+<script src="Engine/enginer.monsterfactory.js" defer></script>
+<script src="Engine/navigation.core.js" defer></script>
+<script src="Engine/navigation.engine.js" defer></script>
 <script
   src="https://html2canvas.hertzen.com/dist/html2canvas.js"
   defer
 ></script>
-
-<script src="Engine/Orchestrator.js" defer></script>
+<script src="Engine/orchestrator.js" defer></script>

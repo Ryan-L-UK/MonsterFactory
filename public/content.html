@@ -3,7 +3,6 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
     <!---------------------------------------->
     <!-- Dynamic Info & Description -->
     <title>{{CREATURE_NAME}} – MonsterFactory</title>
@@ -12,17 +11,15 @@
       rel="canonical"
       href="https://monsterfactory.app/content?id={{CREATURE_ID}}"
     />
-
     <!---------------------------------------->
     <!-- Stylesheets -->
-    <link rel="stylesheet" href="/UI/Styles/App.css" />
+    <link rel="stylesheet" href="/UI/Styles/main.css" />
     <link rel="stylesheet" href="/Engine/lib/tippy/tippy.css" />
-
     <!---------------------------------------->
     <!-- Icons -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-
     <!---------------------------------------->
     <!-- Open Graph -->
     <meta property="og:type" content="article" />
@@ -36,36 +33,35 @@
     <meta property="og:image" content="{{CREATURE_IMAGE_URL}}" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-
     <!---------------------------------------->
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="{{CREATURE_NAME}}" />
     <meta name="twitter:description" content="{{CREATURE_DESCRIPTION}}" />
     <meta name="twitter:image" content="{{CREATURE_IMAGE_URL}}" />
-
     <!---------------------------------------->
     <!-- Theme -->
     <meta name="theme-color" content="#05070b" />
   </head>
-
   <body>
+    <!---------------------------------------->
+    <!--Nav Bar-->
     <header id="Nav_output"></header>
-
-    <main class="content-wrapper">
-      <img id="creatureImage" class="creature-image" src="" alt="" />
-
+    <!---------------------------------------->
+    <section id="Creature Display Image">
+      <div class="mf-hero">
+        <img id="creatureImage" class="creature-image" src="" alt="" />
+      </div>
+    </section>
+    <div class="content-wrapper">
       <section id="markdownContainer" class="markdown"></section>
-
       <!-- Future: statblock container -->
       <section id="statblockContainer" class="mf-statblock">
         <div class="mf-statblock-header">
           <h2 class="mf-name" id="mf-name"></h2>
           <p class="mf-subtitle" id="mf-subtitle"></p>
         </div>
-
         <div class="mf-divider"></div>
-
         <div class="mf-core-stats">
           <div>
             <span><strong>Armor Class: </strong></span
@@ -79,7 +75,6 @@
             <span><strong>Speed: </strong></span><span id="mf-speed"></span>
           </div>
         </div>
-
         <table class="mf-abilities">
           <tr>
             <th>STR</th>
@@ -115,7 +110,6 @@
             <span id="mf-languages"></span>
           </div>
         </div>
-
         <div class="mf-divider"></div>
         <h3 class="mf-section-title">Traits</h3>
         <div class="mf-traits" id="mf-traits"></div>
@@ -123,26 +117,18 @@
         <h3 class="mf-section-title">Actions</h3>
         <div class="mf-actions" id="mf-actions"></div>
       </section>
-    </main>
-
+    </div>
     <footer id="Ftr_output"></footer>
-
-    <script src="/Engine/lib/tippy/popper.min.js" defer></script>
-    <script src="/Engine/lib/tippy/tippy.umd.min.js" defer></script>
-
-    <script src="/Engine/CoreScripts.js" defer></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"
-      defer
-    ></script>
-
-    <script src="/Engine/ContentViewer.js" defer></script>
-
-    <script
-      src="https://html2canvas.hertzen.com/dist/html2canvas.js"
-      defer
-    ></script>
-
-    <script src="/Engine/Orchestrator.js" defer></script>
   </body>
 </html>
+<script src="/Engine/lib/tippy/popper.min.js" defer></script>
+<script src="/Engine/lib/tippy/tippy.umd.min.js" defer></script>
+<script src="Engine/viewer.curated.js" defer></script>
+<script src="Engine/navigation.core.js" defer></script>
+<script src="Engine/navigation.engine.js" defer></script>
+<script
+  src="https://html2canvas.hertzen.com/dist/html2canvas.js"
+  defer
+></script>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js" defer></script>
+<script src="Engine/orchestrator.js" defer></script>

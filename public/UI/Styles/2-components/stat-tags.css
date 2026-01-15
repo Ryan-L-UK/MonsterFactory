@@ -1,0 +1,100 @@
+/*-----------------------
+Creature Size
+-----------------------*/
+.creature-size {
+  padding: 0.2rem 0.4rem 0.2rem;
+  background-color: #22805e;
+  font-family: MrEaves;
+  color: white;
+  border: 2px solid #be9c56;
+  text-transform: capitalize;
+  font-size: var(--font-size-xs);
+  margin: 0 1px 0px;
+}
+/*-----------------------
+Creature Alignment
+-----------------------*/
+.creature-alignment {
+  padding: 0.2rem 0.4rem 0.2rem;
+  font-family: MrEaves;
+  color: white;
+  border: 2px solid #be9c56;
+  text-transform: capitalize;
+  margin: 0 1px 0px;
+}
+.LawfulGood {
+  background-color: #3496a0;
+}
+.NeutralGood {
+  background-color: #2ca355;
+}
+.ChaoticGood {
+  background-color: #f9d200;
+}
+.LawfulNeutral {
+  background-color: #7083d6;
+}
+.Neutral {
+  background-color: #ececec;
+  color: #000000;
+}
+.ChaoticNeutral {
+  background-color: #6535d9;
+}
+.LawfulEvil {
+  background-color: #ef6b00;
+}
+.NeutralEvil {
+  background-color: #9d134b;
+}
+.ChaoticEvil {
+  background-color: #ff0001;
+}
+.AnyAlignment,
+.AnyNon-LawfulAlignment,
+.AnyNon-GoodAlignment,
+.Unaligned {
+  background-color: #565656;
+}
+/* ------------------------------
+Ability Change Indicators
+-------------------------------- */
+.ability-increase::before {
+  content: "\23f6";
+  margin-right: 0.4rem;
+  color: lime;
+}
+.ability-point-increase {
+  color: lime;
+}
+.ability-change::before {
+  content: "\2726";
+  margin-right: 0.4rem;
+  color: #3fc7d4;
+}
+.ability-point-change {
+  color: #3fc7d4;
+}
+.ability-decrease::before {
+  content: "\23f7";
+  margin-right: 0.4rem;
+  color: red;
+}
+.ability-point-decrease {
+  color: red;
+}
+/* --------------------------------------------------
+Stat Colour Utility Classes
+-------------------------------------------------- */
+.stat-attribute {
+  color: rgb(139, 49, 139);
+  font-weight: bold;
+}
+.stat-type {
+  color: rgb(10, 151, 10);
+  font-weight: bold;
+}
+.stat-perk {
+  color: rgb(208, 8, 101);
+  font-weight: bold;
+}

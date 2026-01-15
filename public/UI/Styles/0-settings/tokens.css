@@ -1,0 +1,23 @@
+:root {
+  /* Core */
+  --max-width-content: 1100px;
+  --color-bg-main: #080a0e;
+  /* Fonts */
+  --font-display: CinzelDecorative;
+  --font-body: TiamatText;
+  --font-ui: MrEaves;
+  /* Font Sizes */
+  --font-size-xl: 2.25rem;
+  --font-size-lg: 1.75rem;
+  --font-size-md: 1.25rem;
+  --font-size-sm: 1.2rem;
+  --font-size-xs: 1.1rem;
+  /* Colours */
+  --color-text-main: #ffffff;
+  --color-accent: orange;
+  --color-gold: #d6ae4a;
+  /* Corner Styling */
+  --corner-size: 46px;
+  --corner-offset-y: -11px;
+  --corner-offset-x: -13px;
+}
