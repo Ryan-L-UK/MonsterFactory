@@ -19,9 +19,9 @@ function warn(section, message) {
   console.warn(`${formatPrefix(section)}⚠ ${message}`);
 }
 // ---------------------------------------------------------
-// robots.txt
+// robot.txt
 // ---------------------------------------------------------
-app.get("/robots.txt", (req, res) => {
+app.get("/robot.txt", (req, res) => {
   res.type("text/plain");
   res.send(
     "User-agent: *\nAllow: /\nSitemap: https://ryanfuturistics.uk/public/sitemap.xml"
