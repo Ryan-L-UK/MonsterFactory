@@ -44,9 +44,10 @@ blockquote {
   text-align: left;
 }
 .category-header {
-  font-family: Tiamat-Text;
-  margin-top: 0.5rem;
-  font-size: var(--font-size-md);
+  font-family: "Cinzel Decorative";
+  font-weight: bold;
+  margin-top: 0.75rem;
+  font-size: 1rem;
   letter-spacing: 0.3px;
   width: fit-content;
 }

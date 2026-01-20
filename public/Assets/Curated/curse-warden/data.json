@@ -1,7 +1,14 @@
 {
-  "name": "Bloodbound Curse-Warden",
-  "subtitle": "Medium Construct, Neutral",
-  "description": "Some tombs have traps. This one has a Bloodbound Curse-Warden, a hulking construct stitched together with curses, bad decisions, and enough raw force to make adventurers rethink archaeology.",
+  "tags": {
+    "attribute": "blood",
+    "perk": "cursed-touch",
+    "size": "medium",
+    "type": "construct",
+    "habitat": "underground"
+  },
+  "name": "Curse-Warden",
+  "subtitle": "Ancient • Relentless • Bound by Malediction",
+  "description": "Some tombs have traps. This one has a Curse-Warden, a hulking construct stitched together with curses, bad decisions, and enough raw force to make adventurers rethink archaeology.",
   "type": "Medium Construct, Neutral",
   "cr": "5",
   "ac": 17,
@@ -13,13 +20,13 @@
   "int": "6 (-2)",
   "wis": "12 (+0)",
   "cha": "7 (-2)",
-  "save": "con +8, wis +3",
-  "skill": "perception +3, insight +2",
-  "senses": "darkvision 60 ft., passive perception: 10",
-  "resist": "necrotic",
-  "immune": "lightning, poison, bludgeoning, slashing, piercing (from nonmagical attacks that aren't adamantine)",
-  "conditionImmune": "charmed, exhaustion, frightened, paralyzed, petrified, poisoned",
-  "languages": "understands the languages of its creator but can't speak",
+  "save": "Con +8, Wis +3",
+  "skill": "Perception +3, Insight +2",
+  "senses": "Darkvision 60 ft., Passive Perception: 10",
+  "resist": "Necrotic",
+  "immune": "Lightning, Poison, Bludgeoning, Slashing, Piercing (from nonmagical attacks that aren't adamantine)",
+  "conditionImmune": "Charmed, Exhaustion, Frightened, Paralyzed, Petrified, Poisoned",
+  "languages": "Understands the languages of its creator but can't speak",
   "traits": [
     {
       "name": "Cursed Touch",

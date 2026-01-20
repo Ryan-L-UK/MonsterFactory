@@ -27,6 +27,8 @@ Card Component (Gallery)
   overflow: hidden;
   position: relative;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
 }
 .curated-card:hover {
   transform: translateY(-4px);
@@ -41,17 +43,20 @@ Card Component (Gallery)
 }
 .curated-content {
   padding: 0.5rem 1rem 1rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
 }
 .curated-card h3 {
   margin: 0 0 6px;
-  font-size: var(--font-size-sm);
+  font-size: 1.25rem;
   letter-spacing: 1px;
-  font-family: Cinzel;
+  font-family: "Cinzel Decorative";
   font-weight: normal;
 }
 .curated-card h4 {
   margin: 0 0 10px;
-  font-size: var(--font-size-md);
+  font-size: 1.2rem;
   color: rgb(13, 116, 157);
   font-family: MrEaves;
   font-weight: normal;
@@ -61,6 +66,12 @@ Card Component (Gallery)
   font-family: var(--font-body);
   font-size: 1rem;
   font-weight: normal;
+}
+.mf-tag-container {
+  margin-top: auto;
+  padding-top: 8px;
+  display: flex;
+  flex-wrap: wrap;
 }
 @media (max-width: 900px) {
   .curated-gallery {

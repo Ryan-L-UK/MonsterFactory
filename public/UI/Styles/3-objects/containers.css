@@ -51,7 +51,7 @@ Responsive
     grid-template-columns: 300px 1fr;
   }
   .info-grid.source {
-    grid-template-columns: 1fr 160px;
+    grid-template-columns: 1fr 200px;
   }
   .abilities-grid {
     grid-template-columns: repeat(6, 1fr);

@@ -18,8 +18,6 @@
 1. Bootstrapping & Global State
 ------------------------*/
 async function initMonsterFactory() {
-  console.log("Artificer: Summoning sources...");
-
   try {
     const [creaturesRes, attributesRes, perksRes, booksRes] = await Promise.all(
       [
@@ -29,35 +27,28 @@ async function initMonsterFactory() {
         fetch("/api/books"),
       ]
     );
-
     if (!creaturesRes.ok || !attributesRes.ok || !perksRes.ok || !booksRes.ok) {
       throw new Error("One or more source files failed to load.");
     }
-
     const [creatures, attributes, perks, books] = await Promise.all([
       creaturesRes.json(),
       attributesRes.json(),
       perksRes.json(),
       booksRes.json(),
     ]);
-
     Sources.creatures = creatures;
     Sources.attributes = attributes;
     Sources.perks = perks;
     Sources.books = books;
-
-    console.log("Artificer: All sources loaded.");
-
     generateMonster(); // safe to run now
     return true;
   } catch (err) {
-    console.error("Artificer: Source loading failed!", err);
+    console.error("Factory: Source loading failed!", err);
     const nameOut = document.getElementById("name-out");
     if (nameOut) nameOut.textContent = "Failed to load sources.";
     return false;
   }
 }
-
 /*------------------------
 2. Core Helpers
 ------------------------*/
@@ -66,6 +57,8 @@ let Sources = {
   creatures: [],
   perks: [],
 };
+//------
+const cap = (s) => s.charAt(0).toUpperCase() + s.slice(1);
 //------
 const $ = (id) => {
   const el = document.getElementById(id);
@@ -121,6 +114,33 @@ function applyChangeHighlight(el) {
   if (!el) return;
   el.classList.add("ability-change", "ability-point-change");
 }
+function cleanseNameForFile(name) {
+  return name.replace(/'/g, "");
+}
+/*------------------------
+3. Drop Down Filters & Selectors
+------------------------*/
+function getSelected(id) {
+  const el = document.getElementById(id);
+  return el && el.value ? el.value : null;
+}
+document.getElementById("btn-generate").addEventListener("click", () => {
+  const cr = getSelected("mf-cr");
+  const type = getSelected("mf-type");
+  const attribute = getSelected("mf-attribute");
+  const perk = getSelected("mf-perk");
+  generateMonster({ cr, type, attribute, perk });
+});
+document.getElementById("btn-random").addEventListener("click", () => {
+  resetFilters();
+  generateMonster(); // fully random
+});
+function resetFilters() {
+  document.getElementById("mf-cr").value = "";
+  document.getElementById("mf-type").value = "";
+  document.getElementById("mf-attribute").value = "";
+  document.getElementById("mf-perk").value = "";
+}
 /*------------------------
 3. Randomizers
 ------------------------*/
@@ -131,88 +151,108 @@ function getRandomItem(arr) {
 /*------------------------
 4. Orchestrator
 ------------------------*/
-function generateMonster() {
-  //const creature = Sources.creatures.find(  (c) => c.name === "Little Gobby Goblin");
-  const creature = getRandomItem(Sources.creatures);
-  //const attribute = Sources.attributes.find((a) => a.name === "Psychic");
-  const attribute = getRandomItem(Sources.attributes);
-  //const perk = Sources.perks.find((p) => p.name === "Explosive Speed");
-  const perk = getRandomItem(Sources.perks);
-  //console.log("Picked:", {attribute: attribute,creature: creature, perk: perk,});
-  //------
-  renderImageNameBlock(creature, attribute, perk);
+function generateMonster(options = {}) {
+  const { cr, type, attribute, perk } = options;
+  // --- CREATURE ---
+  let creaturePool = Sources.creatures;
+  if (cr) {
+    creaturePool = creaturePool.filter((c) => c.cr === cr);
+  }
+  if (type) {
+    const normalised = type.toLowerCase();
+    creaturePool = creaturePool.filter((c) => {
+      const t = c.type?.type ?? c.type;
+      return t.toLowerCase() === normalised;
+    });
+  }
+  if (creaturePool.length === 0) {
+    console.warn("No creature matched filters — falling back to random.");
+    creaturePool = Sources.creatures;
+  }
+  const creature = getRandomItem(creaturePool);
+  //const creature = Sources.creatures.find((c) => c.name === "Blink Dog");
+  // --- ATTRIBUTE ---
+  const chosenAttribute = attribute
+    ? Sources.attributes.find((a) => a.name === attribute)
+    : getRandomItem(Sources.attributes);
+  // --- PERK ---
+  const chosenPerk = perk
+    ? Sources.perks.find((p) => p.name === perk)
+    : getRandomItem(Sources.perks);
+  // --- RENDER ---
+  renderImageNameBlock(creature, chosenAttribute, chosenPerk);
   //------
   renderAlignment(creature);
   $("size-out").innerHTML = checksize(creature.size);
   //------
-  const finalStats = calculateFinalStats(creature, attribute, perk);
-  renderStatBlock(finalStats, creature, attribute, perk);
+  const finalStats = calculateFinalStats(creature, chosenAttribute, chosenPerk);
+  renderStatBlock(finalStats, creature, chosenAttribute, chosenPerk);
   //------
-  renderHP(creature, attribute, perk);
+  renderHP(creature, chosenAttribute, chosenPerk);
   //------
-  renderAC(creature, attribute, perk);
+  renderAC(creature, chosenAttribute, chosenPerk);
   //------
-  renderSpeed(creature, attribute, perk);
+  renderSpeed(creature, chosenAttribute, chosenPerk);
   //------
   $("cr-out").innerHTML = creature.cr;
   //------
   $("saves-out").innerHTML = creature.save
     ? Object.entries(creature.save)
-        .map(([key, value]) => `${key}: ${value}`)
+        .map(([key, value]) => `${cap(key)}: ${value}`)
         .join(", ")
     : "-";
   //------
-  renderSkills(creature, attribute, perk);
+  renderSkills(creature, chosenAttribute, chosenPerk);
   //------
   const senses = creature.senses ? datacleanse(creature.senses) : "";
   const passive = creature.passive
-    ? `passive perception: ${creature.passive}`
+    ? `${cap("passive")} ${cap("perception")}: ${creature.passive}`
     : "";
   const sensesOut =
-    senses && passive ? `${senses}, ${passive}` : senses || passive || "-";
+    senses && passive ? `${cap(senses)}, ${passive}` : senses || passive || "-";
   $("senses-out").innerHTML = sensesOut;
   //------
   $("languages-out").innerHTML = safe(creature.languages);
   //------
   renderList({
-    base: normalizeList(creature.vulnerable),
-    attr: normalizeList(attribute.vulnerable),
-    perk: normalizeList(perk.vulnerable),
+    base: creature.vulnerable,
+    attr: chosenAttribute.vulnerable,
+    perk: chosenPerk.vulnerable,
     outId: "vulnerable-out",
-    attrLabel: attribute.prefix,
-    perkLabel: perk.name,
+    attrLabel: chosenAttribute.prefix,
+    perkLabel: chosenPerk.name,
   });
   //------
   renderList({
-    base: normalizeList(creature.resist),
-    attr: normalizeList(attribute.resist),
-    perk: normalizeList(perk.resist),
+    base: creature.resist,
+    attr: chosenAttribute.resist,
+    perk: chosenPerk.resist,
     outId: "resist-out",
-    attrLabel: attribute.prefix,
-    perkLabel: perk.name,
+    attrLabel: chosenAttribute.prefix,
+    perkLabel: chosenPerk.name,
   });
   //------
   renderList({
-    base: normalizeList(creature.immune),
-    attr: normalizeList(attribute.immune),
-    perk: normalizeList(perk.immune),
+    base: creature.immune,
+    attr: chosenAttribute.immune,
+    perk: chosenPerk.immune,
     outId: "immune-out",
-    attrLabel: attribute.prefix,
-    perkLabel: perk.name,
+    attrLabel: chosenAttribute.prefix,
+    perkLabel: chosenPerk.name,
   });
   //------
   renderList({
-    base: normalizeList(creature.conditionImmune),
-    attr: normalizeList(attribute.conditionImmune),
-    perk: normalizeList(perk.conditionImmune),
+    base: creature.conditionImmune,
+    attr: chosenAttribute.conditionImmune,
+    perk: chosenPerk.conditionImmune,
     outId: "conditionImmune-out",
-    attrLabel: attribute.prefix,
-    perkLabel: perk.name,
+    attrLabel: chosenAttribute.prefix,
+    perkLabel: chosenPerk.name,
   });
   //------
-  renderTraits(creature, attribute, perk);
+  renderTraits(creature, chosenAttribute, chosenPerk);
   //------
-  renderActions(creature, attribute, perk);
+  renderActions(creature, chosenAttribute, chosenPerk);
   //------
   renderSpellcasting(creature);
   //------
@@ -225,7 +265,7 @@ function generateMonster() {
     applyTooltip($("source-container"), `${book.name}`);
   }
   //------
-  if (!attribute || !creature || !perk) {
+  if (!chosenAttribute || !creature || !chosenPerk) {
     alert("Sources not loaded yet!");
     return;
   }
@@ -244,7 +284,8 @@ function generateMonster() {
 5. High‑level Rendering Blocks
 ------------------------*/
 function renderImageNameBlock(creature, attribute, perk) {
-  setSrc("creature-media-image", `/Assets/Creatures/${creature.name}.webp`);
+  const fileName = cleanseNameForFile(creature.name);
+  setSrc("creature-media-image", `/Assets/Creatures/${fileName}.webp`);
   setSrc("attribute-icon-out", `/Assets/Icons/Attribute/${attribute.name}.png`);
   setText("attribute-out", attribute.name);
   //------------------------
@@ -505,7 +546,7 @@ function renderSkills(creature, attribute, perk) {
   const outEl = document.getElementById("skills-out");
   const { final, breakdown } = calculateFinalSkills(creature, attribute, perk);
   const entries = Object.entries(final)
-    .map(([skill, value]) => `${skill}: ${value}`)
+    .map(([skill, value]) => `${cap(skill)}: ${value}`)
     .join(", ");
   outEl.textContent = entries || "-";
   const changed = Object.values(breakdown).some(
@@ -515,7 +556,9 @@ function renderSkills(creature, attribute, perk) {
     applyChangeHighlight(outEl);
     let tooltip = `Skills:\nBase + ${attribute.prefix} + ${perk.name}\n\n`;
     Object.entries(breakdown).forEach(([skill, b]) => {
-      tooltip += `${skill}: ${b.total} (${b.base} + ${b.attr} + ${b.perk})\n`;
+      tooltip += `${cap(skill)}: ${b.total} (${b.base} + ${b.attr} + ${
+        b.perk
+      })\n`;
     });
     applyTooltip(outEl, tooltip.trim());
   }
@@ -523,54 +566,61 @@ function renderSkills(creature, attribute, perk) {
 /*------------------------
 8. List Utilities
 ------------------------*/
-function mergeListString(base = [], attr = [], perk = []) {
-  const merged = new Set([...base, ...attr, ...perk]);
-  return Array.from(merged).sort();
-}
-//------------------------
 function normalizeList(list) {
   if (!Array.isArray(list)) return [];
-  const out = [];
+  const simple = [];
+  const grouped = [];
   list.forEach((item) => {
     if (typeof item === "string") {
-      out.push(item);
+      simple.push(cap(item));
       return;
     }
     if (item && typeof item === "object") {
       const keys = ["resist", "immune", "vulnerable"];
       const key = keys.find((k) => Array.isArray(item[k]));
       if (key) {
-        const note = item.note ? ` (${item.note})` : "";
-        item[key].forEach((type) => out.push(type + note));
+        grouped.push({
+          types: item[key].map((t) => cap(t)),
+          note: item.note || null,
+        });
         return;
       }
     }
-    out.push(String(item));
+    simple.push(cap(String(item)));
   });
-  return out;
+  return { simple, grouped };
 }
 //------------------------
-function renderList({
-  base = [],
-  attr = [],
-  perk = [],
-  outId,
-  attrLabel,
-  perkLabel,
-}) {
-  const outEl = document.getElementById(outId);
-  const finalList = mergeListString(base, attr, perk);
-  outEl.textContent = finalList.length > 0 ? finalList.join(", ") : "-";
-  const changed =
-    finalList.length !== base.length ||
-    !finalList.every((v) => base.includes(v));
-  if (changed) {
-    applyChangeHighlight(outEl);
-    let tooltip = "Changes:\n";
-    if (attr.length > 0) tooltip += `${attrLabel}: +${attr.join(", ")}\n`;
-    if (perk.length > 0) tooltip += `${perkLabel}: +${perk.join(", ")}\n`;
-    applyTooltip(outEl, tooltip.trim());
+function renderGroupedOutput({ simple, grouped }) {
+  const parts = [];
+  if (simple.length > 0) {
+    const last = simple.pop();
+    const simpleStr =
+      simple.length > 0 ? `${simple.join(", ")}, and ${last}` : last;
+    parts.push(simpleStr);
   }
+  grouped.forEach((g) => {
+    const last = g.types[g.types.length - 1];
+    const rest = g.types.slice(0, -1).join(", ");
+    const joined = rest ? `${rest}, and ${last}` : last;
+    parts.push(g.note ? `${joined} ${g.note}` : joined);
+  });
+  return parts.join(" — ");
+}
+//------------------------
+function renderList({ base = [], attr = [], perk = [], outId }) {
+  const outEl = document.getElementById(outId);
+  const baseNorm = normalizeList(base);
+  const attrNorm = normalizeList(attr);
+  const perkNorm = normalizeList(perk);
+  const simple = [...baseNorm.simple, ...attrNorm.simple, ...perkNorm.simple];
+  const grouped = [
+    ...baseNorm.grouped,
+    ...attrNorm.grouped,
+    ...perkNorm.grouped,
+  ];
+  const output = renderGroupedOutput({ simple, grouped });
+  outEl.textContent = output || "-";
 }
 /*------------------------
 9. Traits, Actions & Reactions

@@ -47,6 +47,7 @@ Index Image Container
   font-size: 1rem;
   margin: 0 1px;
   text-align: center;
+  text-transform: capitalize;
 }
 
 /* --------------------------------------------------

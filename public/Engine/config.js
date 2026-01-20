@@ -3,12 +3,12 @@
 // Ensures all systems initialize in the correct order
 // ---------------------------------------------------------
 document.addEventListener("DOMContentLoaded", async () => {
-  console.log("Orchestrator: Preparing systems...");
+  console.log("Factory: Preparing systems...");
   // -----------------------------------------------------
   // 1. Load Navigation (Menu + Footer)
   // -----------------------------------------------------
   if (typeof initNavigation === "function") {
-    console.log("Orchestrator: Loading navigation...");
+    console.log("Factory: Loading navigation...");
     await initNavigation();
   }
   // -----------------------------------------------------
@@ -16,21 +16,21 @@ document.addEventListener("DOMContentLoaded", async () => {
   // (must run AFTER navigation loads)
   // -----------------------------------------------------
   if (typeof initMenu === "function") {
-    console.log("Orchestrator: Binding menu interactions...");
+    console.log("Factory: Binding menu interactions...");
     initMenu();
   }
   // -----------------------------------------------------
   // 3. Content Viewer (Curated Creature Pages Only)
   // -----------------------------------------------------
   if (typeof initContentViewer === "function") {
-    console.log("Orchestrator: Loading curated creature...");
+    console.log("Factory: Loading curated creature...");
     await initContentViewer();
   }
   // -----------------------------------------------------
   // 4. MonsterFactory Engine (Randomizer Page Only)
   // -----------------------------------------------------
   if (typeof initMonsterFactory === "function") {
-    console.log("Orchestrator: Initializing MonsterFactory engine...");
+    console.log("Factory: Initializing MonsterFactory engine...");
     await initMonsterFactory();
   }
   // -----------------------------------------------------
@@ -38,8 +38,8 @@ document.addEventListener("DOMContentLoaded", async () => {
   // Must run AFTER content viewer has finished
   // -----------------------------------------------------
   if (typeof initExporter === "function") {
-    console.log("Orchestrator: Preparing exporter...");
+    console.log("Factory: Preparing exporter...");
     await initExporter();
   }
-  console.log("Orchestrator: All systems ready.");
+  console.log("Factory: All systems ready.");
 });

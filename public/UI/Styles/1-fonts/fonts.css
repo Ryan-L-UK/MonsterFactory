@@ -1,146 +1,191 @@
-/* -----------------------------------------------------------
-   Cinzel (Variable Font)
------------------------------------------------------------ */
+/* ---------------------------------------------------------
+CORMORANT GARAMOND — Body Font
+--------------------------------------------------------- */
 @font-face {
-  font-family: "Cinzel";
-  src: url("./Cinzel-VariableFont_wght.ttf") format("truetype");
-  font-weight: 100 900;
-  font-style: normal;
-}
-
-/* -----------------------------------------------------------
-   Cinzel Decorative (Regular, Bold, Black)
------------------------------------------------------------ */
-@font-face {
-  font-family: "CinzelDecorative";
-  src: url("./CinzelDecorative-Regular.ttf") format("truetype");
+  font-family: "Cormorant Garamond";
+  src: url("./CormorantGaramond/CormorantGaramond-Regular.ttf")
+    format("truetype");
   font-weight: 400;
   font-style: normal;
+  font-display: swap;
 }
-
 @font-face {
-  font-family: "CinzelDecorative";
-  src: url("./CinzelDecorative-Bold.ttf") format("truetype");
+  font-family: "Cormorant Garamond";
+  src: url("./CormorantGaramond/CormorantGaramond-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Cormorant Garamond";
+  src: url("./CormorantGaramond/CormorantGaramond-Medium.ttf")
+    format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Cormorant Garamond";
+  src: url("./CormorantGaramond/CormorantGaramond-SemiBold.ttf")
+    format("truetype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+/* Bold */
+@font-face {
+  font-family: "Cormorant Garamond";
+  src: url("./CormorantGaramond/CormorantGaramond-Bold.ttf") format("truetype");
+  font-weight: bolder;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Cormorant Garamond";
+  src: url("./CormorantGaramond/CormorantGaramond-Italic.ttf")
+    format("truetype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Cormorant Garamond";
+  src: url("./CormorantGaramond/CormorantGaramond-MediumItalic.ttf")
+    format("truetype");
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Cormorant Garamond";
+  src: url("./CormorantGaramond/CormorantGaramond-SemiBoldItalic.ttf")
+    format("truetype");
+  font-weight: 600;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Cormorant Garamond";
+  src: url("./CormorantGaramond/CormorantGaramond-BoldItalic.ttf")
+    format("truetype");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+/* ---------------------------------------------------------
+CINZEL — UI / Secondary Display Font
+--------------------------------------------------------- */
+@font-face {
+  font-family: "Cinzel";
+  src: url("./Cinzel/Cinzel-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Cinzel";
+  src: url("./Cinzel/Cinzel-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Cinzel";
+  src: url("./Cinzel/Cinzel-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Cinzel";
+  src: url("./Cinzel/Cinzel-Bold.ttf") format("truetype");
   font-weight: 700;
   font-style: normal;
+  font-display: swap;
 }
-
 @font-face {
-  font-family: "CinzelDecorative";
-  src: url("./CinzelDecorative-Black.ttf") format("truetype");
+  font-family: "Cinzel";
+  src: url("./Cinzel/Cinzel-ExtraBold.ttf") format("truetype");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Cinzel";
+  src: url("./Cinzel/Cinzel-Black.ttf") format("truetype");
   font-weight: 900;
   font-style: normal;
+  font-display: swap;
 }
-
+/* ---------------------------------------------------------
+CINZEL DECORATIVE — Main Display Font (Headings)
+--------------------------------------------------------- */
+@font-face {
+  font-family: "Cinzel Decorative";
+  src: url("./CinzelDecorative/CinzelDecorative-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Cinzel Decorative";
+  src: url("./CinzelDecorative/CinzelDecorative-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Cinzel Decorative";
+  src: url("./CinzelDecorative/CinzelDecorative-Black.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
 /* -----------------------------------------------------------
-   Mr Eaves (Small Caps)
+Mr Eaves (Small Caps)
 ----------------------------------------------------------- */
 @font-face {
   font-family: "MrEaves";
-  src: url("./Mr Eaves Small Caps.otf") format("opentype");
+  src: url("./MrEaves/Mr Eaves Small Caps.otf") format("opentype");
   font-weight: 400;
   font-style: normal;
 }
-
 /* -----------------------------------------------------------
-   Merriweather Family (Full Weight + Italics)
+Merriweather Family (Full Weight + Italics)
 ----------------------------------------------------------- */
 @font-face {
   font-family: "Merriweather";
-  src: url("./Merriweather-Light.ttf") format("truetype");
-  font-weight: 300;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Merriweather";
-  src: url("./Merriweather-LightItalic.ttf") format("truetype");
-  font-weight: 300;
-  font-style: italic;
-}
-
-@font-face {
-  font-family: "Merriweather";
-  src: url("./Merriweather-Regular.ttf") format("truetype");
+  src: url("./Merriweather/Merriweather-Regular.ttf") format("truetype");
   font-weight: 400;
   font-style: normal;
 }
-
-@font-face {
-  font-family: "Merriweather";
-  src: url("./Merriweather-Italic.ttf") format("truetype");
-  font-weight: 400;
-  font-style: italic;
-}
-
-@font-face {
-  font-family: "Merriweather";
-  src: url("./Merriweather-Bold.ttf") format("truetype");
-  font-weight: 700;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Merriweather";
-  src: url("./Merriweather-BoldItalic.ttf") format("truetype");
-  font-weight: 700;
-  font-style: italic;
-}
-
-@font-face {
-  font-family: "Merriweather";
-  src: url("./Merriweather-Black.ttf") format("truetype");
-  font-weight: 900;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Merriweather";
-  src: url("./Merriweather-BlackItalic.ttf") format("truetype");
-  font-weight: 900;
-  font-style: italic;
-}
-
 /* -----------------------------------------------------------
-   Tiamat Text (Medium, Semibold, Bold)
+Tiamat Text (Medium, Semibold, Bold)
 ----------------------------------------------------------- */
 @font-face {
   font-family: "TiamatText";
-  src: url("./tiamat-text-medium.otf") format("opentype");
+  src: url("./TiamatText/tiamat-text-medium.otf") format("opentype");
   font-weight: 500;
   font-style: normal;
 }
-
 @font-face {
   font-family: "TiamatText";
-  src: url("./tiamat-text-semibold.otf") format("opentype");
+  src: url("./TiamatText/tiamat-text-semibold.otf") format("opentype");
   font-weight: 600;
   font-style: normal;
 }
-
 @font-face {
   font-family: "TiamatText";
-  src: url("./tiamat-text-bold.otf") format("opentype");
+  src: url("./TiamatText/tiamat-text-bold.otf") format("opentype");
   font-weight: 700;
   font-style: normal;
 }
-
 /* -----------------------------------------------------------
-   RuneD (Single Style)
+RuneD (Single Style)
 ----------------------------------------------------------- */
 @font-face {
   font-family: "RuneD";
-  src: url("./RUNE_D.TTF") format("truetype");
+  src: url("./RuneD/RUNE_D.TTF") format("truetype");
   font-weight: 400;
-  font-style: normal;
-}
-
-/* -----------------------------------------------------------
-   Arcuata (Bold Only)
------------------------------------------------------------ */
-@font-face {
-  font-family: "Arcuata";
-  src: url("./Arcuata-Bold.woff") format("woff");
-  font-weight: 700;
   font-style: normal;
 }

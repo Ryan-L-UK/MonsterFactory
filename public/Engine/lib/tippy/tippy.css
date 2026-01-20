@@ -10,8 +10,9 @@
   color: #000;
   border-radius: 0.5rem;
   border: 0.125rem solid tan;
-  font-size: 0.8rem;
-  font-family: Merriweather-black;
+  font-size: 0.9rem;
+  font-family: Merriweather;
+  font-weight: 900;
   line-height: 1.3;
   white-space: pre;
   outline: 0;

@@ -87,14 +87,310 @@ Ability Change Indicators
 Stat Colour Utility Classes
 -------------------------------------------------- */
 .stat-attribute {
-  color: rgb(139, 49, 139);
+  color: rgb(184, 41, 184);
   font-weight: bold;
+  font-family: TiamatText;
+  font-size: 1rem;
 }
 .stat-type {
   color: rgb(10, 151, 10);
   font-weight: bold;
+  font-family: TiamatText;
+  font-size: 1rem;
 }
 .stat-perk {
   color: rgb(208, 8, 101);
   font-weight: bold;
+  font-family: TiamatText;
+  font-size: 1rem;
+}
+
+/* --------------------------------------------------
+WORKING SECTION
+-------------------------------------------------- */
+
+.mf-tag {
+  display: inline-block;
+  padding: 4px 10px;
+  margin: 2px;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  text-transform: lowercase;
+  font-family: TiamatText;
+}
+.mf-tag:hover {
+  filter: brightness(1.15);
+  cursor: default;
+}
+.tag-fire {
+  background: #ff4d4d;
+  color: #1a0000;
+}
+.tag-ice {
+  background: #6ecbff;
+  color: #00121f;
+}
+.tag-lightning {
+  background: #ffe066;
+  color: #332b00;
+}
+.tag-radiant {
+  background: #fff2b3;
+  color: #332b00;
+}
+.tag-poison {
+  background: #7dff7d;
+  color: #003300;
+}
+.tag-earth {
+  background: #c9a97a;
+  color: #2e1f0f;
+}
+.tag-metal {
+  background: #bfc5d1;
+  color: #1a1d22;
+}
+.tag-blood {
+  background: #d9366f;
+  color: #1a0008;
+}
+.tag-arcane {
+  background: #b38cff;
+  color: #1a0033;
+}
+.tag-necrotic {
+  background: #8c6e99;
+  color: #1a0f1f;
+}
+.tag-celestial {
+  background: #ffe680;
+  color: #332600;
+}
+.tag-infernal {
+  background: #ff9966;
+  color: #331400;
+}
+.tag-psychic {
+  background: #d966ff;
+  color: #2a0033;
+}
+.tag-void {
+  background: #6f6fff;
+  color: #000033;
+}
+.tag-water {
+  background: #66d9ff;
+  color: #002633;
+}
+.tag-charm-aura {
+  background: #ffb3e6;
+  color: #33001f;
+}
+.tag-cursed-touch {
+  background: #c299ff;
+  color: #1f0033;
+}
+.tag-explosive-death {
+  background: #ff704d;
+  color: #330800;
+}
+.tag-explosive-speed {
+  background: #ffcc66;
+  color: #332600;
+}
+.tag-fear-aura {
+  background: #b380ff;
+  color: #1f0033;
+}
+.tag-fly {
+  background: #99e6ff;
+  color: #002933;
+}
+.tag-invisibility {
+  background: #d9d9d9;
+  color: #1a1a1a;
+}
+.tag-magic-resistance {
+  background: #b3c6ff;
+  color: #001a4d;
+}
+.tag-mind-control {
+  background: #ff99cc;
+  color: #33001f;
+}
+.tag-poisonous-bite {
+  background: #99ff99;
+  color: #003300;
+}
+.tag-regeneration {
+  background: #99ffcc;
+  color: #00331f;
+}
+.tag-shapechanger {
+  background: #ccccff;
+  color: #1a1a4d;
+}
+.tag-stone-skin {
+  background: #d9d9d9;
+  color: #262626;
+}
+.tag-summons-minions {
+  background: #ffd480;
+  color: #332600;
+}
+.tag-void {
+  background: #9999ff;
+  color: #000033;
+}
+.tag-aberration {
+  background: #9966cc;
+  color: #1f0033;
+}
+.tag-beast {
+  background: #c2b280;
+  color: #332b00;
+}
+.tag-celestial {
+  background: #ffe680;
+  color: #332600;
+}
+.tag-construct {
+  background: #bfbfbf;
+  color: #1a1a1a;
+}
+.tag-dragon {
+  background: #ff6666;
+  color: #330000;
+}
+.tag-elemental {
+  background: #66ccff;
+  color: #002633;
+}
+.tag-fey {
+  background: #cc99ff;
+  color: #1f0033;
+}
+.tag-fiend {
+  background: #ff9966;
+  color: #331400;
+}
+.tag-giant {
+  background: #d9b38c;
+  color: #33200f;
+}
+.tag-humanoid {
+  background: #d9d9d9;
+  color: #1a1a1a;
+}
+.tag-monstrosity {
+  background: #ffcc99;
+  color: #332600;
+}
+.tag-ooze {
+  background: #99ff99;
+  color: #003300;
+}
+.tag-plant {
+  background: #99e699;
+  color: #00331f;
+}
+.tag-undead {
+  background: #cccccc;
+  color: #1a1a1a;
+}
+.tag-tiny {
+  background: #b3e6ff;
+  color: #00334d;
+}
+.tag-small {
+  background: #d9d9d9;
+  color: #1a1a1a;
+}
+.tag-medium {
+  background: #bfbfbf;
+  color: #1a1a1a;
+}
+.tag-large {
+  background: #e6ccb3;
+  color: #33200f;
+}
+.tag-huge {
+  background: #ffcc99;
+  color: #332600;
+}
+.tag-gargantuan {
+  background: #ffb380;
+  color: #331a00;
+}
+
+.tag-arctic {
+  background: #66ccff;
+  color: #002233;
+}
+.tag-coastal {
+  background: #99ffe6;
+  color: #003326;
+}
+.tag-desert {
+  background: #ffdd99;
+  color: #332600;
+}
+.tag-forest {
+  background: #66cc66;
+  color: #003300;
+}
+.tag-grassland {
+  background: #99ff99;
+  color: #003300;
+}
+.tag-hill {
+  background: #d9b38c;
+  color: #33200f;
+}
+.tag-mountain {
+  background: #b3b3b3;
+  color: #1a1a1a;
+}
+.tag-swamp {
+  background: #99cc66;
+  color: #1f3300;
+}
+.tag-urban {
+  background: #bfbfbf;
+  color: #1a1a1a;
+}
+
+.tag-underdark {
+  background: #9966cc;
+  color: #1f0033;
+}
+.tag-underground {
+  background: #8c8c8c;
+  color: #1a1a1a;
+}
+
+.tag-underwater {
+  background: #66d9ff;
+  color: #002633;
+}
+
+.tag-astral-sea {
+  background: #9999ff;
+  color: #000033;
+}
+.tag-feywild {
+  background: #ff99ff;
+  color: #330033;
+}
+.tag-shadowfell {
+  background: #666666;
+  color: #f2f2f2;
+}
+.tag-underworld {
+  background: #ff6666;
+  color: #330000;
+}
+.tag-wildspace {
+  background: #b380ff;
+  color: #1f0033;
 }

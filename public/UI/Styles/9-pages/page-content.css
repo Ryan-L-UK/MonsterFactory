@@ -18,10 +18,11 @@ CONTENT PAGE
   max-height: 300px;
   border-radius: 6px;
 }
+
 /* --- Desktop: two-column layout --- */
 @media (min-width: 900px) {
   .content-wrapper {
-    grid-template-columns: 1fr 375px; /* left flexible, right fixed */
+    grid-template-columns: 1fr 425px; /* left flexible, right fixed */
     align-items: start;
   }
   /* Image spans both columns */

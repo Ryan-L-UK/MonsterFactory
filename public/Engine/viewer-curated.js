@@ -66,6 +66,22 @@ async function initContentViewer() {
     // Render markdown
     document.getElementById("markdownContainer").innerHTML = marked.parse(md);
 
+    // --- Populate Tags ---
+    const tagsContainer = document.getElementById("creature-tags");
+    tagsContainer.innerHTML = "";
+
+    Object.entries(json.tags).forEach(([category, value]) => {
+      const normalised = value
+        .toLowerCase()
+        .replace(/\s+/g, "-") // spaces → hyphens
+        .replace(/[^a-z0-9-]/g, ""); // remove anything weird
+
+      const span = document.createElement("span");
+      span.className = `mf-tag tag-${category} tag-${normalised}`;
+      span.textContent = `#${value}`;
+      tagsContainer.appendChild(span);
+    });
+
     // Future: statblock
     // renderStatblock(json);
   } catch (err) {

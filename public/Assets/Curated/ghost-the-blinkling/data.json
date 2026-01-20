@@ -1,0 +1,53 @@
+{
+  "tags": {
+    "attribute": "radiant",
+    "perk": "charm aura",
+    "size": "medium",
+    "type": "fey",
+    "habitat": "urban"
+  },
+  "name": "Ghost, the Blinkling",
+  "subtitle": "Radiant • Loyal • Charm-Touched Companion",
+  "description": "A sleek black Blink Dog suffused with gentle radiant energy. Ghost is fiercely loyal, endlessly playful, and capable of vanishing and reappearing at your side in a flash of warm light. His presence calms allies, disarms foes, and brightens even the darkest paths.",
+  "type": "Medium Fey, Lawful Good",
+  "cr": "1/4",
+  "ac": 14,
+  "hp": 23,
+  "speed": "40 ft.",
+  "str": "12 (+1)",
+  "dex": "17 (+3)",
+  "con": "12 (+1)",
+  "int": "10 (+0)",
+  "wis": "13 (+1)",
+  "cha": "11 (+0)",
+  "save": "Dex: +5",
+  "skill": "Perception: +5, Stealth: +5, Insight: +2",
+  "senses": "Darkvision 60 ft., Passive Perception: 16",
+  "immune": "Radiant",
+  "conditionImmune": "Charmed",
+  "languages": "Understands Elvish and Sylvan but cannot speak",
+  "traits": [
+    {
+      "name": "Charm Aura",
+      "entries": "Creatures of Ghost's choice that start their turn within 10 feet of him must succeed on a DC 12 Wisdom saving throw or be charmed by his warm presence until the start of their next turn."
+    },
+    {
+      "name": "Keen Hearing and Smell",
+      "entries": "Ghost has advantage on Wisdom (Perception) checks that rely on hearing or smell."
+    },
+    {
+      "name": "Radiant Gleam",
+      "entries": "Ghost sheds a soft, comforting light in a 5-foot radius. This light can be dimmed or brightened by Ghost as a bonus action."
+    }
+  ],
+  "actions": [
+    {
+      "name": "Bite",
+      "entries": "Melee Weapon Attack: +3 to hit, reach 5 ft., one target. Hit: 4 (1d6 + 1) piercing damage."
+    },
+    {
+      "name": "Teleport (Recharge 4)",
+      "entries": "Ghost magically teleports, along with any equipment he is wearing or carrying, up to 40 feet to an unoccupied space he can see. Before or after teleporting, Ghost can make one bite attack."
+    }
+  ]
+}

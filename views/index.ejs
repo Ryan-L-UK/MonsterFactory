@@ -16,6 +16,22 @@
     <link rel="stylesheet" href="/UI/Styles/main.css" />
     <link rel="stylesheet" href="/Engine/lib/tippy/tippy.css" />
     <!---------------------------------------->
+    <link
+      rel="preload"
+      href="/UI/Components/ButtonStyling/buttonBase.jpeg"
+      as="image"
+    />
+    <link
+      rel="preload"
+      href="/UI/Components/ButtonStyling/buttonHighlight.jpeg"
+      as="image"
+    />
+    <link
+      rel="preload"
+      href="/UI/Components/ButtonStyling/goldButton.png"
+      as="image"
+    />
+    <!---------------------------------------->
     <!-- Icons -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="icon" href="/favicon.ico" sizes="any" />
@@ -65,12 +81,65 @@
       }
     </script>
   </head>
-
   <body>
     <!---------------------------------------->
     <!--Nav Bar-->
     <header id="Nav_output"></header>
-
+    <!---------------------------------------->
+    <div class="filter-grid">
+      <div class="filter-item">
+        <label for="mf-cr">CR:</label>
+        <div class="mf-select-wrapper">
+          <select class="mf-select frame" id="mf-cr" name="mf-cr">
+            <option value="" selected>Any</option>
+            <% crList.forEach(cr => { %>
+            <option value="<%= cr %>"><%= cr %></option>
+            <% }) %>
+          </select>
+        </div>
+      </div>
+      <div class="filter-item">
+        <label for="mf-attribute">Attribute:</label>
+        <div class="mf-select-wrapper frame">
+          <select class="mf-select" id="mf-attribute" name="mf-attribute">
+            <option value="" selected>Any</option>
+            <% attributeList.forEach(attr => { %>
+            <option value="<%= attr %>"><%= attr %></option>
+            <% }) %>
+          </select>
+        </div>
+      </div>
+      <div class="filter-item">
+        <label for="mf-type">Creature Type:</label>
+        <div class="mf-select-wrapper">
+          <select class="mf-select" id="mf-type" name="mf-type">
+            <option value="" selected>Any</option>
+            <% typeList.forEach(type => { %>
+            <option value="<%= type %>"><%= type %></option>
+            <% }) %>
+          </select>
+        </div>
+      </div>
+      <div class="filter-item">
+        <label for="mf-perk">Perk:</label>
+        <div class="mf-select-wrapper">
+          <select class="mf-select" id="mf-perk" name="mf-perk">
+            <option value="" selected>Any</option>
+            <% perkList.forEach(perk => { %>
+            <option value="<%= perk %>"><%= perk %></option>
+            <% }) %>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="button-container">
+      <button class="submit-button" id="btn-generate">Generate</button>
+      <button class="submit-button" id="btn-random">Randomise</button>
+      <button class="submit-button" id="btn-export" onclick="exportCreature()">
+        Export
+      </button>
+    </div>
+    <br />
     <!---------------------------------------->
     <div class="container" id="main-creature">
       <section class="creature-media">
@@ -269,11 +338,6 @@
         </div>
       </div>
     </div>
-    <div class="button-container">
-      <a class="submit-button" onclick="exportCreature()">Export To PNG</a>
-      <a class="submit-button" href="/">Roll Creature</a>
-    </div>
-    <br />
     <div
       id="export-image"
       style="
@@ -288,7 +352,6 @@
         © 2026 RyanFuturistics | MonsterFactory™ | All rights reserved.
       </div>
     </div>
-
     <!--Footer-->
     <footer id="Ftr_output"></footer>
     <!--END-->
@@ -296,7 +359,6 @@
 </html>
 <script src="/Engine/lib/tippy/popper.min.js" defer></script>
 <script src="/Engine/lib/tippy/tippy.umd.min.js" defer></script>
-
 <script src="/Engine/engine-exporter.js" defer></script>
 <script src="/Engine/engine-monsterfactory.js" defer></script>
 <script src="/Engine/navigation-core.js" defer></script>

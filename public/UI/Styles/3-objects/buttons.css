@@ -16,13 +16,14 @@ Buttons (shared)
   cursor: pointer;
   outline: 0;
   border: 0;
-  padding: 14px 30px;
-  min-width: 175px;
-  font-family: Tiamat-Text;
-  font-size: 16px;
+  padding: 6px 25px;
+  min-width: 115px;
+  font-family: "Cinzel Decorative";
+  font-size: 1rem;
+  font-weight: bold;
   text-transform: uppercase;
   letter-spacing: 2.26px;
-  color: #fff;
+  color: #000;
   background-image: url(/UI/Components/ButtonStyling/buttonBase.jpeg);
   background-size: cover;
   background-repeat: no-repeat;
@@ -32,7 +33,7 @@ Buttons (shared)
   z-index: 1;
   box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2),
     0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
-  transition: background-image 0.45s;
+  transition: background-image 0.45s, color 0.45s;
 }
 .submit-button::after {
   content: "";
@@ -48,4 +49,5 @@ Buttons (shared)
 }
 .submit-button:hover {
   background-image: url(/UI/Components/ButtonStyling/buttonHighlight.jpeg);
+  color: #fff;
 }

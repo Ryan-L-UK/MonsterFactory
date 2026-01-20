@@ -1,24 +1,32 @@
 {
+  "tags": {
+    "attribute": "fire",
+    "perk": "explosive death",
+    "size": "small",
+    "type": "beast",
+    "habitat": "urban"
+  },
   "name": "Spicy Rat",
-  "subtitle": "Small Beast, Unaligned",
-  "description": "Every adventurer starts with 'kill 5 rats', but this one isn't on the menu. The Spicy Rat is volatile, overcaffeinated chaos in fur  form, and absolutely too hot to handle. Literally.",
+  "subtitle": "Overcaffeinated • Volatile • Too Hot to Handle",
+  "description": "Every adventurer starts with 'kill 5 rats', but this one isn't on the menu. The Spicy Rat is volatile, overcaffeinated chaos in fur form, and absolutely too hot to handle. Literally.",
   "type": "Small Beast, Unaligned",
   "cr": "1/2",
   "ac": 13,
-  "hp": 27,
-  "speed": "40 ft., climb 20 ft.",
-  "str": "10 (+0)",
+  "hp": 24,
+  "speed": "30 ft., Climb 20 ft.",
+  "str": "6 (-2)",
   "dex": "16 (+3)",
   "con": "12 (+1)",
   "int": "2 (-4)",
-  "wis": "12 (+1)",
+  "wis": "10 (+0)",
   "cha": "6 (-2)",
-  "save": "dex: +5",
-  "skill": "perception: +3, stealth: +5",
-  "senses": "darkvision 30 ft., passive perception 13",
-  "immune": "fire",
-  "conditionImmune": "frightened",
-  "languages": "TBC",
+  "save": "Dex: +5",
+  "skill": "Perception: +2, Stealth: +5",
+  "senses": "Darkvision 30 ft., Passive Perception 12",
+  "immune": "Fire",
+  "vulnerable": "Cold",
+  "conditionImmune": "Frightened",
+  "languages": "—",
   "traits": [
     {
       "name": "Overheated Body.",
@@ -31,6 +39,10 @@
     {
       "name": "Too Hot to Handle.",
       "entries": "The Spicy Rat has advantage on checks and saving throws to escape grapples or restraints."
+    },
+    {
+      "name": "Explosive Death.",
+      "entries": "When the Spicy Rat dies, it explodes. Each creature within 10 feet must make a DC 12 Dexterity saving throw, taking 10 (3d6) fire damage on a failed save, or half as much on a success."
     }
   ],
   "actions": [

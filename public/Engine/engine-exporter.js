@@ -1,19 +1,20 @@
 //-----------------------------------------
-// EXPORT FUNCTION (unchanged)
+// EXPORT FUNCTION (updated for EJS)
 //-----------------------------------------
 function exportCreature() {
-  console.log("Artificier: Taking Notes...");
+  console.log("Factory: Taking Notes...");
 
   const source = document.getElementById("main-creature");
   const target = document.getElementById("export-image");
 
   if (!source || !target) {
-    console.warn("Artificier: Main creature or export container missing.");
+    console.warn("Factory: Main creature or export container missing.");
     return;
   }
 
+  // Open the new EJS route instead of export.html
   const popup = window.open(
-    "/export.html",
+    "/export",
     "monsterfactory_export_preview",
     "width=900,height=900,resizable=yes,scrollbars=yes"
   );
@@ -25,6 +26,7 @@ function exportCreature() {
     return;
   }
 
+  // Prepare export container
   const branding = target.querySelector(".export-footer");
   target.innerHTML = "";
   if (branding) target.appendChild(branding);
@@ -37,6 +39,7 @@ function exportCreature() {
   target.style.width = "750px";
   target.style.maxWidth = "750px";
 
+  // Render creature
   html2canvas(target, {
     useCORS: true,
     allowTaint: true,
@@ -50,27 +53,32 @@ function exportCreature() {
       const name =
         document.getElementById("name-out")?.innerText?.trim() || "Creature";
 
-      const sendExport = () => {
-        popup.postMessage(
-          {
-            type: "mf-export-image",
-            dataUrl: dataUrl,
-            filename: name,
-          },
-          "*"
-        );
-      };
-
-      if (popup.document.readyState === "complete") sendExport();
-      else popup.onload = sendExport;
+      // More reliable than popup.onload
+      const sendWhenReady = setInterval(() => {
+        if (
+          popup &&
+          popup.document &&
+          popup.document.readyState === "complete"
+        ) {
+          clearInterval(sendWhenReady);
+          popup.postMessage(
+            {
+              type: "mf-export-image",
+              dataUrl,
+              filename: name,
+            },
+            "*"
+          );
+        }
+      }, 50);
     })
     .catch((err) => {
-      console.error("Artificier: Export failed.", err);
+      console.error("Factory: Export failed.", err);
       if (!popup.closed) {
         popup.document.body.innerHTML =
           "<p style='padding:16px;font-family:system-ui;color:#f5f1e5;'>Something went wrong while rendering the export.</p>";
       }
     });
 
-  console.log("Artificier: Notes Taken.");
+  console.log("Factory: Notes Taken.");
 }

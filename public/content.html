@@ -48,35 +48,38 @@
     <!--Nav Bar-->
     <header id="Nav_output"></header>
     <!---------------------------------------->
-    <section id="Creature Display Image">
-      <div class="mf-hero">
-        <img id="creatureImage" class="creature-image" src="" alt="" />
-      </div>
-    </section>
+
     <div class="content-wrapper">
-      <section id="markdownContainer" class="markdown"></section>
+      <div>
+        <section id="markdownContainer" class="markdown"></section>
+        <section id="creature-tags" class="mf-tags"></section>
+      </div>
       <!-- Future: statblock container -->
       <section id="statblockContainer" class="mf-statblock">
+        <div class="con-creature">
+          <img id="creatureImage" class="creature-image" src="" alt="" />
+        </div>
         <div class="mf-statblock-header">
           <h2 class="mf-name" id="mf-name"></h2>
           <p class="mf-subtitle" id="mf-subtitle"></p>
         </div>
-        <div class="mf-divider"></div>
-        <div class="mf-core-stats">
+        <div class="divider"></div>
+        <section id="Content Base Stats">
           <div>
-            <span><strong>Armor Class: </strong></span
-            ><span id="mf-acclass"></span>
+            <span class="category-header">Armor Class: </span
+            ><span class="category-body" id="mf-acclass"></span>
           </div>
           <div>
-            <span><strong>Hit Points: </strong></span
-            ><span id="mf-hpclass"></span>
+            <span class="category-header">Hit Points: </span
+            ><span class="category-body" id="mf-hpclass"></span>
           </div>
           <div>
-            <span><strong>Speed: </strong></span><span id="mf-speed"></span>
+            <span class="category-header">Speed: </span
+            ><span class="category-body" id="mf-speed"></span>
           </div>
-        </div>
+        </section>
         <table class="mf-abilities">
-          <tr>
+          <tr class="stat-label">
             <th>STR</th>
             <th>DEX</th>
             <th>CON</th>
@@ -93,27 +96,37 @@
             <td id="mf-cha"></td>
           </tr>
         </table>
-        <div class="mf-divider"></div>
+        <div class="divider"></div>
         <div class="mf-extra">
-          <div><strong>Saving Throws:</strong> <span id="mf-save"></span></div>
-          <div><strong>Skills:</strong> <span id="mf-skill"></span></div>
-          <div><strong>Senses:</strong> <span id="mf-senses"></span></div>
           <div>
-            <strong>Damage Immunities:</strong> <span id="mf-immune"></span>
+            <span class="category-header">Saving Throws: </span
+            ><span class="category-body" id="mf-save"></span>
           </div>
           <div>
-            <strong>Condition Immunities:</strong>
-            <span id="mf-conditionImmune"></span>
+            <span class="category-header">Skills: </span
+            ><span class="category-body" id="mf-skill"></span>
           </div>
           <div>
-            <strong>Languages:</strong>
-            <span id="mf-languages"></span>
+            <span class="category-header">Senses: </span
+            ><span class="category-body" id="mf-senses"></span>
+          </div>
+          <div>
+            <span class="category-header">Damage Immunities: </span
+            ><span class="category-body" id="mf-immune"></span>
+          </div>
+          <div>
+            <span class="category-header">Condition Immunities: </span
+            ><span class="category-body" id="mf-conditionImmune"></span>
+          </div>
+          <div>
+            <span class="category-header">Languages: </span
+            ><span class="category-body" id="mf-languages"></span>
           </div>
         </div>
-        <div class="mf-divider"></div>
+        <div class="divider"></div>
         <h3 class="mf-section-title">Traits</h3>
         <div class="mf-traits" id="mf-traits"></div>
-        <div class="mf-divider"></div>
+        <div class="divider"></div>
         <h3 class="mf-section-title">Actions</h3>
         <div class="mf-actions" id="mf-actions"></div>
       </section>

@@ -83,7 +83,14 @@
           “Gobby curated these. Gobby has impeccable taste.”
         </blockquote>
       </div>
-      <br />
+
+      <input
+        id="gallerySearch"
+        class="mf-search"
+        type="text"
+        placeholder="Search creatures..."
+      />
+
       <section id="Curated Image Gallery">
         <div class="curated-gallery">{{GALLERY_TILES}}</div>
       </section>
@@ -91,6 +98,7 @@
     <footer id="Ftr_output"></footer>
   </body>
 </html>
+<script src="/Engine/engine-search.js"></script>
 <script src="/Engine/lib/tippy/popper.min.js" defer></script>
 <script src="/Engine/lib/tippy/tippy.umd.min.js" defer></script>
 <script src="/Engine/navigation-core.js" defer></script>

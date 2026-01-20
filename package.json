@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/Ryan-L-UK/HeartOfWinter#readme",
   "dependencies": {
+    "ejs": "^4.0.1",
     "express": "^4.18.2",
     "html-to-image": "^1.11.11"
   }
