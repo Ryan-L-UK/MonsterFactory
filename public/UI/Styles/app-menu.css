@@ -84,8 +84,8 @@
 
 /* Menu Items */
 .mn-item {
-  padding: 2px 20px;
-  letter-spacing: 1.25px;
+  padding: 2px 16px;
+  letter-spacing: 1.2px;
   color: rgb(255, 252, 239);
   text-decoration: none;
   transition: text-shadow 0.15s ease-in-out;
@@ -110,6 +110,11 @@
   );
 }
 
+.heart::after {
+  content: "\2665";
+  font-size: 1rem;
+  padding-left: 0.25rem;
+}
 /* -----------------------------------------------------------
    Desktop Overrides
 ----------------------------------------------------------- */
