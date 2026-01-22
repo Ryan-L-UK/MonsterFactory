@@ -1,6 +1,9 @@
 const express = require("express");
 const path = require("path");
 const fs = require("fs");
+const logFile = fs.createWriteStream("/logs/monsterfactory.log", {
+  flags: "a",
+});
 const app = express();
 const port = 6969;
 // ---------------------------------------------------------
@@ -14,10 +17,14 @@ function formatPrefix(section) {
   return raw.padEnd(PREFIX_WIDTH, " ");
 }
 function log(section, message) {
-  console.log(`${formatPrefix(section)}${message}`);
+  const line = `${formatPrefix(section)}${message}\n`;
+  console.log(line);
+  logFile.write(line);
 }
 function warn(section, message) {
-  console.warn(`${formatPrefix(section)}⚠ ${message}`);
+  const line = `${formatPrefix(section)}⚠ ${message}\n`;
+  console.warn(line);
+  logFile.write(line);
 }
 // ---------------------------------------------------------
 // Static File Serving (NEW — only serve /public)
