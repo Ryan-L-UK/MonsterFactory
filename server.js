@@ -1,9 +1,12 @@
 const express = require("express");
 const path = require("path");
 const fs = require("fs");
-const logFile = fs.createWriteStream("/logs/monsterfactory.log", {
-  flags: "a",
-});
+const logsDir = path.join(__dirname, "logs");
+if (!fs.existsSync(logsDir)) {
+  fs.mkdirSync(logsDir, { recursive: true });
+}
+const logPath = path.join(logsDir, "monsterfactory.log");
+const logFile = fs.createWriteStream(logPath, { flags: "a" });
 const app = express();
 const port = 6969;
 // ---------------------------------------------------------
@@ -130,7 +133,6 @@ function loadBestiary() {
     warn("BESTIARY", "Manual exclusion list missing.");
   }
   const allowedCR = new Set(CR_ORDER);
-
   let totalDiscovered = 0;
   const allCreatures = index.files.flatMap((file) => {
     const filePath = path.join(__dirname, "Data/handbooks", file);
@@ -207,30 +209,24 @@ loadBestiary();
 function unique(arr) {
   return [...new Set(arr)].sort();
 }
-
 const availableCRs = CR_ORDER.filter((cr) =>
   mergedCreatures.some((c) => getCR(c) === cr),
 );
-
 const availableTypes = unique(
   mergedCreatures
     .map((c) => c.type?.type ?? c.type) // normalise object/string
     .filter(Boolean) // remove null/undefined
     .map((t) => t.charAt(0).toUpperCase() + t.slice(1)), // capitalise inline
 );
-
 const availableAttributes = unique(
   loadedAttributes.map((a) => a.name).filter(Boolean),
 );
-
 const availablePerks = unique(loadedPerks.map((p) => p.name).filter(Boolean));
-
 log("FILTERS", "-------------------------------------------");
 log("FILTERS", `CR values available: ${availableCRs.length}`);
 log("FILTERS", `Types available: ${availableTypes.length}`);
 log("FILTERS", `Attributes available: ${availableAttributes.length}`);
 log("FILTERS", `Perks available: ${availablePerks.length}`);
-
 // ---------------------------------------------------------
 // VALIDATION — Ledger Cross-Check
 // ---------------------------------------------------------
@@ -282,27 +278,21 @@ app.get("/api/perks", (req, res) => res.json(loadedPerks));
 app.get("/gallery", (req, res) => {
   const curatedPath = path.join(__dirname, "public/Assets/Curated");
   const templatePath = path.join(__dirname, "public/gallery.html");
-
   try {
     // Load template
     let template = fs.readFileSync(templatePath, "utf8");
-
     // Read all curated creature folders
     const folders = fs.readdirSync(curatedPath).filter((f) => {
       const full = path.join(curatedPath, f);
       return fs.statSync(full).isDirectory();
     });
-
     // Build gallery tiles
     const tiles = folders
       .map((id) => {
         const jsonPath = path.join(curatedPath, id, "data.json");
         const imagePath = `/Assets/Curated/${id}/image.png`;
-
         if (!fs.existsSync(jsonPath)) return "";
-
         const data = JSON.parse(fs.readFileSync(jsonPath, "utf8"));
-
         // -------------------------------
         // TAG RENDERING
         // -------------------------------
@@ -313,12 +303,10 @@ app.get("/gallery", (req, res) => {
                   .toLowerCase()
                   .replace(/\s+/g, "-")
                   .replace(/[^a-z0-9-]/g, "");
-
                 return `<span class="mf-tag tag-${category} tag-${normalised}">#${value}</span>`;
               })
               .join(" ")
           : "";
-
         // -------------------------------
         // TILE HTML
         // -------------------------------
@@ -336,7 +324,6 @@ app.get("/gallery", (req, res) => {
 `;
       })
       .join("\n");
-
     // Inject tiles into template
     const finalHtml = template.replace("{{GALLERY_TILES}}", tiles);
     res.send(finalHtml);
@@ -345,7 +332,6 @@ app.get("/gallery", (req, res) => {
     res.status(500).send("Error generating gallery.");
   }
 });
-
 // ---------------------------------------------------------
 // CONTENT PAGE — Server-rendered creature viewer
 // ---------------------------------------------------------
@@ -396,7 +382,6 @@ app.get("/", (req, res) => {
 app.get("/export", (req, res) => {
   res.render("export");
 });
-
 // ---------------------------------------------------------
 // Silent 204 for Apple / Google verification
 // ---------------------------------------------------------
@@ -452,7 +437,6 @@ app.use((req, res, next) => {
 app.post("/", (req, res) => {
   return res.status(405).end(); // Method Not Allowed
 });
-
 // ---------------------------------------------------------
 // Legit 404 handler (logged)
 // ---------------------------------------------------------

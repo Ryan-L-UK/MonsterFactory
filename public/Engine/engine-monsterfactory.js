@@ -25,7 +25,7 @@ async function initMonsterFactory() {
         fetch("/api/attributes"),
         fetch("/api/perks"),
         fetch("/api/books"),
-      ]
+      ],
     );
     if (!creaturesRes.ok || !attributesRes.ok || !perksRes.ok || !booksRes.ok) {
       throw new Error("One or more source files failed to load.");
@@ -58,6 +58,8 @@ let Sources = {
   perks: [],
 };
 //------
+let activeTooltips = [];
+//------
 const cap = (s) => s.charAt(0).toUpperCase() + s.slice(1);
 //------
 const $ = (id) => {
@@ -88,6 +90,32 @@ const setSrc = (id, path) => {
 };
 //------
 const safe = (value) => (value != null ? String(value) : "-");
+//------
+function clearTooltips() {
+  // Destroy existing Tippy instances
+  activeTooltips.forEach((tip) => tip.destroy());
+  activeTooltips = [];
+  // Remove tooltip attributes & classes from DOM
+  document.querySelectorAll(".data-tooltip").forEach((el) => {
+    el.removeAttribute("data-tooltip");
+    el.classList.remove("data-tooltip");
+  });
+  // Remove all highlight classes
+  document
+    .querySelectorAll(
+      ".ability-change, .ability-point-change, .ability-increase, .ability-decrease, .ability-point-increase, .ability-point-decrease",
+    )
+    .forEach((el) => {
+      el.classList.remove(
+        "ability-change",
+        "ability-point-change",
+        "ability-increase",
+        "ability-decrease",
+        "ability-point-increase",
+        "ability-point-decrease",
+      );
+    });
+}
 //------
 function applyTooltip(el, text) {
   if (!el) return;
@@ -153,6 +181,8 @@ function getRandomItem(arr) {
 ------------------------*/
 function generateMonster(options = {}) {
   const { cr, type, attribute, perk } = options;
+  // --- Resets ---
+  clearTooltips();
   // --- CREATURE ---
   let creaturePool = Sources.creatures;
   if (cr) {
@@ -270,7 +300,7 @@ function generateMonster(options = {}) {
     return;
   }
   //-----------------------------------------
-  tippy(".data-tooltip", {
+  const tips = tippy(".data-tooltip", {
     content(reference) {
       return reference.dataset.tooltip;
     },
@@ -279,6 +309,7 @@ function generateMonster(options = {}) {
     animation: "shift-away",
     theme: "light-border",
   });
+  activeTooltips.push(...tips);
 }
 /*------------------------
 5. High‑level Rendering Blocks
@@ -301,12 +332,12 @@ function renderImageNameBlock(creature, attribute, perk) {
   //------------------------
   setText(
     "name-out",
-    `${attribute.prefix} ${creature.name} ${perk.descriptor}`
+    `${attribute.prefix} ${creature.name} ${perk.descriptor}`,
   );
   //------------------------
   setText(
     "desc-out",
-    `This ${creature.name} was ${attribute.origin} ${perk.origin}.`
+    `This ${creature.name} was ${attribute.origin} ${perk.origin}.`,
   );
 }
 //------------------------
@@ -389,7 +420,7 @@ function renderStatBlock(finalStats, creature, attribute, perk) {
     const valueEl = document.getElementById(`${stat.toUpperCase()}-out`);
     const labelEl = document.getElementById(`${stat.toUpperCase()}-label`);
     const containerEl = document.getElementById(
-      `${stat.toUpperCase()}-Container`
+      `${stat.toUpperCase()}-Container`,
     );
     applyValueHighlight(valueEl, data.delta);
     applyLabelHighlight(labelEl, data.delta);
@@ -550,7 +581,7 @@ function renderSkills(creature, attribute, perk) {
     .join(", ");
   outEl.textContent = entries || "-";
   const changed = Object.values(breakdown).some(
-    (b) => b.attr !== 0 || b.perk !== 0
+    (b) => b.attr !== 0 || b.perk !== 0,
   );
   if (changed) {
     applyChangeHighlight(outEl);
@@ -745,7 +776,7 @@ function renderSpellcasting(creature) {
       const headerText = el(
         "div",
         "category-body",
-        block.headerEntries.map((e) => datacleanse(e)).join(" ")
+        block.headerEntries.map((e) => datacleanse(e)).join(" "),
       );
       container.appendChild(headerText);
     }
@@ -757,7 +788,7 @@ function renderSpellcasting(creature) {
       const list = el(
         "div",
         "category-body",
-        block.will.map((s) => datacleanse(s)).join(", ")
+        block.will.map((s) => datacleanse(s)).join(", "),
       );
       container.appendChild(label);
       container.appendChild(list);
@@ -771,7 +802,7 @@ function renderSpellcasting(creature) {
         const list = el(
           "div",
           "category-body",
-          spells.map((s) => datacleanse(s)).join(", ")
+          spells.map((s) => datacleanse(s)).join(", "),
         );
         container.appendChild(label);
         container.appendChild(list);
@@ -791,7 +822,7 @@ function renderSpellcasting(creature) {
         const list = el(
           "div",
           "category-body",
-          data.spells.map((s) => datacleanse(s)).join(", ")
+          data.spells.map((s) => datacleanse(s)).join(", "),
         );
         container.appendChild(label);
         container.appendChild(list);

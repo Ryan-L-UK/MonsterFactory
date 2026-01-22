@@ -92,7 +92,7 @@
 				{
 					"name": "Magic Bolt",
 					"entries": [
-						"{@atk rw} {@hit 6} to hit, range 120 ft., one target. {@h}16 ({@damage 3d10}) fire damage"
+						"{@atk rw} {@hit 6} to hit, range 120 ft., one target. {@h}16 ({@damage 3d10}) fire damage."
 					]
 				}
 			],
@@ -1504,6 +1504,10 @@
 					}
 				}
 			},
+			"alignment": [
+				"N",
+				"E"
+			],
 			"languages": [
 				"Abyssal",
 				"Common",
@@ -2651,8 +2655,7 @@
 				"U"
 			],
 			"spellcastingTags": [
-				"CW",
-				"I"
+				"CW"
 			],
 			"hasToken": true
 		},
@@ -5702,7 +5705,7 @@
 				{
 					"name": "Nimble Escape (Humanoid Form Only)",
 					"entries": [
-						"The werebat can take the Disengage or Hide action as a bonus action on each of its turns."
+						"The werebat can take the {@action Disengage} or {@action Hide} action as a bonus action on each of its turns."
 					]
 				},
 				{
