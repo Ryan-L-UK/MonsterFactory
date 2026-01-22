@@ -70,7 +70,7 @@ function loadForgeModifiers() {
     loadedAttributes = JSON.parse(fs.readFileSync(attributesPath, "utf8"));
     log(
       "FORGE",
-      `${loadedAttributes.length} attribute modules fused into the core matrix.`
+      `${loadedAttributes.length} attribute modules fused into the core matrix.`,
     );
   } catch {
     warn("FORGE", "Attribute feed empty — skipping.");
@@ -80,7 +80,7 @@ function loadForgeModifiers() {
     loadedPerks = JSON.parse(fs.readFileSync(perksPath, "utf8"));
     log(
       "FORGE",
-      `${loadedPerks.length} perk assemblies integrated into the engine core.`
+      `${loadedPerks.length} perk assemblies integrated into the engine core.`,
     );
   } catch {
     warn("FORGE", "Perk feed empty — skipping.");
@@ -106,18 +106,18 @@ function loadBestiary() {
   const indexPath = path.join(__dirname, "Data/bestiary.index.source.json");
   const manualExclusionPath = path.join(
     __dirname,
-    "Data/bestiary.exclusions.manual.json"
+    "Data/bestiary.exclusions.manual.json",
   );
   const index = JSON.parse(fs.readFileSync(indexPath, "utf8"));
   log("BESTIARY", `${index.files.length} specimen manifests loaded.`);
   let manualExclusionList = [];
   try {
     manualExclusionList = JSON.parse(
-      fs.readFileSync(manualExclusionPath, "utf8")
+      fs.readFileSync(manualExclusionPath, "utf8"),
     );
     log(
       "BESTIARY",
-      `${manualExclusionList.length} entries blacklisted by operator.`
+      `${manualExclusionList.length} entries blacklisted by operator.`,
     );
   } catch {
     warn("BESTIARY", "Manual exclusion list missing.");
@@ -134,7 +134,7 @@ function loadBestiary() {
   });
   log(
     "BESTIARY",
-    `${totalDiscovered} specimens detected across all manifests.`
+    `${totalDiscovered} specimens detected across all manifests.`,
   );
   let manualExcludedCount = 0;
   let overCR6Count = 0;
@@ -166,7 +166,7 @@ function loadBestiary() {
     const imagePath = path.join(
       __dirname,
       "public/Assets/Creatures",
-      imageFile
+      imageFile,
     );
     if (!fs.existsSync(imagePath)) {
       noImageCount++;
@@ -176,21 +176,21 @@ function loadBestiary() {
   });
   log(
     "BESTIARY",
-    `${manualExcludedCount} specimens rejected by operator review.`
+    `${manualExcludedCount} specimens rejected by operator review.`,
   );
   log(
     "BESTIARY",
-    `${overCR6Count} specimens discarded for excessive threat rating.`
+    `${overCR6Count} specimens discarded for excessive threat rating.`,
   );
   log("BESTIARY", `${legendaryCount} high-tier entities quarantined.`);
   log("BESTIARY", `${copyCount} duplicate entries purged.`);
   log(
     "BESTIARY",
-    `${noImageCount} specimens discarded due to missing visual records.`
+    `${noImageCount} specimens discarded due to missing visual records.`,
   );
   log(
     "BESTIARY",
-    `${mergedCreatures.length} viable specimens remain in the chamber.`
+    `${mergedCreatures.length} viable specimens remain in the chamber.`,
   );
 }
 loadBestiary();
@@ -202,18 +202,18 @@ function unique(arr) {
 }
 
 const availableCRs = CR_ORDER.filter((cr) =>
-  mergedCreatures.some((c) => getCR(c) === cr)
+  mergedCreatures.some((c) => getCR(c) === cr),
 );
 
 const availableTypes = unique(
   mergedCreatures
     .map((c) => c.type?.type ?? c.type) // normalise object/string
     .filter(Boolean) // remove null/undefined
-    .map((t) => t.charAt(0).toUpperCase() + t.slice(1)) // capitalise inline
+    .map((t) => t.charAt(0).toUpperCase() + t.slice(1)), // capitalise inline
 );
 
 const availableAttributes = unique(
-  loadedAttributes.map((a) => a.name).filter(Boolean)
+  loadedAttributes.map((a) => a.name).filter(Boolean),
 );
 
 const availablePerks = unique(loadedPerks.map((p) => p.name).filter(Boolean));
@@ -233,30 +233,30 @@ function validateBookCoverage() {
   if (!mergedBooks.length || !mergedCreatures.length) {
     warn(
       "VALIDATION",
-      "Validation aborted — manifests or specimen lists incomplete."
+      "Validation aborted — manifests or specimen lists incomplete.",
     );
     log("VALIDATION", "-------------------------------------------");
     return;
   }
   const creatureSources = new Set(
-    mergedCreatures.map((c) => c.source).filter(Boolean)
+    mergedCreatures.map((c) => c.source).filter(Boolean),
   );
   const bookIds = new Set(mergedBooks.map((b) => b.id));
   const unknownSources = [...creatureSources].filter(
-    (src) => !bookIds.has(src)
+    (src) => !bookIds.has(src),
   );
   if (unknownSources.length === 0) {
     log(
       "VALIDATION",
-      "All source manifests accounted for. No discrepancies detected."
+      "All source manifests accounted for. No discrepancies detected.",
     );
   } else {
     warn(
       "VALIDATION",
-      `${unknownSources.length} unregistered sources detected — no matching manifests.`
+      `${unknownSources.length} unregistered sources detected — no matching manifests.`,
     );
     unknownSources.forEach((src) =>
-      warn("VALIDATION", `Source mismatch: ${src}`)
+      warn("VALIDATION", `Source mismatch: ${src}`),
     );
   }
   log("VALIDATION", "Inspection cycle complete.");
@@ -440,6 +440,13 @@ app.use((req, res, next) => {
   next();
 });
 // ---------------------------------------------------------
+// Legit 405 Method Block (logged)
+// ---------------------------------------------------------
+app.post("/", (req, res) => {
+  return res.status(405).end(); // Method Not Allowed
+});
+
+// ---------------------------------------------------------
 // Legit 404 handler (logged)
 // ---------------------------------------------------------
 app.use((req, res) => {
@@ -455,7 +462,7 @@ app.listen(port, () => {
   log("SERVER", `Factory accessible at http://localhost:${port}.`);
   log(
     "SERVER",
-    `Environment deployed: ${process.env.NODE_ENV || "production"}`
+    `Environment deployed: ${process.env.NODE_ENV || "production"}`,
   );
   log("SERVER", "-------------------------------------------");
 });
