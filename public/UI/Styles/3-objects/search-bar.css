@@ -10,7 +10,9 @@
   color: #e6e6e6;
   font-size: 0.95rem;
   outline: none;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
   font-family: "Cinzel Decorative";
 }
 
@@ -52,7 +54,6 @@
   font-size: 0.8rem;
   border-radius: 0.5rem 0rem 0.5rem 0rem;
   border: 1px solid var(--color-gold);
-
   padding: 0.75rem 2rem 0.75rem 0.75rem;
   letter-spacing: 0.4px;
   appearance: none;
@@ -67,7 +68,7 @@
   background-image: url(/UI/Components/ButtonStyling/buttonHighlight.jpeg);
   background-size: cover;
   background-repeat: no-repeat;
-  opacity: 0.1; /* <-- your 50% opacity */
+  opacity: 0.1;
   border-radius: inherit;
   z-index: 1;
   pointer-events: none;

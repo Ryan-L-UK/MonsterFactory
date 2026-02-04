@@ -153,17 +153,19 @@ function getSelected(id) {
   return el && el.value ? el.value : null;
 }
 document.getElementById("btn-generate").addEventListener("click", () => {
+  const edition = getSelected("mf-edition");
   const cr = getSelected("mf-cr");
   const type = getSelected("mf-type");
   const attribute = getSelected("mf-attribute");
   const perk = getSelected("mf-perk");
-  generateMonster({ cr, type, attribute, perk });
+  generateMonster({ edition, cr, type, attribute, perk });
 });
 document.getElementById("btn-random").addEventListener("click", () => {
   resetFilters();
   generateMonster(); // fully random
 });
 function resetFilters() {
+  document.getElementById("mf-edition").value = "";
   document.getElementById("mf-cr").value = "";
   document.getElementById("mf-type").value = "";
   document.getElementById("mf-attribute").value = "";
@@ -180,11 +182,14 @@ function getRandomItem(arr) {
 4. Orchestrator
 ------------------------*/
 function generateMonster(options = {}) {
-  const { cr, type, attribute, perk } = options;
+  const { edition, cr, type, attribute, perk } = options;
   // --- Resets ---
   clearTooltips();
   // --- CREATURE ---
   let creaturePool = Sources.creatures;
+  if (edition) {
+    creaturePool = creaturePool.filter((c) => c.edition === edition);
+  }
   if (cr) {
     creaturePool = creaturePool.filter((c) => c.cr === cr);
   }
@@ -200,7 +205,7 @@ function generateMonster(options = {}) {
     creaturePool = Sources.creatures;
   }
   const creature = getRandomItem(creaturePool);
-  //const creature = Sources.creatures.find((c) => c.name === "Blink Dog");
+  //const creature = Sources.creatures.find((c) => c.name === "Wereboar");
   // --- ATTRIBUTE ---
   const chosenAttribute = attribute
     ? Sources.attributes.find((a) => a.name === attribute)
@@ -214,6 +219,7 @@ function generateMonster(options = {}) {
   //------
   renderAlignment(creature);
   $("size-out").innerHTML = checksize(creature.size);
+  rednerEdition(creature);
   //------
   const finalStats = calculateFinalStats(creature, chosenAttribute, chosenPerk);
   renderStatBlock(finalStats, creature, chosenAttribute, chosenPerk);
@@ -322,9 +328,14 @@ function renderImageNameBlock(creature, attribute, perk) {
   //------------------------
   const typeName = creature.type.type ?? creature.type;
   setText("type-out", typeName);
-  setSrc("type-icon-out", `/Assets/Icons/Type/${typeName}.png`);
+  setSrc("type-icon-out", `/Assets/Icons/Type/${typeName}.jpg`);
   //------------------------
-  const tags = creature.type.tags ? ` (${creature.type.tags})` : "";
+  //const tags = creature.type.tags ? ` (${creature.type.tags})` : "";
+
+  const tags = creature.type.tags?.length
+    ? ` (${creature.type.tags.join(", ")})`
+    : "";
+  console.log(tags);
   setText("tags-out", tags);
   //------------------------
   setSrc("perk-icon-out", `/Assets/Icons/Perk/${perk.name}.png`);
@@ -337,7 +348,7 @@ function renderImageNameBlock(creature, attribute, perk) {
   //------------------------
   setText(
     "desc-out",
-    `This ${creature.name} was ${attribute.origin} ${perk.origin}.`,
+    `This ${creature.name} was ${attribute.origin} ${perk.origin}`,
   );
 }
 //------------------------
@@ -371,6 +382,11 @@ function renderAlignment(creature) {
   const alignment = formatAlignment(creature.alignment || []);
   $("alignment-out").innerHTML = alignment;
   $("alignment-out").classList.add(alignment.replace(/\s/g, ""));
+}
+//------------------------
+function rednerEdition(creature) {
+  $("edition-out").innerHTML = creature.edition + " ruleset";
+  $("edition-out").classList.add("e" + creature.edition);
 }
 //------------------------
 function checksize(size) {

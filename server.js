@@ -1,11 +1,21 @@
 const express = require("express");
 const path = require("path");
 const fs = require("fs");
-const logsDir = path.join(__dirname, "logs");
-if (!fs.existsSync(logsDir)) {
-  fs.mkdirSync(logsDir, { recursive: true });
+// ---------------------------------------------------------
+// Log File Path (Dev vs Production)
+// ---------------------------------------------------------
+let logPath;
+if (process.env.NODE_ENV === "production") {
+  // TrueNAS container with mounted dataset
+  logPath = "/logs/monsterfactory.log";
+} else {
+  // Local development
+  const localDir = path.join(__dirname, "logs");
+  if (!fs.existsSync(localDir)) {
+    fs.mkdirSync(localDir, { recursive: true });
+  }
+  logPath = path.join(localDir, "monsterfactory.log");
 }
-const logPath = path.join(logsDir, "monsterfactory.log");
 const logFile = fs.createWriteStream(logPath, { flags: "a" });
 const app = express();
 const port = 6969;
@@ -20,14 +30,14 @@ function formatPrefix(section) {
   return raw.padEnd(PREFIX_WIDTH, " ");
 }
 function log(section, message) {
-  const line = `${formatPrefix(section)}${message}\n`;
-  console.log(line);
-  logFile.write(line);
+  const line = `${formatPrefix(section)}${message}`;
+  console.log(line); // adds its own newline
+  logFile.write(line + "\n"); // explicit newline for file
 }
 function warn(section, message) {
-  const line = `${formatPrefix(section)}⚠ ${message}\n`;
+  const line = `${formatPrefix(section)}⚠ ${message}`;
   console.warn(line);
-  logFile.write(line);
+  logFile.write(line + "\n");
 }
 // ---------------------------------------------------------
 // Static File Serving (NEW — only serve /public)
@@ -65,9 +75,31 @@ function loadBooks() {
   auto.forEach((b) => map.set(b.id, b));
   manual.forEach((b) => map.set(b.id, b));
   mergedBooks = Array.from(map.values());
+  global.bookMeta = new Map();
+  mergedBooks.forEach((b) => bookMeta.set(b.id, b));
+
   log("BOOKS", `${mergedBooks.length} Designs fed into the core engine.`);
 }
 loadBooks();
+// ---------------------------------------------------------
+// BOOKS — Create Edition Mapping
+// ---------------------------------------------------------
+function inferEdition(sourceId) {
+  const meta = bookMeta.get(sourceId);
+  if (!meta || !meta.published) {
+    return "2014";
+  }
+
+  const pubDate = new Date(meta.published);
+  if (isNaN(pubDate.getTime())) {
+    return "2014";
+  }
+
+  const cutoff = new Date("2024-09-01");
+
+  return pubDate >= cutoff ? "2024" : "2014";
+}
+
 // ---------------------------------------------------------
 // FORGE — Attributes & Perks Infusion
 // ---------------------------------------------------------
@@ -181,6 +213,7 @@ function loadBestiary() {
       noImageCount++;
       return false;
     }
+    m.edition = inferEdition(m.source);
     return true;
   });
   log(
@@ -209,6 +242,9 @@ loadBestiary();
 function unique(arr) {
   return [...new Set(arr)].sort();
 }
+const availableEditions = unique(
+  mergedCreatures.map((c) => c.edition).filter(Boolean),
+);
 const availableCRs = CR_ORDER.filter((cr) =>
   mergedCreatures.some((c) => getCR(c) === cr),
 );
@@ -223,6 +259,7 @@ const availableAttributes = unique(
 );
 const availablePerks = unique(loadedPerks.map((p) => p.name).filter(Boolean));
 log("FILTERS", "-------------------------------------------");
+log("FILTERS", `Editions available: ${availableEditions.length}`);
 log("FILTERS", `CR values available: ${availableCRs.length}`);
 log("FILTERS", `Types available: ${availableTypes.length}`);
 log("FILTERS", `Attributes available: ${availableAttributes.length}`);
@@ -373,6 +410,7 @@ app.get("/content", (req, res) => {
 // ---------------------------------------------------------
 app.get("/", (req, res) => {
   res.render("index", {
+    editionList: availableEditions,
     crList: availableCRs,
     typeList: availableTypes,
     attributeList: availableAttributes,
@@ -453,7 +491,7 @@ app.listen(port, () => {
   log("SERVER", `Factory accessible at http://localhost:${port}.`);
   log(
     "SERVER",
-    `Environment deployed: ${process.env.NODE_ENV || "production"}`,
+    `Environment deployed: ${process.env.NODE_ENV || "Localhost-Dev"}`,
   );
   log("SERVER", "-------------------------------------------");
 });

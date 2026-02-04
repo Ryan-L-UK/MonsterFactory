@@ -7,7 +7,7 @@ Index Image Container
   width: 96%;
   max-width: 900px;
   justify-content: center;
-  grid-template-columns: auto 100px;
+  grid-template-columns: auto 120px;
   column-gap: 2%;
   row-gap: 6px;
   grid-template-areas:
