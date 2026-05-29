@@ -2518,7 +2518,8 @@
 				"tags": [
 					{
 						"tag": "human",
-						"prefix": "Damaran"
+						"prefix": "Damaran",
+						"prefixHidden": true
 					}
 				]
 			},
@@ -3097,7 +3098,8 @@
 				"wisdom"
 			],
 			"hasToken": true,
-			"hasFluff": true
+			"hasFluff": true,
+			"hasFluffImages": true
 		},
 		{
 			"name": "Jade Giant Spider",
@@ -5346,7 +5348,8 @@
 				"constitution"
 			],
 			"hasToken": true,
-			"hasFluff": true
+			"hasFluff": true,
+			"hasFluffImages": true
 		},
 		{
 			"name": "Vampiric Ixitxachitl Cleric",
@@ -5471,7 +5474,8 @@
 				"wisdom"
 			],
 			"hasToken": true,
-			"hasFluff": true
+			"hasFluff": true,
+			"hasFluffImages": true
 		},
 		{
 			"name": "Veldyskar",

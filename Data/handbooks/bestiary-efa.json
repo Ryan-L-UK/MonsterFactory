@@ -18,7 +18,7 @@
 			"type": {
 				"type": "humanoid",
 				"tags": [
-					"Halfling"
+					"halfling"
 				]
 			},
 			"alignment": [
@@ -116,7 +116,7 @@
 			"type": {
 				"type": "humanoid",
 				"tags": [
-					"Halfling"
+					"halfling"
 				]
 			},
 			"alignment": [
@@ -229,10 +229,8 @@
 			"name": "Cannith Artificer",
 			"source": "EFA",
 			"page": 80,
-			"otherSources": [
-				{
-					"source": "FFotR"
-				}
+			"referenceSources": [
+				"FFotR"
 			],
 			"size": [
 				"S",
@@ -241,7 +239,7 @@
 			"type": {
 				"type": "humanoid",
 				"tags": [
-					"Human"
+					"human"
 				]
 			},
 			"alignment": [
@@ -371,7 +369,7 @@
 			"type": {
 				"type": "humanoid",
 				"tags": [
-					"Gnoll"
+					"gnoll"
 				]
 			},
 			"alignment": [
@@ -488,7 +486,7 @@
 			"type": {
 				"type": "humanoid",
 				"tags": [
-					"Gnoll"
+					"gnoll"
 				]
 			},
 			"alignment": [
@@ -1044,7 +1042,7 @@
 			"type": {
 				"type": "humanoid",
 				"tags": [
-					"Halfling"
+					"halfling"
 				]
 			},
 			"alignment": [
@@ -1270,7 +1268,7 @@
 			"type": {
 				"type": "humanoid",
 				"tags": [
-					"Halfling"
+					"halfling"
 				]
 			},
 			"alignment": [
@@ -1390,7 +1388,7 @@
 			"type": {
 				"type": "humanoid",
 				"tags": [
-					"Dwarf"
+					"dwarf"
 				]
 			},
 			"alignment": [
@@ -1545,7 +1543,7 @@
 			"type": {
 				"type": "humanoid",
 				"tags": [
-					"Khoravar"
+					"khoravar"
 				]
 			},
 			"alignment": [
@@ -1701,7 +1699,7 @@
 			"type": {
 				"type": "humanoid",
 				"tags": [
-					"Khoravar"
+					"khoravar"
 				]
 			},
 			"alignment": [
@@ -1836,7 +1834,7 @@
 			"type": {
 				"type": "humanoid",
 				"tags": [
-					"Human"
+					"human"
 				]
 			},
 			"alignment": [
@@ -1968,7 +1966,7 @@
 			"type": {
 				"type": "humanoid",
 				"tags": [
-					"Human"
+					"human"
 				]
 			},
 			"alignment": [
@@ -2086,7 +2084,7 @@
 			"type": {
 				"type": "humanoid",
 				"tags": [
-					"Elf"
+					"elf"
 				]
 			},
 			"alignment": [
@@ -2215,7 +2213,7 @@
 			"type": {
 				"type": "humanoid",
 				"tags": [
-					"Gnome"
+					"gnome"
 				]
 			},
 			"alignment": [
@@ -2666,8 +2664,8 @@
 			"type": {
 				"type": "humanoid",
 				"tags": [
-					"Human",
-					"Orc"
+					"human",
+					"orc"
 				]
 			},
 			"alignment": [
@@ -2785,7 +2783,7 @@
 			"type": {
 				"type": "humanoid",
 				"tags": [
-					"Elf"
+					"elf"
 				]
 			},
 			"alignment": [
@@ -2923,7 +2921,7 @@
 			"type": {
 				"type": "humanoid",
 				"tags": [
-					"Human"
+					"human"
 				]
 			},
 			"alignment": [
@@ -3076,7 +3074,7 @@
 			"type": {
 				"type": "humanoid",
 				"tags": [
-					"Elf"
+					"elf"
 				]
 			},
 			"alignment": [
@@ -3181,7 +3179,7 @@
 			"type": {
 				"type": "humanoid",
 				"tags": [
-					"Elf"
+					"elf"
 				]
 			},
 			"alignment": [

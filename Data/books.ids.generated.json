@@ -114,6 +114,12 @@
     "type": "adventure"
   },
   {
+    "name": "Crochet: A Book of Many Patterns",
+    "id": "CaBoMP",
+    "published": "2026-03-31",
+    "type": "book"
+  },
+  {
     "name": "Curse of Strahd",
     "id": "CoS",
     "published": "2016-03-15",

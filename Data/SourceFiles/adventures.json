@@ -9735,8 +9735,10 @@
 			},
 			"contents": [
 				{
-					"name": "Introduction",
+					"name": "Foreword",
 					"headers": [
+						"Dramatis Personae",
+						"Introduction",
 						"Story Overview",
 						"Running the Adventure",
 						"Starting the Adventure",
@@ -11304,6 +11306,9 @@
 				},
 				{
 					"name": "Credits"
+				},
+				{
+					"name": "Poster Map"
 				}
 			]
 		},
@@ -16126,6 +16131,14 @@
 				"end": 12
 			},
 			"contents": [
+				{
+					"name": "Introduction",
+					"headers": [
+						"Using This Book",
+						"Running the Adventures",
+						"Credits from the Originals"
+					]
+				},
 				{
 					"name": "Saltmarsh",
 					"ordinal": {
@@ -24354,6 +24367,9 @@
 						"type": "appendix",
 						"identifier": "E"
 					}
+				},
+				{
+					"name": "Afterword"
 				},
 				{
 					"name": "Credits"

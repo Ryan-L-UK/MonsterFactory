@@ -117,6 +117,12 @@ function clearTooltips() {
     });
 }
 //------
+function clearAlignmentRules() {
+  document.getElementById("alignment-out").className = "creature-alignment";
+  document.getElementById("edition-out").className = "creature-edition";
+}
+
+//------
 function applyTooltip(el, text) {
   if (!el) return;
   el.dataset.tooltip = text;
@@ -185,6 +191,7 @@ function generateMonster(options = {}) {
   const { edition, cr, type, attribute, perk } = options;
   // --- Resets ---
   clearTooltips();
+  clearAlignmentRules();
   // --- CREATURE ---
   let creaturePool = Sources.creatures;
   if (edition) {
@@ -335,7 +342,6 @@ function renderImageNameBlock(creature, attribute, perk) {
   const tags = creature.type.tags?.length
     ? ` (${creature.type.tags.join(", ")})`
     : "";
-  console.log(tags);
   setText("tags-out", tags);
   //------------------------
   setSrc("perk-icon-out", `/Assets/Icons/Perk/${perk.name}.png`);
