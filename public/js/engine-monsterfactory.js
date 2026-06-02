@@ -329,13 +329,16 @@ function generateMonster(options = {}) {
 ------------------------*/
 function renderImageNameBlock(creature, attribute, perk) {
   const fileName = cleanseNameForFile(creature.name);
-  setSrc("creature-media-image", `/Assets/Creatures/${fileName}.webp`);
-  setSrc("attribute-icon-out", `/Assets/Icons/Attribute/${attribute.name}.png`);
+  setSrc("creature-media-image", `/images/creatures/${fileName}.webp`);
+  setSrc(
+    "attribute-icon-out",
+    `/images/ui/icons/attribute/${attribute.name}.png`,
+  );
   setText("attribute-out", attribute.name);
   //------------------------
   const typeName = creature.type.type ?? creature.type;
   setText("type-out", typeName);
-  setSrc("type-icon-out", `/Assets/Icons/Type/${typeName}.jpg`);
+  setSrc("type-icon-out", `/images/ui/icons/type/${typeName}.jpg`);
   //------------------------
   //const tags = creature.type.tags ? ` (${creature.type.tags})` : "";
 
@@ -344,7 +347,7 @@ function renderImageNameBlock(creature, attribute, perk) {
     : "";
   setText("tags-out", tags);
   //------------------------
-  setSrc("perk-icon-out", `/Assets/Icons/Perk/${perk.name}.png`);
+  setSrc("perk-icon-out", `/images/ui/icons/perk/${perk.name}.png`);
   setText("perk-out", perk.name);
   //------------------------
   setText(

@@ -3,7 +3,7 @@ Card Component (Index)
 -------------------------------- */
 .card {
   position: relative;
-  background: url("/UI/Components/MenuBackingBlue.png");
+  background: url("/images/ui/frames/MenuBackingBlue.png");
   border: 2px solid var(--color-gold);
   padding: 0.85rem;
   color: white;
@@ -26,7 +26,9 @@ Card Component (Gallery)
   font-family: var(--font-display);
   overflow: hidden;
   position: relative;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
   display: flex;
   flex-direction: column;
 }

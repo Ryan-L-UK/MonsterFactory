@@ -5,7 +5,7 @@ Corners (shared)
   position: absolute;
   width: var(--corner-size);
   height: var(--corner-size);
-  background-image: url("/UI/Components/Frames/container-corner.png");
+  background-image: url("/images/ui/frames/container-corner.png");
   background-size: contain;
   background-repeat: no-repeat;
   pointer-events: none;

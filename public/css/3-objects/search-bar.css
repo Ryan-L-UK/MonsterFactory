@@ -65,7 +65,7 @@
   content: "";
   position: absolute;
   inset: 0;
-  background-image: url(/UI/Components/ButtonStyling/buttonHighlight.jpeg);
+  background-image: url(/images/ui/buttons/buttonHighlight.jpeg);
   background-size: cover;
   background-repeat: no-repeat;
   opacity: 0.1;

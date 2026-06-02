@@ -4,10 +4,6 @@
 @import url("./0-settings/base.css");
 @import url("./0-settings/tokens.css");
 /* --------------------------------------------------
-   2. FONTS (UI building blocks)
--------------------------------------------------- */
-@import url("./1-fonts/fonts.css");
-/* --------------------------------------------------
    2. COMPONENTS (UI building blocks)
 -------------------------------------------------- */
 @import url("./2-components/cards.css");

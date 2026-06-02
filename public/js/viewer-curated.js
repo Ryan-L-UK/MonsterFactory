@@ -8,17 +8,17 @@ async function initContentViewer() {
     return;
   }
 
-  const basePath = `/Assets/Curated/${id}`;
+  const basePath = `/images/curated/${id}`;
 
   try {
     // Load JSON
-    const json = await fetch(`${basePath}/data.json`).then((r) => r.json());
+    const json = await fetch(`${basePath}.json`).then((r) => r.json());
 
     // Load Markdown
-    const md = await fetch(`${basePath}/info.md`).then((r) => r.text());
+    const md = await fetch(`${basePath}.md`).then((r) => r.text());
 
     // Populate image
-    document.getElementById("creatureImage").src = `${basePath}/image.png`;
+    document.getElementById("creatureImage").src = `/images/curated/${id}.png`;
     document.getElementById("creatureImage").alt = json.name || id;
     document.getElementById("mf-name").innerHTML = json.name;
     document.getElementById("mf-subtitle").innerHTML = json.type;
