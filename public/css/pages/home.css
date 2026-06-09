@@ -1,0 +1,9 @@
+.mf-hero {
+  align-content: center;
+  margin: auto;
+  text-align: center;
+}
+.mf-hero img {
+  width: 280px;
+  margin: 10px auto 10px;
+}

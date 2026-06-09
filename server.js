@@ -427,6 +427,9 @@ app.get("/", (req, res) => {
 app.get("/export", (req, res) => {
   res.render("export");
 });
+app.get("/test", (req, res) => {
+  res.render("new-test-page");
+});
 // ---------------------------------------------------------
 // Silent 204 for Apple / Google verification
 // ---------------------------------------------------------

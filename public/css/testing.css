@@ -1,39 +1,47 @@
 /* ------------------------------
-Shared Statblock Components
--------------------------------- */
-.stat-label {
-  font-size: 1rem;
+CONTENT PAGE
+------------------------------ */
+.content-wrapper {
+  color: rgb(255, 252, 239);
   font-family: var(--font-display);
-  font-weight: bold;
+  max-width: var(--max-width-content);
+  margin: 40px auto;
+  padding: 0 20px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
 }
-.stat-value {
-  font-size: 1.25rem;
-  font-family: Merriweather, serif;
+/* Creature Image */
+.creature-image {
+  display: block;
+  margin: 0 auto 20px;
+  max-height: 300px;
+  border-radius: 6px;
 }
-ul.list-hang {
-  margin: 0;
-  padding-left: 1rem;
+
+/* --- Desktop: two-column layout --- */
+@media (min-width: 900px) {
+  .content-wrapper {
+    grid-template-columns: 1fr 425px; /* left flexible, right fixed */
+    align-items: start;
+  }
+  /* Image spans both columns */
+  .creature-image {
+    grid-column: 1 / -1;
+  }
+  /* Markdown sits in the left column */
+  #markdownContainer {
+    grid-column: 1;
+    min-width: 0;
+    margin: 0;
+    max-width: none;
+  }
+  /* Statblock sits in the right column */
+  #statblockContainer {
+    grid-column: 2;
+  }
 }
-/* ------------------------------
-Index Statblock
--------------------------------- */
-.stat-container {
-  text-align: center;
-  min-width: 40px;
-}
-.source-book {
-  text-align: center;
-  font-size: 2rem;
-  color: var(--color-accent);
-  font-family: "Cinzel Decorative";
-}
-.page-number {
-  text-align: center;
-  font-size: 0.75rem;
-}
-/* ------------------------------
-Curated Statblocks
--------------------------------- */
+
 .mf-statblock {
   background: rgba(20, 20, 20, 0.6);
   border: 1px solid rgba(255, 255, 255, 0.15);

@@ -2,69 +2,15 @@
 <html lang="en">
   <head>
     <%- include("partials/head", { title: "Monster Factory" }) %>
+    <link rel="stylesheet" href="/css/testing.css" />
+    <link rel="stylesheet" href="/css/main.css" />
   </head>
   <body>
     <!---------------------------------------->
     <!--Nav Bar-->
     <header id="Nav_output"></header>
     <!---------------------------------------->
-    <div class="filter-grid">
-      <div class="filter-item">
-        <label for="mf-cr">Edition:</label>
-        <div class="mf-select-wrapper">
-          <select class="mf-select frame" id="mf-edition" name="mf-edition">
-            <option value="" selected>Any</option>
-            <% editionList.forEach(cr => { %>
-            <option value="<%= cr %>"><%= cr %></option>
-            <% }) %>
-          </select>
-        </div>
-      </div>
-      <div class="filter-item">
-        <label for="mf-cr">CR:</label>
-        <div class="mf-select-wrapper">
-          <select class="mf-select frame" id="mf-cr" name="mf-cr">
-            <option value="" selected>Any</option>
-            <% crList.forEach(cr => { %>
-            <option value="<%= cr %>"><%= cr %></option>
-            <% }) %>
-          </select>
-        </div>
-      </div>
-      <div class="filter-item">
-        <label for="mf-attribute">Attribute:</label>
-        <div class="mf-select-wrapper frame">
-          <select class="mf-select" id="mf-attribute" name="mf-attribute">
-            <option value="" selected>Any</option>
-            <% attributeList.forEach(attr => { %>
-            <option value="<%= attr %>"><%= attr %></option>
-            <% }) %>
-          </select>
-        </div>
-      </div>
-      <div class="filter-item">
-        <label for="mf-type">Creature Type:</label>
-        <div class="mf-select-wrapper">
-          <select class="mf-select" id="mf-type" name="mf-type">
-            <option value="" selected>Any</option>
-            <% typeList.forEach(type => { %>
-            <option value="<%= type %>"><%= type %></option>
-            <% }) %>
-          </select>
-        </div>
-      </div>
-      <div class="filter-item">
-        <label for="mf-perk">Perk:</label>
-        <div class="mf-select-wrapper">
-          <select class="mf-select" id="mf-perk" name="mf-perk">
-            <option value="" selected>Any</option>
-            <% perkList.forEach(perk => { %>
-            <option value="<%= perk %>"><%= perk %></option>
-            <% }) %>
-          </select>
-        </div>
-      </div>
-    </div>
+    <div class="filter-grid">SOME FILTRS GO HERE</div>
     <div class="btn-group">
       <button class="btn" id="btn-generate">Generate</button>
       <button class="btn" id="btn-random">Randomise</button>
@@ -100,19 +46,107 @@
           <div class="creature-media-header"><div id="perk-out"></div></div>
         </div>
       </section>
-      <!---------------------------------------->
-      <!--Creature Name & Description-->
-      <section class="centre">
-        <h1 id="name-out"></h1>
-        <p id="desc-out"></p>
-        <p>
-          <span id="alignment-out" class="creature-alignment"></span>
-          <span id="size-out" class="creature-size"></span>
-          <span id="edition-out" class="creature-edition"></span>
-        </p>
+
+      <!--------------------------------
+      Right here are some notes, so we dont forget. 
+
+      Name goes in the container for the stateblock, we need to stule the statblock
+       obviously an ensure we include things like the edition, and size tags, they 
+       can go under the name
+
+      It also seems that the name and description go with the picture, the idea 
+      being that someone could in theory export the state block only. So be smart,
+       you need to splut it into two halves
+      
+      
+      
+      
+      -------->
+
+      <section id="statblockContainer" class="mf-statblock">
+        <!---------------------------------------->
+        <!--Creature Name & Description-->
+        <section class="mf-statblock-header">
+          <h1 id="name-out"></h1>
+          <p id="desc-out"></p>
+          <p>
+            <span id="alignment-out" class="creature-alignment"></span>
+            <span id="size-out" class="creature-size"></span>
+            <span id="edition-out" class="creature-edition"></span>
+          </p>
+        </section>
+
+        <div class="divider"></div>
+        <section id="Content Base Stats">
+          <div>
+            <span class="category-header">Armor Class: </span
+            ><span class="category-body" id="mf-acclass"></span>
+          </div>
+          <div>
+            <span class="category-header">Hit Points: </span
+            ><span class="category-body" id="mf-hpclass"></span>
+          </div>
+          <div>
+            <span class="category-header">Speed: </span
+            ><span class="category-body" id="mf-speed"></span>
+          </div>
+        </section>
+        <table class="mf-abilities">
+          <tr class="stat-label">
+            <th>STR</th>
+            <th>DEX</th>
+            <th>CON</th>
+            <th>INT</th>
+            <th>WIS</th>
+            <th>CHA</th>
+          </tr>
+          <tr>
+            <td id="STR-out"></td>
+            <td id="DEX-out"></td>
+            <td id="CON-out"></td>
+            <td id="INT-out"></td>
+            <td id="WIS-out"></td>
+            <td id="CHA-out"></td>
+          </tr>
+        </table>
+        <div class="divider"></div>
+        <div class="mf-extra">
+          <div>
+            <span class="category-header">Saving Throws: </span
+            ><span class="category-body" id="mf-save"></span>
+          </div>
+          <div>
+            <span class="category-header">Skills: </span
+            ><span class="category-body" id="mf-skill"></span>
+          </div>
+          <div>
+            <span class="category-header">Senses: </span
+            ><span class="category-body" id="mf-senses"></span>
+          </div>
+          <div>
+            <span class="category-header">Damage Immunities: </span
+            ><span class="category-body" id="mf-immune"></span>
+          </div>
+          <div>
+            <span class="category-header">Condition Immunities: </span
+            ><span class="category-body" id="mf-conditionImmune"></span>
+          </div>
+          <div>
+            <span class="category-header">Languages: </span
+            ><span class="category-body" id="mf-languages"></span>
+          </div>
+        </div>
+        <div class="divider"></div>
+        <h3 class="mf-section-title">Traits</h3>
+        <div class="mf-traits" id="mf-traits"></div>
+        <div class="divider"></div>
+        <h3 class="mf-section-title">Actions</h3>
+        <div class="mf-actions" id="mf-actions"></div>
       </section>
+
       <!---------------------------------------->
       <!--Creature Stat Blocks-->
+
       <section class="abilities-grid">
         <div class="card stat-container" id="STR-Container">
           <div class="corner tl"></div>

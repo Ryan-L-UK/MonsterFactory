@@ -1,6 +1,3 @@
-/* ------------------------------
-Card Component (Index)
--------------------------------- */
 .card {
   position: relative;
   background: url("/images/ui/frames/MenuBackingBlue.png");
@@ -9,6 +6,7 @@ Card Component (Index)
   color: white;
   border-radius: 0.5rem;
 }
+
 /* ------------------------------
 Card Component (Gallery)
 -------------------------------- */

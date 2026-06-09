@@ -1,0 +1,26 @@
+.mf-search {
+  box-sizing: border-box;
+  max-width: var(--max-width-content);
+  width: 100%;
+  padding: 0.6rem 0.75rem;
+  margin: 0.75rem 0;
+  border: 1px solid #2a2d33;
+  border-radius: 6px;
+  background-color: #0f1116;
+  color: #e6e6e6;
+  font-size: 0.95rem;
+  outline: none;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+  font-family: "Cinzel Decorative";
+}
+
+.mf-search::placeholder {
+  color: #6b6f76;
+}
+
+.mf-search:focus {
+  border-color: #0eabff;
+  box-shadow: 0 0 0 2px rgba(77, 124, 255, 0.25);
+}

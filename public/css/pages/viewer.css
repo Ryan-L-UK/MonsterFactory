@@ -1,0 +1,107 @@
+/* ------------------------------
+CONTENT PAGE
+------------------------------ */
+.content-wrapper {
+  color: rgb(255, 252, 239);
+  font-family: var(--font-display);
+  max-width: var(--max-width-content);
+  margin: 40px auto;
+  padding: 0 20px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+}
+/* Creature Image */
+.creature-image {
+  display: block;
+  margin: 0 auto 20px;
+  max-height: 300px;
+  border-radius: 6px;
+}
+
+/* --- Desktop: two-column layout --- */
+@media (min-width: 900px) {
+  .content-wrapper {
+    grid-template-columns: 1fr 425px; /* left flexible, right fixed */
+    align-items: start;
+  }
+  /* Image spans both columns */
+  .creature-image {
+    grid-column: 1 / -1;
+  }
+  /* Markdown sits in the left column */
+  #markdownContainer {
+    grid-column: 1;
+    min-width: 0;
+    margin: 0;
+    max-width: none;
+  }
+  /* Statblock sits in the right column */
+  #statblockContainer {
+    grid-column: 2;
+  }
+}
+
+.mf-statblock {
+  background: rgba(20, 20, 20, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  padding: 20px;
+  color: rgb(255, 252, 239);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+.mf-statblock-header {
+  margin-bottom: 10px;
+}
+.mf-statblock-header .mf-name {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  margin: 0;
+  letter-spacing: 1px;
+}
+.mf-statblock-header {
+  opacity: 0.8;
+  margin: 4px 0 0;
+  font-size: 0.85rem;
+}
+.mf-subtitle {
+  margin: 0;
+  font-size: 1.2rem;
+  color: #d6ae4a;
+  font-family: MrEaves;
+  font-weight: normal;
+}
+.mf-abilities {
+  width: 100%;
+  text-align: center;
+  margin: 12px 0;
+  border-collapse: collapse;
+}
+.mf-abilities th {
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  padding-bottom: 4px;
+}
+.mf-abilities td {
+  padding: 6px 0;
+  font-size: 0.85rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+.mf-section-title {
+  font-family: var(--font-display);
+  font-size: var(--font-size-xs);
+  margin: 16px 0 8px;
+}
+.mf-trait,
+.mf-action {
+  margin-bottom: 10px;
+}
+.mf-trait strong,
+.mf-action strong,
+.mf-core-stats strong,
+.mf-extra strong {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+}
