@@ -1670,8 +1670,7 @@
 				}
 			],
 			"traitTags": [
-				"Charge",
-				"Sure-Footed"
+				"Charge"
 			],
 			"senseTags": [
 				"SD"
@@ -3631,8 +3630,10 @@
 			],
 			"source": "MOT",
 			"page": 236,
-			"referenceSources": [
-				"CM"
+			"otherSources": [
+				{
+					"source": "CM"
+				}
 			],
 			"size": [
 				"M"
@@ -4001,8 +4002,7 @@
 			],
 			"traitTags": [
 				"Charge",
-				"Magic Resistance",
-				"Sure-Footed"
+				"Magic Resistance"
 			],
 			"damageTags": [
 				"B",

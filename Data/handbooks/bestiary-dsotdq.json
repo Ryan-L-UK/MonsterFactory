@@ -5897,7 +5897,6 @@
 				}
 			],
 			"traitTags": [
-				"Ethereal Sight",
 				"Incorporeal Movement"
 			],
 			"senseTags": [
@@ -6961,8 +6960,10 @@
 			"isNamedCreature": true,
 			"source": "DSotDQ",
 			"page": 206,
-			"referenceSources": [
-				"VEoR"
+			"otherSources": [
+				{
+					"source": "VEoR"
+				}
 			],
 			"size": [
 				"M"

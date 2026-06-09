@@ -5,9 +5,13 @@
 			"source": "DMG",
 			"page": 164,
 			"srd": true,
-			"referenceSources": [
-				"BMT",
-				"TCE"
+			"otherSources": [
+				{
+					"source": "TCE"
+				},
+				{
+					"source": "BMT"
+				}
 			],
 			"reprintedAs": [
 				"Avatar of Death|XDMG"
@@ -146,11 +150,19 @@
 			"name": "Larva",
 			"source": "DMG",
 			"page": 63,
-			"referenceSources": [
-				"BGDIA",
-				"CoA",
-				"SatO",
-				"ToFW"
+			"otherSources": [
+				{
+					"source": "BGDIA"
+				},
+				{
+					"source": "SatO"
+				},
+				{
+					"source": "ToFW"
+				},
+				{
+					"source": "CoA"
+				}
 			],
 			"reprintedAs": [
 				"Larva|XMM"

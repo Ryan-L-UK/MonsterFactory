@@ -4737,10 +4737,6 @@
 			"name": "Tressym",
 			"source": "BGDIA",
 			"page": 241,
-			"referenceSources": [
-				"IMR",
-				"SKT"
-			],
 			"_copy": {
 				"name": "Tressym",
 				"source": "SKT"

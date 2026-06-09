@@ -1,7 +1,85 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
-    <%- include("partials/head", { title: "Monster Factory" }) %>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!---------------------------------------->
+    <!-- Info & Description -->
+    <title>The Monster Factory</title>
+    <meta
+      name="description"
+      content="Enter the MonsterFactory: a forge for handcrafted and procedurally generated D&D creatures. Create unique monsters, explore curated designs, and fuel your campaigns with fresh, lore-rich encounters."
+    />
+    <link rel="canonical" href="https://monsterfactory.app/" />
+    <!---------------------------------------->
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="/UI/Styles/main.css" />
+    <link rel="stylesheet" href="/Engine/lib/tippy/tippy.css" />
+    <!---------------------------------------->
+    <link
+      rel="preload"
+      href="/UI/Components/ButtonStyling/buttonBase.jpeg"
+      as="image"
+    />
+    <link
+      rel="preload"
+      href="/UI/Components/ButtonStyling/buttonHighlight.jpeg"
+      as="image"
+    />
+    <link
+      rel="preload"
+      href="/UI/Components/ButtonStyling/goldButton.png"
+      as="image"
+    />
+    <!---------------------------------------->
+    <!-- Icons -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.ico" />
+    <!---------------------------------------->
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://monsterfactory.app/" />
+    <meta property="og:site_name" content="MonsterFactory" />
+    <meta property="og:title" content="The Monster Factory" />
+    <meta
+      property="og:description"
+      content="Generate handcrafted and procedurally built D&D monsters with unique traits, origins, and lore."
+    />
+    <meta
+      property="og:image"
+      content="https://monsterfactory.app/social-card.png"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <!---------------------------------------->
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="The Monster Factory" />
+    <meta
+      name="twitter:description"
+      content="A forge for handcrafted and procedurally generated D&D creatures."
+    />
+    <meta
+      name="twitter:image"
+      content="https://monsterfactory.app/social-card.png"
+    />
+    <!---------------------------------------->
+    <!-- Theme -->
+    <meta name="theme-color" content="#05070b" />
+    <!---------------------------------------->
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "The Monster Factory",
+        "url": "https://monsterfactory.app/",
+        "applicationCategory": "Game",
+        "description": "A forge for handcrafted and procedurally generated D&D creatures.",
+        "operatingSystem": "All"
+      }
+    </script>
   </head>
   <body>
     <!---------------------------------------->
@@ -9,7 +87,7 @@
     <header id="Nav_output"></header>
     <!---------------------------------------->
     <div class="filter-grid">
-      <div class="filter-item">
+            <div class="filter-item">
         <label for="mf-cr">Edition:</label>
         <div class="mf-select-wrapper">
           <select class="mf-select frame" id="mf-edition" name="mf-edition">
@@ -65,10 +143,10 @@
         </div>
       </div>
     </div>
-    <div class="btn-group">
-      <button class="btn" id="btn-generate">Generate</button>
-      <button class="btn" id="btn-random">Randomise</button>
-      <button class="btn" id="btn-export" onclick="exportCreature()">
+    <div class="button-container">
+      <button class="submit-button" id="btn-generate">Generate</button>
+      <button class="submit-button" id="btn-random">Randomise</button>
+      <button class="submit-button" id="btn-export" onclick="exportCreature()">
         Export
       </button>
     </div>
@@ -291,14 +369,14 @@
     <!--END-->
   </body>
 </html>
-<script src="/js/tippy/popper.min.js" defer></script>
-<script src="/js/tippy/tippy.umd.min.js" defer></script>
-<script src="/js/engine-exporter.js" defer></script>
-<script src="/js/engine-monsterfactory.js" defer></script>
-<script src="/js/navigation-core.js" defer></script>
-<script src="/js/navigation-engine.js" defer></script>
+<script src="/Engine/lib/tippy/popper.min.js" defer></script>
+<script src="/Engine/lib/tippy/tippy.umd.min.js" defer></script>
+<script src="/Engine/engine-exporter.js" defer></script>
+<script src="/Engine/engine-monsterfactory.js" defer></script>
+<script src="/Engine/navigation-core.js" defer></script>
+<script src="/Engine/navigation-engine.js" defer></script>
 <script
   src="https://html2canvas.hertzen.com/dist/html2canvas.js"
   defer
 ></script>
-<script src="/js/config.js" defer></script>
+<script src="/Engine/config.js" defer></script>

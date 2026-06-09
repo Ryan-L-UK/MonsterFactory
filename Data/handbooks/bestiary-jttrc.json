@@ -242,8 +242,10 @@
 			"name": "Aurumvorax",
 			"source": "JttRC",
 			"page": 105,
-			"referenceSources": [
-				"QftIS"
+			"otherSources": [
+				{
+					"source": "QftIS"
+				}
 			],
 			"size": [
 				"S"
@@ -344,8 +346,10 @@
 			"name": "Aurumvorax Den Leader",
 			"source": "JttRC",
 			"page": 105,
-			"referenceSources": [
-				"QftIS"
+			"otherSources": [
+				{
+					"source": "QftIS"
+				}
 			],
 			"size": [
 				"M"

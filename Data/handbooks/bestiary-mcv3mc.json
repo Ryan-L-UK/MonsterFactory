@@ -4,8 +4,10 @@
 			"name": "Blaze",
 			"source": "MCV3MC",
 			"page": 3,
-			"referenceSources": [
-				"LK"
+			"otherSources": [
+				{
+					"source": "LK"
+				}
 			],
 			"size": [
 				"M"
@@ -132,8 +134,10 @@
 			"name": "Creeper",
 			"source": "MCV3MC",
 			"page": 4,
-			"referenceSources": [
-				"LK"
+			"otherSources": [
+				{
+					"source": "LK"
+				}
 			],
 			"size": [
 				"M"
@@ -240,8 +244,10 @@
 			"name": "Ender Dragon",
 			"source": "MCV3MC",
 			"page": 5,
-			"referenceSources": [
-				"LK"
+			"otherSources": [
+				{
+					"source": "LK"
+				}
 			],
 			"size": [
 				"G"
@@ -378,8 +384,10 @@
 			"name": "Enderman",
 			"source": "MCV3MC",
 			"page": 6,
-			"referenceSources": [
-				"LK"
+			"otherSources": [
+				{
+					"source": "LK"
+				}
 			],
 			"size": [
 				"M"
@@ -492,8 +500,10 @@
 			"name": "Wolf of the Overworld",
 			"source": "MCV3MC",
 			"page": 7,
-			"referenceSources": [
-				"LK"
+			"otherSources": [
+				{
+					"source": "LK"
+				}
 			],
 			"size": [
 				"M"

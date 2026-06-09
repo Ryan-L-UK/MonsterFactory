@@ -4865,8 +4865,10 @@
 			"name": "Ancient Sea Serpent",
 			"source": "FTD",
 			"page": 219,
-			"referenceSources": [
-				"FRAiF"
+			"otherSources": [
+				{
+					"source": "FRAiF"
+				}
 			],
 			"size": [
 				"G"

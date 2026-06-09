@@ -244,8 +244,10 @@
 			"name": "Bone Knight",
 			"source": "ERLW",
 			"page": 316,
-			"referenceSources": [
-				"EFA"
+			"otherSources": [
+				{
+					"source": "EFA"
+				}
 			],
 			"size": [
 				"M"
@@ -411,9 +413,6 @@
 			"name": "Changeling",
 			"source": "ERLW",
 			"page": 317,
-			"referenceSources": [
-				"EFR"
-			],
 			"size": [
 				"M"
 			],
@@ -630,9 +629,6 @@
 			"isNamedCreature": true,
 			"source": "ERLW",
 			"page": 271,
-			"referenceSources": [
-				"EFR"
-			],
 			"_copy": {
 				"name": "Spy",
 				"source": "MM",
@@ -1408,9 +1404,6 @@
 			"isNamedCreature": true,
 			"source": "ERLW",
 			"page": 272,
-			"referenceSources": [
-				"EFR"
-			],
 			"_copy": {
 				"name": "Half-Ogre (Ogrillon)",
 				"source": "MM"
@@ -2163,9 +2156,6 @@
 			"name": "Kalashtar",
 			"source": "ERLW",
 			"page": 317,
-			"referenceSources": [
-				"EFR"
-			],
 			"size": [
 				"M"
 			],
@@ -2258,8 +2248,10 @@
 			"name": "Karrnathi Undead Soldier",
 			"source": "ERLW",
 			"page": 295,
-			"referenceSources": [
-				"EFA"
+			"otherSources": [
+				{
+					"source": "EFA"
+				}
 			],
 			"size": [
 				"M"
@@ -2390,8 +2382,10 @@
 			"isNamedCreature": true,
 			"source": "ERLW",
 			"page": 296,
-			"referenceSources": [
-				"EFA"
+			"otherSources": [
+				{
+					"source": "EFA"
+				}
 			],
 			"size": [
 				"M"
@@ -3050,9 +3044,6 @@
 			"name": "Magewright",
 			"source": "ERLW",
 			"page": 318,
-			"referenceSources": [
-				"EFR"
-			],
 			"size": [
 				"M"
 			],
@@ -3513,8 +3504,10 @@
 			"isNamedCreature": true,
 			"source": "ERLW",
 			"page": 303,
-			"referenceSources": [
-				"EFA"
+			"otherSources": [
+				{
+					"source": "EFA"
+				}
 			],
 			"size": [
 				"H"
@@ -3751,9 +3744,6 @@
 			"name": "Shifter",
 			"source": "ERLW",
 			"page": 319,
-			"referenceSources": [
-				"EFR"
-			],
 			"size": [
 				"M"
 			],
@@ -3849,8 +3839,10 @@
 			"isNamedCreature": true,
 			"source": "ERLW",
 			"page": 304,
-			"referenceSources": [
-				"EFA"
+			"otherSources": [
+				{
+					"source": "EFA"
+				}
 			],
 			"size": [
 				"L"
@@ -4094,8 +4086,10 @@
 			"name": "Tarkanan Assassin",
 			"source": "ERLW",
 			"page": 320,
-			"referenceSources": [
-				"EFA"
+			"otherSources": [
+				{
+					"source": "EFA"
+				}
 			],
 			"size": [
 				"M"
@@ -5441,9 +5435,6 @@
 			"name": "Warforged Soldier",
 			"source": "ERLW",
 			"page": 320,
-			"referenceSources": [
-				"EFR"
-			],
 			"size": [
 				"M"
 			],
@@ -5557,8 +5548,10 @@
 			"name": "Warforged Titan",
 			"source": "ERLW",
 			"page": 315,
-			"referenceSources": [
-				"EFA"
+			"otherSources": [
+				{
+					"source": "EFA"
+				}
 			],
 			"size": [
 				"H"

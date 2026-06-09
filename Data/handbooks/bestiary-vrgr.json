@@ -135,9 +135,6 @@
 			"name": "Boneless",
 			"source": "VRGR",
 			"page": 228,
-			"referenceSources": [
-				"HoL"
-			],
 			"size": [
 				"M"
 			],
@@ -249,11 +246,8 @@
 			"otherSources": [
 				{
 					"source": "IDRotF",
-					"page": 279
+					"page": 278
 				}
-			],
-			"referenceSources": [
-				"IDRotF"
 			],
 			"size": [
 				"S"
@@ -509,9 +503,6 @@
 			"name": "Carrionette",
 			"source": "VRGR",
 			"page": 231,
-			"referenceSources": [
-				"HoL"
-			],
 			"size": [
 				"S"
 			],
@@ -605,9 +596,6 @@
 			"name": "Death's Head",
 			"source": "VRGR",
 			"page": 232,
-			"referenceSources": [
-				"HoL"
-			],
 			"size": [
 				"T"
 			],
@@ -869,7 +857,6 @@
 		},
 		{
 			"name": "Elise",
-			"isNpc": true,
 			"isNamedCreature": true,
 			"source": "VRGR",
 			"page": 143,
@@ -1274,9 +1261,6 @@
 			"name": "Gremishka",
 			"source": "VRGR",
 			"page": 235,
-			"referenceSources": [
-				"HoL"
-			],
 			"size": [
 				"T"
 			],
@@ -1656,8 +1640,10 @@
 			"name": "Inquisitor of the Tome",
 			"source": "VRGR",
 			"page": 249,
-			"referenceSources": [
-				"VEoR"
+			"otherSources": [
+				{
+					"source": "VEoR"
+				}
 			],
 			"size": [
 				"M"
@@ -1804,7 +1790,6 @@
 		},
 		{
 			"name": "Isolde",
-			"isNpc": true,
 			"isNamedCreature": true,
 			"source": "VRGR",
 			"page": 86,
@@ -2451,8 +2436,10 @@
 			"name": "Necrichor",
 			"source": "VRGR",
 			"page": 238,
-			"referenceSources": [
-				"AATM"
+			"otherSources": [
+				{
+					"source": "AATM"
+				}
 			],
 			"size": [
 				"M"
@@ -2518,7 +2505,7 @@
 				{
 					"name": "Rejuvenation",
 					"entries": [
-						"Unless its lifeless remains are splashed with {@item Holy Water (Flask)|PHB|holy water} or placed in a vessel under the effects of the {@spell hallow} spell, the destroyed necrichor re-forms in {@dice 1d10} days, regaining all its hits points and appearing in the place it died or in the nearest unoccupied space."
+						"Unless its lifeless remains are splashed with holy water or placed in a vessel under the effects of the {@spell hallow} spell, the destroyed necrichor re-forms in {@dice 1d10} days, regaining all its hits points and appearing in the place it died or in the nearest unoccupied space."
 					]
 				},
 				{
@@ -2718,6 +2705,7 @@
 			"damageTags": [
 				"N",
 				"P",
+				"R",
 				"S"
 			],
 			"miscTags": [
@@ -2815,9 +2803,10 @@
 			"name": "Priest of Osybus",
 			"source": "VRGR",
 			"page": 241,
-			"referenceSources": [
-				"HoL",
-				"VEoR"
+			"otherSources": [
+				{
+					"source": "VEoR"
+				}
 			],
 			"size": [
 				"M"
@@ -3637,9 +3626,6 @@
 			"name": "Swarm of Maggots",
 			"source": "VRGR",
 			"page": 247,
-			"referenceSources": [
-				"HoL"
-			],
 			"size": [
 				"M"
 			],
@@ -4477,14 +4463,12 @@
 			"page": 253,
 			"otherSources": [
 				{
+					"source": "CM"
+				},
+				{
 					"source": "CoS",
 					"page": 242
 				}
-			],
-			"referenceSources": [
-				"CM",
-				"CoS",
-				"HoL"
 			],
 			"size": [
 				"M"
@@ -4733,9 +4717,6 @@
 			"name": "Zombie Plague Spreader",
 			"source": "VRGR",
 			"page": 255,
-			"referenceSources": [
-				"HoL"
-			],
 			"size": [
 				"M"
 			],

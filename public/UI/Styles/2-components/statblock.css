@@ -1,0 +1,99 @@
+/* ------------------------------
+Shared Statblock Components
+-------------------------------- */
+.stat-label {
+  font-size: 1rem;
+  font-family: var(--font-display);
+  font-weight: bold;
+}
+.stat-value {
+  font-size: 1.25rem;
+  font-family: Merriweather, serif;
+}
+ul.list-hang {
+  margin: 0;
+  padding-left: 1rem;
+}
+/* ------------------------------
+Index Statblock
+-------------------------------- */
+.stat-container {
+  text-align: center;
+  min-width: 40px;
+}
+.source-book {
+  text-align: center;
+  font-size: 2rem;
+  color: var(--color-accent);
+  font-family: "Cinzel Decorative";
+}
+.page-number {
+  text-align: center;
+  font-size: 0.75rem;
+}
+/* ------------------------------
+Curated Statblocks
+-------------------------------- */
+.mf-statblock {
+  background: rgba(20, 20, 20, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  padding: 20px;
+  color: rgb(255, 252, 239);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+.mf-statblock-header {
+  margin-bottom: 10px;
+}
+.mf-statblock-header .mf-name {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  margin: 0;
+  letter-spacing: 1px;
+}
+.mf-statblock-header {
+  opacity: 0.8;
+  margin: 4px 0 0;
+  font-size: 0.85rem;
+}
+.mf-subtitle {
+  margin: 0;
+  font-size: 1.2rem;
+  color: #d6ae4a;
+  font-family: MrEaves;
+  font-weight: normal;
+}
+.mf-abilities {
+  width: 100%;
+  text-align: center;
+  margin: 12px 0;
+  border-collapse: collapse;
+}
+.mf-abilities th {
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  padding-bottom: 4px;
+}
+.mf-abilities td {
+  padding: 6px 0;
+  font-size: 0.85rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+.mf-section-title {
+  font-family: var(--font-display);
+  font-size: var(--font-size-xs);
+  margin: 16px 0 8px;
+}
+.mf-trait,
+.mf-action {
+  margin-bottom: 10px;
+}
+.mf-trait strong,
+.mf-action strong,
+.mf-core-stats strong,
+.mf-extra strong {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+}

@@ -649,9 +649,6 @@
 			"name": "Chwinga",
 			"source": "CM",
 			"page": 212,
-			"referenceSources": [
-				"ToA"
-			],
 			"_copy": {
 				"name": "Chwinga",
 				"source": "ToA"
@@ -797,7 +794,6 @@
 				}
 			],
 			"traitTags": [
-				"Ethereal Sight",
 				"Incorporeal Movement",
 				"Regeneration"
 			],
@@ -1618,7 +1614,6 @@
 		},
 		{
 			"name": "Hag of the Fetid Gaze",
-			"isNpc": true,
 			"source": "CM",
 			"page": 76,
 			"_copy": {

@@ -11,9 +11,6 @@
 			"name": "Anarch",
 			"source": "GGR",
 			"page": 239,
-			"referenceSources": [
-				"AZfyT"
-			],
 			"size": [
 				"M"
 			],
@@ -3763,9 +3760,6 @@
 			"name": "Flying Horror",
 			"source": "GGR",
 			"page": 203,
-			"referenceSources": [
-				"AZfyT"
-			],
 			"size": [
 				"M"
 			],
@@ -4634,9 +4628,6 @@
 			"name": "Horncaller",
 			"source": "GGR",
 			"page": 253,
-			"referenceSources": [
-				"AZfyT"
-			],
 			"size": [
 				"M"
 			],
@@ -4756,7 +4747,7 @@
 			"type": {
 				"type": "humanoid",
 				"tags": [
-					"simic hybrid"
+					"Simic hybrid"
 				]
 			},
 			"alignment": [
@@ -4840,7 +4831,7 @@
 			"type": {
 				"type": "humanoid",
 				"tags": [
-					"simic hybrid"
+					"Simic hybrid"
 				]
 			},
 			"alignment": [
@@ -4926,7 +4917,7 @@
 			"type": {
 				"type": "humanoid",
 				"tags": [
-					"simic hybrid"
+					"Simic hybrid"
 				]
 			},
 			"alignment": [
@@ -5027,7 +5018,7 @@
 			"type": {
 				"type": "humanoid",
 				"tags": [
-					"simic hybrid"
+					"Simic hybrid"
 				]
 			},
 			"alignment": [
@@ -5128,7 +5119,7 @@
 			"type": {
 				"type": "humanoid",
 				"tags": [
-					"simic hybrid"
+					"Simic hybrid"
 				]
 			},
 			"alignment": [
@@ -6048,10 +6039,6 @@
 			"name": "Kraul Warrior",
 			"source": "GGR",
 			"page": 213,
-			"referenceSources": [
-				"AZfyT",
-				"KKW"
-			],
 			"size": [
 				"M"
 			],
@@ -7734,7 +7721,6 @@
 				}
 			],
 			"traitTags": [
-				"Ethereal Sight",
 				"Incorporeal Movement",
 				"Legendary Resistances"
 			],
@@ -8766,9 +8752,6 @@
 			"name": "Rubblebelt Stalker",
 			"source": "GGR",
 			"page": 239,
-			"referenceSources": [
-				"AZfyT"
-			],
 			"size": [
 				"M"
 			],
@@ -8881,9 +8864,6 @@
 			"name": "Scorchbringer Guard",
 			"source": "GGR",
 			"page": 243,
-			"referenceSources": [
-				"KKW"
-			],
 			"size": [
 				"M"
 			],
@@ -9665,9 +9645,10 @@
 			"name": "Soldier",
 			"source": "GGR",
 			"page": 226,
-			"referenceSources": [
-				"KKW",
-				"MOT"
+			"otherSources": [
+				{
+					"source": "MOT"
+				}
 			],
 			"size": [
 				"M"
@@ -9955,9 +9936,6 @@
 			"name": "Thought Spy",
 			"source": "GGR",
 			"page": 233,
-			"referenceSources": [
-				"AZfyT"
-			],
 			"size": [
 				"M"
 			],

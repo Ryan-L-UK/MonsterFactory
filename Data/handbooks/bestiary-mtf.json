@@ -4,8 +4,10 @@
 			"name": "Abyssal Wretch",
 			"source": "MTF",
 			"page": 136,
-			"referenceSources": [
-				"BGDIA"
+			"otherSources": [
+				{
+					"source": "BGDIA"
+				}
 			],
 			"size": [
 				"M"
@@ -67,7 +69,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/abyssal-wretch.opus"
+				"path": "bestiary/abyssal-wretch.mp3"
 			},
 			"senseTags": [
 				"SD"
@@ -177,7 +179,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/adult-kruthik.opus"
+				"path": "bestiary/adult-kruthik.mp3"
 			},
 			"traitTags": [
 				"Keen Senses",
@@ -209,8 +211,10 @@
 			"name": "Adult Oblex",
 			"source": "MTF",
 			"page": 218,
-			"referenceSources": [
-				"IMR"
+			"otherSources": [
+				{
+					"source": "IMR"
+				}
 			],
 			"reprintedAs": [
 				"Adult Oblex|MPMM"
@@ -339,7 +343,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/oblex-adult.opus"
+				"path": "bestiary/oblex-adult.mp3"
 			},
 			"traitTags": [
 				"Amorphous"
@@ -388,15 +392,18 @@
 			"page": 202,
 			"otherSources": [
 				{
+					"source": "DC"
+				},
+				{
+					"source": "DIP"
+				},
+				{
+					"source": "SLW"
+				},
+				{
 					"source": "PotA",
 					"page": 212
 				}
-			],
-			"referenceSources": [
-				"DC",
-				"DIP",
-				"PotA",
-				"SLW"
 			],
 			"reprintedAs": [
 				"Air Elemental Myrmidon|MPMM"
@@ -495,7 +502,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/air-elemental-myrmidon.opus"
+				"path": "bestiary/air-elemental-myrmidon.mp3"
 			},
 			"attachedItems": [
 				"flail|phb"
@@ -534,9 +541,13 @@
 			"name": "Alkilith",
 			"source": "MTF",
 			"page": 130,
-			"referenceSources": [
-				"DIP",
-				"SDW"
+			"otherSources": [
+				{
+					"source": "DIP"
+				},
+				{
+					"source": "SDW"
+				}
 			],
 			"reprintedAs": [
 				"Alkilith|MPMM"
@@ -660,7 +671,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/alkilith.opus"
+				"path": "bestiary/alkilith.mp3"
 			},
 			"traitTags": [
 				"Amorphous",
@@ -696,9 +707,13 @@
 			"name": "Allip",
 			"source": "MTF",
 			"page": 116,
-			"referenceSources": [
-				"DIP",
-				"SLW"
+			"otherSources": [
+				{
+					"source": "DIP"
+				},
+				{
+					"source": "SLW"
+				}
 			],
 			"reprintedAs": [
 				"Allip|MPMM"
@@ -813,7 +828,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/allip.opus"
+				"path": "bestiary/allip.mp3"
 			},
 			"traitTags": [
 				"Incorporeal Movement"
@@ -845,8 +860,10 @@
 			"name": "Amnizu",
 			"source": "MTF",
 			"page": 164,
-			"referenceSources": [
-				"BGDIA"
+			"otherSources": [
+				{
+					"source": "BGDIA"
+				}
 			],
 			"reprintedAs": [
 				"Amnizu|MPMM"
@@ -1025,7 +1042,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/amnizu.opus"
+				"path": "bestiary/amnizu.mp3"
 			},
 			"traitTags": [
 				"Devil's Sight",
@@ -1192,7 +1209,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/armanite.opus"
+				"path": "bestiary/armanite.mp3"
 			},
 			"traitTags": [
 				"Magic Resistance",
@@ -1384,7 +1401,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/astral-dreadnought.opus"
+				"path": "bestiary/astral-dreadnought.mp3"
 			},
 			"traitTags": [
 				"Legendary Resistances",
@@ -1557,7 +1574,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/autumn-eladrin.opus"
+				"path": "bestiary/autumn-eladrin.mp3"
 			},
 			"attachedItems": [
 				"longbow|phb",
@@ -1806,7 +1823,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/bael.opus"
+				"path": "bestiary/bael.mp3"
 			},
 			"traitTags": [
 				"Legendary Resistances",
@@ -1870,9 +1887,6 @@
 			"name": "Balhannoth",
 			"source": "MTF",
 			"page": 119,
-			"referenceSources": [
-				"RtG"
-			],
 			"reprintedAs": [
 				"Balhannoth|MPMM"
 			],
@@ -1983,7 +1997,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/balhannoth.opus"
+				"path": "bestiary/balhannoth.mp3"
 			},
 			"traitTags": [
 				"Legendary Resistances"
@@ -2031,11 +2045,10 @@
 				{
 					"source": "OotA",
 					"page": 235
+				},
+				{
+					"source": "BGDIA"
 				}
-			],
-			"referenceSources": [
-				"BGDIA",
-				"OotA"
 			],
 			"reprintedAs": [
 				"Baphomet|MPMM"
@@ -2388,7 +2401,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/berbalang.opus"
+				"path": "bestiary/berbalang.mp3"
 			},
 			"senseTags": [
 				"U"
@@ -2553,7 +2566,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/black-abishai.opus"
+				"path": "bestiary/black-abishai.mp3"
 			},
 			"attachedItems": [
 				"scimitar|phb"
@@ -2787,7 +2800,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/blue-abishai.opus"
+				"path": "bestiary/blue-abishai.mp3"
 			},
 			"attachedItems": [
 				"quarterstaff|phb"
@@ -2843,9 +2856,13 @@
 			"name": "Boneclaw",
 			"source": "MTF",
 			"page": 121,
-			"referenceSources": [
-				"DC",
-				"DIP"
+			"otherSources": [
+				{
+					"source": "DC"
+				},
+				{
+					"source": "DIP"
+				}
 			],
 			"reprintedAs": [
 				"Boneclaw|MPMM"
@@ -2966,7 +2983,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/boneclaw.opus"
+				"path": "bestiary/boneclaw.mp3"
 			},
 			"traitTags": [
 				"Rejuvenation"
@@ -3002,9 +3019,6 @@
 			"name": "Bronze Scout",
 			"source": "MTF",
 			"page": 125,
-			"referenceSources": [
-				"RtG"
-			],
 			"reprintedAs": [
 				"Clockwork Bronze Scout|MPMM"
 			],
@@ -3100,7 +3114,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/bronze-scout.opus"
+				"path": "bestiary/bronze-scout.mp3"
 			},
 			"traitTags": [
 				"Magic Resistance"
@@ -3129,8 +3143,10 @@
 			"name": "Bulezau",
 			"source": "MTF",
 			"page": 131,
-			"referenceSources": [
-				"BGDIA"
+			"otherSources": [
+				{
+					"source": "BGDIA"
+				}
 			],
 			"reprintedAs": [
 				"Bulezau|MPMM"
@@ -3221,11 +3237,8 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/bulezau.opus"
+				"path": "bestiary/bulezau.mp3"
 			},
-			"traitTags": [
-				"Sure-Footed"
-			],
 			"senseTags": [
 				"SD"
 			],
@@ -3357,7 +3370,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/cadaver-collector.opus"
+				"path": "bestiary/cadaver-collector.mp3"
 			},
 			"traitTags": [
 				"Magic Resistance"
@@ -3527,7 +3540,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/canoloth.opus"
+				"path": "bestiary/canoloth.mp3"
 			},
 			"traitTags": [
 				"Magic Resistance",
@@ -3570,15 +3583,6 @@
 					"source": "TftYP",
 					"page": 232
 				}
-			],
-			"referenceSources": [
-				"TftYP-AtG",
-				"TftYP-DiT",
-				"TftYP-TFoF",
-				"TftYP-THSoT",
-				"TftYP-ToH",
-				"TftYP-TSC",
-				"TftYP-WPM"
 			],
 			"reprintedAs": [
 				"Choker|MPMM"
@@ -3664,7 +3668,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/choker.opus"
+				"path": "bestiary/choker.mp3"
 			},
 			"altArt": [
 				{
@@ -3797,7 +3801,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/corpse-flower.opus"
+				"path": "bestiary/corpse-flower.mp3"
 			},
 			"traitTags": [
 				"Spider Climb"
@@ -3981,7 +3985,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/deathlock.opus"
+				"path": "bestiary/deathlock.mp3"
 			},
 			"traitTags": [
 				"Turn Resistance"
@@ -4140,8 +4144,10 @@
 			"name": "Deathlock Mastermind",
 			"source": "MTF",
 			"page": 129,
-			"referenceSources": [
-				"SDW"
+			"otherSources": [
+				{
+					"source": "SDW"
+				}
 			],
 			"reprintedAs": [
 				"Deathlock Mastermind|MPMM"
@@ -4305,7 +4311,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/deathlock-mastermind.opus"
+				"path": "bestiary/deathlock-mastermind.mp3"
 			},
 			"traitTags": [
 				"Turn Resistance"
@@ -4495,15 +4501,6 @@
 					"page": 233
 				}
 			],
-			"referenceSources": [
-				"TftYP-AtG",
-				"TftYP-DiT",
-				"TftYP-TFoF",
-				"TftYP-THSoT",
-				"TftYP-ToH",
-				"TftYP-TSC",
-				"TftYP-WPM"
-			],
 			"reprintedAs": [
 				"Deathlock Wight|MPMM"
 			],
@@ -4623,7 +4620,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/deathlock-wight.opus"
+				"path": "bestiary/deathlock-wight.mp3"
 			},
 			"altArt": [
 				{
@@ -4673,9 +4670,6 @@
 					"source": "OotA",
 					"page": 236
 				}
-			],
-			"referenceSources": [
-				"OotA"
 			],
 			"reprintedAs": [
 				"Demogorgon|MPMM"
@@ -4994,7 +4988,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/derro.opus"
+				"path": "bestiary/derro.mp3"
 			},
 			"attachedItems": [
 				"light crossbow|phb"
@@ -5148,7 +5142,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/derro-savant.opus"
+				"path": "bestiary/derro-savant.mp3"
 			},
 			"attachedItems": [
 				"quarterstaff|phb"
@@ -5329,7 +5323,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/dhergoloth.opus"
+				"path": "bestiary/dhergoloth.mp3"
 			},
 			"traitTags": [
 				"Magic Resistance",
@@ -5483,7 +5477,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/dire-troll.opus"
+				"path": "bestiary/dire-troll.mp3"
 			},
 			"traitTags": [
 				"Keen Senses",
@@ -5528,11 +5522,7 @@
 			"type": {
 				"type": "humanoid",
 				"tags": [
-					{
-						"tag": "elf",
-						"prefix": "Drow",
-						"prefixHidden": true
-					}
+					"elf"
 				]
 			},
 			"alignment": [
@@ -5713,7 +5703,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/drow-arachnomancer.opus"
+				"path": "bestiary/drow-arachnomancer.mp3"
 			},
 			"traitTags": [
 				"Fey Ancestry",
@@ -5790,11 +5780,7 @@
 			"type": {
 				"type": "humanoid",
 				"tags": [
-					{
-						"tag": "elf",
-						"prefix": "Drow",
-						"prefixHidden": true
-					}
+					"elf"
 				]
 			},
 			"alignment": [
@@ -5971,7 +5957,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/drow-favored-consort.opus"
+				"path": "bestiary/drow-favored-consort.mp3"
 			},
 			"attachedItems": [
 				"hand crossbow|phb",
@@ -6030,15 +6016,13 @@
 				"strength"
 			],
 			"hasToken": true,
-			"hasFluff": true
+			"hasFluff": true,
+			"hasFluffImages": true
 		},
 		{
 			"name": "Drow House Captain",
 			"source": "MTF",
 			"page": 184,
-			"referenceSources": [
-				"WDMM"
-			],
 			"reprintedAs": [
 				"Drow House Captain|MPMM"
 			],
@@ -6048,11 +6032,7 @@
 			"type": {
 				"type": "humanoid",
 				"tags": [
-					{
-						"tag": "elf",
-						"prefix": "Drow",
-						"prefixHidden": true
-					}
+					"elf"
 				]
 			},
 			"alignment": [
@@ -6177,7 +6157,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/drow-house-captain.opus"
+				"path": "bestiary/drow-house-captain.mp3"
 			},
 			"attachedItems": [
 				"hand crossbow|phb",
@@ -6241,11 +6221,7 @@
 			"type": {
 				"type": "humanoid",
 				"tags": [
-					{
-						"tag": "elf",
-						"prefix": "Drow",
-						"prefixHidden": true
-					}
+					"elf"
 				]
 			},
 			"alignment": [
@@ -6452,7 +6428,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/drow-inquisitor.opus"
+				"path": "bestiary/drow-inquisitor.mp3"
 			},
 			"traitTags": [
 				"Fey Ancestry",
@@ -6518,11 +6494,7 @@
 			"type": {
 				"type": "humanoid",
 				"tags": [
-					{
-						"tag": "elf",
-						"prefix": "Drow",
-						"prefixHidden": true
-					}
+					"elf"
 				]
 			},
 			"alignment": [
@@ -6766,7 +6738,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/drow-matron-mother.opus"
+				"path": "bestiary/drow-matron-mother.mp3"
 			},
 			"traitTags": [
 				"Fey Ancestry",
@@ -6842,11 +6814,7 @@
 			"type": {
 				"type": "humanoid",
 				"tags": [
-					{
-						"tag": "elf",
-						"prefix": "Drow",
-						"prefixHidden": true
-					}
+					"elf"
 				]
 			},
 			"alignment": [
@@ -6977,7 +6945,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/drow-shadowblade.opus"
+				"path": "bestiary/drow-shadowblade.mp3"
 			},
 			"attachedItems": [
 				"hand crossbow|phb"
@@ -7162,7 +7130,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/duergar-despot.opus"
+				"path": "bestiary/duergar-despot.mp3"
 			},
 			"traitTags": [
 				"Magic Resistance",
@@ -7208,8 +7176,10 @@
 			"name": "Duergar Hammerer",
 			"source": "MTF",
 			"page": 188,
-			"referenceSources": [
-				"IDRotF"
+			"otherSources": [
+				{
+					"source": "IDRotF"
+				}
 			],
 			"reprintedAs": [
 				"Duergar Hammerer|MPMM"
@@ -7302,7 +7272,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/duergar-hammerer.opus"
+				"path": "bestiary/duergar-hammerer.mp3"
 			},
 			"traitTags": [
 				"Siege Monster"
@@ -7335,9 +7305,6 @@
 					"source": "OotA",
 					"page": 226
 				}
-			],
-			"referenceSources": [
-				"OotA"
 			],
 			"reprintedAs": [
 				"Duergar Kavalrachni|MPMM"
@@ -7441,7 +7408,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/duergar-kavalrachni.opus"
+				"path": "bestiary/duergar-kavalrachni.mp3"
 			},
 			"attachedItems": [
 				"heavy crossbow|phb",
@@ -7480,8 +7447,10 @@
 			"name": "Duergar Mind Master",
 			"source": "MTF",
 			"page": 189,
-			"referenceSources": [
-				"IDRotF"
+			"otherSources": [
+				{
+					"source": "IDRotF"
+				}
 			],
 			"reprintedAs": [
 				"Duergar Mind Master|MPMM"
@@ -7596,7 +7565,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/duergar-mind-master.opus"
+				"path": "bestiary/duergar-mind-master.mp3"
 			},
 			"traitTags": [
 				"Sunlight Sensitivity"
@@ -7718,7 +7687,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/duergar-screamer.opus"
+				"path": "bestiary/duergar-screamer.mp3"
 			},
 			"senseTags": [
 				"D"
@@ -7756,9 +7725,6 @@
 					"source": "OotA",
 					"page": 227
 				}
-			],
-			"referenceSources": [
-				"OotA"
 			],
 			"reprintedAs": [
 				"Duergar Soulblade|MPMM"
@@ -7875,7 +7841,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/duergar-soulblade.opus"
+				"path": "bestiary/duergar-soulblade.mp3"
 			},
 			"traitTags": [
 				"Sunlight Sensitivity"
@@ -7912,9 +7878,6 @@
 					"source": "OotA",
 					"page": 227
 				}
-			],
-			"referenceSources": [
-				"OotA"
 			],
 			"reprintedAs": [
 				"Duergar Stone Guard|MPMM"
@@ -8018,7 +7981,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/duergar-stone-guard.opus"
+				"path": "bestiary/duergar-stone-guard.mp3"
 			},
 			"attachedItems": [
 				"javelin|phb"
@@ -8169,7 +8132,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/duergar-warlord.opus"
+				"path": "bestiary/duergar-warlord.mp3"
 			},
 			"attachedItems": [
 				"javelin|phb"
@@ -8213,9 +8176,6 @@
 					"source": "OotA",
 					"page": 226
 				}
-			],
-			"referenceSources": [
-				"OotA"
 			],
 			"reprintedAs": [
 				"Duergar Xarrorn|MPMM"
@@ -8312,7 +8272,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/duergar-xarrorn.opus"
+				"path": "bestiary/duergar-xarrorn.mp3"
 			},
 			"traitTags": [
 				"Sunlight Sensitivity"
@@ -8490,7 +8450,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/dybbuk.opus"
+				"path": "bestiary/dybbuk.mp3"
 			},
 			"traitTags": [
 				"Incorporeal Movement",
@@ -8544,9 +8504,6 @@
 					"source": "PotA",
 					"page": 212
 				}
-			],
-			"referenceSources": [
-				"PotA"
 			],
 			"reprintedAs": [
 				"Earth Elemental Myrmidon|MPMM"
@@ -8638,7 +8595,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/earth-elemental-myrmidon.opus"
+				"path": "bestiary/earth-elemental-myrmidon.mp3"
 			},
 			"attachedItems": [
 				"maul|phb"
@@ -8677,10 +8634,16 @@
 			"name": "Eidolon",
 			"source": "MTF",
 			"page": 194,
-			"referenceSources": [
-				"DC",
-				"DIP",
-				"IMR"
+			"otherSources": [
+				{
+					"source": "DC"
+				},
+				{
+					"source": "DIP"
+				},
+				{
+					"source": "IMR"
+				}
 			],
 			"reprintedAs": [
 				"Eidolon|MPMM"
@@ -8796,7 +8759,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/eidolon.opus"
+				"path": "bestiary/eidolon.mp3"
 			},
 			"traitTags": [
 				"Incorporeal Movement",
@@ -8958,7 +8921,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/elder-oblex.opus"
+				"path": "bestiary/elder-oblex.mp3"
 			},
 			"traitTags": [
 				"Amorphous"
@@ -9159,7 +9122,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/elder-tempest.opus"
+				"path": "bestiary/elder-tempest.mp3"
 			},
 			"traitTags": [
 				"Flyby",
@@ -9197,9 +9160,6 @@
 			"name": "Female Steeder",
 			"source": "MTF",
 			"page": 238,
-			"referenceSources": [
-				"OotA"
-			],
 			"reprintedAs": [
 				"Female Steeder|MPMM"
 			],
@@ -9274,7 +9234,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/female-steeder.opus"
+				"path": "bestiary/female-steeder.mp3"
 			},
 			"traitTags": [
 				"Spider Climb"
@@ -9305,9 +9265,6 @@
 					"source": "PotA",
 					"page": 213
 				}
-			],
-			"referenceSources": [
-				"PotA"
 			],
 			"reprintedAs": [
 				"Fire Elemental Myrmidon|MPMM"
@@ -9412,7 +9369,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/fire-elemental-myrmidon.opus"
+				"path": "bestiary/fire-elemental-myrmidon.mp3"
 			},
 			"attachedItems": [
 				"scimitar|phb"
@@ -9454,9 +9411,6 @@
 					"source": "OotA",
 					"page": 238
 				}
-			],
-			"referenceSources": [
-				"OotA"
 			],
 			"reprintedAs": [
 				"Fraz-Urb'luu|MPMM"
@@ -9792,7 +9746,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/frost-salamander.opus"
+				"path": "bestiary/frost-salamander.mp3"
 			},
 			"senseTags": [
 				"D",
@@ -10030,7 +9984,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/geryon.opus"
+				"path": "bestiary/geryon.mp3"
 			},
 			"traitTags": [
 				"Legendary Resistances",
@@ -10204,7 +10158,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/giff.opus"
+				"path": "bestiary/giff.mp3"
 			},
 			"attachedItems": [
 				"longsword|phb",
@@ -10245,12 +10199,8 @@
 			"page": 205,
 			"otherSources": [
 				{
-					"source": "WDMM",
-					"page": 312
+					"source": "WDMM"
 				}
-			],
-			"referenceSources": [
-				"WDMM"
 			],
 			"reprintedAs": [
 				"Githyanki Gish|MPMM"
@@ -10406,7 +10356,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/githyanki-gish.opus"
+				"path": "bestiary/githyanki-gish.mp3"
 			},
 			"attachedItems": [
 				"longsword|phb"
@@ -10561,7 +10511,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/githyanki-kith_rak.opus"
+				"path": "bestiary/githyanki-kith_rak.mp3"
 			},
 			"attachedItems": [
 				"greatsword|phb"
@@ -10727,7 +10677,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/githyanki-supreme-commander.opus"
+				"path": "bestiary/githyanki-supreme-commander.mp3"
 			},
 			"actionTags": [
 				"Multiattack",
@@ -10895,7 +10845,7 @@
 			},
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/githzerai-anarch.opus"
+				"path": "bestiary/githzerai-anarch.mp3"
 			},
 			"actionTags": [
 				"Multiattack"
@@ -11042,7 +10992,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/githzerai-enlightened.opus"
+				"path": "bestiary/githzerai-enlightened.mp3"
 			},
 			"actionTags": [
 				"Multiattack"
@@ -11235,7 +11185,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/gloom-weaver.opus"
+				"path": "bestiary/gloom-weaver.mp3"
 			},
 			"traitTags": [
 				"Fey Ancestry"
@@ -11367,7 +11317,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/gray-render.opus"
+				"path": "bestiary/gray-render.mp3"
 			},
 			"senseTags": [
 				"D"
@@ -11404,9 +11354,6 @@
 					"source": "OotA",
 					"page": 241
 				}
-			],
-			"referenceSources": [
-				"OotA"
 			],
 			"reprintedAs": [
 				"Graz'zt|MPMM"
@@ -11795,7 +11742,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/green-abishai.opus"
+				"path": "bestiary/green-abishai.mp3"
 			},
 			"attachedItems": [
 				"longsword|phb"
@@ -11977,7 +11924,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/hellfire-engine.opus"
+				"path": "bestiary/hellfire-engine.mp3"
 			},
 			"traitTags": [
 				"Immutable Form",
@@ -12113,7 +12060,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/howler.opus"
+				"path": "bestiary/howler.mp3"
 			},
 			"traitTags": [
 				"Pack Tactics"
@@ -12358,7 +12305,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/hutijin.opus"
+				"path": "bestiary/hutijin.mp3"
 			},
 			"attachedItems": [
 				"mace|phb"
@@ -12599,7 +12546,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/hydroloth.opus"
+				"path": "bestiary/hydroloth.mp3"
 			},
 			"traitTags": [
 				"Amphibious",
@@ -12652,13 +12599,12 @@
 			"page": 125,
 			"otherSources": [
 				{
+					"source": "GoS"
+				},
+				{
 					"source": "RtG",
 					"page": 33
 				}
-			],
-			"referenceSources": [
-				"GoS",
-				"RtG"
 			],
 			"reprintedAs": [
 				"Clockwork Iron Cobra|MPMM"
@@ -12744,7 +12690,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/iron-cobra.opus"
+				"path": "bestiary/iron-cobra.mp3"
 			},
 			"traitTags": [
 				"Magic Resistance"
@@ -12782,9 +12728,6 @@
 					"source": "OotA",
 					"page": 243
 				}
-			],
-			"referenceSources": [
-				"OotA"
 			],
 			"reprintedAs": [
 				"Juiblex|MPMM"
@@ -13138,7 +13081,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/kruthik-hive-lord.opus"
+				"path": "bestiary/kruthik-hive-lord.mp3"
 			},
 			"traitTags": [
 				"Keen Senses",
@@ -13311,7 +13254,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/leviathan.opus"
+				"path": "bestiary/leviathan.mp3"
 			},
 			"traitTags": [
 				"Legendary Resistances",
@@ -13343,9 +13286,6 @@
 			"name": "Male Steeder",
 			"source": "MTF",
 			"page": 238,
-			"referenceSources": [
-				"OotA"
-			],
 			"reprintedAs": [
 				"Male Steeder|MPMM"
 			],
@@ -13420,7 +13360,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/male-steeder.opus"
+				"path": "bestiary/male-steeder.mp3"
 			},
 			"traitTags": [
 				"Spider Climb"
@@ -13590,7 +13530,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/marut.opus"
+				"path": "bestiary/marut.mp3"
 			},
 			"traitTags": [
 				"Immutable Form",
@@ -13754,7 +13694,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/maurezhi.opus"
+				"path": "bestiary/maurezhi.mp3"
 			},
 			"traitTags": [
 				"Magic Resistance"
@@ -13876,7 +13816,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/meazel.opus"
+				"path": "bestiary/meazel.mp3"
 			},
 			"attachedItems": [
 				"shortsword|phb"
@@ -13907,8 +13847,10 @@
 			"name": "Merregon",
 			"source": "MTF",
 			"page": 166,
-			"referenceSources": [
-				"BGDIA"
+			"otherSources": [
+				{
+					"source": "BGDIA"
+				}
 			],
 			"reprintedAs": [
 				"Merregon|MPMM"
@@ -14020,7 +13962,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/merregon.opus"
+				"path": "bestiary/merregon.mp3"
 			},
 			"attachedItems": [
 				"halberd|phb",
@@ -14060,9 +14002,6 @@
 			"name": "Merrenoloth",
 			"source": "MTF",
 			"page": 250,
-			"referenceSources": [
-				"LLK"
-			],
 			"reprintedAs": [
 				"Merrenoloth|MPMM"
 			],
@@ -14212,7 +14151,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/merrenoloth.opus"
+				"path": "bestiary/merrenoloth.mp3"
 			},
 			"traitTags": [
 				"Magic Resistance",
@@ -14464,7 +14403,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/moloch.opus"
+				"path": "bestiary/moloch.mp3"
 			},
 			"traitTags": [
 				"Legendary Resistances",
@@ -14729,7 +14668,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/molydeus.opus"
+				"path": "bestiary/molydeus.mp3"
 			},
 			"traitTags": [
 				"Legendary Resistances",
@@ -14908,7 +14847,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/nabassu.opus"
+				"path": "bestiary/nabassu.mp3"
 			},
 			"traitTags": [
 				"Magic Resistance",
@@ -15115,7 +15054,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/nagpa.opus"
+				"path": "bestiary/nagpa.mp3"
 			},
 			"senseTags": [
 				"U"
@@ -15173,8 +15112,10 @@
 			"name": "Narzugon",
 			"source": "MTF",
 			"page": 167,
-			"referenceSources": [
-				"BGDIA"
+			"otherSources": [
+				{
+					"source": "BGDIA"
+				}
 			],
 			"reprintedAs": [
 				"Narzugon|MPMM"
@@ -15310,7 +15251,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/narzugon.opus"
+				"path": "bestiary/narzugon.mp3"
 			},
 			"traitTags": [
 				"Magic Resistance"
@@ -15457,7 +15398,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/nightwalker.opus"
+				"path": "bestiary/nightwalker.mp3"
 			},
 			"senseTags": [
 				"SD"
@@ -15489,8 +15430,10 @@
 			"name": "Nupperibo",
 			"source": "MTF",
 			"page": 168,
-			"referenceSources": [
-				"BGDIA"
+			"otherSources": [
+				{
+					"source": "BGDIA"
+				}
 			],
 			"reprintedAs": [
 				"Nupperibo|MPMM"
@@ -15587,7 +15530,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/nupperibo.opus"
+				"path": "bestiary/nupperibo.mp3"
 			},
 			"senseTags": [
 				"B"
@@ -15613,10 +15556,6 @@
 			"name": "Oaken Bolter",
 			"source": "MTF",
 			"page": 126,
-			"referenceSources": [
-				"LLK",
-				"RtG"
-			],
 			"reprintedAs": [
 				"Clockwork Oaken Bolter|MPMM"
 			],
@@ -15718,7 +15657,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/oaken-bolter.opus"
+				"path": "bestiary/oaken-bolter.mp3"
 			},
 			"traitTags": [
 				"Magic Resistance"
@@ -15828,7 +15767,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/oblex-spawn.opus"
+				"path": "bestiary/oblex-spawn.mp3"
 			},
 			"traitTags": [
 				"Amorphous"
@@ -15921,7 +15860,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/ogre-battering-ram.opus"
+				"path": "bestiary/ogre-battering-ram.mp3"
 			},
 			"traitTags": [
 				"Siege Monster"
@@ -16012,7 +15951,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/ogre-bolt-launcher.opus"
+				"path": "bestiary/ogre-bolt-launcher.mp3"
 			},
 			"senseTags": [
 				"D"
@@ -16104,7 +16043,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/ogre-chain-brute.opus"
+				"path": "bestiary/ogre-chain-brute.mp3"
 			},
 			"senseTags": [
 				"D"
@@ -16198,7 +16137,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/ogre-howdah.opus"
+				"path": "bestiary/ogre-howdah.mp3"
 			},
 			"attachedItems": [
 				"mace|phb"
@@ -16387,7 +16326,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/oinoloth.opus"
+				"path": "bestiary/oinoloth.mp3"
 			},
 			"traitTags": [
 				"Magic Resistance",
@@ -16454,9 +16393,6 @@
 					"source": "OotA",
 					"page": 245
 				}
-			],
-			"referenceSources": [
-				"OotA"
 			],
 			"reprintedAs": [
 				"Orcus|MPMM"
@@ -16686,8 +16622,10 @@
 			"name": "Orthon",
 			"source": "MTF",
 			"page": 169,
-			"referenceSources": [
-				"BGDIA"
+			"otherSources": [
+				{
+					"source": "BGDIA"
+				}
 			],
 			"reprintedAs": [
 				"Orthon|MPMM"
@@ -16848,7 +16786,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/orthon.opus"
+				"path": "bestiary/orthon.mp3"
 			},
 			"traitTags": [
 				"Magic Resistance"
@@ -16896,8 +16834,10 @@
 			"name": "Phoenix",
 			"source": "MTF",
 			"page": 199,
-			"referenceSources": [
-				"MOT"
+			"otherSources": [
+				{
+					"source": "MOT"
+				}
 			],
 			"reprintedAs": [
 				"Phoenix|MPMM"
@@ -17045,7 +16985,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/phoenix.opus"
+				"path": "bestiary/phoenix.mp3"
 			},
 			"traitTags": [
 				"Flyby",
@@ -17224,7 +17164,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/red-abishai.opus"
+				"path": "bestiary/red-abishai.mp3"
 			},
 			"attachedItems": [
 				"morningstar|phb"
@@ -17403,7 +17343,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/retriever.opus"
+				"path": "bestiary/retriever.mp3"
 			},
 			"senseTags": [
 				"B",
@@ -17456,14 +17396,15 @@
 			"page": 244,
 			"otherSources": [
 				{
+					"source": "DIP"
+				},
+				{
+					"source": "SLW"
+				},
+				{
 					"source": "RtG",
 					"page": 34
 				}
-			],
-			"referenceSources": [
-				"DIP",
-				"RtG",
-				"SLW"
 			],
 			"reprintedAs": [
 				"Rot Troll|MPMM"
@@ -17547,7 +17488,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/rot-troll.opus"
+				"path": "bestiary/rot-troll.mp3"
 			},
 			"senseTags": [
 				"D"
@@ -17646,7 +17587,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/rutterkin.opus"
+				"path": "bestiary/rutterkin.mp3"
 			},
 			"senseTags": [
 				"SD"
@@ -17679,10 +17620,16 @@
 			"name": "Sacred Statue",
 			"source": "MTF",
 			"page": 194,
-			"referenceSources": [
-				"DC",
-				"DIP",
-				"IMR"
+			"otherSources": [
+				{
+					"source": "DC"
+				},
+				{
+					"source": "DIP"
+				},
+				{
+					"source": "IMR"
+				}
 			],
 			"reprintedAs": [
 				"Sacred Statue|MPMM"
@@ -17796,7 +17743,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/sacred-statue.opus"
+				"path": "bestiary/sacred-statue.mp3"
 			},
 			"traitTags": [
 				"False Appearance"
@@ -17928,7 +17875,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/shadow-dancer.opus"
+				"path": "bestiary/shadow-dancer.mp3"
 			},
 			"traitTags": [
 				"Fey Ancestry"
@@ -17967,8 +17914,10 @@
 			"name": "Sibriex",
 			"source": "MTF",
 			"page": 137,
-			"referenceSources": [
-				"BGDIA"
+			"otherSources": [
+				{
+					"source": "BGDIA"
+				}
 			],
 			"reprintedAs": [
 				"Sibriex|MPMM"
@@ -18256,7 +18205,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/sibriex.opus"
+				"path": "bestiary/sibriex.mp3"
 			},
 			"traitTags": [
 				"Legendary Resistances",
@@ -18399,7 +18348,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/skulk.opus"
+				"path": "bestiary/skulk.mp3"
 			},
 			"senseTags": [
 				"SD"
@@ -18635,7 +18584,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/skull-lord.opus"
+				"path": "bestiary/skull-lord.mp3"
 			},
 			"traitTags": [
 				"Legendary Resistances"
@@ -18820,7 +18769,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/soul-monger.opus"
+				"path": "bestiary/soul-monger.mp3"
 			},
 			"traitTags": [
 				"Fey Ancestry",
@@ -18990,7 +18939,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/spirit-troll.opus"
+				"path": "bestiary/spirit-troll.mp3"
 			},
 			"traitTags": [
 				"Incorporeal Movement",
@@ -19160,7 +19109,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/spring-eladrin.opus"
+				"path": "bestiary/spring-eladrin.mp3"
 			},
 			"attachedItems": [
 				"longbow|phb",
@@ -19216,9 +19165,6 @@
 			"name": "Star Spawn Grue",
 			"source": "MTF",
 			"page": 234,
-			"referenceSources": [
-				"WDMM"
-			],
 			"reprintedAs": [
 				"Star Spawn Grue|MPMM"
 			],
@@ -19279,7 +19225,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/star-spawn-grue.opus"
+				"path": "bestiary/star-spawn-grue.mp3"
 			},
 			"senseTags": [
 				"D"
@@ -19303,9 +19249,6 @@
 			"name": "Star Spawn Hulk",
 			"source": "MTF",
 			"page": 234,
-			"referenceSources": [
-				"WDMM"
-			],
 			"reprintedAs": [
 				"Star Spawn Hulk|MPMM"
 			],
@@ -19398,7 +19341,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/star-spawn-hulk.opus"
+				"path": "bestiary/star-spawn-hulk.mp3"
 			},
 			"senseTags": [
 				"D"
@@ -19433,8 +19376,10 @@
 			"name": "Star Spawn Larva Mage",
 			"source": "MTF",
 			"page": 235,
-			"referenceSources": [
-				"WDMM"
+			"otherSources": [
+				{
+					"source": "WDMM"
+				}
 			],
 			"reprintedAs": [
 				"Star Spawn Larva Mage|MPMM"
@@ -19587,7 +19532,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/star-spawn-larva-mage.opus"
+				"path": "bestiary/star-spawn-larva-mage.mp3"
 			},
 			"senseTags": [
 				"D"
@@ -19634,8 +19579,16 @@
 			"name": "Star Spawn Mangler",
 			"source": "MTF",
 			"page": 236,
-			"referenceSources": [
-				"WDMM"
+			"otherSources": [
+				{
+					"source": "DC"
+				},
+				{
+					"source": "DIP"
+				},
+				{
+					"source": "SLW"
+				}
 			],
 			"reprintedAs": [
 				"Star Spawn Mangler|MPMM"
@@ -19727,7 +19680,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/star-spawn-mangler.opus"
+				"path": "bestiary/star-spawn-mangler.mp3"
 			},
 			"traitTags": [
 				"Ambusher"
@@ -19755,9 +19708,6 @@
 			"name": "Star Spawn Seer",
 			"source": "MTF",
 			"page": 236,
-			"referenceSources": [
-				"WDMM"
-			],
 			"reprintedAs": [
 				"Star Spawn Seer|MPMM"
 			],
@@ -19877,7 +19827,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/star-spawn-seer.opus"
+				"path": "bestiary/star-spawn-seer.mp3"
 			},
 			"senseTags": [
 				"D"
@@ -20047,7 +19997,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/steel-predator.opus"
+				"path": "bestiary/steel-predator.mp3"
 			},
 			"traitTags": [
 				"Magic Resistance",
@@ -20175,7 +20125,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/stone-cursed.opus"
+				"path": "bestiary/stone-cursed.mp3"
 			},
 			"traitTags": [
 				"False Appearance"
@@ -20204,9 +20154,6 @@
 			"name": "Stone Defender",
 			"source": "MTF",
 			"page": 126,
-			"referenceSources": [
-				"RtG"
-			],
 			"reprintedAs": [
 				"Clockwork Stone Defender|MPMM"
 			],
@@ -20304,7 +20251,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/stone-defender.opus"
+				"path": "bestiary/stone-defender.mp3"
 			},
 			"traitTags": [
 				"False Appearance",
@@ -20449,7 +20396,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/summer-eladrin.opus"
+				"path": "bestiary/summer-eladrin.mp3"
 			},
 			"attachedItems": [
 				"longbow|phb",
@@ -20495,10 +20442,16 @@
 			"name": "Sword Wraith Commander",
 			"source": "MTF",
 			"page": 241,
-			"referenceSources": [
-				"DC",
-				"DIP",
-				"SDW"
+			"otherSources": [
+				{
+					"source": "DC"
+				},
+				{
+					"source": "DIP"
+				},
+				{
+					"source": "SDW"
+				}
 			],
 			"reprintedAs": [
 				"Sword Wraith Commander|MPMM"
@@ -20611,7 +20564,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/sword-wraith-commander.opus"
+				"path": "bestiary/sword-wraith-commander.mp3"
 			},
 			"attachedItems": [
 				"longbow|phb",
@@ -20648,10 +20601,16 @@
 			"name": "Sword Wraith Warrior",
 			"source": "MTF",
 			"page": 241,
-			"referenceSources": [
-				"DC",
-				"DIP",
-				"SDW"
+			"otherSources": [
+				{
+					"source": "DC"
+				},
+				{
+					"source": "DIP"
+				},
+				{
+					"source": "SDW"
+				}
 			],
 			"reprintedAs": [
 				"Sword Wraith Warrior|MPMM"
@@ -20743,7 +20702,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/sword-wraith-warrior.opus"
+				"path": "bestiary/sword-wraith-warrior.mp3"
 			},
 			"attachedItems": [
 				"longbow|phb",
@@ -20862,7 +20821,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/the-angry.opus"
+				"path": "bestiary/the-angry.mp3"
 			},
 			"senseTags": [
 				"D"
@@ -20974,7 +20933,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/the-hungry.opus"
+				"path": "bestiary/the-hungry.mp3"
 			},
 			"senseTags": [
 				"D"
@@ -21101,7 +21060,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/the-lonely.opus"
+				"path": "bestiary/the-lonely.mp3"
 			},
 			"senseTags": [
 				"D"
@@ -21228,7 +21187,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/the-lost.opus"
+				"path": "bestiary/the-lost.mp3"
 			},
 			"senseTags": [
 				"D"
@@ -21258,9 +21217,6 @@
 			"name": "The Wretched",
 			"source": "MTF",
 			"page": 233,
-			"referenceSources": [
-				"LLK"
-			],
 			"reprintedAs": [
 				"Wretched Sorrowsworn|MPMM"
 			],
@@ -21333,7 +21289,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/the-wretched.opus"
+				"path": "bestiary/the-wretched.mp3"
 			},
 			"senseTags": [
 				"D"
@@ -21552,7 +21508,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/titivilus.opus"
+				"path": "bestiary/titivilus.mp3"
 			},
 			"traitTags": [
 				"Legendary Resistances",
@@ -21626,9 +21582,6 @@
 					"source": "TTP",
 					"page": 23
 				}
-			],
-			"referenceSources": [
-				"TTP"
 			],
 			"reprintedAs": [
 				"Tortle|MPMM"
@@ -21716,7 +21669,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/tortle.opus"
+				"path": "bestiary/tortle.mp3"
 			},
 			"attachedItems": [
 				"light crossbow|phb",
@@ -21753,9 +21706,6 @@
 					"source": "TTP",
 					"page": 23
 				}
-			],
-			"referenceSources": [
-				"TTP"
 			],
 			"reprintedAs": [
 				"Tortle Druid|MPMM"
@@ -21873,7 +21823,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/tortle-druid.opus"
+				"path": "bestiary/tortle-druid.mp3"
 			},
 			"attachedItems": [
 				"quarterstaff|phb"
@@ -21921,15 +21871,6 @@
 					"source": "TftYP",
 					"page": 247
 				}
-			],
-			"referenceSources": [
-				"TftYP-AtG",
-				"TftYP-DiT",
-				"TftYP-TFoF",
-				"TftYP-THSoT",
-				"TftYP-ToH",
-				"TftYP-TSC",
-				"TftYP-WPM"
 			],
 			"reprintedAs": [
 				"Vampiric Mist|MPMM"
@@ -22046,7 +21987,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/vampiric-mist.opus"
+				"path": "bestiary/vampiric-mist.mp3"
 			},
 			"altArt": [
 				{
@@ -22061,7 +22002,8 @@
 				"D"
 			],
 			"damageTags": [
-				"N"
+				"N",
+				"R"
 			],
 			"miscTags": [
 				"HPR"
@@ -22179,7 +22121,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/venom-troll.opus"
+				"path": "bestiary/venom-troll.mp3"
 			},
 			"traitTags": [
 				"Keen Senses",
@@ -22350,7 +22292,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/wastrilith.opus"
+				"path": "bestiary/wastrilith.mp3"
 			},
 			"traitTags": [
 				"Amphibious",
@@ -22393,13 +22335,12 @@
 			"page": 203,
 			"otherSources": [
 				{
+					"source": "LR"
+				},
+				{
 					"source": "PotA",
 					"page": 213
 				}
-			],
-			"referenceSources": [
-				"LR",
-				"PotA"
 			],
 			"reprintedAs": [
 				"Water Elemental Myrmidon|MPMM"
@@ -22493,7 +22434,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/water-elemental-myrmidon.opus"
+				"path": "bestiary/water-elemental-myrmidon.mp3"
 			},
 			"attachedItems": [
 				"trident|phb"
@@ -22528,8 +22469,10 @@
 			"name": "White Abishai",
 			"source": "MTF",
 			"page": 163,
-			"referenceSources": [
-				"BGDIA"
+			"otherSources": [
+				{
+					"source": "BGDIA"
+				}
 			],
 			"reprintedAs": [
 				"White Abishai|MPMM"
@@ -22667,7 +22610,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/white-abishai.opus"
+				"path": "bestiary/white-abishai.mp3"
 			},
 			"attachedItems": [
 				"longsword|phb"
@@ -22834,7 +22777,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/winter-eladrin.opus"
+				"path": "bestiary/winter-eladrin.mp3"
 			},
 			"attachedItems": [
 				"longbow|phb",
@@ -23049,7 +22992,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/yagnoloth.opus"
+				"path": "bestiary/yagnoloth.mp3"
 			},
 			"traitTags": [
 				"Magic Resistance",
@@ -23110,11 +23053,10 @@
 				{
 					"source": "OotA",
 					"page": 247
+				},
+				{
+					"source": "BGDIA"
 				}
-			],
-			"referenceSources": [
-				"BGDIA",
-				"OotA"
 			],
 			"reprintedAs": [
 				"Yeenoghu|MPMM"
@@ -23433,7 +23375,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/young-kruthik.opus"
+				"path": "bestiary/young-kruthik.mp3"
 			},
 			"traitTags": [
 				"Keen Senses",
@@ -23637,7 +23579,7 @@
 			],
 			"soundClip": {
 				"type": "internal",
-				"path": "bestiary/zaratan.opus"
+				"path": "bestiary/zaratan.mp3"
 			},
 			"traitTags": [
 				"Legendary Resistances",
@@ -23951,9 +23893,6 @@
 					"source": "OotA",
 					"page": 249
 				}
-			],
-			"referenceSources": [
-				"OotA"
 			],
 			"reprintedAs": [
 				"Zuggtmoy|MPMM"

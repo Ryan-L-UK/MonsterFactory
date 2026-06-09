@@ -108,8 +108,10 @@
 			"name": "Evil Mage",
 			"source": "LMoP",
 			"page": 57,
-			"referenceSources": [
-				"RMBRE"
+			"otherSources": [
+				{
+					"source": "RMBRE"
+				}
 			],
 			"size": [
 				"M"

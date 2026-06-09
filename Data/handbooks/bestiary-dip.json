@@ -18,9 +18,13 @@
 			"name": "Anchorite of Talos",
 			"source": "DIP",
 			"page": 51,
-			"referenceSources": [
-				"DC",
-				"SDW"
+			"otherSources": [
+				{
+					"source": "DC"
+				},
+				{
+					"source": "SDW"
+				}
 			],
 			"size": [
 				"M"

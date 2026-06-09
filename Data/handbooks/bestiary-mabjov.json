@@ -1346,7 +1346,8 @@
 			"damageTags": [
 				"B",
 				"N",
-				"P"
+				"P",
+				"R"
 			],
 			"miscTags": [
 				"HPR",
@@ -8668,11 +8669,7 @@
 			"type": {
 				"type": "humanoid",
 				"tags": [
-					{
-						"tag": "elf",
-						"prefix": "Drow",
-						"prefixHidden": true
-					}
+					"drow"
 				]
 			},
 			"alignment": [

@@ -60,8 +60,8 @@ let loadedPerks = [];
 function loadBooks() {
   log("BOOKS", "-------------------------------------------");
   log("BOOKS", "Blueprint vault unlocked...");
-  const autoPath = path.join(__dirname, "data/books.ids.generated.json");
-  const manualPath = path.join(__dirname, "data/books.ids.manual.json");
+  const autoPath = path.join(__dirname, "Data/books.ids.generated.json");
+  const manualPath = path.join(__dirname, "Data/books.ids.manual.json");
   const auto = JSON.parse(fs.readFileSync(autoPath, "utf8"));
   log("BOOKS", `${auto.length} Auto-Schematics retrieved.`);
   let manual = [];
@@ -106,8 +106,8 @@ function inferEdition(sourceId) {
 function loadForgeModifiers() {
   log("FORGE", "-------------------------------------------");
   log("FORGE", "Infusion forge coming online.");
-  const attributesPath = path.join(__dirname, "data/modifier.attributes.json");
-  const perksPath = path.join(__dirname, "data/modifier.perks.json");
+  const attributesPath = path.join(__dirname, "Data/modifier.attributes.json");
+  const perksPath = path.join(__dirname, "Data/modifier.perks.json");
   try {
     loadedAttributes = JSON.parse(fs.readFileSync(attributesPath, "utf8"));
     log(
@@ -145,10 +145,10 @@ function creatureNameToImageFile(name) {
 function loadBestiary() {
   log("BESTIARY", "-------------------------------------------");
   log("BESTIARY", "Menagerie intake systems active...");
-  const indexPath = path.join(__dirname, "data/bestiary.index.source.json");
+  const indexPath = path.join(__dirname, "Data/bestiary.index.source.json");
   const manualExclusionPath = path.join(
     __dirname,
-    "data/bestiary.exclusions.manual.json",
+    "Data/bestiary.exclusions.manual.json",
   );
   const index = JSON.parse(fs.readFileSync(indexPath, "utf8"));
   log("BESTIARY", `${index.files.length} specimen manifests loaded.`);
@@ -167,7 +167,7 @@ function loadBestiary() {
   const allowedCR = new Set(CR_ORDER);
   let totalDiscovered = 0;
   const allCreatures = index.files.flatMap((file) => {
-    const filePath = path.join(__dirname, "data/handbooks", file);
+    const filePath = path.join(__dirname, "Data/handbooks", file);
     const data = JSON.parse(fs.readFileSync(filePath, "utf8"));
     const monsters = data.monster || [];
     totalDiscovered += monsters.length;
@@ -206,7 +206,7 @@ function loadBestiary() {
     const imageFile = creatureNameToImageFile(name);
     const imagePath = path.join(
       __dirname,
-      "public/images/Creatures",
+      "public/Assets/Creatures",
       imageFile,
     );
     if (!fs.existsSync(imagePath)) {
@@ -312,31 +312,27 @@ app.get("/api/perks", (req, res) => res.json(loadedPerks));
 // ---------------------------------------------------------
 // GALLERY — Server-rendered curated creature list
 // ---------------------------------------------------------
-// ---------------------------------------------------------
-// GALLERY — Server-rendered curated creature list
-// ---------------------------------------------------------
 app.get("/gallery", (req, res) => {
-  const curatedPath = path.join(__dirname, "public/images/curated");
+  const curatedPath = path.join(__dirname, "public/Assets/Curated");
   const templatePath = path.join(__dirname, "public/gallery.html");
-
   try {
     // Load template
     let template = fs.readFileSync(templatePath, "utf8");
-
-    // Get all JSON files
-    const entries = fs
-      .readdirSync(curatedPath)
-      .filter((f) => f.endsWith(".json"))
-      .map((f) => f.replace(".json", "")); // strip extension
-
-    // Build tiles
-    const tiles = entries
+    // Read all curated creature folders
+    const folders = fs.readdirSync(curatedPath).filter((f) => {
+      const full = path.join(curatedPath, f);
+      return fs.statSync(full).isDirectory();
+    });
+    // Build gallery tiles
+    const tiles = folders
       .map((id) => {
-        const jsonPath = path.join(curatedPath, `${id}.json`);
-        const imagePath = `/images/curated/${id}.png`;
-
+        const jsonPath = path.join(curatedPath, id, "data.json");
+        const imagePath = `/Assets/Curated/${id}/image.png`;
+        if (!fs.existsSync(jsonPath)) return "";
         const data = JSON.parse(fs.readFileSync(jsonPath, "utf8"));
-
+        // -------------------------------
+        // TAG RENDERING
+        // -------------------------------
         const tagHtml = data.tags
           ? Object.entries(data.tags)
               .map(([category, value]) => {
@@ -348,7 +344,9 @@ app.get("/gallery", (req, res) => {
               })
               .join(" ")
           : "";
-
+        // -------------------------------
+        // TILE HTML
+        // -------------------------------
         return `
 <a class="curated-card" href="/content?id=${id}">
   <img src="${imagePath}" alt="${data.name}" />
@@ -356,62 +354,57 @@ app.get("/gallery", (req, res) => {
     <h3>${data.name}</h3>
     <h4>${data.subtitle || ""}</h4>
     <p>${data.description || ""}</p>
+    
     <div class="mf-tag-container"><div class="divider"></div>${tagHtml}</div>
   </div>
-</a>`;
+</a>
+`;
       })
       .join("\n");
-
-    // Inject tiles
-    const finalHtml = template.replace(/{{\s*GALLERY_TILES\s*}}/, tiles);
+    // Inject tiles into template
+    const finalHtml = template.replace("{{GALLERY_TILES}}", tiles);
     res.send(finalHtml);
   } catch (err) {
-    console.error("GALLERY ERROR:", err);
+    console.error(err);
     res.status(500).send("Error generating gallery.");
   }
 });
-
 // ---------------------------------------------------------
 // CONTENT PAGE — Server-rendered creature viewer
 // ---------------------------------------------------------
 app.get("/content", (req, res) => {
   const id = req.query.id;
   if (!id) return res.status(404).send("Creature not specified.");
-
-  const curatedPath = path.join(__dirname, "public/images/curated");
+  const creaturePath = path.join(__dirname, "public/Assets/Curated", id);
   const templatePath = path.join(__dirname, "public/content.html");
-
   try {
+    // Load template
     let template = fs.readFileSync(templatePath, "utf8");
-
-    const jsonPath = path.join(curatedPath, `${id}.json`);
+    // Load creature JSON
+    const jsonPath = path.join(creaturePath, "data.json");
     if (!fs.existsSync(jsonPath)) {
       return res.status(404).send("Creature not found.");
     }
-
     const data = JSON.parse(fs.readFileSync(jsonPath, "utf8"));
-
+    // Extract fields
     const name = data.name || id;
     const subtitle = data.subtitle || "";
     const description =
       data.description || `${name} — a curated creature from MonsterFactory.`;
-
-    const imageUrl = `/images/curated/${id}.png`;
-
+    const imageUrl = `https://monsterfactory.app/Assets/Curated/${id}/image.png`;
+    // Inject into template
     template = template
       .replace(/{{CREATURE_ID}}/g, id)
       .replace(/{{CREATURE_NAME}}/g, name)
       .replace(/{{CREATURE_SUBTITLE}}/g, subtitle)
       .replace(/{{CREATURE_DESCRIPTION}}/g, description)
       .replace(/{{CREATURE_IMAGE_URL}}/g, imageUrl);
-
     res.send(template);
   } catch (err) {
-    console.error("CONTENT ERROR:", err);
+    console.error(err);
     res.status(500).send("Error rendering creature page.");
   }
 });
-
 // ---------------------------------------------------------
 // Routes
 // ---------------------------------------------------------
@@ -426,9 +419,6 @@ app.get("/", (req, res) => {
 });
 app.get("/export", (req, res) => {
   res.render("export");
-});
-app.get("/test", (req, res) => {
-  res.render("new-test-page");
 });
 // ---------------------------------------------------------
 // Silent 204 for Apple / Google verification

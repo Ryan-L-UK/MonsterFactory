@@ -128,7 +128,7 @@
 			"type": {
 				"type": "fiend",
 				"tags": [
-					"devil"
+					"Devil"
 				]
 			},
 			"alignment": [
@@ -274,7 +274,7 @@
 			"type": {
 				"type": "fiend",
 				"tags": [
-					"devil"
+					"Devil"
 				]
 			},
 			"alignment": [
@@ -451,7 +451,7 @@
 			"type": {
 				"type": "undead",
 				"tags": [
-					"wizard"
+					"Wizard"
 				]
 			},
 			"alignment": [
@@ -672,6 +672,7 @@
 				"F",
 				"N",
 				"P",
+				"R",
 				"S",
 				"Y"
 			],
@@ -877,6 +878,7 @@
 				"A",
 				"N",
 				"P",
+				"R",
 				"S"
 			],
 			"spellcastingTags": [

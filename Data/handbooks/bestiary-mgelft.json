@@ -10,7 +10,7 @@
 			"type": {
 				"type": "humanoid",
 				"tags": [
-					"dwarf"
+					"Dwarf"
 				]
 			},
 			"alignment": [
@@ -112,7 +112,7 @@
 			"type": {
 				"type": "humanoid",
 				"tags": [
-					"grung"
+					"Grung"
 				]
 			},
 			"alignment": [
@@ -228,7 +228,7 @@
 			"type": {
 				"type": "humanoid",
 				"tags": [
-					"grung"
+					"Grung"
 				]
 			},
 			"alignment": [

@@ -662,11 +662,16 @@
 			"isNamedCreature": true,
 			"source": "SKT",
 			"page": 96,
-			"referenceSources": [
-				"DC",
-				"OoW",
-				"SDW",
-				"SLW"
+			"otherSources": [
+				{
+					"source": "DC"
+				},
+				{
+					"source": "SLW"
+				},
+				{
+					"source": "SDW"
+				}
 			],
 			"_copy": {
 				"name": "Ancient Green Dragon",
@@ -1022,8 +1027,10 @@
 			"name": "Crag Cat",
 			"source": "SKT",
 			"page": 240,
-			"referenceSources": [
-				"IDRotF"
+			"otherSources": [
+				{
+					"source": "IDRotF"
+				}
 			],
 			"size": [
 				"L"
@@ -3645,7 +3652,7 @@
 			"type": "elemental",
 			"alignment": [
 				"C",
-				"N"
+				"E"
 			],
 			"ac": [
 				16
@@ -3703,7 +3710,7 @@
 			"cr": "23",
 			"spellcasting": [
 				{
-					"name": "Innate Spellcasting",
+					"name": "Spellcasting",
 					"type": "spellcasting",
 					"headerEntries": [
 						"Maegera casts {@spell fireball} (spell save {@dc 19}), requiring no material components and using Charisma as the spellcasting ability."
@@ -3799,7 +3806,7 @@
 				"F"
 			],
 			"spellcastingTags": [
-				"I"
+				"O"
 			],
 			"miscTags": [
 				"AOE",
@@ -4913,10 +4920,7 @@
 			"speed": {
 				"walk": 30
 			},
-			"cr": {
-				"cr": "0",
-				"xp": 0
-			},
+			"cr": "0",
 			"trait": null,
 			"action": null,
 			"traitTags": [],
@@ -5495,8 +5499,7 @@
 				"tags": [
 					{
 						"tag": "human",
-						"prefix": "Illuskan",
-						"prefixHidden": true
+						"prefix": "Illuskan"
 					}
 				]
 			},
@@ -5532,15 +5535,6 @@
 			"name": "Sheep",
 			"source": "SKT",
 			"page": 142,
-			"otherSources": [
-				{
-					"source": "IDRotF",
-					"page": 76
-				}
-			],
-			"referenceSources": [
-				"IDRotF"
-			],
 			"_copy": {
 				"name": "Goat",
 				"source": "MM",
@@ -6236,8 +6230,7 @@
 				"tags": [
 					{
 						"tag": "human",
-						"prefix": "Shou",
-						"prefixHidden": true
+						"prefix": "Shou"
 					}
 				]
 			},
@@ -6275,9 +6268,6 @@
 			"isNamedCreature": true,
 			"source": "SKT",
 			"page": 153,
-			"referenceSources": [
-				"IDRotF"
-			],
 			"size": [
 				"H"
 			],
@@ -6622,8 +6612,10 @@
 			"name": "Tressym",
 			"source": "SKT",
 			"page": 242,
-			"referenceSources": [
-				"IMR"
+			"otherSources": [
+				{
+					"source": "IMR"
+				}
 			],
 			"size": [
 				"T"
@@ -6811,9 +6803,6 @@
 			"isNamedCreature": true,
 			"source": "SKT",
 			"page": 254,
-			"referenceSources": [
-				"WDMM"
-			],
 			"size": [
 				"M"
 			],

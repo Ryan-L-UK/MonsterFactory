@@ -1052,7 +1052,7 @@
 			"type": {
 				"type": "elemental",
 				"tags": [
-					"genie"
+					"Genie"
 				]
 			},
 			"alignment": [
@@ -2034,11 +2034,7 @@
 			"type": {
 				"type": "humanoid",
 				"tags": [
-					{
-						"tag": "elf",
-						"prefix": "Drow",
-						"prefixHidden": true
-					}
+					"Elf"
 				]
 			},
 			"alignment": [
@@ -2200,11 +2196,7 @@
 			"type": {
 				"type": "humanoid",
 				"tags": [
-					{
-						"tag": "elf",
-						"prefix": "Drow",
-						"prefixHidden": true
-					}
+					"Elf"
 				]
 			},
 			"alignment": [
@@ -2370,11 +2362,7 @@
 			"type": {
 				"type": "humanoid",
 				"tags": [
-					{
-						"tag": "elf",
-						"prefix": "Drow",
-						"prefixHidden": true
-					}
+					"Elf"
 				]
 			},
 			"alignment": [
@@ -2517,11 +2505,7 @@
 			"type": {
 				"type": "humanoid",
 				"tags": [
-					{
-						"tag": "elf",
-						"prefix": "Drow",
-						"prefixHidden": true
-					}
+					"Elf"
 				]
 			},
 			"alignment": [
@@ -2780,7 +2764,7 @@
 			"type": {
 				"type": "humanoid",
 				"tags": [
-					"human"
+					"Human"
 				]
 			},
 			"alignment": [
@@ -2991,8 +2975,8 @@
 			"type": {
 				"type": "humanoid",
 				"tags": [
-					"human",
-					"wizard"
+					"Human",
+					"Wizard"
 				]
 			},
 			"alignment": [
@@ -3522,8 +3506,10 @@
 			"name": "Phaerimm Agent",
 			"source": "FRAiF",
 			"page": 269,
-			"referenceSources": [
-				"NF"
+			"otherSources": [
+				{
+					"source": "NF"
+				}
 			],
 			"size": [
 				"L"
@@ -3708,8 +3694,10 @@
 			"name": "Phaerimm Hatchling",
 			"source": "FRAiF",
 			"page": 268,
-			"referenceSources": [
-				"NF"
+			"otherSources": [
+				{
+					"source": "NF"
+				}
 			],
 			"size": [
 				"S"
@@ -3939,8 +3927,6 @@
 		},
 		{
 			"name": "Queen Forfallen",
-			"isNpc": true,
-			"isNamedCreature": true,
 			"source": "FRAiF",
 			"page": 271,
 			"size": [
@@ -4632,7 +4618,7 @@
 			"type": {
 				"type": "undead",
 				"tags": [
-					"wizard"
+					"Wizard"
 				]
 			},
 			"alignment": [
@@ -5274,7 +5260,7 @@
 			"type": {
 				"type": "undead",
 				"tags": [
-					"wizard"
+					"Wizard"
 				]
 			},
 			"alignment": [
@@ -5528,7 +5514,7 @@
 			"type": {
 				"type": "dragon",
 				"tags": [
-					"lycanthrope"
+					"Lycanthrope"
 				]
 			},
 			"alignment": [
@@ -6152,7 +6138,7 @@
 			"type": {
 				"type": "undead",
 				"tags": [
-					"wizard"
+					"Wizard"
 				]
 			},
 			"alignment": [

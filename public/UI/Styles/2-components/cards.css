@@ -1,0 +1,85 @@
+/* ------------------------------
+Card Component (Index)
+-------------------------------- */
+.card {
+  position: relative;
+  background: url("/UI/Components/MenuBackingBlue.png");
+  border: 2px solid var(--color-gold);
+  padding: 0.85rem;
+  color: white;
+  border-radius: 0.5rem;
+}
+/* ------------------------------
+Card Component (Gallery)
+-------------------------------- */
+.curated-gallery {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  width: 100%;
+}
+.curated-card {
+  border: 1px solid rgb(109, 109, 109);
+  border-radius: 0.5rem;
+  text-decoration: none;
+  color: rgb(255, 252, 239);
+  font-family: var(--font-display);
+  overflow: hidden;
+  position: relative;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+}
+.curated-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 10px rgb(8, 177, 189);
+  border-color: #00fbff;
+}
+.curated-card img {
+  width: 100%;
+  height: 225px;
+  object-fit: contain;
+  display: block;
+}
+.curated-content {
+  padding: 0.5rem 1rem 1rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+.curated-card h3 {
+  margin: 0 0 6px;
+  font-size: 1.25rem;
+  letter-spacing: 1px;
+  font-family: "Cinzel Decorative";
+  font-weight: normal;
+}
+.curated-card h4 {
+  margin: 0 0 10px;
+  font-size: 1.2rem;
+  color: rgb(13, 116, 157);
+  font-family: MrEaves;
+  font-weight: normal;
+}
+.curated-card p {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: normal;
+}
+.mf-tag-container {
+  margin-top: auto;
+  padding-top: 8px;
+  display: flex;
+  flex-wrap: wrap;
+}
+@media (max-width: 900px) {
+  .curated-gallery {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 600px) {
+  .curated-gallery {
+    grid-template-columns: 1fr;
+  }
+}

@@ -697,9 +697,13 @@
 			"name": "Violet Fungus",
 			"source": "DoSI",
 			"page": 48,
-			"referenceSources": [
-				"BMT",
-				"PaBTSO"
+			"otherSources": [
+				{
+					"source": "PaBTSO"
+				},
+				{
+					"source": "BMT"
+				}
 			],
 			"_copy": {
 				"name": "Violet Fungus",

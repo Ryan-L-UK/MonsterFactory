@@ -44,13 +44,6 @@
 					"page": 12
 				}
 			],
-			"referenceSources": [
-				"NRH-ASS",
-				"NRH-AVitW",
-				"NRH-AWoL",
-				"NRH-CoI",
-				"NRH-TLT"
-			],
 			"_copy": {
 				"name": "Wererat",
 				"source": "MM",
