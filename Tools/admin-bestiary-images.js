@@ -4,21 +4,21 @@ const path = require("path");
 // Paths
 const INDEX_PATH = path.join(__dirname, "../Data/bestiary.index.source.json");
 const HANDBOOKS_DIR = path.join(__dirname, "../Data/handbooks");
-const IMAGES_DIR = path.join(__dirname, "../Assets/Creatures");
+const IMAGES_DIR = path.join(__dirname, "../images/creatures");
 
 const GENERATED_MISSING = path.join(
   __dirname,
-  "../Data/bestiary.exclusions.generated.json"
+  "../Data/bestiary.exclusions.generated.json",
 );
 
 const GENERATED_STRONG = path.join(
   __dirname,
-  "../Data/bestiary.exclusions.generated.strong.json"
+  "../Data/bestiary.exclusions.generated.strong.json",
 );
 
 const MANUAL_EXCLUSION = path.join(
   __dirname,
-  "../Data/bestiary.exclusions.manual.json"
+  "../Data/bestiary.exclusions.manual.json",
 );
 
 // Allowed CR values for "normal" creatures
@@ -83,7 +83,7 @@ function classifyCreatures() {
   // Actual image files normalized
   const actualFiles = fs.readdirSync(IMAGES_DIR);
   const actualNormalized = new Set(
-    actualFiles.map((f) => normalizeName(f.replace(/\.webp$/i, "")))
+    actualFiles.map((f) => normalizeName(f.replace(/\.webp$/i, ""))),
   );
 
   const strongExclusions = [];
@@ -111,11 +111,11 @@ function classifyCreatures() {
 
   // Sort and dedupe
   const sortedStrong = [...new Set(strongExclusions)].sort((a, b) =>
-    a.localeCompare(b, "en", { sensitivity: "base" })
+    a.localeCompare(b, "en", { sensitivity: "base" }),
   );
 
   const sortedMissing = [...new Set(missingImages)].sort((a, b) =>
-    a.localeCompare(b, "en", { sensitivity: "base" })
+    a.localeCompare(b, "en", { sensitivity: "base" }),
   );
 
   // Write outputs

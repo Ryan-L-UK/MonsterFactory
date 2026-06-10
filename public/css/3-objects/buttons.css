@@ -1,0 +1,57 @@
+/* ------------------------------
+Buttons (shared)
+-------------------------------- */
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin: 5px 0;
+  flex-wrap: wrap;
+}
+.submit-button {
+  margin: 8px 15px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  cursor: pointer;
+  outline: 0;
+  border: 0;
+  padding: 6px 25px;
+  min-width: 115px;
+  font-family: "Cinzel Decorative";
+  font-size: 1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2.26px;
+  color: #000;
+  background-image: url(/images/ui/buttons/buttonBase.jpeg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+  overflow: visible;
+  border-radius: 0;
+  z-index: 1;
+  box-shadow:
+    0px 3px 1px -2px rgba(0, 0, 0, 0.2),
+    0px 2px 2px 0px rgba(0, 0, 0, 0.14),
+    0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+  transition:
+    background-image 0.45s,
+    color 0.45s;
+}
+.submit-button::after {
+  content: "";
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  width: calc(100% + 8px);
+  height: calc(100% + 8px);
+  background-image: url(/images/ui/buttons/goldButton.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  display: block;
+}
+.submit-button:hover {
+  background-image: url(/images/ui/buttons/buttonHighlight.jpeg);
+  color: #fff;
+}

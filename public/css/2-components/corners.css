@@ -1,0 +1,31 @@
+/* ------------------------------
+Corners (shared)
+-------------------------------- */
+.corner {
+  position: absolute;
+  width: var(--corner-size);
+  height: var(--corner-size);
+  background-image: url("/images/ui/frames/container-corner.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  pointer-events: none;
+}
+.corner.tl {
+  top: var(--corner-offset-y);
+  left: var(--corner-offset-x);
+  transform: scaleX(-1);
+}
+.corner.tr {
+  top: var(--corner-offset-y);
+  right: var(--corner-offset-x);
+}
+.corner.bl {
+  bottom: var(--corner-offset-y);
+  left: var(--corner-offset-x);
+  transform: scale(-1, -1);
+}
+.corner.br {
+  bottom: var(--corner-offset-y);
+  right: var(--corner-offset-x);
+  transform: scaleY(-1);
+}

@@ -1,11 +1,9 @@
 const fs = require("fs");
 
 // --- Load both source files ---
-const books = JSON.parse(
-  fs.readFileSync("../Data/SourceFiles/books.json", "utf8"),
-);
+const books = JSON.parse(fs.readFileSync("../data/books/books.json", "utf8"));
 const adventures = JSON.parse(
-  fs.readFileSync("../Data/SourceFiles/adventures.json", "utf8"),
+  fs.readFileSync("../data/books/adventures.json", "utf8"),
 );
 
 // --- Extract normalised entries from each ---
