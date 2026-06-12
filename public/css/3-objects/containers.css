@@ -1,7 +1,7 @@
 .container {
   max-width: var(--max-width-content);
   margin: auto;
-  padding: 40px 20px;
+  padding: 20px;
 }
 .mf-hero {
   align-content: center;

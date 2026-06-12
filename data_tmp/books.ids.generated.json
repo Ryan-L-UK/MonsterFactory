@@ -1,0 +1,968 @@
+[
+  {
+    "name": "A Zib for Your Thoughts",
+    "id": "AZfyT",
+    "published": "2019-03-05",
+    "type": "adventure"
+  },
+  {
+    "name": "Acquisitions Incorporated",
+    "id": "AI",
+    "published": "2019-06-18",
+    "type": "book"
+  },
+  {
+    "name": "Adventure Atlas: The Mortuary",
+    "id": "AATM",
+    "published": "2023-10-17",
+    "type": "book"
+  },
+  {
+    "name": "Adventure with Muk",
+    "id": "AWM",
+    "published": "2019-11-12",
+    "type": "book"
+  },
+  {
+    "name": "Adventurers League",
+    "id": "AL",
+    "published": "2016-08-26",
+    "type": "book"
+  },
+  {
+    "name": "Adventures in the Forgotten Realms: A Verdant Tomb",
+    "id": "AitFR-AVT",
+    "published": "2021-07-14",
+    "type": "adventure"
+  },
+  {
+    "name": "Adventures in the Forgotten Realms: Deepest Night",
+    "id": "AitFR-DN",
+    "published": "2021-07-21",
+    "type": "adventure"
+  },
+  {
+    "name": "Adventures in the Forgotten Realms: From Cyan Depths",
+    "id": "AitFR-FCD",
+    "published": "2021-07-28",
+    "type": "adventure"
+  },
+  {
+    "name": "Adventures in the Forgotten Realms: In Scarlet Flames",
+    "id": "AitFR-ISF",
+    "published": "2021-06-30",
+    "type": "adventure"
+  },
+  {
+    "name": "Adventures in the Forgotten Realms: The Hidden Page",
+    "id": "AitFR-THP",
+    "published": "2021-07-07",
+    "type": "adventure"
+  },
+  {
+    "name": "Astarion's Book of Hungers",
+    "id": "ABH",
+    "published": "2025-11-11",
+    "type": "book"
+  },
+  {
+    "name": "Astral Adventurer's Guide",
+    "id": "AAG",
+    "published": "2022-08-16",
+    "type": "book"
+  },
+  {
+    "name": "Baldur's Gate: Descent Into Avernus",
+    "id": "BGDIA",
+    "published": "2019-09-18",
+    "type": "adventure"
+  },
+  {
+    "name": "Bigby Presents: Glory of the Giants",
+    "id": "BGG",
+    "published": "2023-08-15",
+    "type": "book"
+  },
+  {
+    "name": "Boo's Astral Menagerie",
+    "id": "BAM",
+    "published": "2022-08-16",
+    "type": "book"
+  },
+  {
+    "name": "Borderlands Quest: Dagger Danger!",
+    "id": "BQDD",
+    "published": "2026-05-28",
+    "type": "adventure"
+  },
+  {
+    "name": "Borderlands Quest: Goblin Trouble",
+    "id": "BQGT",
+    "published": "2025-06-04",
+    "type": "adventure"
+  },
+  {
+    "name": "Candlekeep Mysteries",
+    "id": "CM",
+    "published": "2021-03-16",
+    "type": "adventure"
+  },
+  {
+    "name": "Chains of Asmodeus",
+    "id": "CoA",
+    "published": "2023-10-30",
+    "type": "adventure"
+  },
+  {
+    "name": "Critical Role: Call of the Netherdeep",
+    "id": "CRCotN",
+    "published": "2022-03-15",
+    "type": "adventure"
+  },
+  {
+    "name": "Crochet: A Book of Many Patterns",
+    "id": "CaBoMP",
+    "published": "2026-03-31",
+    "type": "book"
+  },
+  {
+    "name": "Curse of Strahd",
+    "id": "CoS",
+    "published": "2016-03-15",
+    "type": "adventure"
+  },
+  {
+    "name": "Descent into the Lost Caverns of Tsojcanth",
+    "id": "DitLCoT",
+    "published": "2024-03-26",
+    "type": "adventure"
+  },
+  {
+    "name": "Domains of Delight",
+    "id": "DoD",
+    "published": "2021-09-21",
+    "type": "book"
+  },
+  {
+    "name": "Dragon Delves: A Copper for a Song",
+    "id": "DrDe-ACfaS",
+    "published": "2025-07-08",
+    "type": "adventure"
+  },
+  {
+    "name": "Dragon Delves: Baker's Doesn't",
+    "id": "DrDe-BD",
+    "published": "2025-07-08",
+    "type": "adventure"
+  },
+  {
+    "name": "Dragon Delves: Before the Storm",
+    "id": "DrDe-BtS",
+    "published": "2025-07-08",
+    "type": "adventure"
+  },
+  {
+    "name": "Dragon Delves: Death at Sunset",
+    "id": "DrDe-DaS",
+    "published": "2025-07-08",
+    "type": "adventure"
+  },
+  {
+    "name": "Dragon Delves: Dragons of the Sandstone City",
+    "id": "DrDe-DotSC",
+    "published": "2025-07-08",
+    "type": "adventure"
+  },
+  {
+    "name": "Dragon Delves: For Whom the Void Calls",
+    "id": "DrDe-FWtVC",
+    "published": "2025-07-08",
+    "type": "adventure"
+  },
+  {
+    "name": "Dragon Delves: Shivering Death",
+    "id": "DrDe-SD",
+    "published": "2025-07-08",
+    "type": "adventure"
+  },
+  {
+    "name": "Dragon Delves: The Dragon of Najkir",
+    "id": "DrDe-TDoN",
+    "published": "2025-07-08",
+    "type": "adventure"
+  },
+  {
+    "name": "Dragon Delves: The Forbidden Vale",
+    "id": "DrDe-TFV",
+    "published": "2025-07-08",
+    "type": "adventure"
+  },
+  {
+    "name": "Dragon Delves: The Will of Orcus",
+    "id": "DrDe-TWoO",
+    "published": "2025-07-08",
+    "type": "adventure"
+  },
+  {
+    "name": "Dragonlance: Shadow of the Dragon Queen",
+    "id": "DSotDQ",
+    "published": "2022-11-22",
+    "type": "adventure"
+  },
+  {
+    "name": "Dragons of Stormwreck Isle",
+    "id": "DoSI",
+    "published": "2022-07-31",
+    "type": "adventure"
+  },
+  {
+    "name": "Dungeon Master's Guide (2014)",
+    "id": "DMG",
+    "published": "2014-12-09",
+    "type": "book"
+  },
+  {
+    "name": "Dungeon Master's Guide (2024)",
+    "id": "XDMG",
+    "published": "2024-11-12",
+    "type": "book"
+  },
+  {
+    "name": "Dungeon Master's Screen",
+    "id": "Screen",
+    "published": "2015-01-20",
+    "type": "book"
+  },
+  {
+    "name": "Dungeon Master's Screen (2024)",
+    "id": "XScreen",
+    "published": "2024-11-12",
+    "type": "book"
+  },
+  {
+    "name": "Dungeon Master's Screen: Dungeon Kit",
+    "id": "ScreenDungeonKit",
+    "published": "2020-09-21",
+    "type": "book"
+  },
+  {
+    "name": "Dungeon Master's Screen: Spelljammer",
+    "id": "ScreenSpelljammer",
+    "published": "2022-08-16",
+    "type": "book"
+  },
+  {
+    "name": "Dungeon Master's Screen: Wilderness Kit",
+    "id": "ScreenWildernessKit",
+    "published": "2020-11-17",
+    "type": "book"
+  },
+  {
+    "name": "Dungeons & Dragons vs. Rick and Morty: Basic Rules",
+    "id": "RMR",
+    "published": "2019-11-19",
+    "type": "book"
+  },
+  {
+    "name": "Eberron: Forge of the Artificer",
+    "id": "EFA",
+    "published": "2025-12-09",
+    "type": "book"
+  },
+  {
+    "name": "Eberron: Forgotten Relics",
+    "id": "EFR",
+    "published": "2019-11-19",
+    "type": "adventure"
+  },
+  {
+    "name": "Eberron: Rising from the Last War",
+    "id": "ERLW",
+    "published": "2019-11-19",
+    "type": "book"
+  },
+  {
+    "name": "Essentials Kit: Divine Contention",
+    "id": "DC",
+    "published": "2019-09-03",
+    "type": "adventure"
+  },
+  {
+    "name": "Essentials Kit: Dragon of Icespire Peak",
+    "id": "DIP",
+    "published": "2019-06-24",
+    "type": "adventure"
+  },
+  {
+    "name": "Essentials Kit: Sleeping Dragon's Wake",
+    "id": "SDW",
+    "published": "2019-09-03",
+    "type": "adventure"
+  },
+  {
+    "name": "Essentials Kit: Storm Lord's Wrath",
+    "id": "SLW",
+    "published": "2019-09-03",
+    "type": "adventure"
+  },
+  {
+    "name": "Explorer's Guide to Wildemount",
+    "id": "EGW",
+    "published": "2020-03-17",
+    "type": "book"
+  },
+  {
+    "name": "Fated Flight of the Recluse",
+    "id": "FFotR",
+    "published": "2025-12-09",
+    "type": "adventure"
+  },
+  {
+    "name": "Fizban's Treasury of Dragons",
+    "id": "FTD",
+    "published": "2021-10-26",
+    "type": "book"
+  },
+  {
+    "name": "Forgotten Realms: Adventures in Faerûn",
+    "id": "FRAiF",
+    "published": "2025-11-11",
+    "type": "book"
+  },
+  {
+    "name": "Forgotten Realms: Heroes of Faerûn",
+    "id": "FRHoF",
+    "published": "2025-11-11",
+    "type": "book"
+  },
+  {
+    "name": "Ghosts of Saltmarsh",
+    "id": "GoS",
+    "published": "2019-05-21",
+    "type": "adventure"
+  },
+  {
+    "name": "Giants of the Star Forge",
+    "id": "GotSF",
+    "published": "2023-08-01",
+    "type": "adventure"
+  },
+  {
+    "name": "Guildmasters' Guide to Ravnica",
+    "id": "GGR",
+    "published": "2018-11-20",
+    "type": "book"
+  },
+  {
+    "name": "Heroes of the Borderlands",
+    "id": "HotB",
+    "published": "2025-09-16",
+    "type": "adventure"
+  },
+  {
+    "name": "Heroes' Feast",
+    "id": "HF",
+    "published": "2020-10-27",
+    "type": "book"
+  },
+  {
+    "name": "Heroes' Feast Flavors of the Multiverse",
+    "id": "HFFotM",
+    "published": "2023-11-07",
+    "type": "book"
+  },
+  {
+    "name": "Heroes' Feast: Saving the Children's Menu",
+    "id": "HFStCM",
+    "published": "2023-11-21",
+    "type": "adventure"
+  },
+  {
+    "name": "Hoard of the Dragon Queen",
+    "id": "HotDQ",
+    "published": "2014-08-19",
+    "type": "adventure"
+  },
+  {
+    "name": "Hold Back The Dead",
+    "id": "HBTD",
+    "published": "2025-02-07",
+    "type": "adventure"
+  },
+  {
+    "name": "Hunt for the Thessalhydra",
+    "id": "HftT",
+    "published": "2019-05-21",
+    "type": "adventure"
+  },
+  {
+    "name": "Icewind Dale: Rime of the Frostmaiden",
+    "id": "IDRotF",
+    "published": "2020-09-15",
+    "type": "adventure"
+  },
+  {
+    "name": "Infernal Machine Rebuild",
+    "id": "IMR",
+    "published": "2019-11-12",
+    "type": "adventure"
+  },
+  {
+    "name": "Journeys through the Radiant Citadel",
+    "id": "JttRC",
+    "published": "2022-07-19",
+    "type": "adventure"
+  },
+  {
+    "name": "Keys from the Golden Vault",
+    "id": "KftGV",
+    "published": "2023-02-21",
+    "type": "adventure"
+  },
+  {
+    "name": "Krenko's Way",
+    "id": "KKW",
+    "published": "2018-11-20",
+    "type": "adventure"
+  },
+  {
+    "name": "Light of Xaryxis",
+    "id": "LoX",
+    "published": "2022-08-16",
+    "type": "adventure"
+  },
+  {
+    "name": "Lightning Keep",
+    "id": "LK",
+    "published": "2023-09-26",
+    "type": "adventure"
+  },
+  {
+    "name": "Locathah Rising",
+    "id": "LR",
+    "published": "2019-09-19",
+    "type": "adventure"
+  },
+  {
+    "name": "Lorwyn: First Light",
+    "id": "LFL",
+    "published": "2025-11-18",
+    "type": "book"
+  },
+  {
+    "name": "Lost Laboratory of Kwalish",
+    "id": "LLK",
+    "published": "2018-11-10",
+    "type": "adventure"
+  },
+  {
+    "name": "Lost Mine of Phandelver",
+    "id": "LMoP",
+    "published": "2014-07-15",
+    "type": "adventure"
+  },
+  {
+    "name": "Minsc and Boo's Journal of Villainy",
+    "id": "MaBJoV",
+    "published": "2021-10-05",
+    "type": "book"
+  },
+  {
+    "name": "Monster Manual (2014)",
+    "id": "MM",
+    "published": "2014-09-30",
+    "type": "book"
+  },
+  {
+    "name": "Monster Manual (2025)",
+    "id": "XMM",
+    "published": "2025-02-18",
+    "type": "book"
+  },
+  {
+    "name": "Monstrous Compendium Volume 4: Eldraine Creatures",
+    "id": "MCV4EC",
+    "published": "2023-09-21",
+    "type": "book"
+  },
+  {
+    "name": "Mordenkainen Presents: Monsters of the Multiverse",
+    "id": "MPMM",
+    "published": "2022-01-25",
+    "type": "book"
+  },
+  {
+    "name": "Mordenkainen's Tome of Foes",
+    "id": "MTF",
+    "published": "2018-05-29",
+    "type": "book"
+  },
+  {
+    "name": "Morte's Planar Parade",
+    "id": "MPP",
+    "published": "2023-10-07",
+    "type": "book"
+  },
+  {
+    "name": "Muk's Guide to Everything He Learned From Tasha",
+    "id": "MGELFT",
+    "published": "2020-12-01",
+    "type": "book"
+  },
+  {
+    "name": "Mythic Odysseys of Theros",
+    "id": "MOT",
+    "published": "2020-06-02",
+    "type": "book"
+  },
+  {
+    "name": "NERDS Restoring Harmony: A Sticky Situation",
+    "id": "NRH-ASS",
+    "published": "2021-09-01",
+    "type": "adventure"
+  },
+  {
+    "name": "NERDS Restoring Harmony: A Voice in the Wilderness",
+    "id": "NRH-AVitW",
+    "published": "2021-09-01",
+    "type": "adventure"
+  },
+  {
+    "name": "NERDS Restoring Harmony: A Web of Lies",
+    "id": "NRH-AWoL",
+    "published": "2021-09-01",
+    "type": "adventure"
+  },
+  {
+    "name": "NERDS Restoring Harmony: Adventure Together",
+    "id": "NRH-AT",
+    "published": "2021-09-01",
+    "type": "adventure"
+  },
+  {
+    "name": "NERDS Restoring Harmony: Circus of Illusion",
+    "id": "NRH-CoI",
+    "published": "2021-09-01",
+    "type": "adventure"
+  },
+  {
+    "name": "NERDS Restoring Harmony: The Candy Mountain Caper",
+    "id": "NRH-TCMC",
+    "published": "2021-09-01",
+    "type": "adventure"
+  },
+  {
+    "name": "NERDS Restoring Harmony: The Lost Tomb",
+    "id": "NRH-TLT",
+    "published": "2021-09-01",
+    "type": "adventure"
+  },
+  {
+    "name": "Netheril's Fall",
+    "id": "NF",
+    "published": "2025-11-11",
+    "type": "book"
+  },
+  {
+    "name": "One Grung Above",
+    "id": "OGA",
+    "published": "2017-10-11",
+    "type": "book"
+  },
+  {
+    "name": "Out of the Abyss",
+    "id": "OotA",
+    "published": "2015-09-15",
+    "type": "adventure"
+  },
+  {
+    "name": "Peril in Pinebrook",
+    "id": "PiP",
+    "published": "2023-11-20",
+    "type": "adventure"
+  },
+  {
+    "name": "Phandelver and Below: The Shattered Obelisk",
+    "id": "PaBTSO",
+    "published": "2023-09-19",
+    "type": "adventure"
+  },
+  {
+    "name": "Plane Shift: Amonkhet",
+    "id": "PS-A",
+    "published": "2017-07-06",
+    "type": "book"
+  },
+  {
+    "name": "Plane Shift: Dominaria",
+    "id": "PS-D",
+    "published": "2018-07-31",
+    "type": "book"
+  },
+  {
+    "name": "Plane Shift: Innistrad",
+    "id": "PS-I",
+    "published": "2016-07-12",
+    "type": "book"
+  },
+  {
+    "name": "Plane Shift: Ixalan",
+    "id": "PS-X",
+    "published": "2018-01-09",
+    "type": "book"
+  },
+  {
+    "name": "Plane Shift: Kaladesh",
+    "id": "PS-K",
+    "published": "2017-02-16",
+    "type": "book"
+  },
+  {
+    "name": "Plane Shift: Zendikar",
+    "id": "PS-Z",
+    "published": "2016-04-27",
+    "type": "book"
+  },
+  {
+    "name": "Player's Handbook (2014)",
+    "id": "PHB",
+    "published": "2014-08-19",
+    "type": "book"
+  },
+  {
+    "name": "Player's Handbook (2024)",
+    "id": "XPHB",
+    "published": "2024-09-17",
+    "type": "book"
+  },
+  {
+    "name": "Princes of the Apocalypse",
+    "id": "PotA",
+    "published": "2015-04-07",
+    "type": "adventure"
+  },
+  {
+    "name": "Puncheons and Flagons",
+    "id": "PaF",
+    "published": "2024-08-27",
+    "type": "book"
+  },
+  {
+    "name": "Quests from the Infinite Staircase",
+    "id": "QftIS",
+    "published": "2024-07-16",
+    "type": "adventure"
+  },
+  {
+    "name": "Ravenloft: The Horrors Within",
+    "id": "RHW",
+    "published": "2026-06-16",
+    "type": "book"
+  },
+  {
+    "name": "Ravenloft: The House of Lament",
+    "id": "HoL",
+    "published": "2021-05-18",
+    "type": "adventure"
+  },
+  {
+    "name": "Red Dragon's Tale: A LEGO Adventure",
+    "id": "LRDT",
+    "published": "2024-04-01",
+    "type": "adventure"
+  },
+  {
+    "name": "Return to the Glory",
+    "id": "RtG",
+    "published": "2021-05-21",
+    "type": "adventure"
+  },
+  {
+    "name": "Rise of Tiamat",
+    "id": "RoT",
+    "published": "2014-11-04",
+    "type": "adventure"
+  },
+  {
+    "name": "Sage Advice Compendium (2014)",
+    "id": "SAC",
+    "published": "2019-01-31",
+    "type": "book"
+  },
+  {
+    "name": "Sage Advice Compendium (2025)",
+    "id": "XSAC",
+    "published": "2025-04-30",
+    "type": "book"
+  },
+  {
+    "name": "Scions of Elemental Evil",
+    "id": "ScoEE",
+    "published": "2024-10-24",
+    "type": "adventure"
+  },
+  {
+    "name": "Sigil and the Outlands",
+    "id": "SatO",
+    "published": "2023-10-07",
+    "type": "book"
+  },
+  {
+    "name": "Spelljammer Academy",
+    "id": "SjA",
+    "published": "2022-08-01",
+    "type": "adventure"
+  },
+  {
+    "name": "Storm King's Thunder",
+    "id": "SKT",
+    "published": "2016-09-06",
+    "type": "adventure"
+  },
+  {
+    "name": "Stranger Things: Welcome to the Hellfire Club",
+    "id": "WttHC",
+    "published": "2025-10-07",
+    "type": "adventure"
+  },
+  {
+    "name": "Strixhaven: A Curriculum of Chaos",
+    "id": "SCC",
+    "published": "2021-12-07",
+    "type": "book"
+  },
+  {
+    "name": "Strixhaven: A Reckoning in Ruins",
+    "id": "SCC-ARiR",
+    "published": "2021-12-07",
+    "type": "adventure"
+  },
+  {
+    "name": "Strixhaven: Campus Kerfuffle",
+    "id": "SCC-CK",
+    "published": "2021-12-07",
+    "type": "adventure"
+  },
+  {
+    "name": "Strixhaven: Hunt for Mage Tower",
+    "id": "SCC-HfMT",
+    "published": "2021-12-07",
+    "type": "adventure"
+  },
+  {
+    "name": "Strixhaven: The Magister's Masquerade",
+    "id": "SCC-TMM",
+    "published": "2021-12-07",
+    "type": "adventure"
+  },
+  {
+    "name": "Sword Coast Adventurer's Guide",
+    "id": "SCAG",
+    "published": "2015-11-03",
+    "type": "book"
+  },
+  {
+    "name": "Tales from the Yawning Portal: Against the Giants",
+    "id": "TftYP-AtG",
+    "published": "2017-03-24",
+    "type": "adventure"
+  },
+  {
+    "name": "Tales from the Yawning Portal: Dead in Thay",
+    "id": "TftYP-DiT",
+    "published": "2017-03-24",
+    "type": "adventure"
+  },
+  {
+    "name": "Tales from the Yawning Portal: The Forge of Fury",
+    "id": "TftYP-TFoF",
+    "published": "2017-03-24",
+    "type": "adventure"
+  },
+  {
+    "name": "Tales from the Yawning Portal: The Hidden Shrine of Tamoachan",
+    "id": "TftYP-THSoT",
+    "published": "2017-03-24",
+    "type": "adventure"
+  },
+  {
+    "name": "Tales from the Yawning Portal: The Sunless Citadel",
+    "id": "TftYP-TSC",
+    "published": "2017-03-24",
+    "type": "adventure"
+  },
+  {
+    "name": "Tales from the Yawning Portal: Tomb of Horrors",
+    "id": "TftYP-ToH",
+    "published": "2017-03-24",
+    "type": "adventure"
+  },
+  {
+    "name": "Tales from the Yawning Portal: White Plume Mountain",
+    "id": "TftYP-WPM",
+    "published": "2017-03-24",
+    "type": "adventure"
+  },
+  {
+    "name": "Tarot Deck",
+    "id": "TD",
+    "published": "2022-05-24",
+    "type": "book"
+  },
+  {
+    "name": "Tasha's Cauldron of Everything",
+    "id": "TCE",
+    "published": "2020-11-17",
+    "type": "book"
+  },
+  {
+    "name": "The Book of Many Things",
+    "id": "BMT",
+    "published": "2023-11-14",
+    "type": "book"
+  },
+  {
+    "name": "The Deck of Many Things: Card Reference Guide",
+    "id": "DMTCRG",
+    "published": "2023-11-14",
+    "type": "book"
+  },
+  {
+    "name": "The Lost Dungeon of Rickedness: Big Rick Energy",
+    "id": "RMBRE",
+    "published": "2019-11-19",
+    "type": "adventure"
+  },
+  {
+    "name": "The Lost Kenku",
+    "id": "TLK",
+    "published": "2017-11-28",
+    "type": "adventure"
+  },
+  {
+    "name": "The Lost Library of Lethchauntos",
+    "id": "FRAiF-TLLoL",
+    "published": "2025-11-11",
+    "type": "adventure"
+  },
+  {
+    "name": "The Orrery of the Wanderer",
+    "id": "OoW",
+    "published": "2019-06-18",
+    "type": "adventure"
+  },
+  {
+    "name": "The Tortle Package",
+    "id": "TTP",
+    "published": "2017-11-03",
+    "type": "adventure"
+  },
+  {
+    "name": "The Wild Beyond the Witchlight",
+    "id": "WBtW",
+    "published": "2021-09-21",
+    "type": "adventure"
+  },
+  {
+    "name": "Theros: No Silent Secret",
+    "id": "MOT-NSS",
+    "published": "2020-06-02",
+    "type": "adventure"
+  },
+  {
+    "name": "Thieves' Gallery",
+    "id": "HAT-TG",
+    "published": "2023-03-06",
+    "type": "book"
+  },
+  {
+    "name": "Tomb of Annihilation",
+    "id": "ToA",
+    "published": "2017-09-19",
+    "type": "adventure"
+  },
+  {
+    "name": "Turn of Fortune's Wheel",
+    "id": "ToFW",
+    "published": "2023-10-07",
+    "type": "adventure"
+  },
+  {
+    "name": "Uni and the Hunt for the Lost Horn",
+    "id": "UtHftLH",
+    "published": "2024-09-24",
+    "type": "adventure"
+  },
+  {
+    "name": "Van Richten's Guide to Ravenloft",
+    "id": "VRGR",
+    "published": "2021-05-18",
+    "type": "book"
+  },
+  {
+    "name": "Vecna: Eve of Ruin",
+    "id": "VEoR",
+    "published": "2024-05-21",
+    "type": "adventure"
+  },
+  {
+    "name": "Vecna: Nest of the Eldritch Eye",
+    "id": "VNotEE",
+    "published": "2024-04-16",
+    "type": "adventure"
+  },
+  {
+    "name": "Volo's Guide to Monsters",
+    "id": "VGM",
+    "published": "2016-11-15",
+    "type": "book"
+  },
+  {
+    "name": "Waterdeep: Dragon Heist",
+    "id": "WDH",
+    "published": "2018-09-18",
+    "type": "adventure"
+  },
+  {
+    "name": "Waterdeep: Dungeon of the Mad Mage",
+    "id": "WDMM",
+    "published": "2018-11-13",
+    "type": "adventure"
+  },
+  {
+    "name": "Wildemount: Dangerous Designs",
+    "id": "DD",
+    "published": "2020-03-17",
+    "type": "adventure"
+  },
+  {
+    "name": "Wildemount: Frozen Sick",
+    "id": "FS",
+    "published": "2020-03-17",
+    "type": "adventure"
+  },
+  {
+    "name": "Wildemount: Tide of Retribution",
+    "id": "ToR",
+    "published": "2020-03-17",
+    "type": "adventure"
+  },
+  {
+    "name": "Wildemount: Unwelcome Spirits",
+    "id": "US",
+    "published": "2020-03-17",
+    "type": "adventure"
+  },
+  {
+    "name": "X Marks the Spot",
+    "id": "XMtS",
+    "published": "2017-12-11",
+    "type": "adventure"
+  },
+  {
+    "name": "Xanathar's Guide to Everything",
+    "id": "XGE",
+    "published": "2017-11-21",
+    "type": "book"
+  }
+]

@@ -39,6 +39,10 @@ Index Image Container
   max-height: 75px;
   margin: auto;
   display: block;
+  background: rgba(52, 46, 31, 0.15);
+  border: 3px solid rgba(255, 255, 255, 0);
+  padding: 2px;
+  border-image: url(/images/ui/frames/MenuBackingBlue.png) 20;
 }
 .creature-media-header {
   padding: 1px 4px;

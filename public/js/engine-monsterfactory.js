@@ -384,12 +384,13 @@ function formatAlignment(a = []) {
 function renderAlignment(creature) {
   const alignment = formatAlignment(creature.alignment || []);
   $("alignment-out").innerHTML = alignment;
-  $("alignment-out").classList.add(alignment.replace(/\s/g, ""));
+  $("alignment-out").className =
+    `creature-alignment ${alignment.replace(/\s/g, "")}`;
 }
 //------------------------
 function rednerEdition(creature) {
   $("edition-out").innerHTML = creature.edition + " ruleset";
-  $("edition-out").classList.add("e" + creature.edition);
+  $("edition-out").className = `creature-edition e${creature.edition}`;
 }
 //------------------------
 function checksize(size) {

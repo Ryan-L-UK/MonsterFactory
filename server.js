@@ -1,24 +1,37 @@
 const express = require("express");
 const path = require("path");
 const fs = require("fs");
+
 // ---------------------------------------------------------
-// Log File Path (Dev vs Production)
+// Environment Setup
 // ---------------------------------------------------------
-let logPath;
-if (process.env.NODE_ENV === "production") {
-  // TrueNAS container with mounted dataset
-  logPath = "/logs/monsterfactory.log";
+const ENV = process.env.APP_ENV || "development";
+const PORT = process.env.PORT || 3000;
+
+// ---------------------------------------------------------
+// Log Directory (same path, different containers)
+// ---------------------------------------------------------
+let logDir;
+
+if (ENV === "development") {
+  // Local machine
+  logDir = path.join(__dirname, "logs");
 } else {
-  // Local development
-  const localDir = path.join(__dirname, "logs");
-  if (!fs.existsSync(localDir)) {
-    fs.mkdirSync(localDir, { recursive: true });
-  }
-  logPath = path.join(localDir, "monsterfactory.log");
+  // TrueNAS SCALE containers
+  logDir = "/logs";
 }
+
+// Ensure directory exists
+if (!fs.existsSync(logDir)) {
+  fs.mkdirSync(logDir, { recursive: true });
+}
+
+const logPath = path.join(logDir, "monsterfactory.log");
 const logFile = fs.createWriteStream(logPath, { flags: "a" });
+
+// ---------------------------------------------------------
 const app = express();
-const port = 6969;
+
 // ---------------------------------------------------------
 // Arcane Logging Helpers (Aligned Output)
 // ---------------------------------------------------------
@@ -427,9 +440,9 @@ app.get("/", (req, res) => {
 app.get("/export", (req, res) => {
   res.render("export");
 });
-app.get("/test", (req, res) => {
-  res.render("new-test-page");
-});
+//app.get("/test", (req, res) => {
+//  res.render("test");
+//});
 // ---------------------------------------------------------
 // Silent 204 for Apple / Google verification
 // ---------------------------------------------------------
@@ -495,13 +508,10 @@ app.use((req, res) => {
 // ---------------------------------------------------------
 // SERVER — Engine Awakening
 // ---------------------------------------------------------
-app.listen(port, () => {
+app.listen(PORT, () => {
   log("SERVER", "-------------------------------------------");
   log("SERVER", "The MonsterFactory engine awakens.");
-  log("SERVER", `Factory accessible at http://localhost:${port}.`);
-  log(
-    "SERVER",
-    `Environment deployed: ${process.env.NODE_ENV || "Localhost-Dev"}`,
-  );
+  log("SERVER", `Environment: ${ENV}`);
+  log("SERVER", `Listening on port: ${PORT}.`);
   log("SERVER", "-------------------------------------------");
 });
