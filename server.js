@@ -219,7 +219,7 @@ function loadBestiary() {
     const imageFile = creatureNameToImageFile(name);
     const imagePath = path.join(
       __dirname,
-      "public/images/Creatures",
+      "public/images/creatures",
       imageFile,
     );
     if (!fs.existsSync(imagePath)) {
